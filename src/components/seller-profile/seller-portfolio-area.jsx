@@ -218,8 +218,8 @@ const SellerPortfolioArea = () => {
                       </Link>
                     }
                     
-                    <Link className="fa-brands " href="seller-profile-update">
-                      {/* Needed an edit icon here*/}
+                    <Link className="fa-brands" href={"#"} >
+                      {/* Needed an edit icon here    href="seller-profile-update"    */}
                       Edit
                     </Link>
                     <button onClick={handlelogout} className="fa-brands "  >
