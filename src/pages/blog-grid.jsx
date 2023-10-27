@@ -1,14 +1,13 @@
 import React from "react";
 import SEO from "../common/seo";
 import BlogGrid from "../components/blog-grid";
-import WrapperFour from "../layout/wrapper-4";
-
+import Wrapper from "../layout/wrapper";
 const index = () => {
   return (
-    <WrapperFour>
+    <Wrapper>
       <SEO pageTitle={"Blog Grid"} />
       <BlogGrid />
-    </WrapperFour>
+      </Wrapper>
   );
 };
 
