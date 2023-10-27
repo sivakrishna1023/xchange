@@ -1,3 +1,4 @@
+'use client'
 import mongoose from "mongoose";
 import jwt from 'jsonwebtoken'
 import { serialize } from "cookie";
@@ -26,6 +27,16 @@ export const cookieSetter = (res, token, set) => {
   res.setHeader(
     "Set-Cookie",
     serialize("token", set ? token : "", {
+      path: "/",
+      httpOnly: true,
+      maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,
+    })
+  );
+};
+export const cookieSetter2 = (res, token, set) => {
+  res.setHeader(
+    "Set-Cookie",
+    serialize("token",null, {
       path: "/",
       httpOnly: true,
       maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,

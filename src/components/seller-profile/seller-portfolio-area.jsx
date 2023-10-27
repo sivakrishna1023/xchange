@@ -79,9 +79,6 @@ const SellerPortfolioArea = () => {
   const {user}=useContext(Context);
   const router=useRouter();
   var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
-  // if(user.avatar.url) {
-  //   imagelink=user.avatar.url;
-  // }
   const handlelogout=async()=>{
        try{
              const res=await fetch("/api/users/Logout",{
