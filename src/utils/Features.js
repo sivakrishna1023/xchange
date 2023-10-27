@@ -29,7 +29,7 @@ export const cookieSetter = (res, token, set) => {
     serialize("token", set ? token : "", {
       path: "/",
       httpOnly: true,
-      maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,
+      maxAge: set ? 60*1000 : 0,
     })
   );
 };
