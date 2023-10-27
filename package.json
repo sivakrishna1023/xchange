@@ -1,0 +1,33 @@
+{
+  "name": "epora-next-js",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/font": "13.1.6",
+    "@nextui-org/react": "^2.1.13",
+    "@swc/helpers": "^0.5.3",
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.2.3",
+    "cloudinary": "^1.41.0",
+    "cookie": "^0.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.2",
+    "next": "^13.5.6",
+    "nodemailer": "^6.9.6",
+    "react": "18.2.0",
+    "react-countup": "^6.4.1",
+    "react-dom": "18.2.0",
+    "react-intersection-observer": "^9.4.2",
+    "react-modal-video": "^2.0.0",
+    "react-slick": "^0.29.0",
+    "sass": "^1.58.1",
+    "slick-carousel": "^1.8.1",
+    "wowjs": "^1.1.3"
+  }
+}

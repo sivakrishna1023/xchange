@@ -1,0 +1,68 @@
+import Link from "next/link";
+import React, { useContext, useState } from "react";
+import { Context } from "@/src/components/Clients/clientcomponents";
+// internal
+import menu_data from "./menu-data";
+
+const MobileMenus = () => {
+  const [navTitle, setNavTitle] = useState("");
+  const {user,setUser}=useContext(Context);
+  //openMobileMenu
+  const openMobileMenu = (menu) => {
+    if (navTitle === menu) {
+      setNavTitle("");
+    } else {
+      setNavTitle(menu);
+    }
+  };
+  return (
+    <>
+      <nav className="mean-nav">
+        <ul>
+        <li> <Link href={''} >Home</Link> </li>
+          {menu_data.map((menu, i) => (
+            <React.Fragment key={i}>
+              {menu.has_dropdown && (
+                <li className="has-dropdown">
+                  <Link href={menu.link}>{menu.title}</Link>
+                  <ul
+                    className="submenu"
+                    style={{
+                      display: navTitle === menu.title ? "block" : "none",
+                    }}
+                  >
+                    {menu.sub_menus.map((sub, i) => (
+                      <li key={i}>
+                        <Link href={sub.link}>{sub.title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    className={`mean-expand ${
+                      navTitle === menu.title ? "mean-clicked" : ""
+                    }`}
+                   
+                    onClick={() => openMobileMenu(menu.title)}
+                    style={{ fontSize: "18px", cursor: "pointer" }}
+                  >
+                    <i className="fal fa-plus"></i>
+                  </a>
+                </li>
+              )}
+              {!menu.has_dropdown && (
+                <li>
+                  <Link href={menu.link}>{menu.title}</Link>
+                </li>
+              )}
+
+            </React.Fragment>
+          ))}
+              {user._id ? <li> <Link href={'seller-profile'}  >Profile</Link> </li> : <li> <Link href={'sign-in'}  >Sign In</Link> </li>}    
+              {user._id? <li></li> : <li> <Link href={'register'}  >Get Started</Link> </li> }
+        </ul>
+      </nav>
+    </>
+  );
+};
+
+export default MobileMenus;
