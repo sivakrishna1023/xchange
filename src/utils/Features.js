@@ -14,6 +14,7 @@ export const connectDB = async () => {
   });
   console.log(`Database Connected on ${connection.host}`);
 };
+// http://localhost:3000/post-ad
 
 //Generate the webtoken
 
@@ -24,15 +25,31 @@ export const generateToken = (_id) => {
 //set the cookie in the browser
 
 export const cookieSetter = (res, token, set) => {
-  res.setHeader(
-    "Set-Cookie",
-    serialize("token", set ? token : "", {
-      path: "/",
-      httpOnly: true,
-      maxAge: set ? 60*1000 : 0,
-    })
-  );
+  if (set) {
+    // Set the cookie with the token
+    res.setHeader(
+      "Set-Cookie",
+      serialize("token", token, {
+        path: "/",
+        httpOnly: true,
+        maxAge: 60 * 1000, // Set the desired expiration time
+      })
+    );
+  } else {
+    // Delete the "token" cookie by setting it with an expiration date in the past
+    res.setHeader(
+      "Set-Cookie",
+      serialize("token", "", {
+        path: "/",
+        httpOnly: true,
+        maxAge: 0, // Set maxAge to 0 to delete the cookie
+        expires: new Date(0), // Set an expiration date in the past
+      })
+    );
+  }
 };
+
+
 export const cookieSetter2 = (res, token, set) => {
   res.setHeader(
     "Set-Cookie",
