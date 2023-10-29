@@ -19,7 +19,7 @@ const handler = asyncError(async (req, res) => {
   
     const user = await User.findOne({ email }).select("+password");
   
-    if (!user) return errorHandler(res, 400, "Invalid Email or Password");
+   if (!user) return errorHandler(res, 400, "Invalid Email or Password");
    console.log(password);
    console.log(user.password);
    const isMatch= await bcrypt.compare(password,user.password);
@@ -28,13 +28,11 @@ const handler = asyncError(async (req, res) => {
     const varified=user.isvarified;
     //if(!varified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
     const token = generateToken(user._id);
-  
-    cookieSetter(res, token, true);
-  
     res.status(200).json({
       success: true,
       message: `Welcome back, ${user.name}`,
       user,
+      token
     });
   });
   

@@ -19,7 +19,7 @@ const LoginForm = () => {
           const res=await fetch("/api/users/Login",{
            method:'POST',
            headers: {
-             'Content-Type': 'application/json' 
+             'Content-Type': 'application/json',
            },
            body: JSON.stringify({
              email,
@@ -28,6 +28,7 @@ const LoginForm = () => {
           })
          const data= await res.json();
          if(data.success){
+              localStorage.setItem('token', data.token); console.log("i am clicked")
               setUser(data.user);
          }  
      }catch(error){

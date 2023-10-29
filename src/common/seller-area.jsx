@@ -121,7 +121,7 @@ const SellerArea = ({ style_2 }) => {
        })
       const data= await res.json();
       if(data.success){
-           console.log(data);
+          //  console.log(data);
            setUser(data.users);
       }  
     }catch(error){

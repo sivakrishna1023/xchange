@@ -15,10 +15,12 @@ const RegisterhtmlForm = () => {
   const handlesubmit= async(e)=>{
     e.preventDefault();
     try{
+      const token = localStorage.getItem('token');
         const res= await fetch('/api/users/Register',{
          method:'POST',
          headers: {
-           'Content-Type': 'application/json' 
+           'Content-Type': 'application/json',
+           'Authorization': `Bearer ${token}`
          },
          body: JSON.stringify({
            firstname,
@@ -30,6 +32,7 @@ const RegisterhtmlForm = () => {
         const data=await res.json();
         console.log(data);
         if(data.success){
+             localStorage.setItem('token', data.token); console.log("i am clicked");
              setUser(data.user);
         }
     }catch(error){

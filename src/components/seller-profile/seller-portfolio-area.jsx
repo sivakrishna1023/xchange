@@ -80,21 +80,26 @@ const SellerPortfolioArea = () => {
   const router=useRouter();
   var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
   const handlelogout=async()=>{
-       try{
-             const res=await fetch("/api/users/Logout",{
-              method:'GET',
-              headers: {
-                'Content-Type': 'application/json' 
-              },
-             })
-            const data= await res.json();
-            console.log(data);
-            if(data.success){
-                 router.replace('/');
-            }  
-       }catch(error){
-        console.log(`Error while loging out`, error);
-       }
+     localStorage.setItem('token', null); console.log("i am clicked");
+     router.replace('/');
+       //try{
+        
+      //   const token = localStorage.getItem('token');
+      //        const res=await fetch("/api/users/Logout",{
+      //         method:'GET',
+      //         headers: {
+      //           'Content-Type': 'application/json',
+      //           'Authorization': `Bearer ${token}`
+      //         },
+      //        })
+      //       const data= await res.json();
+      //       console.log(data);
+      //       if(data.success){
+      //            router.replace('/');
+      //       }  
+      //  }catch(error){
+      //   console.log(`Error while loging out`, error);
+       // }
   }
   const gettasks=async()=>{
     try{

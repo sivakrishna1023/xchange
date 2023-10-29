@@ -22,69 +22,75 @@ export const generateToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET);
 };
 
-//set the cookie in the browser
+export const authfunction=(req,res,next)=>{
+  const val=req.headers.authorization;
+  if(val){
+      const token=val.split(' ')[1];
+      jwt.verify(token,SECRET,(err,user)=>{
+          if(err){
+              return res.status(403);
+          }
+          else{
+              req.user=user;
+              next();
+          }
+      })
+  }
+  else{
+      res.status(401);
+  }
+}
+
 
 export const cookieSetter = (res, token, set) => {
+ 
   if (set) {
-    // Set the cookie with the token
-    res.setHeader(
-      "Set-Cookie",
-      serialize("token", token, {
-        path: "/",
-        httpOnly: true,
-        maxAge: 60 * 1000, // Set the desired expiration time
-      })
-    );
+   
+    // // Set the cookie with the token
+    // res.setHeader(
+    //   "Set-Cookie",
+    //   serialize("token", token, {
+    //     path: "/",
+    //     httpOnly: true,
+    //     maxAge: 60 * 1000, // Set the desired expiration time
+    //   })
+    // );
   } else {
     // Delete the "token" cookie by setting it with an expiration date in the past
-    res.setHeader(
-      "Set-Cookie",
-      serialize("token", "", {
-        path: "/",
-        httpOnly: true,
-        maxAge: 0, // Set maxAge to 0 to delete the cookie
-        expires: new Date(0), // Set an expiration date in the past
-      })
-    );
+   
+    // res.setHeader(
+    //   "Set-Cookie",
+    //   serialize("token", "", {
+    //     path: "/",
+    //     httpOnly: true,
+    //     maxAge: 0, // Set maxAge to 0 to delete the cookie
+    //     expires: new Date(0), // Set an expiration date in the past
+    //   })
+    // );
   }
 };
 
 
-export const cookieSetter2 = (res, token, set) => {
-  res.setHeader(
-    "Set-Cookie",
-    serialize("token",null, {
-      path: "/",
-      httpOnly: true,
-      maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,
-    })
-  );
-};
+// export const cookieSetter2 = (res, token, set) => {
+//   res.setHeader(
+//     "Set-Cookie",
+//     serialize("token",null, {
+//       path: "/",
+//       httpOnly: true,
+//       maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,
+//     })
+//   );
+// };
 
 
 //Auth
 
 export const checkAuth = async (req) => {
-  const cookie = req.headers.cookie;
-  if (!cookie) return null;
-  // Split the cookie string into individual cookie parameters
-  const cookieParams = cookie.split('; ');
-  
-  // Find the parameter that starts with "token="
-  const tokenParam = cookieParams.find(param => param.startsWith('token='));
-  const tokenValue = tokenParam.split('=')[1];
-  // if (tokenParam) {
-  //   // Extract the value assigned to the token parameter
-  //   const tokenValue = tokenParam.split('=')[1];
-  //   //console.log("Token value:", tokenValue);
-  // } else {
-  //   //console.log("Token parameter not found in the cookie.");
-  // }
-  const token = tokenValue;
-  //console.log(token);
-  //console.log(token);
+  const val=req.headers.authorization;
+  const token=val.split(' ')[1];
+  console.log(token);
+  if (!token) return null;
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
-  //console.log(decoded);
   return await User.findById(decoded._id);
 };
 
