@@ -223,7 +223,7 @@ const SellerPortfolioArea = () => {
                       </Link>
                     }
                     
-                    <Link className="fa-brands" href={"#"} >
+                    <Link className="fa-brands" href={`seller-profile-update?id=${user._id}`} >
                       {/* Needed an edit icon here    href="seller-profile-update"    */}
                       Edit
                     </Link>

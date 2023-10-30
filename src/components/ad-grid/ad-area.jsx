@@ -18,9 +18,7 @@ const AdArea = () => {
           },
         });
         const data = await res.json();
-        console.log(data);
         if (data.success) {
-          console.log(data);
           setTasks(data.ads);
         }
       } catch (error) {

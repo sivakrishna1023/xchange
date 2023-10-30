@@ -13,7 +13,7 @@ const SellerProfileUpdate = () => {
     <>
     <Breadcrumb title="Seller's Profile Update" isDbbl="Seller" subtitle="Seller's Profile Update" />
       <SellerPortfolioAreaUpdate />
-      <CounterArea />
+      {/* <CounterArea /> */}
     </>
   );
 };

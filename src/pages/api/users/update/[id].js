@@ -4,6 +4,7 @@ import { checkAuth, connectDB, connectCloud } from "@/src/utils/Features";
 import { User } from "@/src/models/user";
 
 const handler = asyncError(async (req, res) => {
+   
       const newUserData = {
       firstname: req.body.firstname,
       lastname: req.body,lastname,
@@ -23,6 +24,7 @@ const handler = asyncError(async (req, res) => {
       Twitter:req.body.Twitter,
       Reddit:req.body.Reddit,
       };
+    console.log(newUserData);
     await connectDB();
     await connectCloud();
     const user = await checkAuth(req);
