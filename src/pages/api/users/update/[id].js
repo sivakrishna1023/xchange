@@ -29,9 +29,8 @@ const handler = asyncError(async (req, res) => {
     if (!user) return errorHandler(res, 401, "Login First");
     const user_id=user._id;
     const user1 = await User.findById(user._id);
-    
             if (req.body.avatar !== "") {
-                const imageId = user.avatar.public_id;
+                const imageId = user.avatar.url;
                 if(imageId!=="") await cloudinary.v2.uploader.destroy(imageId);
                 const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
                 folder: "avatars",
@@ -43,7 +42,6 @@ const handler = asyncError(async (req, res) => {
                 url: myCloud.secure_url,
                 };
             }
-
              const user12 = await User.findByIdAndUpdate(user_id, newUserData, {
                 new: true,
                 runValidators: true,

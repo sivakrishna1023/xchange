@@ -6,7 +6,7 @@ import { Context } from "../Clients/clientcomponents";
 import { useRouter } from "next/router";
 const AdArea = () => {
   const { user } = useContext(Context);
-  const [tasks,settasks]=useState('');
+  const [tasks,setTasks]=useState('');
   const router = useRouter();
   useEffect(() => {
     const getTasks = async () => {
@@ -33,31 +33,6 @@ const AdArea = () => {
     }
     getTasks();
   }, []);
-  // const gettasks=async()=>{
-  //   try{
-  //     const res=await fetch("/api/ads/Myads",{
-  //       method:'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json' 
-  //       },
-  //      })
-  //     const data= await res.json();
-  //     console.log(data);
-  //     if(data.success){
-  //          console.log(data);
-  //          settasks(data.ads);
-  //     }  
-  //   }catch(error){
-  //     console.log(error);
-  //   }
-  // }
-  // const [tasks,settasks]=useState('');
-  // useEffect(()=>{
-  //      gettasks(); 
-  // },[])
-  // if(!user._id){
-  //   return router.replace('/sign-in');
-  // }
   return (
     <>
       <section className="course-area pb-120">
