@@ -1,7 +1,10 @@
+'use client'
 import Link from 'next/link';
-import React from 'react';
+import React,{useContext} from 'react';
+import { Context } from '../../Clients/clientcomponents';
 
 const HeroBanner = () => {
+   const {user}=useContext(Context);
     return (
         <>
      <section className="banner-area fix p-relative">
@@ -14,7 +17,7 @@ const HeroBanner = () => {
                         <h2 className="hero-title mb-35">Buy and Sell with Ease and <i>Trust</i>.</h2>
                         <p>Connecting local buyers and sellers on Xchange!</p>
                         <div className="tp-banner-btn">
-                           <Link href="/post-ad" className="tp-btn">Post Ads</Link>
+                           {user._id?   <Link href="/post-ad" className="tp-btn">Post Ads</Link>:<Link href="/sign-in" className="tp-btn">Post Ads</Link>}
                         </div>
                      </div>
                   </div>

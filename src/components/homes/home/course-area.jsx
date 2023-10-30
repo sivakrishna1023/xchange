@@ -1,9 +1,11 @@
 'use client'
 import ads_data from "@/src/data/ads-data";
 import Link from "next/link";
-import React,{useState,useEffect} from "react";
+import React,{useState,useEffect,useContext} from "react";
+import { Context } from "../../Clients/clientcomponents";
 
 const CourseArea = () => {
+  const {user}=useContext(Context);
   const gettasks=async()=>{
     try{
       const res=await fetch("/api/ads/Allads",{
@@ -46,7 +48,7 @@ const CourseArea = () => {
           <div className="row justify-content-center">
           <div className="row">
                                                         { tasks &&  tasks.slice(0, 6).map((item, i) => (
-                                                          <div key={i} className="col-xl-3 col-lg-12 col-md-3">
+                                                          <div key={i} className="col-xl-4 col-lg-12 col-md-3">
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                                 <Link href={`/ad-details?id=${item._id}`}>
@@ -192,9 +194,11 @@ const CourseArea = () => {
           <div className="row text-center">
             <div className="col-lg-12">
               <div className="course-btn mt-20">
-                <Link className="tp-btn" href={'/ad-list'}>
-                  Browse All Courses
-                </Link>
+              {user._id?  <Link className="tp-btn" href={'/ad-list'}>
+                  Browse All Ads
+                </Link>:  <Link className="tp-btn" href={'/sign-in'}>
+                  Browse All Ads
+                </Link>}
               </div>
             </div>
           </div>

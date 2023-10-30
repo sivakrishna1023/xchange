@@ -26,8 +26,7 @@ const menu_data = [
     link: "/sellers",
     has_dropdown: true,
     sub_menus: [
-      { link: "/seller", title: "Sellers" },
-      { link: "/seller-profile", title: "Seller Profile" },
+      { link: "/seller", title: "Know All" },
     ],
   },
   {
