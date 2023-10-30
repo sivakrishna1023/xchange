@@ -35,9 +35,8 @@ const menu_data = [
     link: "/ad-grid",
     has_dropdown: true,
     sub_menus: [
-      { link: "/ad-grid", title: "Ads Grid" },
-      { link: "/ad-list", title: "Ads List" },
-      { link: "/ad-details", title: "Ad Details" },
+      { link: "/ad-grid", title: "Get My Ads" },
+      { link: "/ad-list", title: "Know All Ads" },
     ],
   },
 ];

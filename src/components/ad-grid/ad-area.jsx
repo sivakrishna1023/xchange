@@ -1,9 +1,12 @@
 'use client'
 import our_ads_data from "@/src/data/our-ads-data";
 import Link from "next/link";
-import React,{useState,useEffect} from "react";
-
+import React,{useState,useEffect,useContext} from "react";
+import { Context } from "../Clients/clientcomponents";
+import { useRouter } from "next/navigation";
 const AdArea = () => {
+  const {user}=useContext(Context);
+  const router=useRouter();
   const gettasks=async()=>{
     try{
       const res=await fetch("/api/ads/Myads",{
@@ -26,6 +29,9 @@ const AdArea = () => {
   useEffect(()=>{
        gettasks(); 
   },[])
+  if(!user._id){
+    return router.replace('/sign-in');
+  }
   return (
     <>
       <section className="course-area pb-120">
