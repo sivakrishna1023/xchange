@@ -11,7 +11,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
         </button>
         <div className="side-logo mb-30">
           <Link href="/">
-            <img src="/assets/img/logo/logo-black.png" alt="logo" />
+            <img src="/assets/img/logo/logo.png" alt="logo" />
           </Link>
         </div>
         <div className="mobile-menu mean-container">
