@@ -103,10 +103,12 @@ const SellerPortfolioArea = () => {
   }
   const gettasks=async()=>{
     try{
+      const token = localStorage.getItem('token');
       const res=await fetch("/api/ads/Myads",{
         method:'GET',
         headers: {
-          'Content-Type': 'application/json' 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         },
        })
       const data= await res.json();
@@ -203,22 +205,22 @@ const SellerPortfolioArea = () => {
                   <div className="c-details-social">
                     <h5 className="cd-social-title mb-25">More:</h5>
                    {
-                    user.Facebook && <Link href="#">
+                    user.Facebook && <Link href={`${user.Facebook}`}>
                     <i className="fa-brands fa-facebook-f"></i>
                     </Link> 
                    } 
                     {
-                     user.Twitter &&  <Link href="#">
+                     user.Twitter &&  <Link href={`${user.Twitter}`}>
                     <i className="fa-brands fa-twitter"></i>
                     </Link> 
                    }
                    {
-                    user.Instagram &&  <Link href="#">
+                    user.Instagram &&  <Link href={`${user.Instagram}`}>
                      <i className="fa-brands fa-instagram"></i>
                    </Link>
                    }
                     {
-                     user.Youtube && <Link href="#">
+                     user.Youtube && <Link href={`${user.Youtube}`}>
                       <i className="fa-brands fa-youtube"></i>
                       </Link>
                     }

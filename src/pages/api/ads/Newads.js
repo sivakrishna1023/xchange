@@ -22,7 +22,7 @@ const handler = asyncError(async (req, res) => {
 
     country,
     Name,
-    Address,
+    Address, 
     City,
     state,
     postcode,

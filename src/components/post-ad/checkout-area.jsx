@@ -28,10 +28,12 @@ const CheckoutArea = () => {
    const [images, setImages] = useState([]);
    const handler=async()=>{
          try{
+            const token = localStorage.getItem('token');
                const res=await fetch('/api/ads/Newads',{
                   method:'POST',
                   headers: {
-                     'Content-Type': 'application/json' 
+                     'Content-Type': 'application/json' ,
+                     'Authorization': `Bearer ${token}`
                   },
                   body: JSON.stringify({
                      Category,
@@ -74,7 +76,6 @@ const CheckoutArea = () => {
         reader.readAsDataURL(file);
       });
     };
-   //  if(!user._id) return router.replace('/sign-in');
     const [isOpen, setIsOpen] = useState(false)
     const [isShipOpen, setIsShipOpen] = useState(false);
     return (
@@ -244,7 +245,7 @@ const CheckoutArea = () => {
                                                  <div className="country-select">
                                                     <label>Category <span className="required">*</span></label>
                                                     <select  required onClick={(e)=>{setCategory(e.target.value)}}   >
-                                                   
+                                                    <option value="select">Select</option>
                                                     <option value="Mobiles">Mobiles</option>
                                                     <option value="Electronics">Electronics</option>
                                                     <option value="Vehicles">Vehicles</option>

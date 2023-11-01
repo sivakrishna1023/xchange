@@ -63,7 +63,7 @@ const SellerArea = () => {
               <div className="section-title mb-65 text-center">
                 <span className="tp-sub-title-box mb-15">Members</span>
                 <h2 className="tp-section-title"> All Sellers</h2>
-              </div>
+              </div> 
             </div>
           </div>
           <div className="row">
@@ -88,13 +88,41 @@ const SellerArea = () => {
                       <span>Seller Since: {item.createdAt}</span>
                       <div className="tp-instructor__social">
                         <ul>
-                          {social_links.map((link, i) => (
+                        {
+                           item.Facebook &&    <li >
+                             <a target={"_blank"} href={item.Facebook}>
+                               <i className={"fab fa-facebook-f"}></i>
+                             </a>
+                           </li>
+                          }
+                            {
+                             item.Youtube &&   <li >
+                              <a target={"_blank"} href={item.Youtube}>
+                                <i className={"fab fa-twitter"}></i>
+                              </a>
+                            </li>
+                            }
+                            {
+                             item.Instagram && <li >
+                              <a target={"_blank"} href={item.Instagram}>
+                                <i className={"fab fa-instagram"}></i>
+                              </a>
+                            </li>
+                            }
+                            {
+                            item.Twitter &&  <li >
+                              <a target={"_blank"} href={item.Twitter}>
+                                <i className={"fab fa-youtube"}></i>
+                              </a>
+                            </li>
+                            }
+                          {/* {social_links.map((link, i) => (
                             <li key={i}>
                               <a target={link.target} href={link.link}>
                                 <i className={link.icon}></i>
                               </a>
                             </li>
-                          ))}
+                          ))} */}
                         </ul>
                       </div>
                     </div>
