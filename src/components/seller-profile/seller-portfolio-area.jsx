@@ -7,74 +7,6 @@ import { Context } from "../Clients/clientcomponents";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
 
-// instructor_portfolio_data
-// const instructor_portfolio_data = [
-//   {
-//     id: 6,
-//     img: ``,
-//     name: "Esther Howard",
-//     total_class: "35",
-//     total_st: "291",
-//     title: "Instructor",
-//     sub_title:
-//       "UX/UI Designer, Chemical Engineer, Youtuber, Life Style Blogger",
-//     followers: "35,600",
-//     following: "135",
-//     job_title: "Lead UX Engineer",
-//     phone: "+00 365 9852 65",
-//     email: "epora@mail.com",
-//     experiences_year: "12+ Years",
-//     skill_level: "Pro Level",
-//     language: "English",
-//     biography: (
-//       <>
-//         <p>
-//           Synergistically foster 24/7 leadership rather than scalable platforms.
-//           Conveniently visualize installed base products before interactive
-//           results. Collaboratively restore corporate experiences and open-source
-//           applications. Proactively mesh cooperative growth strategies for
-//           covalent opportunities. Competently create efficient markets through
-//           best-of-breed potentialities.
-//         </p>
-//         <p>
-//           Compellingly exploit B2B vortals with emerging total linkage.
-//           Appropriately pursue strategic leadership whe intermandated ideas.
-//           Proactively revolutionize interoperable "outside the box" thinking
-//           with fully researched innovation. Dramatically facilitate exceptional
-//           architectures and bricks-and-clicks data. Progressively genera
-//           extensible e-services for.
-//         </p>
-//       </>
-//     ),
-//   },
-// ];
-
-
-// counter data 
-// const counter_data = [
-//    {
-//      id: 1,
-//      icon: "fi fi-rr-user",
-//      count_number: 276,
-//      thousand: "K",
-//      title: "Products Sold",
-//    },
-//    {
-//      id: 2,
-//      icon: "fi fi-rr-document",
-//      count_number: 35,
-//      thousand: "",
-//      title: "Products Bought",
-//    },
-//    {
-//      id: 3,
-//      icon: "fi fi-rr-star",
-//      count_number: 407,
-//      thousand: "K",
-//      title: "Ads Posted",
-//    },
-//  ];
-
 const SellerPortfolioArea = () => {
   const {user}=useContext(Context);
   const router=useRouter();
@@ -82,24 +14,6 @@ const SellerPortfolioArea = () => {
   const handlelogout=async()=>{
      localStorage.setItem('token', null); console.log("i am clicked");
      router.replace('/');
-       //try{
-        
-      //   const token = localStorage.getItem('token');
-      //        const res=await fetch("/api/users/Logout",{
-      //         method:'GET',
-      //         headers: {
-      //           'Content-Type': 'application/json',
-      //           'Authorization': `Bearer ${token}`
-      //         },
-      //        })
-      //       const data= await res.json();
-      //       console.log(data);
-      //       if(data.success){
-      //            router.replace('/');
-      //       }  
-      //  }catch(error){
-      //   console.log(`Error while loging out`, error);
-       // }
   }
   const gettasks=async()=>{
     try{
@@ -137,7 +51,7 @@ const SellerPortfolioArea = () => {
             <div className="col-xl-4 col-lg-5">
               <div className="instruc-sidebar mb-40">
                 <div className="isntruc-side-thumb mb-30">
-                 { user.avatar.url ?  <img src= {user.avatar.url} alt="instructor-thumb"/> : <img
+                 { user && user.avatar && user.avatar.url ?  <img src= {user.avatar.url} alt="instructor-thumb"/> : <img
                   src= {imagelink}
                   alt="instructor-thumb"
                 />}

@@ -1,4 +1,4 @@
-'use client'
+'use Client'
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
 import React, {useContext, useEffect, useState} from "react";
@@ -9,6 +9,7 @@ const Header = () => {
   const {sticky} = useSticky();
   const [isActive, setIsActive] = useState(false);
   const {user}=useContext(Context);
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
     return (
     <>
       <header className="header__transparent ">

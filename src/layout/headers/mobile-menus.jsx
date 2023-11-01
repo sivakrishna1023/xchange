@@ -1,5 +1,6 @@
+'use client'
 import Link from "next/link";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { Context } from "@/src/components/Clients/clientcomponents";
 // internal
 import menu_data from "./menu-data";
@@ -7,6 +8,12 @@ import menu_data from "./menu-data";
 const MobileMenus = () => {
   const [navTitle, setNavTitle] = useState("");
   const {user,setUser}=useContext(Context);
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const [isClient, setIsClient] = useState(false)
+ 
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   //openMobileMenu
   const openMobileMenu = (menu) => {
     if (navTitle === menu) {
@@ -57,8 +64,8 @@ const MobileMenus = () => {
 
             </React.Fragment>
           ))}
-              {user._id ? <li> <Link href={'seller-profile'}  >Profile</Link> </li> : <li> <Link href={'sign-in'}  >Sign In</Link> </li>}    
-              {user._id? <li></li> : <li> <Link href={'register'}  >Get Started</Link> </li> }
+              {isClient && token ? <li> <Link href={'seller-profile'}  >Profile</Link> </li> : <li> <Link href={'sign-in'}  >Sign In</Link> </li>}    
+              {isClient && token ? <li></li> : <li> <Link href={'register'}  >Get Started</Link> </li> }
         </ul>
       </nav>
     </>
