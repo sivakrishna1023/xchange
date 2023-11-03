@@ -318,10 +318,10 @@ const CheckoutArea = () => {
                                                  </div>
                                            </div>
                                            <div className="col-md-12">
-                                                 <div className="country-select">
+                                                 {/* <div className="country-select">
                                                     <label>Upload Photo<span className="required">*</span></label>
                                                     <input onChange={createProductImagesChange}  type="file" name="avatar" id=""  multiple />
-                                                 </div>
+                                                 </div> */}
                                            </div>
                                            <div className="order-button-payment mt-20">
                                      <button type="submit"  className="tp-btn">Post Ad</button>

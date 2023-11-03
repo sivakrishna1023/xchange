@@ -13,13 +13,16 @@ const AdDetailsArea = () => {
     const [aduser,setaduser]=useState();
     var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
 
-    const id = query.id; 
+    
     const getdetails= async()=>{
       try{
+         const id = query.id;
+         const token = localStorage.getItem('token');
          const res=await fetch(`/api/ads/single/id=${id}`,{
            method:'GET',
            headers: {
-             'Content-Type': 'application/json' 
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
            },
           })
          const data= await res.json();

@@ -38,29 +38,29 @@ const handler = asyncError(async (req, res) => {
         public_id:'',
         url:''
       },];
-      if(req.body.images!==""){
-        let images1 = [];
+      // if(req.body.images!==""){
+      //   let images1 = [];
 
-        if (typeof req.body.images === "string") {
-          images1.push(req.body.images);
-        } else {
-          images1 = req.body.images;
-        }
+      //   if (typeof req.body.images === "string") {
+      //     images1.push(req.body.images);
+      //   } else {
+      //     images1 = req.body.images;
+      //   }
       
-        const imagesLinks = [];
+      //   const imagesLinks = [];
       
-        for (let i = 0; i < images1.length; i++) {
-          const result = await cloudinary.v2.uploader.upload(images1[i], {
-            folder: "Ads",
-          });
+      //   for (let i = 0; i < images1.length; i++) {
+      //     const result = await cloudinary.v2.uploader.upload(images1[i], {
+      //       folder: "Ads",
+      //     });
       
-          imagesLinks.push({
-            public_id: result.public_id,
-            url: result.secure_url,
-          });
-        }
-        images=imagesLinks;
-      } 
+      //     imagesLinks.push({
+      //       public_id: result.public_id,
+      //       url: result.secure_url,
+      //     });
+      //   }
+      //   images=imagesLinks;
+      // } 
       console.log(images);
       const newad =await Ads.create({
         Category,
