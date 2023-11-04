@@ -69,7 +69,7 @@ const CourseArea = () => {
                                                                     <li>
                                                                       <Link
                                                                         className={item.ct_color}
-                                                                        href="/course-details"
+                                                                        href={`/ad-details?id=${item._id}`}
                                                                       >
                                                                         {item.Category}
                                                                       </Link>
@@ -77,7 +77,7 @@ const CourseArea = () => {
                                                                     <li>
                                                                       <Link
                                                                         className={item.cn_color}
-                                                                        href="/course-details"
+                                                                        href={`/ad-details?id=${item._id}`}
                                                                       >
                                                                         {item.Brand}
                                                                       </Link>
@@ -86,7 +86,7 @@ const CourseArea = () => {
                                                                 </div>
                                                                 <div className="tpcourse__ava-title mb-15">
                                                                   <h4 className="tpcourse__title">
-                                                                    <Link href="/course-details">{item.Adname}</Link>
+                                                                    <Link href={`/ad-details?id=${item._id}`}>{item.Adname}</Link>
                                                                   </h4>
                                                                 </div>
                                                                 <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">

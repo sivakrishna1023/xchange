@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 const AdDetailsArea = () => {
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const { query } = useRouter();
+    const { asPath  }=useRouter();
     const [ad,setad]=useState();
     const [aduser,setaduser]=useState();
     var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
@@ -16,7 +17,11 @@ const AdDetailsArea = () => {
     
     const getdetails= async()=>{
       try{
-         const id = query.id;
+         // const id = query.id;
+         // console.log(query);
+         // console.log(id);
+         const id = new URLSearchParams(asPath.split('?')[1]).get('id');
+         console.log(id);   
          const token = localStorage.getItem('token');
          const res=await fetch(`/api/ads/single/id=${id}`,{
            method:'GET',
@@ -31,10 +36,12 @@ const AdDetailsArea = () => {
               setad(data.ad);
               const user_id=data.ad.user;
               try{
+               const token = localStorage.getItem('token');
                const res=await fetch(`/api/users/single/id=${user_id}`,{
                   method:'GET',
                   headers: {
-                    'Content-Type': 'application/json' 
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                   },
                  })
                 const data= await res.json();
@@ -123,15 +130,7 @@ const AdDetailsArea = () => {
                                  <div className="c-details-list mb-5">
                                     <ul className="d-flex align-items-center">
                                        <li>
-                                          {/* <div className="rating-gold d-flex align-items-center">
-                                             <p>4.7</p>
-                                             <i className="fi fi-ss-star"></i>
-                                             <i className="fi fi-ss-star"></i>
-                                             <i className="fi fi-ss-star"></i>
-                                             <i className="fi fi-ss-star"></i>
-                                             <i className="fi fi-rs-star"></i>
-                                             <span>(125)</span>
-                                          </div> */}
+                                        
                                        </li>
                                        {/* <li><span>350 Ads Posted</span></li> */}
                                     </ul>
