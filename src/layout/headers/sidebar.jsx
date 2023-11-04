@@ -29,7 +29,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
             </li>
           </ul>
           <div className="side-social">
-            <a href="#">
+            {/* <a href="#">
               <i className="fab fa-facebook-f"></i>
             </a>
             <a href="#">
@@ -37,7 +37,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
             </a>
             <a href="#">
               <i className="fab fa-linkedin"></i>
-            </a>
+            </a> */}
             <a href="#">
               <i className="fab fa-instagram">https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==</i>
             </a>
