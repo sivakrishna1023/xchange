@@ -10,7 +10,7 @@ const index = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setShowImage(false);
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(timeout);
   }, []);
 
