@@ -97,22 +97,11 @@ const Header = () => {
             </div>
             <div className="container-fluid">
               <div className="row align-items-center">
-                <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center justify-content-center">
+                <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center justify-content-md-end justify-content-lg-center">
                   <div className="main-menu d-flex justify-content-end mr-15">
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu2 />
                     </nav>
-                  </div>
-                  <div className="header-right d-md-flex align-items-center">
-                    <div className="header-meta">
-                      <ul>
-                        <li>
-                          <a onClick={() => setIsActive(true)}  href="#" className="tp-menu-toggle d-xl-none">
-                            <i className="icon_ul"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
                   </div>
                 </div>
               </div>

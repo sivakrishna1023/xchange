@@ -77,7 +77,7 @@ const social_links = [
 ];
 
 const copyright = {
-  logo: "/assets/img/logo/logo.png",
+  logo: "/assets/img/footer.png",
   copyright_text: (
     <>Copyright © Uxaction {new Date().getFullYear()}, All Rights Reserved</>
   ),
