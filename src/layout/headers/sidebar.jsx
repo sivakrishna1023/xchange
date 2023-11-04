@@ -20,7 +20,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
         <div className="sidebar-info">
           <h4 className="mb-15">Contact Info</h4>
           <ul className="side_circle">
-            <li>Bangalore, India</li>
+            <li>Hyderabad, India</li>
             <li>
               <a href="tel:123456789"></a>
             </li>
