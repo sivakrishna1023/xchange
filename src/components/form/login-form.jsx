@@ -53,7 +53,7 @@ const LoginForm = () => {
                            <h3 className="text-center mb-60">Login From Here</h3>
                            <form onSubmit={handler}>
                               <label htmlFor="name">Email<span>**</span></label>
-                              <input required onChange={(e)=>{setemail(e.target.value)}} id="name" type="text" placeholder="Enter Username" />
+                              <input required onChange={(e)=>{setemail(e.target.value)}} id="name" type="email" placeholder="Enter Username" />
                               <label htmlFor="pass">Password <span>**</span></label>
                               <input required onChange={(e)=>{setpassword(e.target.value)}} id="pass" type="password" placeholder="Enter password..." />
                               <div className="mt-10"></div>
