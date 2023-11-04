@@ -38,8 +38,8 @@ const Sidebar = ({ isActive, setIsActive }) => {
             <a href="#">
               <i className="fab fa-linkedin"></i>
             </a> */}
-            <a href="#">
-              <i className="fab fa-instagram">https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==</i>
+            <a href="https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==">
+              <i className="fab fa-instagram"></i>
             </a>
           </div>
         </div>
