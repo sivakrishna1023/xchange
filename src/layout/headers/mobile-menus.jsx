@@ -26,7 +26,7 @@ const MobileMenus = () => {
     <>
       <nav className="mean-nav">
         <ul>
-        <li> <Link href={''} >Home</Link> </li>
+        <li> <Link href="/" >Home</Link> </li>
           {menu_data.map((menu, i) => (
             <React.Fragment key={i}>
               {menu.has_dropdown && (
