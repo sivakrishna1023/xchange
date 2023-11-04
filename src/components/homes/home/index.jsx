@@ -16,13 +16,13 @@ const Home = () => {
   return (
     <>
       <HeroBanner />
-      <FeatureArea />
-      <AboutArea />
       <CategoryArea />
                     <CourseArea />
+      <FeatureArea />
+      <AboutArea />
+                 <InstructorArea />
       <ChooseArea />
       {/* <CounterArea /> */}
-                 <InstructorArea />
       {/* <TestimonialArea /> */}
       {/* <BlogArea /> */}
       {/* <BrandArea style_1={true} /> */}

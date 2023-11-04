@@ -5,6 +5,7 @@ import React, {useContext, useEffect, useState} from "react";
 import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
+import NavMenu2 from "./nav-menu2";
 const Header = () => {
   const {sticky} = useSticky();
   const [isActive, setIsActive] = useState(false);
@@ -83,6 +84,28 @@ const Header = () => {
                             <i className="fi fi-rr-shopping-bag"></i>
                           </Link>
                         </li> */}
+                        <li>
+                          <a onClick={() => setIsActive(true)}  href="#" className="tp-menu-toggle d-xl-none">
+                            <i className="icon_ul"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="container-fluid">
+              <div className="row align-items-center">
+                <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center justify-content-center">
+                  <div className="main-menu d-flex justify-content-end mr-15">
+                    <nav id="mobile-menu" className="d-none d-xl-block">
+                      <NavMenu2 />
+                    </nav>
+                  </div>
+                  <div className="header-right d-md-flex align-items-center">
+                    <div className="header-meta">
+                      <ul>
                         <li>
                           <a onClick={() => setIsActive(true)}  href="#" className="tp-menu-toggle d-xl-none">
                             <i className="icon_ul"></i>
