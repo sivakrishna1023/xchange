@@ -15,7 +15,7 @@ const {title,sub_title, des, trustable_sellers} = choose_data
 // choose list data
 const choose_list_data = [
   {
-    list: "Safe transactions and data protection",
+    list: "Safe and Secure Process",
   },
   {
     list: "Verified trustworthy sellers",

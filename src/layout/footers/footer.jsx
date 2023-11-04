@@ -79,7 +79,7 @@ const social_links = [
 const copyright = {
   logo: "/assets/img/footer.png",
   copyright_text: (
-    <>Copyright © Uxaction {new Date().getFullYear()}, All Rights Reserved</>
+    <>Copyright © Xchange, All Rights Reserved</>
   ),
 };
 

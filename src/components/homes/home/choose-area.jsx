@@ -15,7 +15,7 @@ const choose_data = {
   des: 'Trust our product for reliability, quality, and satisfaction.',
 
   choose_list: [
-    { title: "Safe transactions and data protection" },
+    { title: "Safe and Secure Process" },
     { title: "Verified trustworthy sellers" },
     { title: "Clear and fair policies for all" },
   ],

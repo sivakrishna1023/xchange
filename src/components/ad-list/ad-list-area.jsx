@@ -291,6 +291,7 @@ const  AdListArea = () => {
                     </div>
                   </div>
                 </div>
+                <button className="tp-btn">Submit</button>
               </div>
             </div>
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
