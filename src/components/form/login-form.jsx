@@ -4,6 +4,8 @@ import React from 'react';
 import { useState,useContext } from 'react';
 import  {redirect } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 import Script from 'next/script';
 const LoginForm = () => {
@@ -29,11 +31,21 @@ const LoginForm = () => {
          const data= await res.json();
          if(data.success){
               localStorage.setItem('token', data.token); console.log("i am clicked")
+              toast.success("Logged In Successfully !", {
+                position: toast.POSITION.TOP_CENTER
+              });
               setUser(data.user);
-         }  
+         }  else{
+          toast.error("Failed to Login !", {
+            position: toast.POSITION.TOP_CENTER
+          });
+         }
      }catch(error){
        console.log(error);
-       toast.error("Failed to login")
+       toast.error("Internal Error Occured, Try Again After Sometimes !", {
+        position: toast.POSITION.TOP_LEFT
+      });
+      //  toast.error("Failed to login")
      }
    };
     // if(user._id)  return  redirect('/');
@@ -45,6 +57,7 @@ const LoginForm = () => {
 
     return (
         <>
+            <ToastContainer />
         <section className="login-area pt-100 pb-100 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".5s">
          <div className="container">
                <div className="row">

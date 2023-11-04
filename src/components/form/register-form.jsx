@@ -1,5 +1,7 @@
 'use client'
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React,{useContext} from "react";
 import { useState } from "react";
 import { Context } from "../Clients/clientcomponents";
@@ -34,9 +36,19 @@ const RegisterhtmlForm = () => {
         if(data.success){
              localStorage.setItem('token', data.token); console.log("i am clicked");
              setUser(data.user);
+             toast.success("Logged In Successfully !", {
+              position: toast.POSITION.TOP_CENTER
+            });
+        }else{
+          toast.error("Failed to Register !", {
+            position: toast.POSITION.TOP_CENTER
+          });
         }
     }catch(error){
       console.log(error);
+      toast.error("Internal Error Occured, Try Again After Sometimes !", {
+        position: toast.POSITION.TOP_LEFT
+      });
     }
   }
   // if(user._id)  return  redirect('/');
@@ -47,6 +59,7 @@ const RegisterhtmlForm = () => {
 
   return (
     <>
+      <ToastContainer />
       <section
         className="login-area pt-100 pb-100 wow fadeInUp"
         data-wow-duration=".8s"
