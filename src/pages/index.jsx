@@ -18,11 +18,11 @@ const index = () => {
   return (
     <Wrapper>
       <SEO pageTitle={'Xchange'} />
-      {showImage && (
+      {/* {showImage && (
          <div style={{display:"flex", justifyContent:"center", alignItems:"center", width:"100vw", height:"100vh", backgroundColor:"#FFBD59"}}>
         <img height="100%" src="/assets/img/hb.png" alt="Your Image" />
       </div>
-      )}
+      )} */}
       <Home />
     </Wrapper>
   );
