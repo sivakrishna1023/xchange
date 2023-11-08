@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-'use client'
-import Link from 'next/link';
-import React from 'react';
-import { useState,useContext } from 'react';
-import  {redirect } from 'next/navigation';
-import { Context } from '../Clients/clientcomponents';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router';
-
-import Script from 'next/script';
-=======
 "use client";
 import Link from "next/link";
 import React from "react";
@@ -21,7 +8,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Script from "next/script";
->>>>>>> e6be3db492b0e21e34dd3106ca9fbdee9e0a5c17
 const LoginForm = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
