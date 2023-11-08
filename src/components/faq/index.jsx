@@ -9,7 +9,7 @@ const FAQ = () => {
   return (
     <>
       <Breadcrumb title="Frequently Asked Question"  subtitle="FAQ"  isDbbl="Pages"/>
-      <FeatureArea style_about={true} />
+      {/* <FeatureArea style_about={true} /> */}
       <FaqArea />
       {/* <SuitableArea style_2={true} /> */}
       <CounterArea />

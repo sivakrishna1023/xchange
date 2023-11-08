@@ -56,13 +56,13 @@ const social_links = [
     name: "Facebook",
   },
   {
-    link: "https://www.youtube.com/",
+    link: "https://www.youtube.com/channel/UC9UCydt-3mReNhDgMWwB4FA",
     target: "_blank",
     icon: "fab fa-youtube",
     name: "Youtube",
   },
   {
-    link: "https://www.basketball.com/",
+    link: "https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==",
     target: "_blank",
     icon: "fa-light fa-basketball",
     name: "Instagram",

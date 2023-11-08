@@ -13,6 +13,10 @@ const RegisterhtmlForm = () => {
   const [lastname,setlastname]=useState('');
   const [email,setemail]=useState('');
   const [password,setpassword]=useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const handlePasswordToggle = () => {
+    setShowPassword(!showPassword);
+  };
   const router= useRouter();
   const handlesubmit= async(e)=>{
     e.preventDefault();
@@ -89,16 +93,27 @@ const RegisterhtmlForm = () => {
                     placeholder="Email address..."
                     onChange={(e)=>{setemail(e.target.value)}}
                   />
+                  <div style={{position:"relative"}}>
                   <label htmlFor="pass">
                     Password <span>**</span>
                   </label>
                   <input
                     required
                     id="pass"
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     placeholder="Enter password..."
                     onChange={(e)=>{setpassword(e.target.value)}}
                   />
+                   <span
+                    style={{position:"absolute", top:"40%", right:"5%", cursor:"pointer"}}
+                      className={`password-toggle ${
+                        showPassword ? "show" : "hide"
+                      }`}
+                      onClick={handlePasswordToggle}
+                    >
+                      {showPassword ? "Hide" : "Show"}
+                    </span>
+                  </div>
                   <div className="mt-10"></div>
                   <button className="tp-btn w-100">Register Now</button>
                   <div className="or-divide">
@@ -108,6 +123,9 @@ const RegisterhtmlForm = () => {
                     login Now
                   </Link>
                 </form>
+                {/* <div style={{textAlign:"center", cursor:"pointer", color:"green"}}>
+                  forgot password
+                </div> */}
               </div>
             </div>
           </div>
