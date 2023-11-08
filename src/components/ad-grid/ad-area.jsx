@@ -8,27 +8,26 @@ const AdArea = () => {
   const { user } = useContext(Context);
   const [tasks,setTasks]=useState('');
   const router = useRouter();
-  useEffect(() => {
-    const getTasks = async () => {
-      try {
-        const res = await fetch("/api/ads/Myads", {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        });
-        const data = await res.json();
-        if (data.success) {
-          setTasks(data.ads);
-        }
-      } catch (error) {
-        console.log(error);
+  const getTasks = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch("/api/ads/Myads", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log(data.ads);
+        setTasks(data.ads);
       }
+    } catch (error) {
+      console.log(error);
     }
-
-    if (!user._id) {
-      router.replace('/sign-in');
-    }
+  }
+  useEffect(() => {
     getTasks();
   }, []);
   return (
@@ -45,7 +44,7 @@ const AdArea = () => {
             </div>
           </div>
           <div className="row mb-20">
-                                   { tasks &&  tasks.map((item, i) => (
+                                   { tasks ?   tasks.map((item, i) => (
                                                           <div key={i} className="col-xl-3 col-lg-6 col-md-3">
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
@@ -124,7 +123,7 @@ const AdArea = () => {
                                                               </div>
                                                             </div>
                                                           </div>
-                                                        ))}
+                                                        )) : <div> Your Bin is empty </div>} 
           </div>
           {/* <div className="basic-pagination">
             <nav>
