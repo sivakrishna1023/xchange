@@ -9,7 +9,7 @@ const AdGrid = () => {
   return (
     <>
       <Breadcrumb title="Ads Grid" subtitle="Ads Grid" isDbbl="Ads" />
-      <FeatureArea style_about={true} />
+      {/* <FeatureArea style_about={true} /> */}
       <AdArea />
       {/* <SuitableArea style_2={true} /> */}
       {/* <CounterArea /> */}

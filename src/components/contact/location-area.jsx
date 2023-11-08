@@ -5,7 +5,7 @@ const location_info = [
     {
         id: 1,
         icon: "fa-light fa-phone",
-        info: "(209) 555-0104"
+        info: "+91 9705062404"
     }, 
     {
         id: 2,
@@ -15,7 +15,7 @@ const location_info = [
     {
         id: 3,
         icon: "fi fi-rr-envelope",
-        info: "Support@xchange.com"
+        info: "xchange.hyderabad@gmail.com"
     },
 ]
 
@@ -32,7 +32,7 @@ const LocationArea = () => {
                         <i className="fa-light fa-phone"></i>
                      </div>
                      <div className="location-content">
-                        <h5 className="location-title"><a href="tell:(209)555-0104">(209) 555-0104</a></h5>
+                        <h5 className="location-title"><a href="tell:9705062404">+91 9705062404</a></h5>
                      </div>
                   </div>
                </div>
@@ -52,7 +52,7 @@ const LocationArea = () => {
                         <i className="fi fi-rr-envelope"></i>
                      </div>
                      <div className="location-content">
-                        <h5 className="location-title"><a href="mailto:Support@xchange.com">Support@xchange.com</a></h5>
+                        <h5 className="location-title"><a href="mailto:xchange.hyderabad@gmail.com">xchange.hyderabad@gmail.com</a></h5>
                      </div>
                   </div>
                </div>

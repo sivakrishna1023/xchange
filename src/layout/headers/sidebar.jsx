@@ -25,7 +25,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
               <a href="tel:123456789"></a>
             </li>
             <li>
-              <a href="mailto:epora@example.com">Support@xchange.com</a>
+              <a href="mailto:epora@example.com">xchange.hyderabad@gmail.com</a>
             </li>
           </ul>
           <div className="side-social">

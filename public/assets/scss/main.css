@@ -46856,6 +46856,7 @@ img {
 }
 .breadcrumb__overlay {
   position: relative;
+  opacity: 0.5 !important;
 }
 .breadcrumb__overlay::after {
   position: absolute;
@@ -46864,7 +46865,7 @@ img {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(5, 13, 54, 0.29));
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(5, 13, 54, 0.29));/
 }
 @keyframes tp-pulse {
   0% {
@@ -47090,6 +47091,7 @@ img {
   width: 100%;
   z-index: 99;
   background: transparent;
+  /* background-color: #fff; */
 }
 .header__info ul li {
   list-style: none;
@@ -48770,7 +48772,7 @@ div.choose-sub-color {
 /*----------------------------------------*/
 .tp-cat-item {
   background: var(--tp-common-white);
-  padding: 30px 30px;
+  /* padding: 30px 30px; */
   border-radius: 10px;
   transition: all 0.3s ease-out 0s;
 }

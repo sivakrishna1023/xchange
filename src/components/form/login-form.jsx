@@ -115,6 +115,9 @@ const LoginForm = () => {
                     Register Now
                   </Link>
                 </form>
+                <div style={{textAlign:"center", cursor:"pointer", color:"green"}}>
+                  forgot password
+                </div>
               </div>
             </div>
           </div>

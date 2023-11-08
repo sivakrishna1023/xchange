@@ -9,7 +9,7 @@ const AdList = () => {
   return (
     <>
       <Breadcrumb title="Ads List" subtitle="Ads List" isDbbl="Ads" />
-      <FeatureArea style_about={true} />
+      {/* <FeatureArea style_about={true} /> */}
       <AdListArea />
       {/* <SuitableArea style_2={true} /> */}
       {/* <CounterArea /> */}
