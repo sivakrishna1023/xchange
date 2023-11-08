@@ -101,17 +101,20 @@ const SellerPortfolioAreaUpdate = () => {
     setTwitter(initialTwitter)
     setReddit(initialTwitter)
   },[user])
-  const createProductImagesChange = (e) => {
-    const files = Array.from(e.target.files);
-    setImages([]);
-    files.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-          setImages((old) => [...old, reader.result]); 
-      };
-      reader.readAsDataURL(file);
-    });
-  };
+  const creatingavatarimages=(e)=>{
+    const files=Array.from(e.target.files);
+    setImages('');
+    files.forEach((file)=>{
+       var reader=new FileReader();
+       reader.readAsDataURL(file);
+       reader.onload=()=>{
+          setImages(reader.result);
+       }
+       reader.onerror=(error)=>{
+          console.log('Error in uploading the Images...!!',error);
+       }
+    })
+ }
   const handlesubmit= async()=>{
     try{
       const token = localStorage.getItem('token');
@@ -164,14 +167,16 @@ const SellerPortfolioAreaUpdate = () => {
               <div className="instruc-sidebar mb-40">
                 <div className="isntruc-side-thumb mb-30">
                   <p>Change The Profile</p>
-                    { user && user.avatar && user.avatar.url  ?  <img
-                    src={`${user.avatar.url}`}
+                    { user && user.avatar && user.avatar!=="" ?  <img
+                    src={`${user.avatar}`}
                     alt="instructor-thumb"
                   /> :  <img
                     src="https://as1.ftcdn.net/v2/jpg/03/53/11/00/1000_F_353110097_nbpmfn9iHlxef4EDIhXB1tdTD0lcWhG9.jpg"
                     alt="instructor-thumb"
                   /> }
-              <input onChange={createProductImagesChange}  type="file" name="avatar" id=""  multiple />
+              <input onChange={creatingavatarimages}  type="file" accept='image/*' /> <br />
+              {avatar ? <p>New Profile: </p> :<div/>}
+              {avatar && avatar!=="" ? <img width={100} height={100} src={avatar}/>: <div/>}
                 </div>
                 <div className="instructor-sidebar-widget">
                   <div className="isntruc-side-content text-center">
@@ -201,7 +206,7 @@ const SellerPortfolioAreaUpdate = () => {
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
                         <label>Email</label> 
-                        <input disabled onChange={(e)=>{setemail(e.target.value)}}   style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text"  placeholder={`${email}`}   />
+                        <input disabled style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text"  placeholder={`${email}`}   />
                       </li>
                       <li>
                       <i className="fa-brands fa-facebook-f"></i>{" "}

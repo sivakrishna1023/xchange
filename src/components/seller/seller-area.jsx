@@ -73,8 +73,8 @@ const SellerArea = () => {
                 
                   <div className="tp-instructor text-center p-relative mb-30">
                     <div className="tp-instructor__thumb mb-25">
-                    { item.avatar.url ?  <img
-                    src= {item.avatar.url}
+                    { item.avatar ?  <img
+                    src= {item.avatar}
                     alt="instructor-thumb"
                   /> : <img
                   src= {imagelink}

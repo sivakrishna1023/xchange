@@ -27,40 +27,13 @@ const handler = asyncError(async (req, res) => {
     state,
     postcode,
     email,
-    phone
+    phone,
+    images,
    } = req.body;
  
   const user = await checkAuth(req);
-  console.log(user);
   if (!user) return errorHandler(res, 401, "Login First");
 
-      var images=[ {
-        public_id:'',
-        url:''
-      },];
-      // if(req.body.images!==""){
-      //   let images1 = [];
-
-      //   if (typeof req.body.images === "string") {
-      //     images1.push(req.body.images);
-      //   } else {
-      //     images1 = req.body.images;
-      //   }
-      
-      //   const imagesLinks = [];
-      
-      //   for (let i = 0; i < images1.length; i++) {
-      //     const result = await cloudinary.v2.uploader.upload(images1[i], {
-      //       folder: "Ads",
-      //     });
-      
-      //     imagesLinks.push({
-      //       public_id: result.public_id,
-      //       url: result.secure_url,
-      //     });
-      //   }
-      //   images=imagesLinks;
-      // } 
       console.log(images);
       const newad =await Ads.create({
         Category,
@@ -85,10 +58,10 @@ const handler = asyncError(async (req, res) => {
         user: user._id,
       });
       console.log(newad);
-  res.json({
-    success: true,
-    message: "Task Created",
-  });
+      res.json({
+        success: true,
+        message: "Ad Created",
+      });
 });
 
 export default handler;

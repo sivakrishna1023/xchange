@@ -24,13 +24,9 @@ const Schema= new mongoose.Schema({
       //uploading the pics 
       images: [
         {
-          public_id: {
-            type: String,
-          },
-          url: {
-            type: String,
-          },
-        },
+          type: String, 
+          required: true, 
+        }
       ],
       //Post Ads --> Step-3
       //faster:{type:Boolean,default:false},

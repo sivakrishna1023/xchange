@@ -64,18 +64,19 @@ const CheckoutArea = () => {
             console.log(error);
          }
    }
-   const createProductImagesChange = (e) => {
-      const files = Array.from(e.target.files);
-  
-      setImages([]);
-      files.forEach((file) => {
-        const reader = new FileReader();
-        reader.onload = () => {
-            setImages((old) => [...old, reader.result]); 
-        };
-        reader.readAsDataURL(file);
-      });
-    };
+   const creatingAdimages=(e)=>{
+      const files=Array.from(e.target.files);
+      files.forEach((file)=>{
+         var reader=new FileReader();
+         reader.readAsDataURL(file);
+         reader.onload=()=>{
+            setImages((old)=>[...old,reader.result]);
+         }
+         reader.onerror=(error)=>{
+            console.log('Error in uploading the Images...!!',error);
+         }
+      })
+   }
     const [isOpen, setIsOpen] = useState(false)
     const [isShipOpen, setIsShipOpen] = useState(false);
     return (
@@ -318,10 +319,13 @@ const CheckoutArea = () => {
                                                  </div>
                                            </div>
                                            <div className="col-md-12">
-                                                 {/* <div className="country-select">
+                                                 <div className="country-select">
                                                     <label>Upload Photo<span className="required">*</span></label>
-                                                    <input onChange={createProductImagesChange}  type="file" name="avatar" id=""  multiple />
-                                                 </div> */}
+                                                    <input onChange={creatingAdimages}  type="file" accept='image/*'  />
+                                                 </div> 
+                                                 {images=="" || images==null ? "": images.map(data=>{
+                                                   return(  <img width={100} height={100} src={data}/>  )
+                                                         })  }
                                            </div>
                                            <div className="order-button-payment mt-20">
                                      <button type="submit"  className="tp-btn">Post Ad</button>

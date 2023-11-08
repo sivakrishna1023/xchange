@@ -22,10 +22,7 @@ const handler = asyncError(async (req, res) => {
       Pinterest:req.body.Pinterest,
       Twitter:req.body.Twitter,
       Reddit:req.body.Reddit,
-      avatar:{
-        public_id: '',
-        url: '',
-      }
+      avatar:req.body.avatar,
       };
     await connectDB();
     await connectCloud();
@@ -33,19 +30,8 @@ const handler = asyncError(async (req, res) => {
     console.log(user);
     if (!user) return errorHandler(res, 401, "Login First");
     const user_id=user._id;
-    const user1 = await User.findById(user._id);
-            if (req.body.avatar !== "") {
-                const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-                folder: "avatars",
-                width: 150,
-                crop: "scale",
-                });
-                const avatar = {
-                public_id: myCloud.public_id,
-                url: myCloud.secure_url,
-                };
-                newUserData.avatar=avatar;
-            }
+    const user1 = await User.findById(user._id); 
+    if(!user1) return errorHandler(res,401,"Login First");
              const user12 = await User.findByIdAndUpdate(user_id, newUserData, {
                 new: true,
                 runValidators: true,

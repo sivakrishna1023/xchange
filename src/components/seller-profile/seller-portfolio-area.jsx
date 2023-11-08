@@ -51,7 +51,7 @@ const SellerPortfolioArea = () => {
             <div className="col-xl-4 col-lg-5">
               <div className="instruc-sidebar mb-40">
                 <div className="isntruc-side-thumb mb-30">
-                 { user && user.avatar && user.avatar.url ?  <img src= {user.avatar.url} alt="instructor-thumb"/> : <img
+                 { user && user.avatar && user.avatar ?  <img src= {user.avatar} alt="instructor-thumb"/> : <img
                   src= {imagelink}
                   alt="instructor-thumb"
                 />}
@@ -207,7 +207,7 @@ const SellerPortfolioArea = () => {
                                 <div className="instruc-biography">
                                   <h2 className="ins-bio-title mb-35">Ads</h2>
                                 </div>
-                              </div>
+                              </div> 
                             </div>
                                                       <div className="row">
                                                         { tasks &&  tasks.slice(0, 4).map((item, i) => (
@@ -215,7 +215,7 @@ const SellerPortfolioArea = () => {
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                                 <Link href={`/ad-details?id=${item._id}`}>
-                                                                { item.images[0].url ?  <img src={item.images[0].url} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                                                                { item && item.images && item.images[0] ?  <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
                                                                 </Link>
                                                                 <div className="tpcourse__tag">
                                                                   <Link href="#">

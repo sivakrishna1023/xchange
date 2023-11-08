@@ -20,15 +20,10 @@ const handler = asyncError(async (req, res) => {
     let user = await User.findOne({ email });
     if (user) return errorHandler(res, 400, "User registered with this email");
     const hashedPassword = await bcrypt.hash(password, 10);
-    const avatar={
-      public_id:'',
-      url: ''
-    }
     user = await User.create({
       firstname,
       lastname,
       email,
-      avatar,
       password: hashedPassword,
     });
     console.log(user);

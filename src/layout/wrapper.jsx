@@ -6,7 +6,6 @@ import Footer from "./footers/footer";
 import Header from "./headers/header";
 import { Context, ContextProvider } from "../components/Clients/clientcomponents";
 const Wrapper = ({ children }) => {
-  //const {user,setUser}=useContext(Context);
   useEffect(() => {
     setTimeout(() => {
       animationCreate()

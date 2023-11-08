@@ -9,15 +9,9 @@ const Schema = new mongoose.Schema({
     password:{type: String,require:true},
     createdAt: { type: Date,default: Date.now},
     isvarified:{type:Boolean,default:false},
-    avatar: {
-        public_id: {
-          type: String,
-        },
-        url: {
-          type: String,
-        },
-      },
-
+    avatar:{
+      type: String
+    },
   //Reset the Password
   resetPasswordToken: String,
   resetPasswordExpire: Date,

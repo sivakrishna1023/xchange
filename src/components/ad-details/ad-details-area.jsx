@@ -70,7 +70,7 @@ const AdDetailsArea = () => {
                   <div className="col-lg-8 col-md-12">
                      <div className="c-details-wrapper mr-25">
                         <div className="c-details-thumb p-relative mb-40">
-                        { ad.images[0].url ?  <img src={ad.images[0].url} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                        { ad && ad.images &&  ad.images[0]  ?  <img src={ad.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
                            <div className="c-details-ava d-md-flex align-items-center">
                               {/* <img src="/assets/img/course/c-details-ava-01.png" alt="avata" /> */}
                               <span>By <a href="#">{aduser.firstname}</a></span>
@@ -120,7 +120,7 @@ const AdDetailsArea = () => {
                            <h4 className="tp-c-details-title mb-40">Seller</h4>
                            <div className="course-instructor-details d-flex f-wrap align-items-center">
                               <div className="course-avata mr-30 mb-20">
-                              { aduser.avatar.url ?  <img src= {aduser.avatar.url} alt="instructor-thumb"/> : <img
+                              { aduser.avatar ?  <img src= {aduser.avatar} alt="instructor-thumb"/> : <img
                   src= {imagelink}
                   alt="instructor-thumb"
                 />}                      </div>
