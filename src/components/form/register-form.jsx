@@ -40,7 +40,7 @@ const RegisterhtmlForm = () => {
         if(data.success){
              localStorage.setItem('token', data.token); console.log("i am clicked");
              setUser(data.user);
-             toast.success("Logged In Successfully !", {
+             toast.success("Created Account please get varified from Gmail", {
               position: toast.POSITION.TOP_CENTER
             });
         }else{
@@ -55,12 +55,6 @@ const RegisterhtmlForm = () => {
       });
     }
   }
-  // if(user._id)  return  redirect('/');
-  if(user._id) {
-    router.push('/');
-    return null;
-  }
-
   return (
     <>
       <ToastContainer />
@@ -123,9 +117,7 @@ const RegisterhtmlForm = () => {
                     login Now
                   </Link>
                 </form>
-                {/* <div style={{textAlign:"center", cursor:"pointer", color:"green"}}>
-                  forgot password
-                </div> */}
+               
               </div>
             </div>
           </div>

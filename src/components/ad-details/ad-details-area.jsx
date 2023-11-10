@@ -17,11 +17,7 @@ const AdDetailsArea = () => {
     
     const getdetails= async()=>{
       try{
-         // const id = query.id;
-         // console.log(query);
-         // console.log(id);
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
-         console.log(id);   
          const token = localStorage.getItem('token');
          const res=await fetch(`/api/ads/single/id=${id}`,{
            method:'GET',

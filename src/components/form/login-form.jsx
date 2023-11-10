@@ -35,26 +35,30 @@ const LoginForm = () => {
       });
       const data = await res.json();
       if (data.success) {
-        localStorage.setItem("token", data.token);
-        console.log("i am clicked");
         toast.success("Logged In Successfully !", {
           position: toast.POSITION.TOP_CENTER,
         });
         setUser(data.user);
+        localStorage.setItem('token',data.token);
       } else {
-        toast.error("Failed to Login !", {
-          position: toast.POSITION.TOP_CENTER,
-        });
+        const message=data.message;
+        if(message){
+          toast.error(message, {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }else{
+          toast.error("Failed to Login !", {
+            position: toast.POSITION.TOP_CENTER,
+          });
+        }
       }
     } catch (error) {
       console.log(error);
       toast.error("Internal Error Occured, Try Again After Sometimes !", {
         position: toast.POSITION.TOP_LEFT,
       });
-      //  toast.error("Failed to login")
     }
   };
-  // if(user._id)  return  redirect('/');
   if (user._id) {
     <Script id="redirect">{`document.location.href="/";`}</Script>;
   }
@@ -116,7 +120,7 @@ const LoginForm = () => {
                   </Link>
                 </form>
                 <div style={{textAlign:"center", cursor:"pointer", color:"green"}}>
-                  forgot password
+                  <Link href={`/fogotpassword`}   >forgot password</Link>
                 </div>
               </div>
             </div>

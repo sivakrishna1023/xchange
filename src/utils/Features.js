@@ -1,26 +1,29 @@
-'use client'
 import mongoose from "mongoose";
 import jwt from 'jsonwebtoken'
 import { serialize } from "cookie";
 import {User} from '../models/user';
 import nodeMailer from 'nodemailer'
 import cloudinary from 'cloudinary'
-
-//connects to the database
+ 
 export const connectDB = async () => {
   console.log(process.env.MONGO_URI);
   const { connection } = await mongoose.connect(process.env.MONGO_URI, {
-    dbName: "Ads",
+    dbName: "Ads12",
   });
   console.log(`Database Connected on ${connection.host}`);
 };
-// http://localhost:3000/post-ad
-
-//Generate the webtoken
-
 export const generateToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET);
 };
+
+export const verifytoken=(email,password)=>{
+  return jwt.sign({email,password},process.env.JWT_SECRET);
+}
+
+export const resettoken=(email,password)=>{
+  return jwt.sign({email,password},process.env.JWT_SECRET);
+}
+
 
 export const authfunction=(req,res,next)=>{
   const val=req.headers.authorization;
@@ -45,7 +48,6 @@ export const authfunction=(req,res,next)=>{
 export const cookieSetter = (res, token, set) => {
  
   if (set) {
-   
     // // Set the cookie with the token
     // res.setHeader(
     //   "Set-Cookie",

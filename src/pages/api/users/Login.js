@@ -25,12 +25,12 @@ const handler = asyncError(async (req, res) => {
    const isMatch= await bcrypt.compare(password,user.password);
   
     if (!isMatch) return errorHandler(res, 400, "Invalid Email or Password");
-    const varified=user.isvarified;
-    //if(!varified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
+    const verified=user.isverified;
+    if(!verified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
     const token = generateToken(user._id);
     res.status(200).json({
       success: true,
-      message: `Welcome back, ${user.name}`,
+      message: `Welcome back`,
       user,
       token
     });

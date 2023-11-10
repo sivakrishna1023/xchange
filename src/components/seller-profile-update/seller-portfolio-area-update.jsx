@@ -48,7 +48,7 @@ const SellerPortfolioAreaUpdate = () => {
   const initialPinterest =  user.Pinterest ? user.Pinterest : '';
   const initialTwitter = user.Twitter ? user.Twitter : '';
   const initialReddit =  user.Reddit ? user.Reddit : '';
-
+  
   const [avatar, setImages] = useState('');
   const [firstname, setFirstname] = useState(initialFirstname);
   const [lastname, setLastname] = useState(initialLastname);
