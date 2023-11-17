@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // category_data
 const category_data = [
@@ -55,6 +55,24 @@ const category_data = [
 
 
 const CategoryArea = () => {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    // Check window width on mount
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Add event listener to update on window resize
+    window.addEventListener('resize', handleResize);
+
+    // Call the handleResize function once on mount
+    handleResize();
+
+    // Remove event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // The empty dependency array ensures that this effect runs only on mount and unmount
   return (
     <>
       <section
@@ -71,20 +89,47 @@ const CategoryArea = () => {
               </div>
             </div>
           </div>
-          <div className="row">
-            {category_data.map((item) => (
-              <div key={item.id} className="col-xl-3 col-lg-4 col-md-6">
-                <div className="tp-cat-item mb-40 d-flex align-items-center">
-                  <div className="tp-category-icon mr-15">
-                    <img src={item.img} alt="category-img" />
-                  </div>
-                  <h4 className="tp-category-title">
-                    <Link href={'/ad-list'}>{item.title}</Link>
-                  </h4>
+          <div>
+      {isMobile ? (
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {category_data.map((item) => (
+            <div key={item.id} style={{ width: '50%' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  backgroundColor: 'white',
+                  margin: '1rem 5px',
+                  alignItems: 'center',
+                }}
+              >
+                <div className="tp-category-icon mr-15">
+                  <img src={item.img} alt="category-img" />
                 </div>
+                <h7 className="">
+                  <Link href={'/ad-list'}>{item.title}</Link>
+                </h7>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          {category_data.map((item) => (
+            <div key={item.id} className="col-md-6 col-lg-4 col-xl-3">
+              <div className="tp-cat-item mb-40 d-flex align-items-center">
+                <div className="tp-category-icon mr-15">
+                  <img src={item.img} alt="category-img" />
+                </div>
+                <h4 className="tp-category-title">
+                  <Link href={'/ad-list'}>{item.title}</Link>
+                </h4>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+
         </div>
       </section>
     </>

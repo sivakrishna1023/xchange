@@ -44719,7 +44719,7 @@ body {
   color: var(--tp-text-body);
   line-height: 26px;
   overflow-X: hidden;
-  background: url('/public/assets/img/banner/banner-1.png');
+  /* background: url('/public/assets/img/banner/banner-1.png/'); */
   /* background-color: black; */
   background-attachment: fixed;
 }

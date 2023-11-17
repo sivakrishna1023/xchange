@@ -112,6 +112,9 @@ const LoginForm = () => {
 
                   <div className="mt-10"></div>
                   <button className="tp-btn w-100">Login Now</button>
+                  <div style={{textAlign:"center", cursor:"pointer", color:"green", marginTop:"1rem"}}>
+                  <Link href={`/fogotpassword`}   >forgot password</Link>
+                </div>
                   <div className="or-divide">
                     <span>or</span>
                   </div>
@@ -119,9 +122,6 @@ const LoginForm = () => {
                     Register Now
                   </Link>
                 </form>
-                <div style={{textAlign:"center", cursor:"pointer", color:"green"}}>
-                  <Link href={`/fogotpassword`}   >forgot password</Link>
-                </div>
               </div>
             </div>
           </div>
