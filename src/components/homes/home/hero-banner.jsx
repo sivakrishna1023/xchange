@@ -8,7 +8,7 @@ const HeroBanner = () => {
     return (
         <>
      <section className="banner-area fix p-relative">
-         <div className="banner-bg"   style={{backgroundImage: `url(/assets/img/banner/banner-1.png)`}}>
+         <div className="banner-bg" style={{background:"linear-gradient(to bottom right, black, #1c1d1d);"}}>
             <div className="container">
                <div className="row">
                   <div className="col-xl-6 col-lg-6 col-md-8">
@@ -17,7 +17,9 @@ const HeroBanner = () => {
                         <h2 className="hero-title mb-35">Buy and Sell with Ease and <i>Trust</i>.</h2>
                         <p>Connecting local buyers and sellers on Xchange!</p>
                         <div className="tp-banner-btn">
-                           {user._id?   <Link href="/post-ad" className="tp-btn">Post Ads</Link>:<Link href="/sign-in" className="tp-btn">Post Ads</Link>}
+                           {/* {user._id?   <Link href="/post-ad" className="tp-btn">Post Ads</Link>:<Link href="/sign-in" className="tp-btn">Post Ads</Link>} */}
+                           {user._id?   <Link href="/post-ad" className="tp-btn" style={{marginRight:"1rem"}}>BUY</Link>:<Link href="/sign-in" className="tp-btn" style={{marginRight:"1rem"}}>GET STARTED</Link>}
+                           {user._id?   <Link href="/post-ad" className="tp-btn">SELL</Link>:""}
                         </div>
                      </div>
                   </div>

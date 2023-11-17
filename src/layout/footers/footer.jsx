@@ -64,7 +64,7 @@ const social_links = [
   {
     link: "https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==",
     target: "_blank",
-    icon: "fa-light fa-basketball",
+    icon: "fab fa-instagram",
     name: "Instagram",
   },
 
@@ -77,7 +77,7 @@ const social_links = [
 ];
 
 const copyright = {
-  logo: "/assets/img/footer.png",
+  logo: "/assets/img/xchange.png",
   copyright_text: (
     <>Copyright © Xchange, All Rights Reserved</>
   ),
