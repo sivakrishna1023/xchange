@@ -18,7 +18,7 @@ const About = () => {
       {/* <AboutArea style_about={true} /> */}
       {/* <BrandArea style_about={true} /> */}
       <ChooseArea style_about={true} />
-      <TestimonialAreaThree style_about={true} />
+      {/* <TestimonialAreaThree style_about={true} /> */}
       <SellerArea />
       {/* <CounterArea style_about={true} /> */}
     </>

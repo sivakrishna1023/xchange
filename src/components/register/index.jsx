@@ -6,7 +6,7 @@ import RegisterForm from "../form/register-form";
 const Register = () => {
   return (
     <>
-      <Breadcrumb title="Frequently Asked Question"  subtitle="Register"  isDbbl="Pages"/>
+      <Breadcrumb title="Register"  subtitle="Register"  isDbbl="Pages"/>
       <RegisterForm />
     </>
   );

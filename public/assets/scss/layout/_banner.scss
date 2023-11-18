@@ -7,6 +7,7 @@
 .banner-bg {
     @include background;
     height: 1005px;
+    background:linear-gradient(to bottom right, black, #1c1d1d);
     @media #{$xl,$lg,$md} {
         height: 768px;
     }

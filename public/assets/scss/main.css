@@ -47682,6 +47682,8 @@ ul.bili_circle li::before {
 
 .side-social {
   margin-top: 30px;
+  justify-content: space-around;
+  display: flex;
 }
 .side-social a {
   margin-right: 10px;
@@ -47722,10 +47724,12 @@ ul.bili_circle li::before {
 /*  03. BANNAR CSS START
 /*----------------------------------------*/
 .banner-bg {
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   height: 1005px;
+  background:linear-gradient(to bottom right, black, #1c1d1d);
 }
 @media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
   .banner-bg {

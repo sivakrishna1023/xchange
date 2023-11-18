@@ -11,7 +11,7 @@ const Sidebar = ({ isActive, setIsActive }) => {
         </button>
         <div className="side-logo mb-30">
           <Link href="/">
-            <img src="/assets/img/footer.png" alt="logo" />
+            <img src="/assets/img/xchange.png" alt="logo" />
           </Link>
         </div>
         <div className="mobile-menu mean-container">
@@ -29,15 +29,15 @@ const Sidebar = ({ isActive, setIsActive }) => {
             </li>
           </ul>
           <div className="side-social">
-            {/* <a href="#">
+            <a href="https://www.facebook.com/profile.php?id=61552981695508&mibextid=2JQ9oc">
               <i className="fab fa-facebook-f"></i>
             </a>
-            <a href="#">
+            {/* <a href="#">
               <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#">
-              <i className="fab fa-linkedin"></i>
             </a> */}
+            <a href="https://www.youtube.com/channel/UC9UCydt-3mReNhDgMWwB4FA">
+              <i className="fab fa-youtube"></i>
+            </a>
             <a href="https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==">
               <i className="fab fa-instagram"></i>
             </a>

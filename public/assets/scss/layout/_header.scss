@@ -650,6 +650,8 @@ ul.bili_circle li::before {
 }
 .side-social {
     margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
     & a {
         margin-right: 10px;
     }
