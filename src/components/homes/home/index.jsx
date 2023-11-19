@@ -17,10 +17,10 @@ const Home = () => {
     <>
       <HeroBanner />
       <CategoryArea />
-                    <CourseArea />
+      <CourseArea />
       <FeatureArea />
       <AboutArea />
-                 <InstructorArea />
+      <InstructorArea />
       <ChooseArea />
       {/* <CounterArea /> */}
       {/* <TestimonialArea /> */}
