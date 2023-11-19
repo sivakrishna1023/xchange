@@ -63,16 +63,7 @@ const AboutArea = () => {
                 
                 </div>
                 <div className="tp-about-shape  d-none d-xl-block">
-                  {/* <img
-                    src={img_2}
-                    alt="about-shape"
-                    className="a-shape-one"
-                  /> */}
-                  {/* <img
-                    src={img_3}
-                    alt="about-shape"
-                    className="a-shape-two"
-                  /> */}
+                 
                 </div>
               </div>
             </div>

@@ -145,29 +145,6 @@ const AdDetailsArea = () => {
                            </div>
                            <div className="course-reviewer-item-wrapper">
    
-                                 {/* {review_content.map((item, i) => 
-                                    <div key={i} className="course-reviewer-item d-flex mb-25">
-                                    <div className="course-review-ava">
-                                       <img src={item.img} alt="details-avata" />
-                                    </div>
-                                    <div className="course-review-content p-relative">
-                                       <h5 className="course-ava-title mb-15">{item.name}</h5>
-                                       <div className="tpcourse__rating-icon d-flex align-items-center mb-10">
-                                          <i className="fi fi-ss-star"></i>
-                                          <i className="fi fi-ss-star"></i>
-                                          <i className="fi fi-ss-star"></i>
-                                          <i className="fi fi-ss-star"></i>
-                                          <i className="fi fi-rs-star"></i>
-                                       </div>
-                                       <p>{item.review_text}</p>
-                                       <div className="c-reviewer-time">
-                                          <span>{item.review_time}</span>
-                                       </div>
-                                    </div>
-                                 </div>
-                                    
-                                    )
-                                 } */}
    
                            </div>
                         </div>
@@ -186,23 +163,12 @@ const AdDetailsArea = () => {
                            <div className="cd-video-price">
                               <h3 className="pricing-video text-center mb-15">${ad.Adprice}</h3>
                               <div className="cd-pricing-btn text-center mb-30">
-                              {/* <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Enter The Price You Wana Pay' />
-                                 <Link className="tp-vp-btn" href="/course-details">Request</Link> */}
+                             
                                  <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Write Review Here' />
                                  <Link className="tp-vp-btn-green" href="/course-details">Review</Link>
                               </div>
                            </div>
-                           {/* <div className="cd-information mb-35">
-                              <ul>
-                                 <li><i className="fa-light fa-calendars"></i> <label>Feauture 1</label> <span>36</span></li>
-                                 <li><i className="fi fi-rr-chart-pie-alt"></i> <label>Feature 2</label> <span>6</span></li>
-                                 <li><i className="fi fi-rr-user"></i> <label>Feature 3</label> <span>105</span></li>
-                                 <li><i className="fa-light fa-clock-desk"></i> <label>Feature 4</label> <span>16 Hours</span></li>
-                                 <li><i className="fi fi-sr-stats"></i> <label>Feature 5</label> <span>Beginner</span></li>
-                                 <li><i className="fi fi-rr-comments"></i> <label>Feature 6</label> <span>English</span></li>
-                                 <li><i className="fi fi-rs-diploma"></i> <label>Feature 7</label> <span>Yes</span></li>
-                              </ul>
-                           </div> */}
+                          
                            <div className="c-details-social">
                               <h5 className="cd-social-title mb-25">Share Now:</h5>
                               <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
