@@ -12,7 +12,7 @@ const FAQ = () => {
       {/* <FeatureArea style_about={true} /> */}
       <FaqArea />
       {/* <SuitableArea style_2={true} /> */}
-      <CounterArea />
+      {/* <CounterArea /> */}
     </>
   );
 };

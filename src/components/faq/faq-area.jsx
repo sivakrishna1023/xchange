@@ -12,7 +12,7 @@ const FaqArea = () => {
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12">
-              <div className="section-title mb-60">
+              <div className="section-title mb-60 mt-60">
                 <span className="tp-sub-title-box mb-15">FAQ</span>
                 <h2 className="tp-section-title">Many People Ask About This</h2>
               </div>
