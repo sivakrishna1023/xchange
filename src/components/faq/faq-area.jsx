@@ -53,11 +53,11 @@ const FaqArea = () => {
               </div>
             </div>
           </div>
-          <div className="faq-btn text-center">
+          {/* <div className="faq-btn text-center">
             <a href="#" className="tp-btn">
               Add Your Questions
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
