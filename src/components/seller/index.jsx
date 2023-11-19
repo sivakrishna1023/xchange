@@ -9,7 +9,7 @@ const Seller = () => {
   return (
     <>
     <Breadcrumb title="Our Trusted Sellers" subtitle="Our Trusted Sellers" />
-      <FeatureArea style_about={true} />
+      {/* <FeatureArea style_about={true} /> */}
       <SellerArea />
       {/* <SuitableArea style_2={true} /> */}
       {/* <CounterArea /> */}

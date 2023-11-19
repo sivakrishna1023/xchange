@@ -61,7 +61,7 @@ const SellerArea = () => {
           <div className="row">
             <div className="col-lg-12">
               <div className="section-title mb-65 text-center">
-                <span className="tp-sub-title-box mb-15">Members</span>
+                <span className="tp-sub-title-box mb-15 mt-15">Members</span>
                 <h2 className="tp-section-title"> All Sellers</h2>
               </div> 
             </div>

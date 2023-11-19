@@ -23,7 +23,7 @@ const footer_data = [
     cls: "col-xl-3",
     footer_col: "footer-col-2",
     links: [
-      { name: "Ad Grid", link: "/ad-grid" },
+      // { name: "Ad Grid", link: "/ad-grid" },
       { name: "Ad List", link: "/ad-list" },
       { name: "Seller", link: "/seller" },
       // { name: "Order Cancel", link: "/order-cancel" },
