@@ -152,6 +152,11 @@ const SellerPortfolioAreaUpdate = () => {
    console.log(error);
 }
   }
+if(!user){
+  return <>
+  <center> Loading please wait...!!</center>
+  </>
+}
   return (
     <>
       {user && <section
