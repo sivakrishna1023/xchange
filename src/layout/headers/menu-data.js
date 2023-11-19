@@ -20,15 +20,15 @@ const menu_data = [
       { link: "/faq", title: "FAQ" },
     ],
   },
-  {
-    id: 3,
-    title: "Sellers",
-    link: "/sellers",
-    has_dropdown: true,
-    sub_menus: [
-      { link: "/seller", title: "Know All" },
-    ],
-  },
+  // {
+  //   id: 3,
+  //   title: "Sellers",
+  //   link: "/sellers",
+  //   has_dropdown: true,
+  //   sub_menus: [
+  //     { link: "/seller", title: "Know All" },
+  //   ],
+  // },
   {
     id: 4,
     title: "Ads",

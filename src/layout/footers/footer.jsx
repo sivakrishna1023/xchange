@@ -24,8 +24,8 @@ const footer_data = [
     footer_col: "footer-col-2",
     links: [
       // { name: "Ad Grid", link: "/ad-grid" },
-      { name: "Ad List", link: "/ad-list" },
-      { name: "Seller", link: "/seller" },
+      { name: "Explore Ads", link: "/ad-list" },
+      // { name: "Seller", link: "/seller" },
       // { name: "Order Cancel", link: "/order-cancel" },
       // { name: "Privacy Policy", link: "/privacy-policy" },
     ],

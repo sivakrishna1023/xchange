@@ -242,7 +242,7 @@ const SellerArea = ({ style_2 }) => {
               ))}
             </Slider>
           </div>
-          <div className="row">
+          {/* <div className="row">
             <div className="col-lg-12">
               <div className="instructor-btn text-center">
                 <Link className="tp-btn" href="/seller">
@@ -250,7 +250,7 @@ const SellerArea = ({ style_2 }) => {
                 </Link>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>
