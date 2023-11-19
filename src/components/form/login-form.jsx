@@ -1,4 +1,7 @@
 "use client";
+// import "@/src/components/form/login.css"
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 import Link from "next/link";
 import React from "react";
 import { useState, useContext } from "react";
@@ -39,14 +42,14 @@ const LoginForm = () => {
           position: toast.POSITION.TOP_CENTER,
         });
         setUser(data.user);
-        localStorage.setItem('token',data.token);
+        localStorage.setItem('token', data.token);
       } else {
-        const message=data.message;
-        if(message){
+        const message = data.message;
+        if (message) {
           toast.error(message, {
             position: toast.POSITION.TOP_CENTER,
           });
-        }else{
+        } else {
           toast.error("Failed to Login !", {
             position: toast.POSITION.TOP_CENTER,
           });
@@ -91,7 +94,7 @@ const LoginForm = () => {
                   <label htmlFor="pass">
                     Password <span>**</span>
                   </label>
-                  <div className="password-input" style={{position:"relative"}}>
+                  <div className="password-input" style={{ position: "relative" }}>
                     <input
                       required
                       onChange={(e) => setpassword(e.target.value)}
@@ -100,10 +103,9 @@ const LoginForm = () => {
                       placeholder="Enter password..."
                     />
                     <span
-                    style={{position:"absolute", top:"20%", right:"5%", cursor:"pointer"}}
-                      className={`password-toggle ${
-                        showPassword ? "show" : "hide"
-                      }`}
+                      style={{ position: "absolute", top: "20%", right: "5%", cursor: "pointer" }}
+                      className={`password-toggle ${showPassword ? "show" : "hide"
+                        }`}
                       onClick={handlePasswordToggle}
                     >
                       {showPassword ? "Hide" : "Show"}
@@ -112,9 +114,9 @@ const LoginForm = () => {
 
                   <div className="mt-10"></div>
                   <button className="tp-btn w-100">Login Now</button>
-                  <div style={{textAlign:"center", cursor:"pointer", color:"green", marginTop:"1rem"}}>
-                  <Link href={`/fogotpassword`}   >forgot password</Link>
-                </div>
+                  <div style={{ textAlign: "center", cursor: "pointer", color: "green", marginTop: "1rem" }}>
+                    <Link href={`/forgotpassword`}   >forgot password</Link>
+                  </div>
                   <div className="or-divide">
                     <span>or</span>
                   </div>
