@@ -46,44 +46,10 @@ export const authfunction=(req,res,next)=>{
 
 
 export const cookieSetter = (res, token, set) => {
- 
   if (set) {
-    // // Set the cookie with the token
-    // res.setHeader(
-    //   "Set-Cookie",
-    //   serialize("token", token, {
-    //     path: "/",
-    //     httpOnly: true,
-    //     maxAge: 60 * 1000, // Set the desired expiration time
-    //   })
-    // );
   } else {
-    // Delete the "token" cookie by setting it with an expiration date in the past
-   
-    // res.setHeader(
-    //   "Set-Cookie",
-    //   serialize("token", "", {
-    //     path: "/",
-    //     httpOnly: true,
-    //     maxAge: 0, // Set maxAge to 0 to delete the cookie
-    //     expires: new Date(0), // Set an expiration date in the past
-    //   })
-    // );
   }
 };
-
-
-// export const cookieSetter2 = (res, token, set) => {
-//   res.setHeader(
-//     "Set-Cookie",
-//     serialize("token",null, {
-//       path: "/",
-//       httpOnly: true,
-//       maxAge: set ? 15 * 24 * 60 * 60 * 1000 : 0,
-//     })
-//   );
-// };
-
 
 //Auth
 
@@ -97,7 +63,7 @@ export const checkAuth = async (req) => {
 };
 
 // send mail
-
+ 
 export const sendEmail = async ({email,emailtype,subject,message}) => {
   const transporter = nodeMailer.createTransport({
     host: process.env.SMPT_HOST,
@@ -107,18 +73,6 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
       pass: process.env.SMPT_PASSWORD,
     },
   });
-   console.log(email);
-   console.log(subject);
-   console.log(message);
-   console.log(emailtype);
-  // var transport = nodemailer.createTransport({
-  //   host: "sandbox.smtp.mailtrap.io",
-  //   port: 2525,
-  //   auth: {
-  //     user: "511565cb817aa7",
-  //     pass: "1cd4064d00898c"
-  //   }
-  // });
   const mailOptions = {
     from: process.env.FROM_MAIL,
     to: email,
@@ -127,13 +81,5 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
   };
 
   const res=await transporter.sendMail(mailOptions);
-  // return res;
+
 }; 
-
-
-// Conntect to the clounary
-export const connectCloud=()=>cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});

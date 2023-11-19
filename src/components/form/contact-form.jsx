@@ -1,6 +1,27 @@
-import React from "react";
+import React,{useState} from "react";
 
 const ContactForm = () => {
+  const [email,setemail]=useState('');
+  const [name,setname]=useState('');
+  const [message,setmessage]=useState('');
+  const sendmessage= async()=>{
+    try{
+        const res= await fetch('/api/users/feedback',{
+         method:'POST',
+         headers: {
+           'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+          email,
+          name,
+          message,
+         })
+        })
+        const data=await res.json();
+    }catch(error){
+      console.log(error);
+    }
+  }
   return (
     <>
       <section
@@ -18,7 +39,6 @@ const ContactForm = () => {
                 <div className="contact-form">
                   <form
                     id="contact-form"
-                    action="assets/mail.php"
                     method="POST"
                   >
                     <div className="row">
@@ -30,6 +50,7 @@ const ContactForm = () => {
                             placeholder="Your Name"
                             name="name"
                             required
+                            onChange={(e)=>{setname(e.target.value)}}
                           />
                         </div>
                       </div>
@@ -41,6 +62,7 @@ const ContactForm = () => {
                             placeholder="Your Email"
                             name="email"
                             required
+                            onChange={(e)=>{setemail(e.target.value)}}
                           />
                         </div>
                       </div>
@@ -51,9 +73,10 @@ const ContactForm = () => {
                             placeholder="Enter Your Message"
                             name="message"
                             required
+                            onChange={(e)=>{setmessage(e.target.value)}}
                           ></textarea>
                         </div>
-                        <button className="tp-btn" type="submit">
+                        <button onClick={sendmessage} className="tp-btn" type="submit">
                           Submit Now
                         </button>
                       </div>
