@@ -4,6 +4,16 @@ import Link from "next/link";
 import React,{useState,useEffect} from "react";
 
 const  AdListArea = () => {
+  function TimePassed({ createdAt }) {
+    const currentTime = new Date(); 
+    const createdDate = new Date(createdAt);
+    if (isNaN(createdDate)) {
+      return <span>Error: Invalid Date</span>;
+    }
+    const timeDifference = currentTime.getTime() - createdDate.getTime();
+    const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60)); 
+    return <span>{hoursPassed} hours ago</span>;
+  }
   const gettasks=async()=>{
     try{
       const res=await fetch("/api/ads/Allads",{
@@ -332,7 +342,7 @@ const  AdListArea = () => {
                             <Link href="/course-details">
                             {item.Adname}
                             </Link>
-                          </h4>
+                          </h4> 
                         </div>
                         <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                           <ul className="d-flex align-items-center">
@@ -341,28 +351,15 @@ const  AdListArea = () => {
                                 src="/assets/img/icon/c-meta-01.png"
                                 alt="meta-icon"
                               />
-                              <span>35 Classes</span>
+                              <TimePassed createdAt={item.createdAt} />
                             </li>
                             <li>
-                              <img
-                                src="/assets/img/icon/c-meta-02.png"
-                                alt="meta-icon"
-                              />
-                              <span>291 Students</span>
                             </li>
                           </ul>
                         </div>
                         <div className="tpcourse__rating d-flex align-items-center justify-content-between">
                         {tasks.Model}
-                          {/* <div className="tpcourse__rating-icon">
-                            <span>4.7</span>
-                            <i className="fi fi-ss-star"></i>
-                            <i className="fi fi-ss-star"></i>
-                            <i className="fi fi-ss-star"></i>
-                            <i className="fi fi-ss-star"></i>
-                            <i className="fi fi-rs-star"></i>
-                            <p>(125)</p>
-                          </div> */}
+                          
                           <div className="tpcourse__pricing">
                             <h5 className="price-title">${item.Adprice}</h5>
                           </div>
@@ -374,31 +371,6 @@ const  AdListArea = () => {
               ))}
             </div>
           </div>
-          {/* <div className="basic-pagination text-center">
-            <nav>
-              <ul>
-                <li>
-                  <Link href="/blog">
-                    <i className="far fa-angle-left"></i>
-                  </Link>
-                </li>
-                <li>
-                  <span className="current">1</span>
-                </li>
-                <li>
-                  <Link href="/blog">2</Link>
-                </li>
-                <li>
-                  <Link href="/blog">3</Link>
-                </li>
-                <li>
-                  <Link href="/blog">
-                    <i className="far fa-angle-right"></i>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div> */}
         </div>
       </section>
     </>

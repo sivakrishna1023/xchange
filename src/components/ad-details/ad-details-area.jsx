@@ -52,7 +52,7 @@ const AdDetailsArea = () => {
        }catch(error){
          console.log(error);
        }
-    }
+    } 
     useEffect(()=>{
       getdetails();
      },[])
@@ -176,9 +176,11 @@ const AdDetailsArea = () => {
                   <div className="col-lg-4 col-md-12">
                      <div className="c-details-sidebar">
                         <div className="c-video-thumb p-relative mb-25">
-                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
-                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
-                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
+                              
+                              {ad && ad.images && ad.images.length > 1 && ad.images.slice(1).map((item, index) => (
+                                 <img key={index} style={{ margin: "0 0 1rem 0" }} src={item} alt="missing" />
+                             ))}                             
+
                         </div>
                         <div className="course-details-widget">
                            <div className="cd-video-price">

@@ -110,7 +110,7 @@ const CategoryArea = () => {
                 </h7>
               </div>
             </div>
-          ))}
+          ))} 
         </div>
       ) : (
         <div style={{ display: 'flex', flexWrap: 'wrap' }}>

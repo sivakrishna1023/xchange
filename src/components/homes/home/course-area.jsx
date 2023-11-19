@@ -5,7 +5,18 @@ import React,{useState,useEffect,useContext} from "react";
 import { Context } from "../../Clients/clientcomponents";
 
 const CourseArea = () => {
+  const currtime=Date.now();
   const {user}=useContext(Context);
+  function TimePassed({ createdAt }) {
+    const currentTime = new Date(); 
+    const createdDate = new Date(createdAt);
+    if (isNaN(createdDate)) {
+      return <span>Error: Invalid Date</span>;
+    }
+    const timeDifference = currentTime.getTime() - createdDate.getTime();
+    const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60)); 
+    return <span>{hoursPassed} hours ago</span>;
+  }
   const gettasks=async()=>{
     try{
       const res=await fetch("/api/ads/Allads",{
@@ -15,9 +26,7 @@ const CourseArea = () => {
         },
        })
       const data= await res.json();
-      // console.log(data);
       if(data.success){
-          //  console.log(data);
            settasks(data.ads);
       }  
     }catch(error){
@@ -59,9 +68,7 @@ const CourseArea = () => {
                                                                     <i className="fi fi-rr-heart"></i>
                                                                   </Link>
                                                                 </div>
-                                                                {/* <div className="tpcourse__img-icon">
-                                                                  <img src={item.icon} alt="course-avata" />
-                                                                </div> */}
+                                                               
                                                               </div>
                                                               <div className="tpcourse__content-2">
                                                                 <div className="tpcourse__category mb-10">
@@ -96,27 +103,15 @@ const CourseArea = () => {
                                                                         src="/assets/img/icon/c-meta-01.png"
                                                                         alt="meta-icon"
                                                                       />
-                                                                      <span>{item.createdAt}</span>
+                                                                      <TimePassed createdAt={item.createdAt} />
                                                                     </li>
-                                                                    {/* <li>
-                                                                      <img
-                                                                        src="/assets/img/icon/c-meta-02.png"
-                                                                        alt="meta-icon"
-                                                                      />
-                                                                      <span>{item.st_text}</span>
-                                                                    </li> */}
+                                                                   
                                                                   </ul>
                                                                 </div>
                                                                 <div className="tpcourse__rating d-flex align-items-center justify-content-between">
                                                                   <div className="tpcourse__rating-icon">
                                                                     {tasks.Model}
-                                                                    {/* <span>4.7</span>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-rs-star"></i>
-                                                                    <p>(125)</p> */}
+                                                                
                                                                   </div>
                                                                   <div className="tpcourse__pricing">
                                                                     <h5 className="price-title">${item.Adprice}</h5>
@@ -127,69 +122,6 @@ const CourseArea = () => {
                                                           </div>
                                                         ))}
                                                       </div>
-            {/* {ads_data.map((item) => (
-              <div key={item.id} className="col-xl-4 col-lg-6 col-md-6">
-                <div className="tpcourse mb-40">
-                  <div className="tpcourse__thumb p-relative w-img fix">
-                    <Link href={item.ad_link}>
-                      <img src={item.ad_img} alt="course-thumb" />
-                    </Link>
-                    <div className="tpcourse__tag">
-                      <Link href={item.ad_link}>
-                        <i className="fi fi-rr-heart"></i>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="tpcourse__content">
-                    <div className="tpcourse__avatar d-flex align-items-center mb-20">
-                      <img src={item.user_img} alt="course-avata" />
-                      <h4 className="tpcourse__title">
-                        <Link href={item.ad_link}>{item.ad_title}</Link>
-                      </h4>
-                    </div>
-                    <div className="tpcourse__meta pb-15 mb-20">
-                      <ul className="d-flex align-items-center">
-                        <li>
-                          <img
-                            src="/assets/img/icon/time.svg"
-                            alt="meta-icon"
-                            width={20}
-                          />
-                          <span>{item.ad_time}</span>
-                        </li>
-                        <li>
-                          <img
-                            src="/assets/img/icon/c-meta-02.png"
-                            alt="meta-icon"
-                          />
-                          <span>{item.ad_user}</span>
-                        </li>
-                        <li>
-                          <img
-                            src="/assets/img/icon/c-meta-03.png"
-                            alt="meta-icon"
-                          />
-                          <span>{item.ad_rating}</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="tpcourse__category d-flex align-items-center justify-content-between">
-                      <ul className="tpcourse__price-list d-flex align-items-center">
-                        <li>
-                          <Link href={item.ad_link}>{item.ad_category1}</Link>
-                        </li>
-                        <li>
-                          <Link href={item.ad_link}>{item.ad_category2}</Link>
-                        </li>
-                      </ul>
-                      <h5 className="tpcourse__course-price">
-                        ${item.ad_price}
-                      </h5>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))} */}
           </div>
           <div className="row text-center">
             <div className="col-lg-12">
