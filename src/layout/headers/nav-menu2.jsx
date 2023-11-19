@@ -7,9 +7,9 @@ const NavMenu2 = () => {
       <ul>
       <li className="dropdown"> <Link href={'/'}>Categories</Link> </li> 
         {menu_data2.map((item) => (
-          <li key={item.id} className="has-dropdown"> 
+          <li key={item.id} className=""> 
             <Link href={item.link}>{item.title}</Link>
-            <ul className="submenu">
+            <ul className="">
               {  item.sub_menus  &&  item.sub_menus.map((sub, i) => (
                 <li key={i}>
                   <Link href={sub.link}>{sub.title}</Link>
