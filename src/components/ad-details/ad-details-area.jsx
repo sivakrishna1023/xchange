@@ -75,8 +75,8 @@ const AdDetailsArea = () => {
                         <div className="course-details-content mb-45">
                            <div className="tpcourse__category mb-15">
                               <ul className="tpcourse__price-list d-flex align-items-center">
-                                 <li><a className="c-color-green" href="#">{ad.Brand}</a></li>
-                                 <li><a className="c-color-yellow" href="#">{ad.Model}</a></li>
+                                 <li><a className="c-color-green" href="#">Brand : {ad.Brand}</a></li>
+                                 <li><a className="c-color-yellow" href="#">Model : {ad.Model}</a></li>
                               </ul>
                            </div>
                            <div className="tpcourse__ava-title mb-25">
@@ -84,7 +84,7 @@ const AdDetailsArea = () => {
                            </div>
                            <div className="tpcourse__meta course-details-list">
                               <ul className="d-flex align-items-center">
-                                 <li>
+                                 {/* <li>
                                     <div className="rating-gold d-flex align-items-center">
                                        <p>4.7</p>
                                        <i className="fi fi-ss-star"></i>
@@ -94,9 +94,9 @@ const AdDetailsArea = () => {
                                        <i className="fi fi-rs-star"></i>
                                        <span>(125)</span>
                                     </div>
-                                 </li>
+                                 </li> */}
                                  <li><img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" /> <span>2 hours ago</span></li>
-                                 <li><img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" /> <span>20 Requests</span></li>
+                                 {/* <li><img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" /> <span>20 Requests</span></li> */}
                               </ul>
                            </div>
                         </div>
