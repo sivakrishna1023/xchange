@@ -176,23 +176,22 @@ const AdDetailsArea = () => {
                   <div className="col-lg-4 col-md-12">
                      <div className="c-details-sidebar">
                         <div className="c-video-thumb p-relative mb-25">
-                           <img src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
-                           <div className="c-video-icon"  >
-                              <a className="popup-video" onClick={() => setIsVideoOpen(true)}   ><i className="fi fi-sr-play"></i></a>
-                           </div>
+                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
+                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
+                           <img style={{margin:"0 0 1rem 0"}} src="/assets/img/bg/c-details-video-bg.jpg" alt="video-bg" />
                         </div>
                         <div className="course-details-widget">
                            <div className="cd-video-price">
                               <h3 className="pricing-video text-center mb-15">${ad.Adprice}</h3>
                               <div className="cd-pricing-btn text-center mb-30">
-                              <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Enter The Price You Wana Pay' />
-                                 <Link className="tp-vp-btn" href="/course-details">Request</Link>
+                              {/* <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Enter The Price You Wana Pay' />
+                                 <Link className="tp-vp-btn" href="/course-details">Request</Link> */}
                                  <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Write Review Here' />
                                  <Link className="tp-vp-btn-green" href="/course-details">Review</Link>
                               </div>
                            </div>
-                           <div className="cd-information mb-35">
-                              {/* <ul>
+                           {/* <div className="cd-information mb-35">
+                              <ul>
                                  <li><i className="fa-light fa-calendars"></i> <label>Feauture 1</label> <span>36</span></li>
                                  <li><i className="fi fi-rr-chart-pie-alt"></i> <label>Feature 2</label> <span>6</span></li>
                                  <li><i className="fi fi-rr-user"></i> <label>Feature 3</label> <span>105</span></li>
@@ -200,8 +199,8 @@ const AdDetailsArea = () => {
                                  <li><i className="fi fi-sr-stats"></i> <label>Feature 5</label> <span>Beginner</span></li>
                                  <li><i className="fi fi-rr-comments"></i> <label>Feature 6</label> <span>English</span></li>
                                  <li><i className="fi fi-rs-diploma"></i> <label>Feature 7</label> <span>Yes</span></li>
-                              </ul> */}
-                           </div>
+                              </ul>
+                           </div> */}
                            <div className="c-details-social">
                               <h5 className="cd-social-title mb-25">Share Now:</h5>
                               <a href="#"><i className="fa-brands fa-facebook-f"></i></a>
