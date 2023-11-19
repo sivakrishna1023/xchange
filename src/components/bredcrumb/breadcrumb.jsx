@@ -6,15 +6,15 @@ const Breadcrumb = ({ title, subtitle, isDbbl = "" }) => {
     <section
       className="breadcrumb__area include-bg pt-150 pb-150 breadcrumb__overlay"
       style={{
-        backgroundImage: `url(/assets/img/breadcrumb/bg2.jpg)`,
+        backgroundImage: `url(/assets/img/breadcrumb/bg6.jpg)`,
         
       }}
     >
       <div className="container">
         <div className="row">
           <div className="col-xxl-12">
-            <div className="breadcrumb__content p-relative z-index-1">
-              <h3 className="breadcrumb__title mb-20">{title}</h3>
+            <div className="breadcrumb__content  p-relative z-index-1">
+              <h3 className="breadcrumb__title mt-40 mb-20">{title}</h3>
               <div className="breadcrumb__list">
                 <span>
                   <Link href="/">Home</Link>
