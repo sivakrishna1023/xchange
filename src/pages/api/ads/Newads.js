@@ -1,14 +1,13 @@
 import { asyncError,
         errorHandler } from "../../../middlewares/Error";
-import { checkAuth, connectDB,connectCloud } from "../../../utils/Features";
+import { checkAuth, connectDB} from "../../../utils/Features";
 import { Ads } from "../../../models/ads";
 import cloudinary from 'cloudinary';
-
+ 
 const handler = asyncError(async (req, res) => {
-  if (req.method !== "POST")
+    if (req.method !== "POST")
     return errorHandler(res, 400, "Only POST Method is allowed");
     await connectDB();
-    await connectCloud(); 
   const { 
     Category,
     Adname,
@@ -30,14 +29,10 @@ const handler = asyncError(async (req, res) => {
     phone,
     images,
    } = req.body;
- 
   const user = await checkAuth(req);
   if (!user) return errorHandler(res, 401, "Login First");
-
   const verified=user.isverified;
   if(!verified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
-
-      console.log(images);
       const newad =await Ads.create({
         Category,
         Adname,
