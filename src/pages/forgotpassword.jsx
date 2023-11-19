@@ -1,14 +1,14 @@
 'use client'
 import React,{useState} from 'react'
 import SEO from "../common/seo";
-import NewPassword from "../components/new-password";
+import ForgotPassword from "../components/forgot-password";
 import Wrapper from "../layout/wrapper";
 
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"new password"} />
-      <NewPassword />
+      <SEO pageTitle={"forgot password"} />
+      <ForgotPassword />
     </Wrapper>
   );
 };
