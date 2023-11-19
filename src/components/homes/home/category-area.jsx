@@ -1,78 +1,20 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// category_data
-const category_data = [
-  {
-    id: 1,
-    img: "/assets/img/category/category-01.svg",
-    title: "Mobiles",
-    link: "/course-grid",
-  },
-  {
-    id: 2,
-    img: "/assets/img/category/category-02.svg",
-    title: "Electronics",
-    link: "/course-grid",
-  },
-  {
-    id: 3,
-    img: "/assets/img/category/category-03.svg",
-    title: "Vehicles",
-    link: "/course-grid",
-  },
-  {
-    id: 4,
-    img: "/assets/img/category/category-04.svg",
-    title: "Home & Living",
-    link: "/course-grid",
-  },
-  {
-    id: 5,
-    img: "/assets/img/category/category-05.svg",
-    title: "Essentials",
-    link: "/course-grid",
-  },
-  {
-    id: 6,
-    img: "/assets/img/category/category-06.svg",
-    title: "Furniture",
-    link: "/course-grid",
-  },
-  {
-    id: 7,
-    img: "/assets/img/category/category-07.svg",
-    title: "Properties",
-    link: "/course-grid",
-  },
-  {
-    id: 8,
-    img: "/assets/img/category/category-08.svg",
-    title: "Home Appliance",
-    link: "/course-grid",
-  },
-];
-
-
 const CategoryArea = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
-    // Check window width on mount
+   
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    // Add event listener to update on window resize
     window.addEventListener('resize', handleResize);
-
-    // Call the handleResize function once on mount
     handleResize();
-
-    // Remove event listener on component unmount
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []); // The empty dependency array ensures that this effect runs only on mount and unmount
+  }, []); 
   return (
     <>
       <section
