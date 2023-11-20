@@ -18,7 +18,7 @@ const HeroBanner = () => {
                         <p>Connecting local buyers and sellers on Xchange!</p>
                         <div className="tp-banner-btn">
                            {/* {user._id?   <Link href="/post-ad" className="tp-btn">Post Ads</Link>:<Link href="/sign-in" className="tp-btn">Post Ads</Link>} */}
-                           {user._id?   <Link href="/post-ad" className="tp-btn" style={{marginRight:"1rem"}}>BUY</Link>:<Link href="/sign-in" className="tp-btn" style={{marginRight:"1rem"}}>GET STARTED</Link>}
+                           {user._id?   <Link href="/ad-list" className="tp-btn" style={{marginRight:"1rem"}}>BUY</Link>:<Link href="/sign-in" className="tp-btn" style={{marginRight:"1rem"}}>GET STARTED</Link>}
                            {user._id?   <Link href="/post-ad" className="tp-btn">SELL</Link>:""}
                         </div>
                      </div>

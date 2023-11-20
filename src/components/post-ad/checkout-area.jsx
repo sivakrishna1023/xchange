@@ -79,7 +79,7 @@ const CheckoutArea = () => {
           {
              user._id ? <section className="checkout-area pt-100 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
              <div className="container">
-                <form onSubmit={handler}>
+             
                    <div className="row">
                          <div className="col-lg-6 col-md-12">
                             <div className="checkbox-form">
@@ -236,13 +236,13 @@ const CheckoutArea = () => {
                                                          })  }
                                            </div>
                                            <div className="order-button-payment mt-20">
-                                     <button type='submit' onSubmit={handler} className="tp-btn">Post Ad</button>
+                                     <button  onClick={handler} className="tp-btn">Post Ad</button>
                                   </div>
                                         </div>
                             </div>
                          </div>
                    </div>
-                </form>
+                
              </div>
            </section>:
            <>
