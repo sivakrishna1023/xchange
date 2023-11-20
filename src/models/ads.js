@@ -2,35 +2,31 @@ import mongoose from "mongoose";
 
 const Schema= new mongoose.Schema({
     Category:{type:String, require: true} ,
-    Adname:{type:String, require: true} ,
-    Brand:{type:String, require: true} ,
-    Model:{type:String, require: true} ,
-    Description:{type:String, require: true} ,
-    Adprice:{type:Number, require: true} ,
-    Features:{type:String, require: true} ,
-    Condition:{type:String, require: true} ,
-    Negotable:{type:String, require: true} ,
+    Adname:{type:String, } ,
+    Brand:{type:String, } ,
+    Model:{type:String, } ,
+    Description:{type:String, } ,
+    Adprice:{type:String, } ,
+    Features:{type:String, } ,
+    Condition:{type:String, } ,
+    Negotable:{type:String, } ,
 
-    country:{type:String,require: true},
-    Name:{type:String,require: true},
-    Address:{type:String,require: true},
-    City:{type:String,require: true},
-    state:{type:String,require: true},
-    postcode:{type:Number,require: true},
-    email:{type:String,require: true},
-    phone:{type:Number,require: true},
+    country:{type:String,},
+    Name:{type:String,},
+    Address:{type:String,},
+    City:{type:String,},
+    state:{type:String,},
+    postcode:{type:String,},
+    email:{type:String,},
+    phone:{type:String,},
     createdAt: { type: Date,default: Date.now},
 
       //uploading the pics 
       images: [
         {
-          type: String, 
-          required: true, 
+          type: String,  
         }
       ],
-      //Post Ads --> Step-3
-      //faster:{type:Boolean,default:false},
-
       //Created by
       user: {
         type: mongoose.Schema.ObjectId,
