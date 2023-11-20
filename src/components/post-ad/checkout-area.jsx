@@ -27,8 +27,8 @@ const CheckoutArea = () => {
    const [images, setImages] = useState([]);
    const handler=async()=>{
          try{
-            const token = localStorage.getItem('token');
-               const res=await fetch('/api/ads/Newads',{
+               const token = localStorage.getItem('token');
+               const res=await fetch(`/api/ads/Newads`,{
                   method:'POST',
                   headers: {
                      'Content-Type': 'application/json' ,

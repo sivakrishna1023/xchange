@@ -3,7 +3,7 @@ import { asyncError,
 import { checkAuth, connectDB} from "../../../utils/Features";
 import { Ads } from "../../../models/ads";
 import cloudinary from 'cloudinary';
- 
+  
 const handler = asyncError(async (req, res) => {
     if (req.method !== "POST")
     return errorHandler(res, 400, "Only POST Method is allowed");
