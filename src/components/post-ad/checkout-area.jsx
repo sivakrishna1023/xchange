@@ -1,5 +1,7 @@
 'use client'
 import React, {useState,useContext} from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
@@ -56,8 +58,20 @@ const CheckoutArea = () => {
                   })
                })
             const data= await res.json();
-            console.log(data);
+            if(data.success){
+               toast.success("Your new Ad created", {
+                  position: toast.POSITION.TOP_CENTER
+                });
+            }else{
+               console.log(data);
+               toast.error("Failed to post Ad !", {
+                  position: toast.POSITION.TOP_CENTER
+                });
+            }
          }catch(error){
+             toast.error("Failed to Post Ad !", {
+               position: toast.POSITION.TOP_CENTER
+             });
              console.log(error);
          }
    }
@@ -76,6 +90,7 @@ const CheckoutArea = () => {
    }
     return (
         <>
+         <ToastContainer />
           {
              user._id ? <section className="checkout-area pt-100 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
              <div className="container">

@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Context } from "../Clients/clientcomponents";
 import { redirect } from 'next/navigation';
 import { useRouter } from 'next/router';
-const RegisterhtmlForm = () => {
+const RegisterhtmlForm = () => { 
   const {user,setUser}=useContext(Context);
   const [firstname,setfirstname]=useState('')
   const [lastname,setlastname]=useState('');
