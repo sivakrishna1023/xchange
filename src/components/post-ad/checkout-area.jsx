@@ -69,7 +69,7 @@ const CheckoutArea = () => {
                 });
             }
          }catch(error){
-             toast.error("Failed to Post Ad !", {
+             toast.error("Connection failed try again later !", {
                position: toast.POSITION.TOP_CENTER
              });
              console.log(error);
