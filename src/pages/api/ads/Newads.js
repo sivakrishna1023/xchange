@@ -31,8 +31,9 @@ const handler = asyncError(async (req, res) => {
    } = req.body;
   const user = await checkAuth(req);
   if (!user) return errorHandler(res, 401, "Login First");
-  const verified=user.isverified;
-  if(!verified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
+   const verified=user.isverified;
+   console.log(verified);
+  // if(!verified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
       const newad =await Ads.create({
         Category,
         Adname,
@@ -55,7 +56,6 @@ const handler = asyncError(async (req, res) => {
         images,
         user: user._id,
       });
-      console.log(newad);
       res.json({
         success: true,
         message: "Ad Created",
