@@ -4,6 +4,7 @@ import menu_data from "./menu-data";
 import { Context } from "@/src/components/Clients/clientcomponents";
 const NavMenu = () => {
   const {user,setUser}=useContext(Context);
+  var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
   return (
     <>
       <ul>
@@ -20,7 +21,22 @@ const NavMenu = () => {
             </ul>
           </li>
         ))}
-         {user._id ? <li className="dropdown"> <Link href={'seller-profile'}  >Profile</Link> </li> : <li className="dropdown"  > <Link href={'sign-in'}  >Sign In</Link> </li>}    
+         {user._id ?
+          //  <div>
+            <li className="dropdown">
+               {user && user.avatar && user.avatar ? <img style={{ borderRadius: "50%", width:"40px", marginRight:"1rem" }} src={user.avatar} alt="instructor-thumb" /> : <img
+                      src={imagelink}
+                      style={{ borderRadius: "50%", width:"40px", marginRight:"1rem" }}
+                      alt="instructor-thumb"
+                    />}
+            <Link href={'seller-profile'}  >
+              {/* Profile */}
+              {user.firstname}
+              </Link> </li> 
+            // </div>
+           :
+           <li className="dropdown"  > <Link href={'sign-in'}  >Sign In</Link> </li>
+           }    
          {user._id? <li className="dropdown"  ></li> : <li className="dropdown"  > <Link href={'register'}  >Get Started</Link> </li> }
       </ul>
     </>

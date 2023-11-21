@@ -50,8 +50,8 @@ const SellerPortfolioArea = () => {
           <div className="row">
             <div className="col-xl-4 col-lg-5">
               <div className="instruc-sidebar mb-40">
-                <div style={{display:"flex", justifyContent:"center", alignItems:"center", alignContent:"center"}}>
-                  <div className="isntruc-side-thumb mb-30" style={{ borderRadius: "50%", width:"50%", padding:"2rem", paddingLeft:"0" }}>
+                <div >
+                  <div className="isntruc-side-thumb mb-30 " style={{ padding: "0 3rem" }}>
                     {user && user.avatar && user.avatar ? <img style={{ borderRadius: "50%" }} src={user.avatar} alt="instructor-thumb" /> : <img
                       src={imagelink}
                       style={{ borderRadius: "50%" }}
@@ -59,27 +59,15 @@ const SellerPortfolioArea = () => {
                     />}
                   </div>
                   <div className="isntruc-side-content text-center">
-                    <h4 className="side-instructor-title mb-15">
+                    <h4 className="side-instructor-title mb-15" style={{ fontSize: "35px" }}>
                       {user.firstname} {user.lastname && <span>{user.lastname}</span>}
                     </h4>
-
-                    {/* <p>
-                      UX/UI Designer, Chemical Engineer, Youtuber, Life Style
-                      Blogger
-                    </p> */}
+                    <p>
+                      Member Since Nov, 2023
+                    </p>
                   </div>
                 </div>
                 <div className="instructor-sidebar-widget">
-                  <div className="instruc-follower d-flex align-items-center justify-content-center mb-25">
-                    {/* <div className="ins-followers">
-                      <h4>35,600</h4>
-                      <span>Followers</span>
-                    </div>
-                    <div className="ins-following">
-                      <h4>135</h4>
-                      <span>Following</span>
-                    </div> */}
-                  </div>
                   {/* <div className="instruc-side-btn text-center mb-40">
                     <Link className="ins-btn" href="#">
                       Follow +
@@ -87,23 +75,12 @@ const SellerPortfolioArea = () => {
                   </div> */}
                   <div className="cd-information instruc-profile-info mb-35">
                     <ul>
-                      {/* <li>
-                        <i className="fi fi-rr-briefcase"></i>{" "}
-                        <label>Job Title</label> <span>Lead UX Engineer</span>
-                      </li>
-                         */}
-                      {
-                        // user.lastname && <div><li>
-                        //   <label>Last Name</label> <span>{user.lastname}</span>
-                        // </li>
-                        // </div>
-                      }
                       {user.phonenumber && <div> <li> <i className="fi fi-rr-phone-call"></i>{" "}
                         <label>Phone</label> <span>user.phonenumber</span> </li> </div>}
 
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
-                        <label style={{fontSize:"15px"}}>Email : </label> <span> {user.email} </span>
+                        <label style={{ fontSize: "15px" }}>Email : </label> <span style={{ fontSize: "17px" }}> {user.email} </span>
                       </li>
                       {/* <li>
                         <i className="fi fi-rr-time-forward"></i>{" "}
@@ -120,7 +97,7 @@ const SellerPortfolioArea = () => {
                     </ul>
                   </div>
                   <div className="c-details-social">
-                    <h5 className="cd-social-title mb-25" style={{fontSize:"15px"}}>More:</h5>
+                    {/* <h5 className="cd-social-title mb-25" style={{fontSize:"15px"}}>More:</h5> */}
                     {
                       user.Facebook && <Link href={`${user.Facebook}`}>
                         <i className="fa-brands fa-facebook-f"></i>
@@ -141,16 +118,24 @@ const SellerPortfolioArea = () => {
                         <i className="fa-brands fa-youtube"></i>
                       </Link>
                     }
+                    <br />
+                    <div style={{padding:"3rem 0"}}>
+                      <Link className="fa-brands" href={`seller-profile-update?id=${user._id}`} >
+                        {/* Needed an edit icon here    href="seller-profile-update"    */}
+                        <span style={{ fontFamily:"fantasy", fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white" }}>EDIT</span>
+                      </Link>
+                      <button onClick={handlelogout} className="fa-brands "  >
 
-                    <Link className="fa-brands" href={`seller-profile-update?id=${user._id}`} >
-                      {/* Needed an edit icon here    href="seller-profile-update"    */}
-                      <span style={{fontFamily:"initial", fontWeight:"600", fontSize:"20px", backgroundColor:"#19ae51", padding:"0.5rem 1rem", borderRadius:"5px", color:"white"}}>EDIT</span>
-                    </Link>
-                    <button onClick={handlelogout} className="fa-brands "  >
-
-                      {/* Needed an Logout icon here*/}
-                      <span style={{fontFamily:"initial", fontWeight:"600", fontSize:"20px", backgroundColor:"#19ae51", padding:"0.5rem 1rem", borderRadius:"5px", color:"white"}}>LOG OUT</span>
-                    </button>
+                        {/* Needed an Logout icon here*/}
+                        <span style={{ fontFamily: "initial", fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white" }}>LOG OUT</span>
+                      </button>
+                    </div>
+                    <div style={{display:"flex", flexDirection:"column", justifyContent:"center", paddingLeft:"2rem"}}>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>My Ads</p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i>My Wishlist</p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-phone" style={{marginRight:"1rem"}}></i>Help & Support</p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-cog" style={{marginRight:"1rem"}}></i> Settings</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -204,11 +189,13 @@ const SellerPortfolioArea = () => {
                               
                             </div> */}
                 </div>
-                <div className="instructor-tp-course">
+                <div className="instructor-tp-course mb-80">
                   <div className="row">
                     <div className="col-md-12">
                       <div className="instruc-biography">
-                        <h2 className="ins-bio-title mb-35">Ads</h2>
+                        <h2 className="ins-bio-title mb-35" style={{textAlign:"center"}}>
+                        <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>
+                          My Ads</h2>
                       </div>
                     </div>
                   </div>
@@ -293,7 +280,112 @@ const SellerPortfolioArea = () => {
                       </div>
                     ))}
                   </div>
-                  <button> <Link href={'/ad-grid'}  >Get My All Ads</Link>   </button>
+                  <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                  <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-grid'}  >Get My All Ads</Link>   </button>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+                <div className="instructor-tp-course">
+                  <div className="row">
+                    <div className="col-md-12">
+                      <div className="instruc-biography">
+                        <h2 className="ins-bio-title mb-35" style={{textAlign:"center"}}>
+                        <i className="fa fa-heart" style={{marginRight:"1rem"}}></i>
+                          My Wishlist</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    {tasks && tasks.slice(0, 4).map((item, i) => (
+                      <div key={i} className="col-xl-6 col-lg-12 col-md-6">
+                        <div className="tpcourse mb-40">
+                          <div className="tpcourse__thumb p-relative w-img fix">
+                            <Link href={`/ad-details?id=${item._id}`}>
+                              {item && item.images && item.images[0] ? <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                            </Link>
+                            <div className="tpcourse__tag">
+                              <Link href="#">
+                                <i className="fi fi-rr-heart"></i>
+                              </Link>
+                            </div>
+                            {/* <div className="tpcourse__img-icon">
+                                                                  <img src={item.icon} alt="course-avata" />
+                                                                </div> */}
+                          </div>
+                          <div className="tpcourse__content-2">
+                            <div className="tpcourse__category mb-10">
+                              <ul className="tpcourse__price-list d-flex align-items-center">
+                                <li>
+                                  <Link
+                                    className={item.ct_color}
+                                    href="/course-details"
+                                  >
+                                    {item.Category}
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    className={item.cn_color}
+                                    href="/course-details"
+                                  >
+                                    {item.Brand}
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                            <div className="tpcourse__ava-title mb-15">
+                              <h4 className="tpcourse__title">
+                                <Link href="/course-details">{item.Adname}</Link>
+                              </h4>
+                            </div>
+                            <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
+                              <ul className="d-flex align-items-center">
+                                <li>
+                                  <img
+                                    src="/assets/img/icon/c-meta-01.png"
+                                    alt="meta-icon"
+                                  />
+                                  <span>{item.createdAt}</span>
+                                </li>
+                                {/* <li>
+                                                                      <img
+                                                                        src="/assets/img/icon/c-meta-02.png"
+                                                                        alt="meta-icon"
+                                                                      />
+                                                                      <span>{item.st_text}</span>
+                                                                    </li> */}
+                              </ul>
+                            </div>
+                            <div className="tpcourse__rating d-flex align-items-center justify-content-between">
+                              <div className="tpcourse__rating-icon">
+                                {tasks.Model}
+                                {/* <span>4.7</span>
+                                                                    <i className="fi fi-ss-star"></i>
+                                                                    <i className="fi fi-ss-star"></i>
+                                                                    <i className="fi fi-ss-star"></i>
+                                                                    <i className="fi fi-ss-star"></i>
+                                                                    <i className="fi fi-rs-star"></i>
+                                                                    <p>(125)</p> */}
+                              </div>
+                              <div className="tpcourse__pricing">
+                                <h5 className="price-title">${item.Adprice}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
+                  <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-grid'}  >Get My All Ads</Link>   </button>
+                  </div>
                 </div>
               </div>
             </div>

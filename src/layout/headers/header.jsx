@@ -1,17 +1,28 @@
 'use Client'
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
-import React, {useContext, useEffect, useState} from "react";
+import React, { useContext, useEffect, useState } from "react";
 import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
 import NavMenu2 from "./nav-menu2";
 const Header = () => {
-  const {sticky} = useSticky();
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  const { sticky } = useSticky();
   const [isActive, setIsActive] = useState(false);
-  const {user}=useContext(Context);
+  const { user } = useContext(Context);
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
-    return (
+  return (
     <>
       <header className="header__transparent ">
         <div className="header__area">
@@ -49,6 +60,16 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="col-xxl-9 col-xl-9 col-lg-7 col-md-6 col-6 d-flex align-items-center justify-content-end">
+                  {isMobile ? (
+                    <div >
+                      
+                    </div>
+                  ) : (
+                    <div style={{marginRight:"1rem", position:"relative"}}>
+                      <i className="fa fa-search" style={{position:"absolute", left:"13px", top:"8px", color:"#5A5A5A", fontSize:"20px"}}></i>
+                      <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
+                    </div>
+                  )}
                   <div className="main-menu d-flex justify-content-end mr-15">
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
@@ -85,7 +106,7 @@ const Header = () => {
                           </Link>
                         </li> */}
                         <li>
-                          <a onClick={() => setIsActive(true)}  href="#" className="tp-menu-toggle d-xl-none">
+                          <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
                             <i className="icon_ul"></i>
                           </a>
                         </li>
