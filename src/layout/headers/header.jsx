@@ -65,9 +65,9 @@ const Header = () => {
                       
                     </div>
                   ) : (
-                    <div style={{marginRight:"1rem"}}>
-                      <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 10px", marginRight: "0.5rem" }} type="text" placeholder="Search" />
-                      <i className="fa fa-search" style={{marginRight:"1rem", color:"white", fontSize:"20px"}}></i>
+                    <div style={{marginRight:"1rem", position:"relative"}}>
+                      <i className="fa fa-search" style={{position:"absolute", left:"13px", top:"8px", color:"#5A5A5A", fontSize:"20px"}}></i>
+                      <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
                     </div>
                   )}
                   <div className="main-menu d-flex justify-content-end mr-15">
