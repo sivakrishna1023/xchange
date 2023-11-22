@@ -43,7 +43,7 @@ const SuitableArea = ({ style_2}) => {
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12">
-              <div className="section-title mb-60">
+              <div className="section-title mb-60 mt-60">
                 <span className="tp-sub-title mb-25">Join With Us</span>
                 <h2 className="tp-section-title">
                   Which One is Suitable For You?

@@ -24,9 +24,9 @@ const NavMenu = () => {
          {user._id ?
           //  <div>
             <li className="dropdown">
-               {user && user.avatar && user.avatar ? <img style={{ borderRadius: "50%", width:"40px", marginRight:"1rem" }} src={user.avatar} alt="instructor-thumb" /> : <img
+               {user && user.avatar && user.avatar ? <img style={{ borderRadius: "50%", width:"40px", height:"40px", marginRight:"1rem" }} src={user.avatar} alt="instructor-thumb" /> : <img
                       src={imagelink}
-                      style={{ borderRadius: "50%", width:"40px", marginRight:"1rem" }}
+                      style={{ borderRadius: "50%", width:"40px", height:"40px", marginRight:"1rem" }}
                       alt="instructor-thumb"
                     />}
             <Link href={'seller-profile'}  >
