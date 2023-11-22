@@ -39,7 +39,7 @@ const CourseArea = () => {
           <div className="row">
             <div className="col-md-12">
               <div className="section-title mb-65">
-                <h2 className="tp-section-title mb-20">
+                <h2 className="tp-section-title mb-20 mt-20">
                   Explore Popular Ads
                 </h2>
               </div>

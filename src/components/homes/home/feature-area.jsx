@@ -24,6 +24,7 @@ const feature_content = [
 
 
 
+
 const FeatureArea = () => {
   return (
     <>
@@ -34,7 +35,7 @@ const FeatureArea = () => {
         <div className="container-fluid">
           <div className="row text-center">
             <div className="col-lg-12">
-              <div className="section-title mb-60">
+              <div className="section-title mb-60 mt-60">
                 <span className="tp-sub-title mb-20">Easy Steps</span>
                 <h2 className="tp-section-title">How It Works</h2>
               </div>
