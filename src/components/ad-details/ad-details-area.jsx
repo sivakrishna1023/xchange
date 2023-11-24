@@ -1,4 +1,4 @@
-'use Client' 
+'use client' 
 import review_content from '@/src/data/review-data';
 import VideoPopup from '@/src/modals/video-popup';
 import Link from 'next/link';
@@ -14,12 +14,11 @@ const AdDetailsArea = () => {
     const router= useRouter();
     var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
     
+    const getdetails= async()=>{
       const token = localStorage.getItem('token');
       if(token==='null'){
          router.replace('/sign-in');
       }
-    
-    const getdetails= async()=>{
       try{
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
          const token = localStorage.getItem('token');
