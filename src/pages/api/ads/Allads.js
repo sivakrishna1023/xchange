@@ -10,7 +10,7 @@ import {asyncError,
    return errorHandler(res, 400, "Only GET Method is allowed");
     await connectDB();
   
-  const ads = await Ads.find({});
+  const ads = await Ads.find({draft:false});
   
   res.json({
    success: true,

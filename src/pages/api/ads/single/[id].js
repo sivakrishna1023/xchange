@@ -8,11 +8,8 @@ import {asyncError,
    if (req.method !== "GET")
    return errorHandler(res, 400, "Only GET Method is allowed");
    await connectDB();
-
    const ad_id = req.query.id;
    const [, value] = ad_id.split('=');
-   console.log(value); 
-   console.log(ad_id);
     const ad = await Ads.findById({_id:value});
     res.json({
     success: true,

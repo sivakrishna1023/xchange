@@ -7,7 +7,7 @@ const handler = asyncError(async (req, res) => {
   if (req.method !== "POST")
   return errorHandler(res, 400, "Only POST Method is allowed");
       const newUserData = {
-      firstname: req.body.firstname,
+      firstname: req.body.firstname, 
       lastname: req.body.lastname,  
       Phonenumber:req.body.Phonenumber,
       Location:req.body.Location,
@@ -25,9 +25,7 @@ const handler = asyncError(async (req, res) => {
       avatar:req.body.avatar,
       };
     await connectDB();
-    await connectCloud();
     const user = await checkAuth(req);
-    console.log(user);
     if (!user) return errorHandler(res, 401, "Login First");
     const user_id=user._id;
     const user1 = await User.findById(user._id); 

@@ -5,16 +5,20 @@ import Link from 'next/link';
 import  {useState,useEffect} from 'react';
 import { useRouter } from 'next/router';
 
-
 const AdDetailsArea = () => {
     const [isVideoOpen, setIsVideoOpen] = useState(false);
     const { query } = useRouter();
     const { asPath  }=useRouter();
     const [ad,setad]=useState();
     const [aduser,setaduser]=useState();
+    const router= useRouter();
     var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
-
-    
+    useEffect(() => {
+      const token = localStorage.getItem('token');
+      if(token==='null'){
+         router.replace('/sign-in');
+      }
+    },[]);
     const getdetails= async()=>{
       try{
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
@@ -28,7 +32,6 @@ const AdDetailsArea = () => {
           })
          const data= await res.json();
          if(data.success){
-              console.log(data);
               setad(data.ad);
               const user_id=data.ad.user;
               try{
@@ -42,7 +45,6 @@ const AdDetailsArea = () => {
                  })
                 const data= await res.json();
                if(data.success){
-                  console.log(data);
                   setaduser(data.user);
                }
               }catch(error){

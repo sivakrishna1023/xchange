@@ -3,7 +3,6 @@ import { asyncError,
 import {User} from '../../../models/user'
 import bcrypt from 'bcrypt'
 import { generateToken, 
-         cookieSetter,
          connectDB, 
          sendEmail,
          verifytoken,
@@ -26,13 +25,14 @@ const handler = asyncError(async (req, res)  => {
       email,
       verifytoken:verifytoken1,
       password: hashedPassword,
-    });
-    console.log(user);  
+    }); 
     sendEmail({email:user.email,emailtype:`verify`,subject:`Please verify your mail`,message:`Thank you choosing us <a href="${process.env.DOMAIN}/verfication?token=${verifytoken1}&&email=${email}" target="_blank"> Click Here </a> to verify your mail...!!`});
+    const token = generateToken(user._id);
     res.status(201).json({
       success: true,
       message: "Please verify Your mail",
       user,
+      token
     });
   });
   

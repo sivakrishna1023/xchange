@@ -38,6 +38,9 @@ const RegisterhtmlForm = () => {
         const data=await res.json();
         console.log(data);
         if(data.success){
+             const newtoken=data.token;
+             localStorage.setItem("token",newtoken);
+             router.replace('/');
              localStorage.setItem('token', data.token); console.log("i am clicked");
              setUser(data.user);
              toast.success("Created Account please get varified from Gmail", {

@@ -6,7 +6,6 @@ export const ContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    // Check if running on the client side before using localStorage
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("token");
 

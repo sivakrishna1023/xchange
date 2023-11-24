@@ -8,6 +8,39 @@ const AdArea = () => {
   const { user } = useContext(Context);
   const [tasks,setTasks]=useState('');
   const router = useRouter();
+  const handle_delete = async (id) => {
+    try{
+     const token = localStorage.getItem('token');
+     const res = await fetch("/api/ads/delete_ad", {
+       method: 'DELETE',
+       headers: {
+         'Content-Type': 'application/json',
+         'Authorization': `Bearer ${token}`
+       }, 
+       body: JSON.stringify({
+         id,
+       })
+     })
+     const data = await res.json();
+     
+     if (data.success) {
+       window.location.reload();
+     }
+    }catch(error){
+     console.log(error);
+    }
+}
+
+  function TimePassed({ createdAt }) {
+    const currentTime = new Date(); 
+    const createdDate = new Date(createdAt);
+    if (isNaN(createdDate)) {
+      return <span>Error: Invalid Date</span>;
+    }
+    const timeDifference = currentTime.getTime() - createdDate.getTime();
+    const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60)); 
+    return <span>{hoursPassed} hours ago</span>;
+  }
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -50,16 +83,13 @@ const AdArea = () => {
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                               <Link href={`/ad-details?id=${item._id}`}>
                                                                 { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
-                                                                  {/* <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" /> */}
                                                                 </Link>
                                                                 <div className="tpcourse__tag">
                                                                   <Link href="#">
                                                                     <i className="fi fi-rr-heart"></i>
                                                                   </Link>
                                                                 </div>
-                                                                {/* <div className="tpcourse__img-icon">
-                                                                  <img src={item.icon} alt="course-avata" />
-                                                                </div> */}
+                                                               
                                                               </div>
                                                               <div className="tpcourse__content-2">
                                                                 <div className="tpcourse__category mb-10">
@@ -94,62 +124,29 @@ const AdArea = () => {
                                                                         src="/assets/img/icon/c-meta-01.png"
                                                                         alt="meta-icon"
                                                                       />
-                                                                      <span>{item.createdAt}</span>
+                                                                      <span><TimePassed createdAt={item.createdAt} /></span>
                                                                     </li>
-                                                                    {/* <li>
-                                                                      <img
-                                                                        src="/assets/img/icon/c-meta-02.png"
-                                                                        alt="meta-icon"
-                                                                      />
-                                                                      <span>{item.st_text}</span>
-                                                                    </li> */}
+                                                                   
                                                                   </ul>
                                                                 </div>
                                                                 <div className="tpcourse__rating d-flex align-items-center justify-content-between">
                                                                   <div className="tpcourse__rating-icon">
                                                                     {tasks.Model}
-                                                                    {/* <span>4.7</span>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-ss-star"></i>
-                                                                    <i className="fi fi-rs-star"></i>
-                                                                    <p>(125)</p> */}
+                                                                   
                                                                   </div>
                                                                   <div className="tpcourse__pricing">
                                                                     <h5 className="price-title">${item.Adprice}</h5>
                                                                   </div>
+                                                                  
                                                                 </div>
+                                                                   <Link href={`/ad-update?id=${item._id}`}>Update</Link> <br />
+                                                                   <button onClick={() => {handle_delete(item._id)}}>Delete</button>
                                                               </div>
                                                             </div>
                                                           </div>
                                                         )) : <div> Your Bin is empty </div>} 
           </div>
-          {/* <div className="basic-pagination">
-            <nav>
-              <ul>
-                <li>
-                  <Link href="/blog">
-                    <i className="far fa-angle-left"></i>
-                  </Link>
-                </li>
-                <li>
-                  <span className="current">1</span>
-                </li>
-                <li>
-                  <Link href="/blog">2</Link>
-                </li>
-                <li>
-                  <Link href="/blog">3</Link>
-                </li>
-                <li>
-                  <Link href="/blog">
-                    <i className="far fa-angle-right"></i>
-                  </Link>
-                </li>
-              </ul>
-            </nav>
-          </div> */}
+         
         </div>
       </section>
     </>

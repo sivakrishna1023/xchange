@@ -6,11 +6,13 @@ import nodeMailer from 'nodemailer'
 import cloudinary from 'cloudinary'
  
 export const connectDB = async () => {
-  console.log(process.env.MONGO_URI);
-  const { connection } = await mongoose.connect(process.env.MONGO_URI, {
-    dbName: "Ads12",
-  });
-  console.log(`Database Connected on ${connection.host}`);
+  try{
+    const { connection } = await mongoose.connect(process.env.MONGO_URI, {
+      dbName: "Ads123",
+    });
+  }catch(error){
+    console.log('error in connecting to database')
+  }
 };
 export const generateToken = (_id) => {
   return jwt.sign({ _id }, process.env.JWT_SECRET);
@@ -56,7 +58,6 @@ export const cookieSetter = (res, token, set) => {
 export const checkAuth = async (req) => {
   const val=req.headers.authorization;
   const token=val.split(' ')[1];
-  console.log(token);
   if (!token) return null;
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   return await User.findById(decoded._id);

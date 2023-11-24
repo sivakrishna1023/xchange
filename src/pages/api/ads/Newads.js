@@ -2,7 +2,6 @@ import { asyncError,
         errorHandler } from "../../../middlewares/Error";
 import { checkAuth, connectDB} from "../../../utils/Features";
 import { Ads } from "../../../models/ads";
-import cloudinary from 'cloudinary';
   
 const handler = asyncError(async (req, res) => {
     if (req.method !== "POST")
@@ -18,7 +17,7 @@ const handler = asyncError(async (req, res) => {
     Features,
     Condition,
     Negotable,
-
+    draft,
     country,
     Name,
     Address, 
@@ -29,10 +28,10 @@ const handler = asyncError(async (req, res) => {
     phone,
     images,
    } = req.body;
+   console.log(draft);
   const user = await checkAuth(req);
   if (!user) return errorHandler(res, 401, "Login First");
    const verified=user.isverified;
-   console.log(verified);
   // if(!verified) return errorHandler(res,400,"Please varify Your mail to continue..!!");
       const newad =await Ads.create({
         Category,
@@ -44,7 +43,6 @@ const handler = asyncError(async (req, res) => {
         Features,
         Condition,
         Negotable,
-
         country,
         Name,
         Address,
@@ -53,6 +51,7 @@ const handler = asyncError(async (req, res) => {
         postcode,
         email,
         phone,
+        draft,
         images,
         user: user._id,
       });

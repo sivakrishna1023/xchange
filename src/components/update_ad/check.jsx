@@ -1,12 +1,12 @@
 'use client'
-import React, {useState,useContext,useEffect} from 'react';
+import React, {useState,useContext} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
  
-const CheckoutArea = () => {
+const Check = () => {
    const {user}=useContext(Context);
    const [Category,setCategory]=useState('');
    const [Adname,setAdname]=useState('');
@@ -46,7 +46,7 @@ const CheckoutArea = () => {
                      Features,
                      Condition,
                      Negotable,
-                     draft:false,
+                     draft,
                      country,
                      Name,
                      Address,
@@ -74,57 +74,6 @@ const CheckoutArea = () => {
                position: toast.POSITION.TOP_CENTER
              });
              console.log(error);
-         }
-   }
-  
-   const draft_handler= async()=>{
-         setdraft(true);
-            try{
-               const token = localStorage.getItem('token');
-               const res=await fetch(`/api/ads/Newads`,{
-                  method:'POST',
-                  headers: {
-                     'Content-Type': 'application/json' ,
-                     'Authorization': `Bearer ${token}`
-                  },
-                  body: JSON.stringify({
-                     Category,
-                     Adname,
-                     Brand,
-                     Model,
-                     Description,
-                     Adprice,
-                     Features,
-                     Condition,
-                     Negotable,
-                     draft:true,
-                     country,
-                     Name,
-                     Address,
-                     City,
-                     state,
-                     postcode,
-                     email,
-                     phone,
-                     images
-                  })
-               })
-            const data= await res.json();
-            if(data.success){
-               toast.success("Added to your Draft List...!!", {
-                  position: toast.POSITION.TOP_CENTER
-               });
-            }else{
-               console.log(data);
-               toast.error("Failed to save in  draft!", {
-                  position: toast.POSITION.TOP_CENTER
-               });
-            }
-         }catch(error){
-            toast.error("Connection failed try again later !", {
-               position: toast.POSITION.TOP_CENTER
-            });
-            console.log(error);
          }
    }
    const creatingAdimages=(e)=>{
@@ -306,7 +255,7 @@ const CheckoutArea = () => {
                                      <button  onClick={handler} className="tp-btn">Post Ad</button>
                                   </div>
                                   <div className="order-button-payment mt-20">
-                                     <button  onClick={draft_handler}className="tp-btn">Save as Draft</button>
+                                     <button  onClick={()=>{setdraft(true)}}className="tp-btn">Save as Draft</button>
                                   </div>
                                         </div>
                             </div>
@@ -323,4 +272,4 @@ const CheckoutArea = () => {
     );
 };
 
-export default CheckoutArea;
+export default Check;

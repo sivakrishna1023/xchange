@@ -1,4 +1,4 @@
-import SellerProfileUpdate from "@/src/components/seller-profile-update";
+import UpdateAd from "@/src/components/post-ad-update";
 import React from "react";
 import SEO from "../common/seo";
 import Wrapper from "../layout/wrapper";
@@ -6,8 +6,8 @@ import Wrapper from "../layout/wrapper";
 const index = () => {
   return (
     <Wrapper>
-      <SEO pageTitle={"seller Profile"} />
-      <SellerProfileUpdate />
+      <SEO pageTitle={"Ad update"} />
+      <UpdateAd/>
     </Wrapper>
   );
 };

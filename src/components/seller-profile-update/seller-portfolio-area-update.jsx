@@ -5,33 +5,13 @@ import Link from "next/link";
 import React,{useState,useEffect,useContext} from "react";
 import { Context } from "../Clients/clientcomponents";
 
-// counter data 
-const counter_data = [
-   {
-     id: 1,
-     icon: "fi fi-rr-user",
-     count_number: 276,
-     thousand: "K",
-     title: "Products Sold",
-   },
-   {
-     id: 2,
-     icon: "fi fi-rr-document",
-     count_number: 35,
-     thousand: "",
-     title: "Products Bought",
-   },
-   {
-     id: 3,
-     icon: "fi fi-rr-star",
-     count_number: 407,
-     thousand: "K",
-     title: "Ads Posted",
-   },
- ];
-
 const SellerPortfolioAreaUpdate = () => {
   const {user}=useContext(Context);
+  if(!user){
+    return <>
+    <center> Loading please wait...!!</center>
+    </>
+  }
   const initialFirstname = user.firstname ? user.firstname : '';
   const initialLastname = user.lastname ? user.lastname  : '';
   const initialEmail = user.email ? user.email : '';
@@ -117,6 +97,12 @@ const SellerPortfolioAreaUpdate = () => {
  }
   const handlesubmit= async()=>{
     try{
+      var vals='';
+     if (JSON.stringify(avatar) === JSON.stringify(vals)) {
+        vals=user.avatar;
+     }else{
+        vals=avatar;
+     }
       const token = localStorage.getItem('token');
       const res=await fetch(`api/users/update/id=${user._id}`,{
          method:'POST',
@@ -141,7 +127,7 @@ const SellerPortfolioAreaUpdate = () => {
             Pinterest,
             Twitter,
             Reddit,
-            avatar
+            avatar:vals,
          })
       })
    const data= await res.json();
@@ -152,11 +138,7 @@ const SellerPortfolioAreaUpdate = () => {
    console.log(error);
 }
   }
-if(!user){
-  return <>
-  <center> Loading please wait...!!</center>
-  </>
-}
+
   return (
     <>
       {user && <section
@@ -195,48 +177,44 @@ if(!user){
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
                         <label>Change First Name: </label> 
-                         <input onChange={(e)=>{setFirstname(e.target.value)}} style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${firstname}`} />
+                         <input onChange={(e)=>{setFirstname(e.target.value)}} style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={firstname!==''?firstname:""} placeholder="Enter the First Name" />
                       </li>
                       <li>
                         <i className="fi fi-rr-briefcase"></i>{" "}
                         <label>Change Last Name: </label> 
-                         <input onChange={(e)=>{setLastname(e.target.value)}}   style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${lastname}`} />
+                         <input onChange={(e)=>{setLastname(e.target.value)}}   style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={lastname!== '' ? lastname :""} placeholder='Enter the Last Name' />
                       </li>
 
                       <li>
                        <i className="fi fi-rr-phone-call"></i>{" "}
                         <label>Phone Number</label> 
-                        <input onChange={(e)=>{setPhonenumber(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${Phonenumber}`} />
+                        <input onChange={(e)=>{setPhonenumber(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={Phonenumber!== '' ? Phonenumber :""} placeholder='Enter Phone number' />
                       </li>
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
                         <label>Email</label> 
-                        <input disabled style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text"  placeholder={`${email}`}   />
+                        <input disabled style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text"  value={email!== '' ? email :""}   />
                       </li>
                       <li>
                       <i className="fa-brands fa-facebook-f"></i>{" "}
                         <label>FaceBook Link:-</label> 
-                        <input onChange={(e)=>{setFacebook(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${FaceBook}`} />
+                        <input onChange={(e)=>{setFacebook(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={FaceBook!== '' ? FaceBook :""} placeholder='Add Facebook Link' />
                       </li>
-                      {/* <li>
-                      <i className="fa-brands fa-facebook-f"></i>{" "}
-                        <label>Experiences</label>
-                        <input style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" />
-                      </li> */}
+
                       <li>
                       <i className="fa-brands fa-twitter"></i>{" "}
                         <label>Twitter Link:- </label>
-                        <input onChange={(e)=>{setTwitter(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${Twitter}`} />
+                        <input onChange={(e)=>{setTwitter(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={Twitter!== '' ? Twitter:""} placeholder="Add Twitter Link" />
                       </li>
                       <li>
                       <i className="fa-brands fa-instagram"></i>{" "}
                         <label>Instagram Link:- </label>
-                        <input onChange={(e)=>{setInstagram(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${Instagram}`}  />
+                        <input onChange={(e)=>{setInstagram(e.target.value)}}  style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={Instagram!== '' ? Instagram :""} placeholder="Add Instagram Link" />
                       </li>
                       <li>
                       <i className="fa-brands fa-youtube"></i>{" "}
                         <label>Youtube Link:- </label>
-                        <input onChange={(e)=>{setYoutube(e.target.value)}}   style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" placeholder={`${Youtube}`}  />
+                        <input onChange={(e)=>{setYoutube(e.target.value)}}   style={{marginLeft:"1rem", marginTop:"1rem", width:"100%"}} type="text" value={Youtube!== '' ? Youtube :""} placeholder="Add Youtube Link"  />
                       </li>
                     </ul>
                   </div>
@@ -248,11 +226,11 @@ if(!user){
                 <div className="instruc-biography mb-50">
                   <h4 className="ins-bio-title mb-30">Biography</h4>
                   <p>
-                    <textarea onChange={(e)=>{setBiography(e.target.value)}}   style={{width:"100%"}} name="" id="" cols="30" rows="10" placeholder="Write About Yourself"></textarea>
+                    <textarea onChange={(e)=>{setBiography(e.target.value)}}   style={{width:"100%"}} name="" id="" cols="30" rows="10" value={Biography!== '' ? Biography :""} placeholder="Write About Yourself"></textarea>
                   </p>
                   <h4 className="ins-bio-title mb-30">Add Adress</h4>
                   <p>
-                    <textarea onChange={(e)=>{setLocation(e.target.value)}}   style={{width:"100%"}} name="" id="" cols="30" rows="4" placeholder="Your Location"></textarea>
+                    <textarea onChange={(e)=>{setLocation(e.target.value)}}   style={{width:"100%"}} name="" id="" cols="30" rows="4" value={Location!== '' ? Location :""} placeholder="Your Location"></textarea>
                   </p>
                   <center   >
                   <button  className="tp-border-btn w-40" onClick={handlesubmit}   >update</button>   </center>
