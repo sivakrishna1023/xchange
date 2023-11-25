@@ -13,7 +13,27 @@ const AdDetailsArea = () => {
     const [aduser,setaduser]=useState();
     const router= useRouter();
     var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
+    function TimePassed({ createdAt }) {
+      const currentTime = new Date();
+      const createdDate = new Date(createdAt);
     
+      if (isNaN(createdDate)) {
+        return <span>Error: Invalid Date</span>;
+      }
+    
+      const timeDifference = currentTime.getTime() - createdDate.getTime();
+      const minutesPassed = Math.floor(timeDifference / (1000 * 60));
+      const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60));
+      const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    
+      if (minutesPassed < 60) {
+        return <span>{minutesPassed} minutes ago</span>;
+      } else if (hoursPassed < 24) {
+        return <span>{hoursPassed} hours ago</span>;
+      } else {
+        return <span>{daysPassed} days ago</span>;
+      }
+    }
     const getdetails= async()=>{
       const token = localStorage.getItem('token');
       if(token==='null'){
@@ -96,7 +116,7 @@ const AdDetailsArea = () => {
                                        <span>(125)</span>
                                     </div>
                                  </li> */}
-                                 <li><img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" /> <span>2 hours ago</span></li>
+                                 <li><img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" /> <span><TimePassed  createdAt={ad.createdAt} /></span></li>
                                  {/* <li><img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" /> <span>20 Requests</span></li> */}
                               </ul>
                            </div>

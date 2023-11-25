@@ -31,16 +31,27 @@ const AdArea = () => {
     }
 }
 
-  function TimePassed({ createdAt }) {
-    const currentTime = new Date(); 
-    const createdDate = new Date(createdAt);
-    if (isNaN(createdDate)) {
-      return <span>Error: Invalid Date</span>;
-    }
-    const timeDifference = currentTime.getTime() - createdDate.getTime();
-    const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60)); 
-    return <span>{hoursPassed} hours ago</span>;
+function TimePassed({ createdAt }) {
+  const currentTime = new Date();
+  const createdDate = new Date(createdAt);
+
+  if (isNaN(createdDate)) {
+    return <span>Error: Invalid Date</span>;
   }
+
+  const timeDifference = currentTime.getTime() - createdDate.getTime();
+  const minutesPassed = Math.floor(timeDifference / (1000 * 60));
+  const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60));
+  const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  if (minutesPassed < 60) {
+    return <span>{minutesPassed} minutes ago</span>;
+  } else if (hoursPassed < 24) {
+    return <span>{hoursPassed} hours ago</span>;
+  } else {
+    return <span>{daysPassed} days ago</span>;
+  }
+}
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
