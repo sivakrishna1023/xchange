@@ -170,7 +170,7 @@ const SellerPortfolioArea = () => {
                     <div style={{display:"flex", flexDirection:"column", justifyContent:"center", paddingLeft:"2rem"}}>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>  <Link href={'/ad-grid'}>My Ads</Link>   </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>   <i class="far fa-file draft-icon"  style={{marginRight:"1rem"}}  ></i>  <Link href={'/ad-mydraft'}  > My Draft   </Link>   </p>  
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i>  My Wishlist </p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i> <Link href={'/ad-mydraft'}  > My Wishlist   </Link>   </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-phone" style={{marginRight:"1rem"}}></i>  <Link href={'/contact'}  >Help & Support</Link>    </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-cog" style={{marginRight:"1rem"}}></i>  <Link href={'/seller-profile-update'}   >Settings</Link>  </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>  <i class="fas fa-sign-out-alt logout-icon" style={{marginRight:"1rem"}}   ></i>  <button onClick={handlelogout}> <b>Log out</b>  </button></p>  
