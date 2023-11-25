@@ -83,8 +83,8 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
     }
   });
   const mailOptions = {
-    from: process.env.FROM_MAIL,
-    to: email,
+    from: ' "Xchange"  <mailtrap@savelivess.com >   ',
+    to: `${email}`,
     subject: subject,
     html: message,
   };
