@@ -8,7 +8,7 @@ import {asyncError,
   const handler = asyncError(async (req, res) => {
           if (req.method !== "GET")
           return errorHandler(res, 400, "Only GET Method is allowed");
-            await connectDB();
+          await connectDB();
   
           const user = await checkAuth(req);
   

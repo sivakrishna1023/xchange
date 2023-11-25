@@ -162,7 +162,7 @@ const AdDetailsArea = () => {
                         </div>
                         <div className="course-details-widget">
                            <div className="cd-video-price">
-                              <h3 className="pricing-video text-center mb-15">${ad.Adprice}</h3>
+                              <h3 className="pricing-video text-center mb-15"><i class="fas fa-inr"  style={{marginRight:"0.4rem"}} ></i>{ad.Adprice}</h3>
                               <div className="cd-pricing-btn text-center mb-30">
                              
                                  <input style={{width:"100%", marginBottom:"1rem", padding:"1rem"}} type="text" placeholder='Write Review Here' />

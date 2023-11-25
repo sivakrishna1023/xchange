@@ -44,7 +44,7 @@ const AdArea = () => {
   const getTasks = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch("/api/ads/Myads", {
+      const res = await fetch("/api/ads/mydraftads", {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

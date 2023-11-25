@@ -86,6 +86,7 @@ const SellerPortfolioArea = () => {
   }
   const [tasks, settasks] = useState('');
   const [tasks2,settasks2]=useState('');
+  const [tasks3,settasks3]=useState('');
   useEffect(() => {
     gettasks();
     gettasks2();
@@ -155,22 +156,14 @@ const SellerPortfolioArea = () => {
                       </Link>
                     }
                     <br />
-                    <div style={{padding:"3rem 0"}}>
-                      <Link className="fa-brands" href={`seller-profile-update?id=${user._id}`} >
-                  
-                        <span style={{ fontFamily:"fantasy", fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white" }}>EDIT</span>
-                      </Link>
-                      <button onClick={handlelogout} className="fa-brands "  >
-
-          
-                        <span style={{ fontFamily: "initial", fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white" }}>LOG OUT</span>
-                      </button>
-                    </div>
                     <div style={{display:"flex", flexDirection:"column", justifyContent:"center", paddingLeft:"2rem"}}>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>My Ads</p>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i>My Wishlist</p>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-phone" style={{marginRight:"1rem"}}></i>Help & Support</p>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-cog" style={{marginRight:"1rem"}}></i> Settings</p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>  <Link href={'/ad-grid'}>My Ads</Link>   </p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>   <i class="far fa-file draft-icon"  style={{marginRight:"1rem"}}  ></i>  <Link href={'/ad-mydraft'}  > My Draft   </Link>   </p>  
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i>  My Wishlist </p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-phone" style={{marginRight:"1rem"}}></i>  <Link href={'/contact'}  >Help & Support</Link>    </p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-cog" style={{marginRight:"1rem"}}></i>  <Link href={'/seller-profile-update'}   >Settings</Link>  </p>
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>  <i class="fas fa-sign-out-alt logout-icon" style={{marginRight:"1rem"}}   ></i>  <button onClick={handlelogout}> <b>Log out</b>  </button></p>  
+                     
                     </div>
                   </div>
                 </div>
@@ -255,7 +248,7 @@ const SellerPortfolioArea = () => {
                                
                               </div>
                               <div className="tpcourse__pricing">
-                                <h5 className="price-title">${item.Adprice}</h5>
+                                <h5 className="price-title"><i class="fas fa-inr"  style={{marginRight:"0.4rem"}}     ></i>{item.Adprice}</h5>
                               </div>
                               
                             </div>
@@ -340,7 +333,7 @@ const SellerPortfolioArea = () => {
                               
                               </div>
                               <div className="tpcourse__pricing">
-                                <h5 className="price-title">${item.Adprice}</h5>
+                                <h5 className="price-title"><i class="fas fa-inr"  style={{marginRight:"0.4rem"}}     ></i>{item.Adprice}</h5>
                               </div>
                             </div>
                             <div className="flex justify-between">
@@ -357,7 +350,7 @@ const SellerPortfolioArea = () => {
                     ))}
                   </div>
                   <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
-                  <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-grid'}  >Get My Draft's</Link>   </button>
+                  <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-mydraft'}  >Get My Draft's</Link>   </button>
                   </div>
                 </div>
 
@@ -373,7 +366,7 @@ const SellerPortfolioArea = () => {
                     </div>
                   </div>
                   <div className="row">
-                    {tasks && tasks.slice(0, 4).map((item, i) => (
+                    {tasks3 && tasks3.slice(0, 4).map((item, i) => (
                       <div key={i} className="col-xl-6 col-lg-12 col-md-6">
                         <div className="tpcourse mb-40">
                           <div className="tpcourse__thumb p-relative w-img fix">
@@ -431,7 +424,7 @@ const SellerPortfolioArea = () => {
                                 
                               </div>
                               <div className="tpcourse__pricing">
-                                <h5 className="price-title">${item.Adprice}</h5>
+                                <h5 className="price-title"><i class="fas fa-inr"  style={{marginRight:"0.4rem"}}     ></i>{item.Adprice}</h5>
                               </div>
                             </div>
                           </div>
