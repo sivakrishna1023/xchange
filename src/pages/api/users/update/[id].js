@@ -1,6 +1,6 @@
 import { asyncError,errorHandler } from "@/src/middlewares/Error";
 import cloudinary from 'cloudinary'
-import { checkAuth, connectDB, connectCloud } from "@/src/utils/Features";
+import { checkAuth, connectDB, connectCloud,disconnect } from "@/src/utils/Features";
 import { User } from "@/src/models/user";
 
 const handler = asyncError(async (req, res) => {
@@ -35,6 +35,7 @@ const handler = asyncError(async (req, res) => {
                 runValidators: true,
                 useFindAndModify: false,
               });
+              await disconnect();
               res.status(200).json({
                 success: true,
               });

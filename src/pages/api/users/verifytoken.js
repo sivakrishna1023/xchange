@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import { generateToken, 
       connectDB, 
       sendEmail,
-      verifytoken,
+      verifytoken,disconnect
      } from "../../../utils/Features";
 const handler = asyncError(async (req, res)  => {
     if (req.method !== "POST")
@@ -19,6 +19,7 @@ const handler = asyncError(async (req, res)  => {
     const verifytoken1= await verifytoken(email,user.password);
     const user1=await User.findByIdAndUpdate(user._id,{verifytoken:verifytoken1});
     sendEmail({email:user.email,emailtype:`verify`,subject:`Please verify your mail`,message:`Thank you choosing us <a href="${process.env.DOMAIN}/verfication?token=${verifytoken1}&&email=${user.email}" target="_blank"> Click Here </a> to verify your mail...!!`});
+    await disconnect();
     res.status(201).json({
     success: true,
     message: "Token send",

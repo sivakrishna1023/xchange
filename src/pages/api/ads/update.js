@@ -1,6 +1,6 @@
 import { asyncError,
     errorHandler } from "../../../middlewares/Error";
-import { checkAuth, connectDB} from "../../../utils/Features";
+import { checkAuth, connectDB,disconnect} from "../../../utils/Features";
 import { Ads } from "../../../models/ads";
 
 const handler = asyncError(async (req, res) => {
@@ -60,6 +60,7 @@ const handler = asyncError(async (req, res) => {
             runValidators: true,
             useFindAndModify: false,
         });
+        await disconnect();
         res.json({
             success: true,
             message: "Ad updated successfully",

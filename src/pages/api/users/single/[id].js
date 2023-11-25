@@ -1,7 +1,7 @@
 import {asyncError,
     errorHandler} from '../../../../middlewares/Error'
   import {User} from '../../../../models/user'
-  import { connectDB } from '../../../../utils/Features';
+  import { connectDB ,disconnect} from '../../../../utils/Features';
   import mongoose from 'mongoose';
 
   const handler = asyncError(async (req, res) => {
@@ -14,6 +14,7 @@ import {asyncError,
    console.log(value); 
 
     const user = await User.findById({_id:value});
+    await disconnect();
     res.json({
     success: true,
     user,

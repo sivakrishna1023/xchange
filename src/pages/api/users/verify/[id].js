@@ -1,5 +1,5 @@
 import { asyncError,errorHandler } from "@/src/middlewares/Error";
-import { checkAuth, connectDB, connectCloud,verifytoken } from "@/src/utils/Features";
+import { checkAuth, connectDB, connectCloud,verifytoken,disconnect } from "@/src/utils/Features";
 import { User } from "@/src/models/user";
 const handler = asyncError(async (req, res) => {
   if (req.method !== "POST")
@@ -11,6 +11,7 @@ const handler = asyncError(async (req, res) => {
     if(token===user.verifytoken){
         user.isverified=true;
         await user.save();
+        await disconnect();
         res.status(200).json({
             success: true,
             verified:user.isverified,
@@ -18,6 +19,7 @@ const handler = asyncError(async (req, res) => {
           });
     }
     else{
+      await disconnect();
         return errorHandler(res,401,"Got error in verifying mail try again later");
     }
   });

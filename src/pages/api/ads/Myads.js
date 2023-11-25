@@ -2,7 +2,7 @@ import {asyncError,
   errorHandler} from '../../../middlewares/Error'
 import {checkAuth} from '../../../utils/Features'
 import {Ads} from '../../../models/ads'
-import { connectDB } from '../../../utils/Features';
+import { connectDB,disconnect } from '../../../utils/Features';
 
 
 const handler = asyncError(async (req, res) => {
@@ -20,6 +20,7 @@ const handler = asyncError(async (req, res) => {
               { draft: false }
           ]
        });
+       await disconnect();
         res.json({
         success: true,
         ads,

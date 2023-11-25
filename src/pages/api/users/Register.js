@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt'
 import { generateToken, 
          connectDB, 
          sendEmail,
-         verifytoken,
+         verifytoken,disconnect
         } from "../../../utils/Features";
 const handler = asyncError(async (req, res)  => {
     if (req.method !== "POST")
@@ -26,6 +26,7 @@ const handler = asyncError(async (req, res)  => {
       password: hashedPassword,
     }); 
     const token = generateToken(user._id);
+    await disconnect();
     res.status(201).json({
       success: true,
       message: "Please verify Your mail",

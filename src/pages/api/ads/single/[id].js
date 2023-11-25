@@ -1,7 +1,7 @@
 import {asyncError,
     errorHandler} from '../../../../middlewares/Error'
   import {Ads} from '../../../../models/ads'
-  import { connectDB } from '../../../../utils/Features';
+  import { connectDB,disconnect} from '../../../../utils/Features';
   import mongoose from 'mongoose';
 
   const handler = asyncError(async (req, res) => {
@@ -10,7 +10,8 @@ import {asyncError,
    await connectDB();
    const ad_id = req.query.id;
    const [, value] = ad_id.split('=');
-    const ad = await Ads.findById({_id:value});
+   const ad = await Ads.findById({_id:value});
+   await disconnect();
     res.json({
     success: true,
     ad,

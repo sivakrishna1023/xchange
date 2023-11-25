@@ -1,5 +1,5 @@
 import { asyncError,errorHandler } from "@/src/middlewares/Error";
-import { checkAuth, connectDB, connectCloud,verifytoken } from "@/src/utils/Features";
+import { checkAuth, connectDB, connectCloud,verifytoken,disconnect } from "@/src/utils/Features";
 import { User } from "@/src/models/user";
 import bcrypt from 'bcrypt';
 const handler = asyncError(async (req, res) => {
@@ -15,6 +15,7 @@ const handler = asyncError(async (req, res) => {
         user.resetPasswordToken="Undefined";
         user.resetPasswordExpire=Date.now();
         await user.save();
+        await disconnect();
         console.log(user);
         res.status(200).json({ 
             success: true,
@@ -22,6 +23,7 @@ const handler = asyncError(async (req, res) => {
           });
     }
     else{
+      await disconnect();
         return errorHandler(res,401,"Session Expired, get another token to reset password");
     }
   });

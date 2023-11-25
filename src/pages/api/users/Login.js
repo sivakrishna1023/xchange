@@ -1,6 +1,6 @@
 import {connectDB,
        generateToken,
-       cookieSetter} from '../../../utils/Features'
+       cookieSetter,disconnect} from '../../../utils/Features'
 import {errorHandler, 
       asyncError} from '../../../middlewares/Error'
 import {User} from '../../../models/user'
@@ -24,6 +24,7 @@ const handler = asyncError(async (req, res) => {
   
     if (!isMatch) return errorHandler(res, 400, "Invalid Email or Password");
     const token = generateToken(user._id);
+    await disconnect();
     res.status(200).json({
       success: true,
       message: `Welcome back`,
