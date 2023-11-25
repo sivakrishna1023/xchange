@@ -27,6 +27,7 @@ const CheckoutArea = () => {
    const [email,setemail]=useState('');
    const [phone,setphone]=useState('');
    const [images, setImages] = useState([]);
+   const [verifymail,setverifymail]=useState('');
    const handler=async()=>{
          try{
                const token = localStorage.getItem('token');
@@ -127,6 +128,37 @@ const CheckoutArea = () => {
             console.log(error);
          }
    }
+   const handle_verify_link= async ()=>{
+      try{
+         const token = localStorage.getItem('token');
+         const res=await fetch(`/api/users/verifytoken`,{
+            method:'POST',
+            headers: {
+               'Content-Type': 'application/json' ,
+               'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+               email:verifymail,
+            })
+         })
+      const data= await res.json();
+      if(data.success){
+         toast.success("Mail Send", {
+            position: toast.POSITION.TOP_CENTER
+         });
+      }else{
+         console.log(data);
+         toast.error("Unable to send Mail", {
+            position: toast.POSITION.TOP_CENTER
+         });
+      }
+   }catch(error){
+      toast.error("Connection failed try again later !", {
+         position: toast.POSITION.TOP_CENTER
+      });
+      console.log(error);
+   }
+   }
    const creatingAdimages=(e)=>{
       const files=Array.from(e.target.files);
       files.forEach((file)=>{
@@ -145,8 +177,21 @@ const CheckoutArea = () => {
          <ToastContainer />
           {
              user._id ? <section className="checkout-area pt-100 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+            <center>
+                                 <div className="col-md-3">
+                                                 <div className="checkout-form-list">
+                                                    <label> If Your Not verified Your post is Not Accepted  <span className="required">*</span></label>
+                                                    <input onChange={(e)=>{setverifymail(e.target.value)}}  type="text" placeholder="Please Enter Email to verify" />
+                                                 </div>
+
+                                           </div>
+                                 <div className="col-md-2">
+                                  <div className="order-button-payment mt-20">
+                                     <button  onClick={handle_verify_link}className="tp-btn">Get Link</button>
+                                  </div>
+                                  </div>
+       </center>  <br />
              <div className="container">
-             
                    <div className="row">
                          <div className="col-lg-6 col-md-12">
                             <div className="checkbox-form">

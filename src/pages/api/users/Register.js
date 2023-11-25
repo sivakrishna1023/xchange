@@ -18,7 +18,6 @@ const handler = asyncError(async (req, res)  => {
     if (user) return errorHandler(res, 400, "User registered with this email");
     const hashedPassword = await bcrypt.hash(password, 10);
     const verifytoken1= await verifytoken(email,password);
-    console.log(verifytoken1);
     user = await User.create({
       firstname,
       lastname,
@@ -26,7 +25,6 @@ const handler = asyncError(async (req, res)  => {
       verifytoken:verifytoken1,
       password: hashedPassword,
     }); 
-    sendEmail({email:user.email,emailtype:`verify`,subject:`Please verify your mail`,message:`Thank you choosing us <a href="${process.env.DOMAIN}/verfication?token=${verifytoken1}&&email=${email}" target="_blank"> Click Here </a> to verify your mail...!!`});
     const token = generateToken(user._id);
     res.status(201).json({
       success: true,
