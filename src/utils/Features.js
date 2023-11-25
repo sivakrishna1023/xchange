@@ -75,11 +75,11 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
   //   },
   // });
   var transport = nodemailer.createTransport({
-    host: `${process.env.SMPT_HOST}`,
+    host: "live.smtp.mailtrap.io",
     port: 587,
     auth: {
       user: "api",
-      pass: `${procee.env.SMPT_PASSWORD}`
+      pass: "23f5021921f2b1beea52ac12a29d6e89"
     }
   });
   const mailOptions = {
