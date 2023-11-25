@@ -143,7 +143,7 @@ const CheckoutArea = () => {
          })
       const data= await res.json();
       if(data.success){
-         toast.success("Mail Send", {
+         toast.success(data.message, {
             position: toast.POSITION.TOP_CENTER
          });
       }else{
