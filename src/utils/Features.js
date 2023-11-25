@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import jwt from 'jsonwebtoken'
 import { serialize } from "cookie";
 import {User} from '../models/user';
-import nodeMailer from 'nodemailer'
+import nodemailer from 'nodemailer'
 import cloudinary from 'cloudinary'
  
 export const connectDB = async () => {
@@ -66,13 +66,21 @@ export const checkAuth = async (req) => {
 // send mail
  
 export const sendEmail = async ({email,emailtype,subject,message}) => {
-  const transporter = nodeMailer.createTransport({
-    host: process.env.SMPT_HOST,
-    port: process.env.SMPT_PORT,
+  // const transporter = nodeMailer.createTransport({
+  //   host: process.env.SMPT_HOST,
+  //   port: process.env.SMPT_PORT,
+  //   auth: {
+  //     user: process.env.SMPT_MAIL,
+  //     pass: process.env.SMPT_PASSWORD,
+  //   },
+  // });
+  var transport = nodemailer.createTransport({
+    host: `${process.env.SMPT_HOST}`,
+    port: 587,
     auth: {
-      user: process.env.SMPT_MAIL,
-      pass: process.env.SMPT_PASSWORD,
-    },
+      user: "api",
+      pass: `${procee.env.SMPT_PASSWORD}`
+    }
   });
   const mailOptions = {
     from: process.env.FROM_MAIL,
@@ -81,6 +89,6 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
     html: message,
   };
 
-  const res=await transporter.sendMail(mailOptions);
+  const res=await transport.sendMail(mailOptions);
 
 }; 
