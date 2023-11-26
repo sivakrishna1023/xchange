@@ -1,10 +1,12 @@
 import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
 
 const forgotpassword = () => {
   const [email, setemail] = useState('');
   const handler = async () => {
-    try {
+    try { 
       const res = await fetch("/api/users/password/settoken", {
         method: "POST",
         headers: {
@@ -15,24 +17,24 @@ const forgotpassword = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
       if (data.success) {
-        // toast.error("Reset Link send to your mail", {
-        //     position: toast.POSITION.TOP_LEFT,
-        //   });
+        toast.error("Reset Link send to your mail", {
+            position: toast.POSITION.TOP_LEFT,
+          });
       } else {
-        // toast.error("Error Try again Later", {
-        //     position: toast.POSITION.TOP_LEFT,
-        //   });
+        toast.error("Error Try again Later", {
+            position: toast.POSITION.TOP_LEFT,
+          });
       }
     } catch (error) {
       console.log(error);
-      //   toast.error("Internal Error Occured, Try Again After Sometimes !", {
-      //     position: toast.POSITION.TOP_LEFT,
-      //   });
+        toast.error("Internal Error Occured, Try Again After Sometimes !", {
+          position: toast.POSITION.TOP_LEFT,
+        });
     }
   }
-  return (
+  return ( <>
+    <ToastContainer />
       <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", padding:"4rem 0"}}>
           <input
             className=" px-4 py-2 mb-4 rounded border border-gray-300 focus:outline-none focus:border-blue-500 focus:shadow-outline"
@@ -50,6 +52,7 @@ const forgotpassword = () => {
             Get Link
           </button>
       </div>
+      </>
   )
 }
 
