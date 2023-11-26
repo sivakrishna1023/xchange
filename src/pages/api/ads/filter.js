@@ -7,23 +7,24 @@ import {Ads} from '../../../models/ads'
 import bcrypt from 'bcrypt';
 
 const handler = asyncError(async (req, res) => {
-        if (req.method !== "GET")
+        if (req.method !== "POST")
         return errorHandler(res, 400, "Only POST Method is allowed");  
         await connectDB();
-        if(!req.body){
-            const ads=Ads.find({});
+        
+        if(req.body.fill===''){
+            const ads= await  Ads.find({});
             await disconnect();
             res.status(200).json({
-                success: true,
-                message: `Welcome back`,
+                success: true, 
+                message: `New Tasks`,
                 ads:[],
               });
         }else{
-            const ads=Ads.find({Category:req.body});
+            const ads= await Ads.find({Category:req.body.fill});
             await disconnect();
             res.status(200).json({
                 success: true,
-                message: `Welcome back`,
+                message: `New tasks`,
                 ads
             });
         }   
