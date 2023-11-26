@@ -18,7 +18,7 @@ const forgotpassword = () => {
       });
       const data = await res.json();
       if (data.success) {
-        toast.error("Reset Link send to your mail", {
+        toast.success("Reset Link send to your mail", {
             position: toast.POSITION.TOP_LEFT,
           });
       } else {
