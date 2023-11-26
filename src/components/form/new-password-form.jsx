@@ -1,5 +1,7 @@
 'use Client'
 import React, { useState } from 'react'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const newpassword = () => {
   const [password,setpassword]=useState('');
@@ -20,12 +22,24 @@ const newpassword = () => {
            })
          })
          const data=await res.json();
-         console.log(data);
+         if(data.success){
+          toast.success("Password Changed", {
+            position: toast.POSITION.TOP_LEFT,
+          });
+         }else{
+          toast.error("Error in changing mail try again later", {
+            position: toast.POSITION.TOP_LEFT,
+          });
+         }
        }catch(error){
-        console.log(error);
+        toast.error("Error in changing mail try again later", {
+          position: toast.POSITION.TOP_LEFT,
+        });
     }
   }
   return (
+
+    <><ToastContainer />
      <div style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", padding:"4rem 0"}}>
      <input
        className=" px-4 py-2 mb-4 rounded border border-gray-300 focus:outline-none focus:border-blue-500 focus:shadow-outline"
@@ -49,6 +63,7 @@ const newpassword = () => {
        Submit
      </button>
  </div>
+ </>
   )
 }
 
