@@ -12,7 +12,7 @@ const CourseArea = () => {
     const createdDate = new Date(createdAt);
 
     if (isNaN(createdDate)) {
-      return <span>Error: Invalid Date</span>;
+      return <span style={{fontSize:"13px"}}>Error: Invalid Date</span>;
     }
 
     const timeDifference = currentTime.getTime() - createdDate.getTime();
@@ -21,11 +21,11 @@ const CourseArea = () => {
     const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
     if (minutesPassed < 60) {
-      return <span>{minutesPassed} minutes ago</span>;
+      return <span style={{fontSize:"13px"}}>{minutesPassed} minutes ago</span>;
     } else if (hoursPassed < 24) {
-      return <span>{hoursPassed} hours ago</span>;
+      return <span style={{fontSize:"13px"}}>{hoursPassed} hours ago</span>;
     } else {
-      return <span>{daysPassed} days ago</span>;
+      return <span style={{fontSize:"13px"}}>{daysPassed} days ago</span>;
     }
   }
   const gettasks = async () => {
@@ -78,7 +78,7 @@ const CourseArea = () => {
                       </Link>
                       <div className="tpcourse__tag">
                         <Link href="#">
-                          <i className="fi fi-rr-heart"></i>
+                          <i className="fi fi-rr-heart" style={{display:"flex", justifyContent:"center", alignItems:"center", width:"40px", height:"40px"}}></i>
                         </Link>
                       </div>
 
@@ -88,6 +88,7 @@ const CourseArea = () => {
                         <ul className="tpcourse__price-list d-flex align-items-center">
                           <li>
                             <Link
+                            style={{padding:"6px 9px", fontSize:"13px"}}
                               className={item.ct_color}
                               href={`/ad-details?id=${item._id}`}
                             >
@@ -96,6 +97,7 @@ const CourseArea = () => {
                           </li>
                           <li>
                             <Link
+                            style={{padding:"6px 9px", fontSize:"13px"}}
                               className={item.cn_color}
                               href={`/ad-details?id=${item._id}`}
                             >
@@ -105,13 +107,13 @@ const CourseArea = () => {
                         </ul>
                       </div>
                       <div className="tpcourse__ava-title mb-15">
-                        <h4 className="tpcourse__title">
+                        <h4 className="tpcourse__title" style={{margin:"0"}}>
                           <Link href={`/ad-details?id=${item._id}`}>{item.Adname}</Link>
                         </h4>
                       </div>
                       <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                         <ul className="d-flex align-items-center">
-                          <li>
+                          <li >
                             <img
                               src="/assets/img/icon/c-meta-01.png"
                               alt="meta-icon"
