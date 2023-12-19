@@ -204,9 +204,9 @@ const SellerPortfolioArea = () => {
                     {tasks && tasks.slice(0, 4).map((item, i) => (
                       <div key={i} className="col-xl-6 col-lg-12 col-md-6">
                         <div className="tpcourse mb-40">
-                          <div className="tpcourse__thumb p-relative w-img fix">
+                          <div className="tpcourse__thumb p-relative w-img fix" style={{ width: "100%", height: "200px", overflow: "hidden" }}>
                             <Link href={`/ad-details?id=${item._id}`}>
-                              {item && item.images && item.images[0] ? <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                              {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "cover", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "cover", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
                             </Link>
                             <div className="tpcourse__tag">
                               <Link href="#">
