@@ -49431,7 +49431,7 @@ div.choose-sub-color {
   width: 100%;
   border-radius: 10px;
 }
-.c-details-thumb::before {
+/* .c-details-thumb::before {
   position: absolute;
   content: "";
   top: 0;
@@ -49440,7 +49440,7 @@ div.choose-sub-color {
   height: 100%;
   border-radius: 10px;
   background: linear-gradient(180deg, rgba(5, 13, 54, 0) 0%, rgba(5, 13, 54, 0.4) 100%);
-}
+} */
 
 .c-details-ava {
   position: absolute;
@@ -49498,7 +49498,7 @@ div.choose-sub-color {
 
 .tp-c-details-title {
   color: var(--tp-heading-primary);
-  font-size: 30px;
+  font-size: 20px;
 }
 @media (max-width: 767px) {
   .tp-c-details-title {
@@ -49530,7 +49530,7 @@ div.choose-sub-color {
 }
 
 .course-avata {
-  width: 190px;
+  /* width: 190px; */
 }
 
 .c-details-list ul li {
@@ -52598,3 +52598,30 @@ p.checkout-coupon input[type=text]:focus {
 .footer-3-col-5 {
   margin-left: 0;
 }/*# sourceMappingURL=main.css.map */
+
+.c-details-thumb {
+  position: relative;
+}
+
+.arrow-container {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.custom-prev-arrow,
+.custom-next-arrow {
+  background-color: #fff; /* Add your background color */
+  color: #000; /* Add your text color */
+  font-size: 24px; /* Add your font size */
+  padding: 5px 10px; /* Add your padding */
+  cursor: pointer;
+}
+
+.custom-prev-arrow {
+  left: 0;
+}
+
+.custom-next-arrow {
+  right: 0;
+}
