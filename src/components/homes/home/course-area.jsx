@@ -72,7 +72,9 @@ const CourseArea = () => {
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                                 <Link href={`/ad-details?id=${item._id}`}>
-                                                                { item.images && item.images[0] &&  item.images[0] ?  <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                                                                  <div style={{width:"100%", height:"250px", overflow:"hidden"}}>
+                                                                { item.images && item.images[0] &&  item.images[0] ?  <img style={{width:"100%",objectFit:"cover",height:"100%"}} src={item.images[0]} alt="course-thumb" /> : <img style={{width:"100%",objectFit:"cover",height:"100%"}} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                                                                  </div>
                                                                 </Link>
                                                                 <div className="tpcourse__tag">
                                                                   <Link href="#">
