@@ -183,11 +183,13 @@ const SellerArea = ({ style_2 }) => {
               {user && user.map((item) => (
                 <div key={item.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30">
-                    <div className="tp-instructor__thumb mb-25">
+                    <div className="tp-instructor__thumb mb-25" style={{width:"100%", height:"300px", overflow:"hidden"}}>
                     { item.avatar ?  <img
+                    style={{width:"100%", height:"100%", objectFit:"cover"}}
                     src= {item.avatar}
                     alt="instructor-thumb"
                   /> : <img
+                  style={{width:"100%", height:"100%", objectFit:"cover"}}
                   src= {imagelink}
                   alt="instructor-thumb"
                 />}
@@ -196,7 +198,7 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span>Seller Since: {item.createdAt}</span>
+                      <span style={{textTransform:"capitalize"}}>Seller Since: <span style={{color:"grey", marginLeft:"5px"}}>{item.createdAt}</span></span>
                       <div className="tp-instructor__social">
                         <ul>
                           {
