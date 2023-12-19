@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import SEO from "../common/seo";
 import Home from "../components/homes/home";
 import Wrapper from "../layout/wrapper";
+import FeedbackBox from "../lib/FeedbackBox";
 
 
 const index = () => {
