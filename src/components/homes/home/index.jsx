@@ -11,6 +11,7 @@ import SuitableArea from "../../../common/suitable-area";
 import TestimonialArea from "./testimonial-area";
 import BlogArea from "./blog-area";
 import BrandArea from "../../../common/brand-area";
+import FeedbackBox from "@/src/lib/FeedbackBox";
 
 const Home = () => {
   return (
