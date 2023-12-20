@@ -110,7 +110,6 @@ const SellerArea = ({ style_2 }) => {
   const [user, setUser] = useState('');
   var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
   const sliderRef = useRef(null);
-  console.log(imagelink);
   const getuser = async () =>{
     try {
       const res = await fetch("/api/users/Allusers", {
