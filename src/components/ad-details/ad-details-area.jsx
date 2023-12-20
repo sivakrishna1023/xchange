@@ -7,6 +7,8 @@ import { useRouter } from 'next/router';
 import Slider from 'react-slick';
 import { FaWhatsapp } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
+import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowForward } from "react-icons/io";
 
 const AdDetailsArea = () => {
    const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -82,14 +84,14 @@ const AdDetailsArea = () => {
    }, [])
 
    const CustomPrevArrow = (props) => (
-      <div {...props} className="slick-arrow custom-prev-arrow" style={{ position: "absolute", top: "50%", left: "0", fontSize: "2rem", padding: "0 1rem", zIndex: "1", color: "black" }}>
-         {'<'}
+      <div {...props} className="slick-arrow custom-prev-arrow" style={{ position: "absolute", top: "50%", left: "0", fontSize: "2rem", padding: "0 1rem", zIndex: "1", color: "black",}}>
+         <IoIosArrowBack />
       </div>
    );
 
    const CustomNextArrow = (props) => (
       <div {...props} className="slick-arrow custom-next-arrow" style={{ position: "absolute", top: "50%", right: "0", fontSize: "2rem", padding: "0 1rem", zIndex: "1", color: "black" }}>
-         {'>'}
+         <IoIosArrowForward />
       </div>
    );
    const settings = {
@@ -97,8 +99,8 @@ const AdDetailsArea = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: true,
-      prevArrow: <CustomPrevArrow />,
-      nextArrow: <CustomNextArrow />,
+      prevArrow: <CustomPrevArrow/>,
+      nextArrow: <CustomNextArrow/>,
    };
    return (
       <>
