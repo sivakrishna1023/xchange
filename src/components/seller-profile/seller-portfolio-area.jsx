@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 
 const SellerPortfolioArea = () => {
   const { user } = useContext(Context);
+  const createdAtDate = new Date(user.createdAt);
+  const year = createdAtDate.getFullYear();
   const router = useRouter();
   var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
   function TimePassed({ createdAt }) {
@@ -127,7 +129,7 @@ const SellerPortfolioArea = () => {
                       {user.firstname} {user.lastname && <span>{user.lastname}</span>}
                     </h4>
                     <p>
-                      Member Since Nov, 2023
+                      Member Since {year}
                     </p>
                   </div>
                 </div>
