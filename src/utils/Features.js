@@ -8,7 +8,7 @@ import cloudinary from 'cloudinary'
 export const connectDB = async () => {
   try{
     const { connection } = await mongoose.connect(process.env.MONGO_URI, {
-      dbName: "Ads123",
+      dbName: "Xchange1",
     });
   }catch(error){
     console.log('error in connecting to database',error);
@@ -74,7 +74,7 @@ export const authfunction=(req,res,next)=>{
       jwt.verify(token,SECRET,(err,user)=>{
           if(err){
               return res.status(403);
-          }
+          } 
           else{
               req.user=user;
               next();
@@ -102,7 +102,6 @@ export const checkAuth = async (req) => {
   await connectDB();
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   const user= await User.findById(decoded._id);
-  await disconnect();
   return user
 };
 
