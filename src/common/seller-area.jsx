@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import React, { useRef, useState,useEffect} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
 
 // instructor_info
@@ -107,30 +107,30 @@ const setting = {
 };
 
 const SellerArea = ({ style_2 }) => {
-  const  [user,setUser]=useState('');
-  var imagelink=`https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
+  const [user, setUser] = useState('');
+  var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
   const sliderRef = useRef(null);
 
-  const getuser=async()=>{
-    try{
-      const res=await fetch("/api/users/Allusers",{
-        method:'GET',
+  const getuser = async () => {
+    try {
+      const res = await fetch("/api/users/Allusers", {
+        method: 'GET',
         headers: {
-          'Content-Type': 'application/json' 
+          'Content-Type': 'application/json'
         },
-       })
-      const data= await res.json();
-      if(data.success){
-          //  console.log(data);
-           setUser(data.users);
-      }  
-    }catch(error){
+      })
+      const data = await res.json();
+      if (data.success) {
+        //  console.log(data);
+        setUser(data.users);
+      }
+    } catch (error) {
       console.log(error);
     }
   }
-  useEffect(()=>{
+  useEffect(() => {
     getuser();
-  },[])
+  }, [])
   return (
     <>
       <section
@@ -179,56 +179,56 @@ const SellerArea = ({ style_2 }) => {
             )}
           </div>
           <div className="intruc-active mb-15 tp-slide-space">
-            <Slider {...setting}  ref={sliderRef}>
+            <Slider {...setting} ref={sliderRef}>
               {user && user.map((item) => (
                 <div key={item.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30">
-                    <div className="tp-instructor__thumb mb-25" style={{width:"100%", height:"300px", overflow:"hidden"}}>
-                    { item.avatar ?  <img
-                    style={{width:"100%", height:"100%", objectFit:"cover"}}
-                    src= {item.avatar}
-                    alt="instructor-thumb"
-                  /> : <img
-                  style={{width:"100%", height:"100%", objectFit:"cover"}}
-                  src= {imagelink}
-                  alt="instructor-thumb"
-                />}
+                    <div className="tp-instructor__thumb mb-25" style={{ width: "100%", height: "300px", overflow: "hidden" }}>
+                      {item.avatar ? <img
+                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                        src={item.avatar}
+                        alt="instructor-thumb"
+                      /> : <img
+                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                        src={imagelink}
+                        alt="instructor-thumb"
+                      />}
                     </div>
                     <div className="tp-instructor__content">
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span style={{textTransform:"capitalize"}}>Seller Since: <span style={{color:"grey", marginLeft:"5px"}}>{item.createdAt}</span></span>
+                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ color: "grey", marginLeft: "5px" }}>{item.createdAt}</span></span>
                       <div className="tp-instructor__social">
                         <ul>
                           {
-                           item.Facebook &&    <li >
-                             <a target={"_blank"} href={item.Facebook}>
-                               <i className={"fab fa-facebook-f"}></i>
-                             </a>
-                           </li>
+                            item.Facebook && <li >
+                              <a target={"_blank"} href={item.Facebook}>
+                                <i className={"fab fa-facebook-f"}></i>
+                              </a>
+                            </li>
                           }
-                            {
-                             item.Youtube &&   <li >
+                          {
+                            item.Youtube && <li >
                               <a target={"_blank"} href={item.Youtube}>
                                 <i className={"fab fa-twitter"}></i>
                               </a>
                             </li>
-                            }
-                            {
-                             item.Instagram && <li >
+                          }
+                          {
+                            item.Instagram && <li >
                               <a target={"_blank"} href={item.Instagram}>
                                 <i className={"fab fa-instagram"}></i>
                               </a>
                             </li>
-                            }
-                            {
-                            item.Twitter &&  <li >
+                          }
+                          {
+                            item.Twitter && <li >
                               <a target={"_blank"} href={item.Twitter}>
                                 <i className={"fab fa-youtube"}></i>
                               </a>
                             </li>
-                            }
+                          }
                           {/* {social_links.map((link, i) => (
                             <li key={i}>
                               <a target={link.target} href={link.link}>

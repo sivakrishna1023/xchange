@@ -3,20 +3,20 @@ import ads_list_data from "@/src/data/ads-list-data";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 
-const  AdListArea = () => {
+const AdListArea = () => {
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
     const createdDate = new Date(createdAt);
-  
+
     if (isNaN(createdDate)) {
       return <span>Error: Invalid Date</span>;
     }
-  
+
     const timeDifference = currentTime.getTime() - createdDate.getTime();
     const minutesPassed = Math.floor(timeDifference / (1000 * 60));
     const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60));
     const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  
+
     if (minutesPassed < 60) {
       return <span>{minutesPassed} minutes ago</span>;
     } else if (hoursPassed < 24) {
@@ -25,11 +25,11 @@ const  AdListArea = () => {
       return <span>{daysPassed} days ago</span>;
     }
   }
-  const [req,setreq]=useState('');
-  const gettasks=async()=>{
-    try{
-      const res=await fetch("/api/ads/Allads",{
-        method:'GET',
+  const [req, setreq] = useState('');
+  const gettasks = async () => {
+    try {
+      const res = await fetch("/api/ads/Allads", {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -58,7 +58,7 @@ const  AdListArea = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fill: req 
+          fill: req
         })
       });
       const data = await res.json();
@@ -71,7 +71,7 @@ const  AdListArea = () => {
       console.log(error);
     }
   };
-  
+
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -117,182 +117,182 @@ const  AdListArea = () => {
                     <div className="col-lg-4 col-md-12 courser-list-width mb-60">
                       <div className="course-sidebar">
                         <div className="country-select">
-                          <select  onClick={(e)=>{setreq(e.target.value)}}   >
-                                                    <option value="select">Select</option>
-                                                    <option value="Mobiles">Mobiles</option>
-                                                    <option value="Electronics">Electronics</option>
-                                                    <option value="Vehicles">Vehicles</option>
-                                                    <option value="Home & Living">Home & Living</option>
-                                                    <option value="Essentials">Essentials</option>
-                                                    <option value="Furniture">Furniture</option>
-                                                    <option value="Properties">Properties</option>
-                                                    <option value="Home Appliance">Home Appliance</option>
+                          <select onClick={(e) => { setreq(e.target.value) }}   >
+                            <option value="select">Select</option>
+                            <option value="Mobiles">Mobiles</option>
+                            <option value="Electronics">Electronics</option>
+                            <option value="Vehicles">Vehicles</option>
+                            <option value="Home & Living">Home & Living</option>
+                            <option value="Essentials">Essentials</option>
+                            <option value="Furniture">Furniture</option>
+                            <option value="Properties">Properties</option>
+                            <option value="Home Appliance">Home Appliance</option>
                           </select>
                         </div>
-                     
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                          Mobiles
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}} type="checkbox" value="Mobiles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Samsung </label>
+
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Mobiles
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Samsung </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Iphone  </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > realme </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}} type="checkbox" value="Mobiles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Iphone  </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Mobiles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > realme </label>
-                        </div> 
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Mobiles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div> 
-                      </div>
-                    </div>
 
 
 
-                   
 
 
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                          Electronics
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Laptop </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Power bank </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Ear Phone's </label>
-                          
-                        
-                        </div> 
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                        Vehicles
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Audi </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > lamborghini </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Nano  </label>
-                        </div> 
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div>
-                      </div>
-                    </div>
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Electronics
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Laptop </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Power bank </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Ear Phone's </label>
 
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                        Home & Living
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > 2BHK </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > 3BHK </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div>
-                      </div>
-                    </div>
 
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                        Furniture
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
-                        </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
-                        </div> 
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div>
-                      </div>
-                    </div>
-                    
 
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                        Home Appliance
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Vehicles
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Audi </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > lamborghini </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Nano  </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
+
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Home & Living
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > 2BHK </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > 3BHK </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
-                        </div> 
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Furniture
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div className="course-sidebar__widget mb-50">
-                      <div className="course-sidebar__info c-info-list">
-                        <h4 className="course-sidebar__title mb-35">
-                        Properties
-                        </h4>
-                        <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Properties" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Land </label>
+
+
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Home Appliance
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
+                            </div>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                       
-                        <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Properties" id="flexCheckDefault" />
-                          <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                        <div className="course-sidebar__widget mb-50">
+                          <div className="course-sidebar__info c-info-list">
+                            <h4 className="course-sidebar__title mb-35">
+                              Properties
+                            </h4>
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Properties" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Land </label>
+                            </div>
+
+                            <div className="form-check">
+                              <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Properties" id="flexCheckDefault" />
+                              <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
 
                         <button onClick={handle_newtaks} className="tp-btn">Submit</button>
                       </div>
@@ -308,17 +308,17 @@ const  AdListArea = () => {
                   <div className="course-sidebar">
                     <div className="country-select">
                       <h4 className="course-sidebar__title mb-35">Category </h4>
-                      <select  onClick={(e)=>{setreq(e.target.value)}}   >
-                                                    <option value="select">Select</option>
-                                                    <option value="Mobiles">Mobiles</option>
-                                                    <option value="Electronics">Electronics</option>
-                                                    <option value="Vehicles">Vehicles</option>
-                                                    <option value="Home & Living">Home & Living</option>
-                                            
-                                                    <option value="Furniture">Furniture</option>
-                                                    <option value="Properties">Properties</option>
-                                                    <option value="Home Appliance">Home Appliance</option>
-                          </select>
+                      <select onClick={(e) => { setreq(e.target.value) }}   >
+                        <option value="select">Select</option>
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Vehicles">Vehicles</option>
+                        <option value="Home & Living">Home & Living</option>
+
+                        <option value="Furniture">Furniture</option>
+                        <option value="Properties">Properties</option>
+                        <option value="Home Appliance">Home Appliance</option>
+                      </select>
                     </div>
 
                     <div className="course-sidebar__widget mb-50">
@@ -327,27 +327,27 @@ const  AdListArea = () => {
                           Mobiles
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Samsung </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}} type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Iphone  </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > realme </label>
-                        </div> 
+                        </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Mobiles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Mobiles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
-                        </div> 
+                        </div>
                       </div>
                     </div>
 
 
 
-                   
+
 
 
                     <div className="course-sidebar__widget mb-50">
@@ -356,21 +356,21 @@ const  AdListArea = () => {
                           Electronics
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Laptop </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Power bank </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Ear Phone's </label>
-                          
-                        
-                        </div> 
+
+
+                        </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Electronics" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Electronics" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
@@ -379,22 +379,22 @@ const  AdListArea = () => {
                     <div className="course-sidebar__widget mb-50">
                       <div className="course-sidebar__info c-info-list">
                         <h4 className="course-sidebar__title mb-35">
-                        Vehicles
+                          Vehicles
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Audi </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > lamborghini </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Nano  </label>
-                        </div> 
+                        </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Vehicles" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Vehicles" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
@@ -403,18 +403,18 @@ const  AdListArea = () => {
                     <div className="course-sidebar__widget mb-50">
                       <div className="course-sidebar__info c-info-list">
                         <h4 className="course-sidebar__title mb-35">
-                        Home & Living
+                          Home & Living
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > 2BHK </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > 3BHK </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home & Living" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home & Living" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
@@ -423,47 +423,47 @@ const  AdListArea = () => {
                     <div className="course-sidebar__widget mb-50">
                       <div className="course-sidebar__info c-info-list">
                         <h4 className="course-sidebar__title mb-35">
-                        Furniture
+                          Furniture
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
-                        </div> 
+                        </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Furniture" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Furniture" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
                     </div>
-                    
+
 
                     <div className="course-sidebar__widget mb-50">
                       <div className="course-sidebar__info c-info-list">
                         <h4 className="course-sidebar__title mb-35">
-                        Home Appliance
+                          Home Appliance
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Sofa</label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Bed </label>
                         </div>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Chair's  </label>
-                        </div> 
+                        </div>
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Home Appliance" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Home Appliance" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
@@ -471,15 +471,15 @@ const  AdListArea = () => {
                     <div className="course-sidebar__widget mb-50">
                       <div className="course-sidebar__info c-info-list">
                         <h4 className="course-sidebar__title mb-35">
-                        Properties
+                          Properties
                         </h4>
                         <div className="form-check">
-                          <input className="form-check-input" onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Properties" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Properties" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Land </label>
                         </div>
-                       
+
                         <div className="form-check">
-                          <input className="form-check-input"  onClick={(e)=>{setreq(e.target.value)}}  type="checkbox" value="Properties" id="flexCheckDefault" />
+                          <input className="form-check-input" onClick={(e) => { setreq(e.target.value) }} type="checkbox" value="Properties" id="flexCheckDefault" />
                           <label className="form-check-label" htmlFor="flexCheckDefault" > Other </label>
                         </div>
                       </div>
@@ -496,8 +496,8 @@ const  AdListArea = () => {
                     <div className="col-xl-4 course-thumb-width">
                       <div className="tpcourse__thumb p-relative w-img fix">
                         <Link href={`/ad-details?id=${item._id}`}>
-                          <div style={{width:"100%", height:"200px", overflow:"hidden"}}>
-                          {item && item.images && item.images[0] ? <img style={{width:"100%",objectFit:"cover",height:"100%"}} src={item.images[0]} alt="course-thumb" /> : <img style={{width:"100%",objectFit:"cover",height:"100%"}} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                          <div style={{ width: "100%", height: "200px", overflow: "hidden" }}>
+                            {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
                           </div>
                         </Link>
                       </div>
@@ -529,7 +529,7 @@ const  AdListArea = () => {
                             <Link href="/course-details">
                               {item.Adname}
                             </Link>
-                          </h4> 
+                          </h4>
                         </div>
                         <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                           <ul className="d-flex align-items-center">
@@ -546,9 +546,9 @@ const  AdListArea = () => {
                         </div>
                         <div className="tpcourse__rating d-flex align-items-center justify-content-between">
 
-                        {tasks.Model}
-               <div className="tpcourse__pricing">
-                            <h5 className="price-title"><i class="fas fa-inr"  style={{marginRight:"0.4rem"}}     ></i>{item.Adprice}</h5>
+                          {tasks.Model}
+                          <div className="tpcourse__pricing">
+                            <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
                           </div>
                         </div>
                       </div>
