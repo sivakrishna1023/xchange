@@ -11,7 +11,7 @@ export const connectDB = async () => {
       dbName: "Ads123",
     });
   }catch(error){
-    console.log('error in connecting to database')
+    console.log('error in connecting to database',error);
   }
 };
 
