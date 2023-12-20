@@ -67,7 +67,7 @@ const CourseArea = () => {
           </div>
           <div className="row justify-content-center">
             <div className="row">
-              {tasks && tasks.slice(0, 6).map((item, i) => (
+              {tasks && tasks.slice(0, 8).map((item, i) => (
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
                     <div className="tpcourse__thumb p-relative w-img fix">
