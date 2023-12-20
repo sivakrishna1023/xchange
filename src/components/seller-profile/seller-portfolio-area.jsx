@@ -12,7 +12,7 @@ const SellerPortfolioArea = () => {
   const createdAtDate = new Date(user.createdAt);
   const year = createdAtDate.getFullYear();
   const router = useRouter();
-  var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
+  var imagelink =  `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
     const createdDate = new Date(createdAt);

@@ -4,7 +4,7 @@ import menu_data from "./menu-data";
 import { Context } from "@/src/components/Clients/clientcomponents";
 const NavMenu = () => {
   const {user,setUser}=useContext(Context);
-  var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
+  var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
   return (
     <>
       <ul>

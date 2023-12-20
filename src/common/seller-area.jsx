@@ -108,10 +108,10 @@ const setting = {
 
 const SellerArea = ({ style_2 }) => {
   const [user, setUser] = useState('');
-  var imagelink = `https://bestprofilepictures.com/wp-content/uploads/2021/08/Amazing-Profile-Picture-for-Facebook.jpg`;
+  var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
   const sliderRef = useRef(null);
-
-  const getuser = async () => {
+  console.log(imagelink);
+  const getuser = async () =>{
     try {
       const res = await fetch("/api/users/Allusers", {
         method: 'GET',
@@ -191,7 +191,7 @@ const SellerArea = ({ style_2 }) => {
                       /> : <img
                         style={{ width: "100%", height: "100%", objectFit: "contain" }}
                         src={imagelink}
-                        alt="instructor-thumb"
+                        alt="instructor"
                       />}
                     </div>
                     <div className="tp-instructor__content">
