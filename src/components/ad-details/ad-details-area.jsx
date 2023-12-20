@@ -228,10 +228,10 @@ const AdDetailsArea = () => {
                                  </div>
                                  <div style={{display:"flex", justifyContent:"space-around"}}>
                                  <div className="cd-pricing-btn text-center" style={{width:"40%"}}>
-                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href="/course-details">Chat Through Whatsapp  <FaWhatsapp size={30} /></Link>
+                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href={`https://wa.me/+91${ad.phone}`}>Chat Through Whatsapp  <FaWhatsapp size={30} /></Link>
                                  </div>
                                  <div className="cd-pricing-btn text-center" style={{width:"40%"}}>
-                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href="/course-details">Call the Seller <IoIosCall size={30}/></Link>
+                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href={`tel:+91${ad.phone}`}>Call the Seller <IoIosCall size={30}/></Link>
                                  </div>
                                                                      
                                  </div>

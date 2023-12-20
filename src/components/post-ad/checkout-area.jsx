@@ -250,8 +250,8 @@ const CheckoutArea = () => {
                                      </div>
                                      <div className="col-md-6">
                                         <div className="checkout-form-list">
-                                           <label>Phone <span className="required">*</span></label>
-                                           <input  required onChange={(e)=>{setphone(e.target.value)}}  type="text" placeholder="Postcode / Zip" />
+                                           <label>Phone (Used for contact purposes) <span className="required">*</span> </label>
+                                           <input  required onChange={(e)=>{setphone(e.target.value)}}  type="text" placeholder="Enter number without (+91)" />
                                         </div>
                                      </div>
                                     
