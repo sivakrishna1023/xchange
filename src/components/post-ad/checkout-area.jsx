@@ -64,6 +64,10 @@ const CheckoutArea = () => {
                toast.success("Your new Ad created", {
                   position: toast.POSITION.TOP_CENTER
                 });
+
+                setTimeout(() => {
+                  window.location.href = '/seller-profile';
+                }, 2000); 
             }else{
                console.log(data);
                toast.error("Failed to post Ad !", {
@@ -115,6 +119,11 @@ const CheckoutArea = () => {
                toast.success("Added to your Draft List...!!", {
                   position: toast.POSITION.TOP_CENTER
                });
+
+               
+               setTimeout(() => {
+                  window.location.href = '/seller-profile';
+                }, 2000);
             }else{
                console.log(data);
                toast.error("Failed to save in  draft!", {
@@ -143,7 +152,7 @@ const CheckoutArea = () => {
          })
       const data= await res.json();
       if(data.success){
-         toast.success(data.message, {
+         toast.success("Verification Link has been sent to your mail", {
             position: toast.POSITION.TOP_CENTER
          });
       }else{
@@ -175,22 +184,26 @@ const CheckoutArea = () => {
     return (
         <>
          <ToastContainer />
-          {
-             user._id ? <section className="checkout-area pt-100 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
-            <center>
-                                 <div className="col-md-3">
-                                                 <div className="checkout-form-list">
-                                                    <label> If Your Not verified Your post is Not Accepted  <span className="required">*</span></label>
-                                                    <input onChange={(e)=>{setverifymail(e.target.value)}}  type="text" placeholder="Please Enter Email to verify" />
-                                                 </div>
+         
+            <center> <br /> <br /> 
+            { user && !user.isverified ?<div>
+                             <div className="col-md-3">
+                                             <div className="checkout-form-list">
+                                                <label> Please get verified to continue  <span className="required">*</span></label>
+                                                <input onChange={(e)=>{setverifymail(e.target.value)}}  type="text" placeholder="Please Enter Email to verify" />
+                                             </div>
 
-                                           </div>
-                                 <div className="col-md-2">
-                                  <div className="order-button-payment mt-20">
-                                     <button  onClick={handle_verify_link}className="tp-btn">Get Link</button>
-                                  </div>
-                                  </div>
-       </center>  <br />
+                                       </div>
+                             <div className="col-md-2">
+                              <div className="order-button-payment mt-20">
+                                 <button  onClick={handle_verify_link}className="tp-btn">Get Link</button>
+                              </div>
+                              </div>
+                  </div> : <div></div> }
+           </center>  <br />
+         
+          {
+             user._id  ? <section className="checkout-area pt-50 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
              <div className="container">
                    <div className="row">
                          <div className="col-lg-6 col-md-12">

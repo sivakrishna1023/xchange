@@ -118,6 +118,10 @@ const Check = () => {
                toast.success("Your Ad Updated", {
                   position: toast.POSITION.TOP_CENTER
                 });
+
+                setTimeout(() => {
+                  window.location.href = '/seller-profile';
+                }, 2000); 
             }else{
                console.log(data);
                toast.error("Failed to update Ad !", {
@@ -178,6 +182,10 @@ const Check = () => {
                toast.success("Your Ad Updated", {
                   position: toast.POSITION.TOP_CENTER
                });
+
+               setTimeout(() => {
+                  window.location.href = '/seller-profile';
+                }, 2000); 
             }else{
                console.log(data);
                toast.error("Failed to Update", {
