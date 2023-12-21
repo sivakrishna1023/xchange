@@ -124,7 +124,7 @@ const SellerArea = ({ style_2 }) => {
     const formattedDate = displayMonthAndYear(createdAt);
   
     return (
-      <span>{formattedDate}</span>
+      <span style={{color:"grey"}}>{formattedDate}</span>
     );
   };
   const [user, setUser] = useState('');
@@ -217,7 +217,7 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ color: "grey", marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span>
+                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span>
                       <div className="tp-instructor__social">
                         <ul>
                           {
