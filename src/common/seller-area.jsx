@@ -107,6 +107,26 @@ const setting = {
 };
 
 const SellerArea = ({ style_2 }) => {
+  const DisplayMonthAndYear = ({ createdAt }) => {
+    const displayMonthAndYear = (createdAt) => {
+      const date = new Date(createdAt);
+      const months = [
+        'Jan', 'Feb', 'March', 'April', 'May', 'Jun', 'July',
+        'Aug', 'Sepr', 'Oct', 'Nov', 'Dec'
+      ];
+  
+      const month = months[date.getMonth()];
+      const year = date.getFullYear();
+  
+      return `${month} ${year}`;
+    };
+  
+    const formattedDate = displayMonthAndYear(createdAt);
+  
+    return (
+      <span>{formattedDate}</span>
+    );
+  };
   const [user, setUser] = useState('');
   var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
   const sliderRef = useRef(null);
@@ -197,7 +217,7 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ color: "grey", marginLeft: "5px" }}>{item.createdAt}</span></span>
+                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ color: "grey", marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span>
                       <div className="tp-instructor__social">
                         <ul>
                           {
