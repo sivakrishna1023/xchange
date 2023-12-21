@@ -12,7 +12,7 @@ const handler = asyncError(async (req, res) => {
         await connectDB();
         
         if(req.body.fill===''){
-            const ads= await  Ads.find({});
+            const ads= await  Ads.find({draft: false});
             await disconnect();
             res.status(200).json({
                 success: true, 
@@ -20,8 +20,9 @@ const handler = asyncError(async (req, res) => {
                 ads:[],
               });
         }else{
-            const ads= await Ads.find({Category:req.body.fill});
+            const ads= await Ads.find({Category:req.body.fill,draft: false});
             await disconnect();
+            // console.log(ads.length());
             res.status(200).json({
                 success: true,
                 message: `New tasks`,
