@@ -115,7 +115,7 @@ const Check = () => {
                })
             const data= await res.json();
             if(data.success){
-               toast.success("Your Ad Updated", {
+               toast.success("Change's Saved", {
                   position: toast.POSITION.TOP_CENTER
                 });
 
@@ -179,7 +179,7 @@ const Check = () => {
                })
             const data= await res.json();
             if(data.success){
-               toast.success("Your Ad Updated", {
+               toast.success("Change's saved", {
                   position: toast.POSITION.TOP_CENTER
                });
 
