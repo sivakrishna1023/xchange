@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
+import imageCompression from 'browser-image-compression';
    
 const Check = () => {
    const [loading,setloading]=useState(false);
@@ -203,50 +204,98 @@ const Check = () => {
          }
    }
    
-const creatingAdimages = (e) => {
-   const files = Array.from(e.target.files);
+   const creatingAdimages = async (e) => {
+      const files = Array.from(e.target.files);
+    
+      for (const file of files) {
+        try {
+          const originalImage = file;
+          console.log('originalFile size', originalImage.size / 1024, 'KB');
+    
+          if (originalImage.size < 100 * 1024) {
+            // If image size is already smaller than 100 KB, use the original image
+            console.log('Image is already smaller than 100 KB. Using original image.');
+            const imageUrl = URL.createObjectURL(originalImage);
+            setImages((old) => [...old, imageUrl]); // Add original image to the state
+            continue; // Move to the next file
+          }
+    
+          if (originalImage.size > 5 * 1024 * 1024) {
+            // If image size is greater than 5 MB, compress to 100 KB
+            // console.log('Image is larger than 5 MB. Compressing to 100 KB.');
+            const options = {
+              maxSizeMB: 0.1, // Set the maximum size to 0.1 MB (100 KB)
+              useWebWorker: true,
+            };
+    
+            const compressedFile = await imageCompression(originalImage, options);
+            // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
+    
+            const compressedImageUrl = URL.createObjectURL(compressedFile);
+            setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
+          } else if (originalImage.size >= 100 * 1024 && originalImage.size <= 5 * 1024 * 1024) {
+            // If image size is between 100 KB and 5 MB, compress to 100 KB
+            console.log('Image is between 100 KB and 5 MB. Compressing to 100 KB.');
+            const options = {
+              maxSizeMB: 0.1, // Set the maximum size to 0.1 MB (100 KB)
+              useWebWorker: true,
+            };
+    
+            const compressedFile = await imageCompression(originalImage, options);
+            console.log('compressedFile size', compressedFile.size / 1024, 'KB');
+    
+            const compressedImageUrl = URL.createObjectURL(compressedFile);
+            setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
+          }
+        } catch (error) {
+          console.error('Compression error:', error);
+        }
+      }
+    };
+// const creatingAdimages = (e) => {
+//    const files = Array.from(e.target.files);
  
-   files.forEach((file) => {
-     const reader = new FileReader();
-     reader.onload = (event) => {
-       const image = new Image();
-       image.src = event.target.result;
+//    files.forEach((file) => {
+//      const reader = new FileReader();
+//      reader.onload = (event) => {
+//        const image = new Image();
+//        image.src = event.target.result;
  
-       image.onload = () => {
-         const canvas = document.createElement('canvas');
-         let width = image.width;
-         let height = image.height;
-         canvas.width = width;
-         canvas.height = height;
+//        image.onload = () => {
+//          const canvas = document.createElement('canvas');
+//          let width = image.width;
+//          let height = image.height;
+//          canvas.width = width;
+//          canvas.height = height;
  
-         const ctx = canvas.getContext('2d');
-         ctx.drawImage(image, 0, 0, width, height);
+//          const ctx = canvas.getContext('2d');
+//          ctx.drawImage(image, 0, 0, width, height);
 
-         const compressedImages = [
-           canvas.toDataURL('image/jpeg', 0.1),
-           canvas.toDataURL('image/jpeg', 0.2),
-           canvas.toDataURL('image/jpeg', 0.3),
-           canvas.toDataURL('image/jpeg', 0.4),
-           canvas.toDataURL('image/jpeg', 0.5),
-           canvas.toDataURL('image/jpeg', 0.6),
-           canvas.toDataURL('image/jpeg', 0.7),
-           canvas.toDataURL('image/jpeg', 0.8),
-           canvas.toDataURL('image/jpeg', 0.9),
-         ];
-         let selectedImage = event.target.result;
-         for (let i = 0; i < compressedImages.length; i++) {
-           if (compressedImages[i].length <= 100 * 1024) {
-             selectedImage = compressedImages[i];
-           } else {
-             break;
-           }
-         }
-         setImages((old) => [...old, selectedImage]);
-       };
-     };
-     reader.readAsDataURL(file);
-   });
- };
+//          const compressedImages = [
+//            canvas.toDataURL('image/jpeg', 0.1),
+//            canvas.toDataURL('image/jpeg', 0.2),
+//            canvas.toDataURL('image/jpeg', 0.3),
+//            canvas.toDataURL('image/jpeg', 0.4),
+//            canvas.toDataURL('image/jpeg', 0.5),
+//            canvas.toDataURL('image/jpeg', 0.6),
+//            canvas.toDataURL('image/jpeg', 0.7),
+//            canvas.toDataURL('image/jpeg', 0.8),
+//            canvas.toDataURL('image/jpeg', 0.9),
+//          ];
+//          let selectedImage = event.target.result;
+//          for (let i = 0; i < compressedImages.length; i++) {
+//            if (compressedImages[i].length <= 100 * 1024) {
+//              selectedImage = compressedImages[i];
+//            } else {
+//              break;
+//            }
+//          }
+//          setImages((old) => [...old, selectedImage]);
+//        };
+//      };
+//      reader.readAsDataURL(file);
+//    });
+//  };
  
    // const creatingAdimages=(e)=>{
    //    const files=Array.from(e.target.files);
