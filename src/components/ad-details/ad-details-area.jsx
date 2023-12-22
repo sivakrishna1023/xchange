@@ -17,6 +17,7 @@ const AdDetailsArea = () => {
    const [ad, setad] = useState();
    const [aduser, setaduser] = useState();
    const router = useRouter();
+   const [loading,setloading]=useState(false);
    var imagelink =  `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
    function TimePassed({ createdAt }) {
       const currentTime = new Date();
@@ -49,6 +50,7 @@ const AdDetailsArea = () => {
       // if (token === ) {
       //    router.replace('/sign-in');
       // }
+      setloading(true);
       try {
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
          const token = localStorage.getItem('token');
@@ -80,8 +82,10 @@ const AdDetailsArea = () => {
                console.log(error);
             }
          }
+         setloading(false);
       } catch (error) {
          console.log(error);
+         setloading(false);
       }
    }
    useEffect(() => {
@@ -107,6 +111,13 @@ const AdDetailsArea = () => {
       prevArrow: <CustomPrevArrow/>,
       nextArrow: <CustomNextArrow/>,
    };
+   if(loading===true){
+      return(
+         <> 
+         <center> <h3>Please wait...</h3>   </center>
+         </>
+       )
+   }
    return (
       <>
          <>

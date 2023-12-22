@@ -107,6 +107,7 @@ const setting = {
 };
 
 const SellerArea = ({ style_2 }) => {
+  const [loading,setloading]=useState(false);
   const DisplayMonthAndYear = ({ createdAt }) => {
     const displayMonthAndYear = (createdAt) => {
       const date = new Date(createdAt);
@@ -131,6 +132,7 @@ const SellerArea = ({ style_2 }) => {
   var imagelink = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
   const sliderRef = useRef(null);
   const getuser = async () =>{
+    setloading(true);
     try {
       const res = await fetch("/api/users/Allusers", {
         method: 'GET',
@@ -143,13 +145,21 @@ const SellerArea = ({ style_2 }) => {
         //  console.log(data);
         setUser(data.users);
       }
+      setloading(false);
     } catch (error) {
-      console.log(error);
+     setloading(false);
     }
   }
   useEffect(() => {
     getuser();
   }, [])
+  if(loading===true){
+    return(
+       <> 
+       <center> <h3>Loading...</h3>   </center>
+       </>
+     )
+ }
   return (
     <>
       <section

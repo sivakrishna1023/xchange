@@ -6,6 +6,7 @@ import { Context } from "../../Clients/clientcomponents";
 
 const CourseArea = () => {
   const currtime = Date.now();
+  const [loading,setloading]=useState(false);
   const { user } = useContext(Context);
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
@@ -29,6 +30,7 @@ const CourseArea = () => {
     }
   }
   const gettasks = async () => {
+    setloading(true);
     try {
       const res = await fetch("/api/ads/Allads", {
         method: 'GET',
@@ -40,14 +42,16 @@ const CourseArea = () => {
       if (data.success) {
         settasks(data.ads);
       }
+      setloading(false);
     } catch (error) {
-      console.log(error);
+      setloading(false);
     }
   }
   const [tasks, settasks] = useState('');
   useEffect(() => {
     gettasks();
   }, [])
+  
   return (
     <>
       <section
@@ -67,7 +71,7 @@ const CourseArea = () => {
           </div>
           <div className="row justify-content-center">
             <div className="row">
-              {tasks && tasks.slice(0, 8).map((item, i) => (
+              {tasks && !loading ? tasks.slice(0, 8).map((item, i) => (
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
                     <div className="tpcourse__thumb p-relative w-img fix">
@@ -141,7 +145,7 @@ const CourseArea = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              )) : <div> <center> <h3>Loading ...</h3>  </center></div>  }
             </div>
           </div>
           <div className="row text-center">
