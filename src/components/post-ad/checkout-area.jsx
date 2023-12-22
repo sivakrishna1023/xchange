@@ -174,7 +174,71 @@ const CheckoutArea = () => {
       setloading(false);
    }
 }
+
+
 const creatingAdimages = (e) => {
+   const files = Array.from(e.target.files);
+ 
+   files.forEach((file) => {
+     const reader = new FileReader();
+     reader.onload = (event) => {
+       const image = new Image();
+       image.src = event.target.result;
+ 
+       image.onload = () => {
+         const canvas = document.createElement('canvas');
+         let width = image.width;
+         let height = image.height;
+         canvas.width = width;
+         canvas.height = height;
+ 
+         const ctx = canvas.getContext('2d');
+         ctx.drawImage(image, 0, 0, width, height);
+ 
+         const compressedImages = {
+           jpeg: [
+             canvas.toDataURL('image/jpeg', 0.1),
+             canvas.toDataURL('image/jpeg', 0.5),
+             // ... (other quality levels for JPEG)
+           ],
+           png: [
+             canvas.toDataURL('image/png', 0.1),
+             canvas.toDataURL('image/png', 0.7),
+             // ... (other quality levels for PNG)
+           ],
+         };
+ 
+         let selectedImage = event.target.result;
+         console.log(selectedImage.length);
+ 
+         // JPEG Compression
+         for (let i = 0; i < compressedImages.jpeg.length; i++) {
+           if (compressedImages.jpeg[i].length <= 100 * 1024) {
+             selectedImage = compressedImages.jpeg[i];
+           } else {
+             break;
+           }
+         }
+ 
+         // If JPEG compression didn't meet size requirement, try PNG compression
+         if (selectedImage.length > 100 * 1024) {
+           for (let i = 0; i < compressedImages.png.length; i++) {
+             if (compressedImages.png[i].length <= 100 * 1024) {
+               selectedImage = compressedImages.png[i];
+               break;
+             }
+           }
+         }
+         console.log(selectedImage.length);
+         setImages((old) => [...old, selectedImage]);
+         // Perform the necessary action with selectedImage (e.g., setImages)
+       };
+     };
+     reader.readAsDataURL(file);
+   });
+ };
+ 
+const creatingAdimages1 = (e) => {
    const files = Array.from(e.target.files);
  
    files.forEach((file) => {
@@ -205,6 +269,7 @@ const creatingAdimages = (e) => {
            canvas.toDataURL('image/jpeg', 0.9),
          ];
          let selectedImage = event.target.result;
+         console.log(selectedImage.length);
          for (let i = 0; i < compressedImages.length; i++) {
            if (compressedImages[i].length <= 100 * 1024) {
              selectedImage = compressedImages[i];
@@ -212,6 +277,7 @@ const creatingAdimages = (e) => {
              break;
            }
          }
+         console.log(selectedImage.length);
          setImages((old) => [...old, selectedImage]);
        };
      };
