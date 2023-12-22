@@ -7,6 +7,7 @@ import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
    
 const Check = () => {
+   const [loading,setloading]=useState(false);
    const [ad,setad]=useState({
       Category:'',
       Adname:'',
@@ -73,6 +74,7 @@ const Check = () => {
       get_ad_details();
     }, [])
    const handler=async()=>{
+      setloading(true);
       setdraft(false);
          try{ 
             const queryParams = new URLSearchParams(window.location.search);
@@ -118,12 +120,12 @@ const Check = () => {
                toast.success("Change's Saved", {
                   position: toast.POSITION.TOP_CENTER
                 });
-
+                setloading(false);
                 setTimeout(() => {
                   window.location.href = '/seller-profile';
                 }, 2000); 
             }else{
-               console.log(data);
+               setloading(false);
                toast.error("Failed to update Ad !", {
                   position: toast.POSITION.TOP_CENTER
                 });
@@ -132,10 +134,11 @@ const Check = () => {
              toast.error("Connection failed try again later !", {
                position: toast.POSITION.TOP_CENTER
              });
-             console.log(error);
+             setloading(false);
          }
    }
    const draft_handler= async()=>{
+      setloading(true);
       setdraft(true);
       const queryParams = new URLSearchParams(window.location.search);
       const id = queryParams.get('id'); 
@@ -145,7 +148,7 @@ const Check = () => {
        }else{
           vals=images;
        }
-       console.log(vals);
+       
             try{
                const token = localStorage.getItem('token');
                const res=await fetch(`/api/ads/update`,{
@@ -182,12 +185,12 @@ const Check = () => {
                toast.success("Change's saved", {
                   position: toast.POSITION.TOP_CENTER
                });
-
+               setloading(false);
                setTimeout(() => {
                   window.location.href = '/seller-profile';
                 }, 2000); 
             }else{
-               console.log(data);
+               setloading(false);
                toast.error("Failed to Update", {
                   position: toast.POSITION.TOP_CENTER
                });
@@ -196,22 +199,68 @@ const Check = () => {
             toast.error("Connection failed try again later !", {
                position: toast.POSITION.TOP_CENTER
             });
-            console.log(error);
+           setloading(false);
          }
    }
-   const creatingAdimages=(e)=>{
-      const files=Array.from(e.target.files);
-      files.forEach((file)=>{
-         var reader=new FileReader();
-         reader.readAsDataURL(file);
-         reader.onload=()=>{
-            setImages((old)=>[...old,reader.result]);
+   
+const creatingAdimages = (e) => {
+   const files = Array.from(e.target.files);
+ 
+   files.forEach((file) => {
+     const reader = new FileReader();
+     reader.onload = (event) => {
+       const image = new Image();
+       image.src = event.target.result;
+ 
+       image.onload = () => {
+         const canvas = document.createElement('canvas');
+         let width = image.width;
+         let height = image.height;
+         canvas.width = width;
+         canvas.height = height;
+ 
+         const ctx = canvas.getContext('2d');
+         ctx.drawImage(image, 0, 0, width, height);
+
+         const compressedImages = [
+           canvas.toDataURL('image/jpeg', 0.1),
+           canvas.toDataURL('image/jpeg', 0.2),
+           canvas.toDataURL('image/jpeg', 0.3),
+           canvas.toDataURL('image/jpeg', 0.4),
+           canvas.toDataURL('image/jpeg', 0.5),
+           canvas.toDataURL('image/jpeg', 0.6),
+           canvas.toDataURL('image/jpeg', 0.7),
+           canvas.toDataURL('image/jpeg', 0.8),
+           canvas.toDataURL('image/jpeg', 0.9),
+         ];
+         let selectedImage = event.target.result;
+         for (let i = 0; i < compressedImages.length; i++) {
+           if (compressedImages[i].length <= 100 * 1024) {
+             selectedImage = compressedImages[i];
+           } else {
+             break;
+           }
          }
-         reader.onerror=(error)=>{
-            console.log('Error in uploading the Images...!!',error);
-         }
-      })
-   }
+         setImages((old) => [...old, selectedImage]);
+       };
+     };
+     reader.readAsDataURL(file);
+   });
+ };
+ 
+   // const creatingAdimages=(e)=>{
+   //    const files=Array.from(e.target.files);
+   //    files.forEach((file)=>{
+   //       var reader=new FileReader();
+   //       reader.readAsDataURL(file);
+   //       reader.onload=()=>{
+   //          setImages((old)=>[...old,reader.result]);
+   //       }
+   //       reader.onerror=(error)=>{
+   //          console.log('Error in uploading the Images...!!',error);
+   //       }
+   //    })
+   // }
             useEffect(() => {
               setcountry(ad.country);
               setName(ad.Name);
@@ -231,7 +280,14 @@ const Check = () => {
               setCondition(ad.Condition);
               setNegotable(ad.Negotable);
              }, [ad])
-   
+
+             if(loading===true){
+               return(
+                  <> 
+                  <center> <h3>Please wait...</h3>   </center>
+                  </>
+                )
+            }   
     return (
         <>
          <ToastContainer />

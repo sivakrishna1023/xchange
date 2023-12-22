@@ -128,7 +128,7 @@ const SellerArea = ({ style_2 }) => {
     );
   };
   const [user, setUser] = useState('');
-  var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
+  var imagelink = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
   const sliderRef = useRef(null);
   const getuser = async () =>{
     try {

@@ -15,6 +15,7 @@ const LoginForm = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading,setloading]=useState(false);
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
@@ -22,6 +23,7 @@ const LoginForm = () => {
   const { user, setUser } = useContext(Context);
   const router = useRouter();
   const handler = async (e) => {
+    setloading(true);
     e.preventDefault();
     try {
       console.log("Trying to Login...!!");
@@ -43,6 +45,7 @@ const LoginForm = () => {
         });
         setUser(data.user);
         localStorage.setItem('token', data.token);
+        setloading(false);
         setTimeout(() => {
              window.location.href='/';
         }, 1000);
@@ -57,9 +60,10 @@ const LoginForm = () => {
             position: toast.POSITION.TOP_CENTER,
           });
         }
+        setloading(false);
       }
     } catch (error) {
-      console.log(error);
+      setloading(false);
       toast.error("Internal Error Occured, Try Again After Sometimes !", {
         position: toast.POSITION.TOP_LEFT,
       });
@@ -68,7 +72,13 @@ const LoginForm = () => {
   if (user._id) {
     <Script id="redirect">{`document.location.href="/";`}</Script>;
   }
-
+  if(loading===true){
+    return(
+       <> 
+       <center> <h3>Please wait...</h3>   </center>
+       </>
+     )
+ }   
   return (
     <>
       <ToastContainer />
@@ -77,6 +87,7 @@ const LoginForm = () => {
         data-wow-duration=".8s"
         data-wow-delay=".5s"
       >
+     
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">

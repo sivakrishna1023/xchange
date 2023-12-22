@@ -227,7 +227,7 @@ const AdDetailsArea = () => {
                                     <a href="#"><i className="fa-brands fa-instagram"></i></a>
                                     <a href="#"><i className="fa-brands fa-youtube"></i></a>
                                  </div>
-                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : Address</div>
+                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.Address}</div>
                                  <div className="cd-pricing-btn text-center mb-30">
                                     <Link className="tp-vp-btn-green" href="/course-details">Chat With Seller</Link>
                                  </div>

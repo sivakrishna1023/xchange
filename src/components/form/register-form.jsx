@@ -14,11 +14,13 @@ const RegisterhtmlForm = () => {
   const [email,setemail]=useState('');
   const [password,setpassword]=useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading,setloading]=useState(false);
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
   const router= useRouter();
   const handlesubmit= async(e)=>{
+    setloading(true);
     e.preventDefault();
     try{
       const token = localStorage.getItem('token');
@@ -43,6 +45,7 @@ const RegisterhtmlForm = () => {
              toast.success("Created Account", {
               position: toast.POSITION.TOP_CENTER
              });
+             setloading(false);
             setTimeout(() => {
               window.location.href='/';
             }, 1000);
@@ -50,14 +53,22 @@ const RegisterhtmlForm = () => {
           toast.error("Failed to Register !", {
             position: toast.POSITION.TOP_CENTER
           });
+          setloading(false);
         }
     }catch(error){
-      console.log(error);
+      setloading(false);
       toast.error("Internal Error Occured, Try Again After Sometimes !", {
         position: toast.POSITION.TOP_LEFT
       });
     }
   }
+  if(loading===true){
+    return(
+       <> 
+       <center> <h3>Please wait...</h3>   </center>
+       </>
+     )
+ }   
   return (
     <>
       <ToastContainer />

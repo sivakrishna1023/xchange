@@ -2,6 +2,7 @@
 import React, {useState,useContext,useEffect} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import {Spinner} from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
@@ -28,7 +29,9 @@ const CheckoutArea = () => {
    const [phone,setphone]=useState('');
    const [images, setImages] = useState([]);
    const [verifymail,setverifymail]=useState('');
+   const [loading,setloading]=useState(false);
    const handler=async()=>{
+      setloading(true);
          try{
                const token = localStorage.getItem('token');
                const res=await fetch(`/api/ads/Newads`,{
@@ -64,25 +67,26 @@ const CheckoutArea = () => {
                toast.success("Your new Ad created", {
                   position: toast.POSITION.TOP_CENTER
                 });
-
+               setloading(false);
                 setTimeout(() => {
                   window.location.href = '/seller-profile';
-                }, 2000); 
+                }, 1000); 
             }else{
-               console.log(data);
+               setloading(false);
                toast.error("Failed to post Ad !", {
                   position: toast.POSITION.TOP_CENTER
                 });
             }
          }catch(error){
+            setloading(false);
              toast.error("Connection failed try again later !", {
                position: toast.POSITION.TOP_CENTER
              });
-             console.log(error);
          }
    }
   
    const draft_handler= async()=>{
+         setloading(true);
          setdraft(true);
             try{
                const token = localStorage.getItem('token');
@@ -119,13 +123,12 @@ const CheckoutArea = () => {
                toast.success("Added to your Draft List...!!", {
                   position: toast.POSITION.TOP_CENTER
                });
-
-               
+               setloading(false);
                setTimeout(() => {
                   window.location.href = '/seller-profile';
-                }, 2000);
+                }, 1000);
             }else{
-               console.log(data);
+               setloading(false);
                toast.error("Failed to save in  draft!", {
                   position: toast.POSITION.TOP_CENTER
                });
@@ -134,10 +137,11 @@ const CheckoutArea = () => {
             toast.error("Connection failed try again later !", {
                position: toast.POSITION.TOP_CENTER
             });
-            console.log(error);
+            setloading(false);
          }
    }
    const handle_verify_link= async ()=>{
+      setloading(true);
       try{
          const token = localStorage.getItem('token');
          const res=await fetch(`/api/users/verifytoken`,{
@@ -155,31 +159,84 @@ const CheckoutArea = () => {
          toast.success("Verification Link has been sent to your mail", {
             position: toast.POSITION.TOP_CENTER
          });
+         setloading(false);
       }else{
          console.log(data);
          toast.error("Unable to send Mail", {
             position: toast.POSITION.TOP_CENTER
          });
+         setloading(false);
       }
    }catch(error){
       toast.error("Connection failed try again later !", {
          position: toast.POSITION.TOP_CENTER
       });
-      console.log(error);
+      setloading(false);
    }
-   }
-   const creatingAdimages=(e)=>{
-      const files=Array.from(e.target.files);
-      files.forEach((file)=>{
-         var reader=new FileReader();
-         reader.readAsDataURL(file);
-         reader.onload=()=>{
-            setImages((old)=>[...old,reader.result]);
+}
+const creatingAdimages = (e) => {
+   const files = Array.from(e.target.files);
+ 
+   files.forEach((file) => {
+     const reader = new FileReader();
+     reader.onload = (event) => {
+       const image = new Image();
+       image.src = event.target.result;
+ 
+       image.onload = () => {
+         const canvas = document.createElement('canvas');
+         let width = image.width;
+         let height = image.height;
+         canvas.width = width;
+         canvas.height = height;
+ 
+         const ctx = canvas.getContext('2d');
+         ctx.drawImage(image, 0, 0, width, height);
+
+         const compressedImages = [
+           canvas.toDataURL('image/jpeg', 0.1),
+           canvas.toDataURL('image/jpeg', 0.2),
+           canvas.toDataURL('image/jpeg', 0.3),
+           canvas.toDataURL('image/jpeg', 0.4),
+           canvas.toDataURL('image/jpeg', 0.5),
+           canvas.toDataURL('image/jpeg', 0.6),
+           canvas.toDataURL('image/jpeg', 0.7),
+           canvas.toDataURL('image/jpeg', 0.8),
+           canvas.toDataURL('image/jpeg', 0.9),
+         ];
+         let selectedImage = event.target.result;
+         for (let i = 0; i < compressedImages.length; i++) {
+           if (compressedImages[i].length <= 150 * 1024) {
+             selectedImage = compressedImages[i];
+           } else {
+             break;
+           }
          }
-         reader.onerror=(error)=>{
-            console.log('Error in uploading the Images...!!',error);
-         }
-      })
+         setImages((old) => [...old, selectedImage]);
+       };
+     };
+     reader.readAsDataURL(file);
+   });
+ };
+   // const creatingAdimages=(e)=>{
+   //    const files=Array.from(e.target.files);
+   //    files.forEach((file)=>{
+   //       var reader=new FileReader();
+   //       reader.readAsDataURL(file);
+   //       reader.onload=()=>{
+   //          setImages((old)=>[...old,reader.result]);
+   //       }
+   //       reader.onerror=(error)=>{
+   //          console.log('Error in uploading the Images...!!',error);
+   //       }
+   //    })
+   // }
+   if(loading===true){
+      return(
+         <> 
+         <center> <h3>Please wait...</h3>   </center>
+         </>
+       )
    }
     return (
         <>
@@ -199,11 +256,11 @@ const CheckoutArea = () => {
                                  <button  onClick={handle_verify_link}className="tp-btn">Get Link</button>
                               </div>
                               </div>
-                  </div> : <div></div> }
+                  </div> : <div> </div> }
            </center>  <br />
          
           {
-             user._id  ? <section className="checkout-area pt-50 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+             user._id ? <section className="checkout-area pt-50 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
              <div className="container">
                    <div className="row">
                          <div className="col-lg-6 col-md-12">
@@ -214,6 +271,7 @@ const CheckoutArea = () => {
                                         <div className="country-select">
                                            <label>Country<span className="required">*</span></label>
                                            <select required onClick={(e)=>{setcountry(e.target.value)}}  >
+                                                 <option value="India">select</option>
                                                  <option value="India">India</option>
                                                  <option value="Us">Us</option>
                                                  <option value="Canada">Canada</option>
@@ -279,7 +337,7 @@ const CheckoutArea = () => {
                                                  <div className="country-select">
                                                     <label>Category <span className="required">*</span></label>
                                                     <select  required onClick={(e)=>{setCategory(e.target.value)}}   >
-                                                    <option value="select">Select</option>
+                                                    <option value="Mobiles">Select</option>
                                                     <option value="Mobiles">Mobiles</option>
                                                     <option value="Electronics">Electronics</option>
                                                     <option value="Vehicles">Vehicles</option>
@@ -333,6 +391,7 @@ const CheckoutArea = () => {
                                                  <div className="country-select">
                                                     <label>Condition <span className="required">*</span></label>
                                                     <select  required onClick={(e)=>{setCondition(e.target.value)}}  >
+                                                       <option value="Good">Select</option>
                                                        <option value="Good">Good</option>
                                                        <option value="Bad">Bad</option>
                                                        <option value="New">New</option>
@@ -346,6 +405,7 @@ const CheckoutArea = () => {
                                                  <div className="country-select">
                                                     <label>Negotiable <span className="required">*</span></label>
                                                     <select  required onClick={(e)=>{setNegotable(e.target.value)}} >
+                                                      <option value="Yes">select</option>
                                                        <option value="Yes">Yes</option>
                                                        <option value="Noo">No</option>
                                                     </select>

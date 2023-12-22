@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
-    "@nextui-org/react": "^2.1.13",
+    "@nextui-org/react": "^2.2.9",
     "@swc/helpers": "^0.5.3",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.2.3",

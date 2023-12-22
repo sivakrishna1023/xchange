@@ -5,10 +5,12 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const newpassword = () => {
   const [password,setpassword]=useState('');
+  const [loading,setloading]=useState(false);
   const handler= async ()=>{
     const queryParams = new URLSearchParams(window.location.search);
     const token = queryParams.get('token');
     const email = queryParams.get('email');
+    setloading(true);
     try{
         const res=await fetch(`/api/users/password/id=${token}`,{
           method:'POST',
@@ -26,17 +28,27 @@ const newpassword = () => {
           toast.success("Password Changed", {
             position: toast.POSITION.TOP_LEFT,
           });
+          setloading(false);
          }else{
           toast.error("Error in changing mail try again later", {
             position: toast.POSITION.TOP_LEFT,
           });
+          setloading(false);
          }
        }catch(error){
         toast.error("Error in changing mail try again later", {
           position: toast.POSITION.TOP_LEFT,
         });
+        setloading(false);
     }
   }
+  if(loading===true){
+    return(
+       <> 
+       <center> <h3>Please wait...</h3>   </center>
+       </>
+     )
+ }   
   return (
 
     <><ToastContainer />

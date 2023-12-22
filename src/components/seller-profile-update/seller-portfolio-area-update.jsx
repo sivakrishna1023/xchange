@@ -7,6 +7,7 @@ import { Context } from "../Clients/clientcomponents";
 
 const SellerPortfolioAreaUpdate = () => {
   const {user}=useContext(Context);
+  const [loading,setloading]=useState(false);
   if(!user){
     return <>
     <center> Loading please wait...!!</center>
@@ -81,21 +82,68 @@ const SellerPortfolioAreaUpdate = () => {
     setTwitter(initialTwitter)
     setReddit(initialTwitter)
   },[user])
-  const creatingavatarimages=(e)=>{
-    const files=Array.from(e.target.files);
-    setImages('');
-    files.forEach((file)=>{
-       var reader=new FileReader();
-       reader.readAsDataURL(file);
-       reader.onload=()=>{
-          setImages(reader.result);
-       }
-       reader.onerror=(error)=>{
-          console.log('Error in uploading the Images...!!',error);
-       }
-    })
- }
+  
+const creatingavatarimages = (e) => {
+  const files = Array.from(e.target.files);
+  setImages('');
+  files.forEach((file) => {
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const image = new Image();
+      image.src = event.target.result;
+
+      image.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = image.width;
+        let height = image.height;
+        canvas.width = width;
+        canvas.height = height;
+
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(image, 0, 0, width, height);
+
+        const compressedImages = [
+          canvas.toDataURL('image/jpeg', 0.1),
+          canvas.toDataURL('image/jpeg', 0.2),
+          canvas.toDataURL('image/jpeg', 0.3),
+          canvas.toDataURL('image/jpeg', 0.4),
+          canvas.toDataURL('image/jpeg', 0.5),
+          canvas.toDataURL('image/jpeg', 0.6),
+          canvas.toDataURL('image/jpeg', 0.7),
+          canvas.toDataURL('image/jpeg', 0.8),
+          canvas.toDataURL('image/jpeg', 0.9),
+        ];
+        let selectedImage = event.target.result;
+        for (let i = 0; i < compressedImages.length; i++) {
+          if (compressedImages[i].length <= 300 * 1024) {
+            selectedImage = compressedImages[i];
+          } else {
+            break;
+          }
+        }
+        setImages(selectedImage);
+      };
+    };
+    reader.readAsDataURL(file);
+  });
+};
+
+//   const creatingavatarimages=(e)=>{
+//     const files=Array.from(e.target.files);
+//     setImages('');
+//     files.forEach((file)=>{
+//        var reader=new FileReader();
+//        reader.readAsDataURL(file);
+//        reader.onload=()=>{
+//           setImages(reader.result);
+//        }
+//        reader.onerror=(error)=>{
+//           console.log('Error in uploading the Images...!!',error);
+//        }
+//     })
+//  }
   const handlesubmit= async()=>{
+    setloading(true);
     try{
       var vals='';
      if (JSON.stringify(avatar) === JSON.stringify(vals)) {
@@ -132,13 +180,20 @@ const SellerPortfolioAreaUpdate = () => {
       })
    const data= await res.json();
    if(data.success){
+        setloading(false);
         router.replace('/seller-profile')
    }
 }catch(error){
-   console.log(error);
+   setloading(false);
 }
   }
-
+  if(loading===true){
+    return(
+       <> 
+       <center> <h3>Please wait...</h3>   </center>
+       </>
+     )
+ }   
   return (
     <>
       {user && <section
