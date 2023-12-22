@@ -1,5 +1,8 @@
+'use client'
 import React,{useState} from "react";
-
+import Link from "next/link";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const ContactForm = () => {
   const [email,setemail]=useState('');
   const [name,setname]=useState('');
@@ -18,12 +21,20 @@ const ContactForm = () => {
          })
         })
         const data=await res.json();
+        if(data.success){
+          toast.success("Thank You For valuable Feedback", {
+            position: toast.POSITION.TOP_CENTER
+          });
+        }
     }catch(error){
-      console.log(error);
+      toast.success("Try again later", {
+        position: toast.POSITION.TOP_CENTER
+      });
     }
-  }
+  } 
   return (
     <>
+      <ToastContainer />
       <section
         className="contact-area pb-60 wow fadeInUp"
         data-wow-duration=".8s"
@@ -37,10 +48,7 @@ const ContactForm = () => {
                   <h5 className="contact-title mb-30">Send Us Message</h5>
                 </div>
                 <div className="contact-form">
-                  <form
-                    id="contact-form"
-                    method="POST"
-                  >
+                  
                     <div className="row">
                       <div className="col-md-6">
                         <div className="contact-form-input mb-25">
@@ -81,7 +89,7 @@ const ContactForm = () => {
                         </button>
                       </div>
                     </div>
-                  </form>
+                  
                   <p className="ajax-response"></p>
                 </div>
               </div>

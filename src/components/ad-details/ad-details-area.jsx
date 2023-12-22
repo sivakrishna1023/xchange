@@ -39,11 +39,16 @@ const AdDetailsArea = () => {
          return <span>{daysPassed} days ago</span>;
       }
    }
-   const getdetails = async () => {
-      const token = localStorage.getItem('token');
-      if (token === 'null') {
-         router.replace('/sign-in');
+   setTimeout(() => {
+      if(localStorage.getItem('token')==='null'){
+         window.location.href='/sign-in';
       }
+    }, 1000);
+   const getdetails = async () => {
+      // const token = localStorage.getItem('token');
+      // if (token === ) {
+      //    router.replace('/sign-in');
+      // }
       try {
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
          const token = localStorage.getItem('token');
