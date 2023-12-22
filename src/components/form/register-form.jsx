@@ -38,14 +38,14 @@ const RegisterhtmlForm = () => {
         const data=await res.json();
         console.log(data);
         if(data.success){
-             const newtoken=data.token;
-             localStorage.setItem("token",newtoken);
-             router.replace('/');
-             localStorage.setItem('token', data.token); console.log("i am clicked");
+             localStorage.setItem('token', data.token); 
              setUser(data.user);
-             toast.success("Created Account please get varified from Gmail", {
+             toast.success("Created Account", {
               position: toast.POSITION.TOP_CENTER
-            });
+             });
+            setTimeout(() => {
+              window.location.href='/';
+            }, 1000);
         }else{
           toast.error("Failed to Register !", {
             position: toast.POSITION.TOP_CENTER

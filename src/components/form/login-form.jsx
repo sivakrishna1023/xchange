@@ -43,6 +43,9 @@ const LoginForm = () => {
         });
         setUser(data.user);
         localStorage.setItem('token', data.token);
+        setTimeout(() => {
+             window.location.href='/';
+        }, 1000);
       } else {
         const message = data.message;
         if (message) {
