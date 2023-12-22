@@ -186,7 +186,7 @@ const CheckoutArea = () => {
          <ToastContainer />
          
             <center> <br /> <br /> 
-            { user && !user.isverified ?<div>
+            { user && !user.isverified ? <div>
                              <div className="col-md-3">
                                              <div className="checkout-form-list">
                                                 <label> Please get verified to continue  <span className="required">*</span></label>
