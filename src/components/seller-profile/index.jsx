@@ -8,8 +8,7 @@ import { Context } from "../Clients/clientcomponents";
 const SellerProfile = () => {
   const {user}=useContext(Context);
   console.log(user);
-  useEffect(()=>{
-          
+  useEffect(()=>{  
   },[user])
   return (
     <>

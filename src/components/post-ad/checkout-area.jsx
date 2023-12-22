@@ -206,7 +206,7 @@ const creatingAdimages = (e) => {
          ];
          let selectedImage = event.target.result;
          for (let i = 0; i < compressedImages.length; i++) {
-           if (compressedImages[i].length <= 150 * 1024) {
+           if (compressedImages[i].length <= 100 * 1024) {
              selectedImage = compressedImages[i];
            } else {
              break;
