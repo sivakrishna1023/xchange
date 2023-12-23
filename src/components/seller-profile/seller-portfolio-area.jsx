@@ -100,6 +100,13 @@ const SellerPortfolioArea = () => {
   const [tasks, settasks] = useState('');
   const [tasks2,settasks2]=useState('');
   const [tasks3,settasks3]=useState('');
+
+  const [selectedSection, setSelectedSection] = useState("myAds");
+
+  const handleSectionClick = (section) => {
+    setSelectedSection(section);
+  };
+
   useEffect(() => {
     gettasks();
     gettasks2();
@@ -170,13 +177,12 @@ const SellerPortfolioArea = () => {
                     }
                     <br />
                     <div style={{display:"flex", flexDirection:"column", justifyContent:"center", paddingLeft:"2rem"}}>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>  <Link href={'/ad-grid'}>My Ads</Link>   </p>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>   <i class="far fa-file draft-icon"  style={{marginRight:"1rem"}}  ></i>  <Link href={'/ad-mydraft'}  > My Draft   </Link>   </p>  
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i> <Link href={'/ad-mydraft'}  > My Wishlist   </Link>   </p>
+                      <p style={{color: selectedSection === "myAds" ? "#19ae51" : "black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px", cursor: "pointer"}} onClick={() => handleSectionClick("myAds")}> <i className="fa fa-briefcase" style={{marginRight:"1rem"}}></i>  <>My Ads</>   </p>
+                      <p style={{color: selectedSection === "myDraftAds" ? "#19ae51" : "black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px", cursor: "pointer"}} onClick={() => handleSectionClick("myDraftAds")}>   <i class="far fa-file draft-icon"  style={{marginRight:"1rem"}}  ></i>  < > My Draft   </>   </p>  
+                      <p style={{color: selectedSection === "myWishlist" ? "#19ae51" : "black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px", cursor: "pointer"}} onClick={() => handleSectionClick("myWishlist")}> <i className="fa fa-heart" style={{marginRight:"1rem"}}></i> < > My Wishlist   </>   </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-phone" style={{marginRight:"1rem"}}></i>  <Link href={'/contact'}  >Help & Support</Link>    </p>
                       <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}><i className="fa fa-cog" style={{marginRight:"1rem"}}></i>  <Link href={'/seller-profile-update'}   >Settings</Link>  </p>
-                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>  <i class="fas fa-sign-out-alt logout-icon" style={{marginRight:"1rem"}}   ></i>  <button onClick={handlelogout}> <b>Log out</b>  </button></p>  
-                     
+                      <p style={{color:"black", fontWeight:"600", paddingBottom:"1rem", fontSize:"17px"}}>  <i class="fas fa-sign-out-alt logout-icon" style={{marginRight:"1rem"}}   ></i>  <button onClick={handlelogout}> <b>Log out</b>  </button></p>    
                     </div>
                   </div>
                 </div>
@@ -193,6 +199,8 @@ const SellerPortfolioArea = () => {
                 
                 </div>
                 <div className="instructor-tp-course mb-80">
+                {selectedSection === "myAds" && (
+                  <div>
                   <div className="row">
                     <div className="col-md-12">
                       <div className="instruc-biography">
@@ -275,9 +283,13 @@ const SellerPortfolioArea = () => {
                   <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-grid'}  >Get My All Ads</Link>   </button>
                   </div>
+                  </div>
+                )}
                 </div>
 
                 <div className="instructor-tp-course mb-80">
+                {selectedSection === "myDraftAds" && (
+                  <div>
                   <div className="row">
                     <div className="col-md-12">
                       <div className="instruc-biography">
@@ -365,10 +377,14 @@ const SellerPortfolioArea = () => {
                   <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-mydraft'}  >Get My Draft's</Link>   </button>
                   </div>
+                  </div>
+                )}
                 </div>
 
 
                 <div className="instructor-tp-course">
+                {selectedSection === "myWishlist" && (
+                  <div>
                   <div className="row">
                     <div className="col-md-12">
                       <div className="instruc-biography">
@@ -448,6 +464,8 @@ const SellerPortfolioArea = () => {
                   <div style={{display:"flex", justifyContent:"center", alignItems:"center"}}>
                   <button style={{fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor:"pointer"}}> <Link href={'/ad-grid'}  >Get Ads</Link>   </button>
                   </div>
+                  </div>
+                )}
                 </div>
               </div>
             </div>
