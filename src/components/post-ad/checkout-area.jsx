@@ -75,7 +75,8 @@ const CheckoutArea = () => {
                 }, 1000); 
             }else{
                setloading(false);
-               toast.error("Failed to post Ad !", {
+               const message = data.message ? data.message :"Failed to post Ad";
+               toast.error(message, {
                   position: toast.POSITION.TOP_CENTER
                 });
             }
@@ -131,9 +132,10 @@ const CheckoutArea = () => {
                 }, 1000);
             }else{
                setloading(false);
-               toast.error("Failed to save in  draft!", {
+               const message = data.message ? data.message :"Failed to save in  draft!";
+               toast.error(message, {
                   position: toast.POSITION.TOP_CENTER
-               });
+                });
             }
          }catch(error){
             toast.error("Connection failed try again later !", {
@@ -177,9 +179,16 @@ const CheckoutArea = () => {
    }
 }
 const creatingAdimages = async (e) => {
-   const files = Array.from(e.target.files);
+  const files = Array.from(e.target.files);
   setimagloading(true);
    for (const file of files) {
+      const originalImage1 = file
+      if(originalImage1.size>1024*1024){
+         toast.error(`This image exceeds the limit 1MB`, {
+            position: toast.POSITION.TOP_CENTER
+         });
+         continue;
+      }
      try {
        const originalImage = file;
       //  console.log('originalFile size', originalImage.size / 1024, 'KB');
@@ -247,6 +256,7 @@ const creatingAdimages = async (e) => {
      }
    }
    setimagloading(false);
+   
  };
 
 
@@ -554,6 +564,7 @@ const creatingAdimages1 = (e) => {
                                            <div className="col-md-12">
                                                  <div className="country-select">
                                                     <label>Upload Photo<span className="required">*</span></label>
+                                                    <label>Make sure size of each image Less than 1MB</label>
                                                     <input onChange={creatingAdimages}  type="file" accept='image/*'  />
                                                  </div> 
                                                  <div>

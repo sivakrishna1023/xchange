@@ -128,7 +128,8 @@ const Check = () => {
                 }, 2000); 
             }else{
                setloading(false);
-               toast.error("Failed to update Ad !", {
+               const message= data.message ? data.message :"Failed to Update";
+               toast.error(message, {
                   position: toast.POSITION.TOP_CENTER
                 });
             }
@@ -193,9 +194,10 @@ const Check = () => {
                 }, 2000); 
             }else{
                setloading(false);
-               toast.error("Failed to Update", {
+               const message = data.message ? data.message :"Failed to save in draft!";
+               toast.error(message, {
                   position: toast.POSITION.TOP_CENTER
-               });
+                });
             }
          }catch(error){
             toast.error("Connection failed try again later !", {
@@ -209,6 +211,13 @@ const Check = () => {
      setimagloading(true);
       for (const file of files) {
         try {
+         const originalImage1 = file;
+         if(originalImage1.size>1024*1024){
+            toast.error(`This image exceeds the limit 1MB`, {
+               position: toast.POSITION.TOP_CENTER
+            });
+            continue;
+         }
           const originalImage = file;
          //  console.log('originalFile size', originalImage.size / 1024, 'KB');
     
@@ -531,6 +540,7 @@ const Check = () => {
 
                                                    <div className="country-select">
                                                     <label>Update Your Photos<span className="required">*</span></label>
+                                                    <label>Make sure size of each image Less than 1MB</label>
                                                     <input onChange={creatingAdimages}  type="file" accept='image/*'  />
                                                  </div> 
                                                  
