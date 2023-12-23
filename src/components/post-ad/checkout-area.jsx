@@ -31,6 +31,7 @@ const CheckoutArea = () => {
    const [images, setImages] = useState([]);
    const [verifymail,setverifymail]=useState('');
    const [loading,setloading]=useState(false);
+   const [imagloading,setimagloading]=useState(false);
    const handler=async()=>{
       setloading(true);
          try{
@@ -177,15 +178,15 @@ const CheckoutArea = () => {
 }
 const creatingAdimages = async (e) => {
    const files = Array.from(e.target.files);
- 
+  setimagloading(true);
    for (const file of files) {
      try {
        const originalImage = file;
-       console.log('originalFile size', originalImage.size / 1024, 'KB');
+      //  console.log('originalFile size', originalImage.size / 1024, 'KB');
  
        if (originalImage.size < 100 * 1024) {
          // If image size is already smaller than 100 KB, use the original image
-         console.log('Image is already smaller than 100 KB. Using original image.');
+         // console.log('Image is already smaller than 100 KB. Using original image.');
          var reader=new FileReader();
              reader.readAsDataURL(originalImage);
                reader.onload=()=>{
@@ -201,9 +202,9 @@ const creatingAdimages = async (e) => {
  
        if (originalImage.size > 5 * 1024 * 1024) {
          // If image size is greater than 5 MB, compress to 100 KB
-         console.log('Image is larger than 5 MB. Compressing to 100 KB.');
+        // console.log('Image is larger than 5 MB. Compressing to 100 KB.');
          const options = {
-           maxSizeMB: 0.1, // Set the maximum size to 0.1 MB (100 KB)
+           maxSizeMB: 0.01, // Set the maximum size to 0.1 MB (100 KB)
            useWebWorker: true,
          };
  
@@ -222,14 +223,14 @@ const creatingAdimages = async (e) => {
          // setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
        } else if (originalImage.size >= 100 * 1024 && originalImage.size <= 5 * 1024 * 1024) {
          // If image size is between 100 KB and 5 MB, compress to 100 KB
-         console.log('Image is between 100 KB and 5 MB. Compressing to 100 KB.');
+        // console.log('Image is between 100 KB and 5 MB. Compressing to 100 KB.');
          const options = {
-           maxSizeMB: 0.1, // Set the maximum size to 0.1 MB (100 KB)
+           maxSizeMB: 0.01, // Set the maximum size to 0.1 MB (100 KB)
            useWebWorker: true,
          };
  
          const compressedFile = await imageCompression(originalImage, options);
-         // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
+        // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
          var reader=new FileReader();
          reader.readAsDataURL(compressedFile);
            reader.onload=()=>{
@@ -245,6 +246,7 @@ const creatingAdimages = async (e) => {
        console.error('Compression error:', error);
      }
    }
+   setimagloading(false);
  };
 
 
@@ -310,26 +312,6 @@ const creatingAdimages2 = (e) => {
    });
  };
  
- async function handleImageUpload(event) {
-
-   const imageFile = event.target.files[0];
-   console.log('originalFile instanceof Blob', imageFile instanceof Blob); 
-   console.log(`originalFile size ${imageFile.size / 1024 / 1024} MB`);
-
-   const options = {
-     maxSizeMB: 1,
-     useWebWorker: true
-   }
-   try {
-     const compressedFile = await imageCompression(imageFile, options);
-     console.log('compressedFile instanceof Blob', compressedFile instanceof Blob); 
-     console.log(`compressedFile size ${compressedFile.size / 1024 / 1024} MB`); 
-     await uploadToServer(compressedFile); // write your own logic
-   } catch (error) {
-     console.log(error);
-   }
-
- }
 const creatingAdimages1 = (e) => {
    const files = Array.from(e.target.files);
  
@@ -574,10 +556,18 @@ const creatingAdimages1 = (e) => {
                                                     <label>Upload Photo<span className="required">*</span></label>
                                                     <input onChange={creatingAdimages}  type="file" accept='image/*'  />
                                                  </div> 
-                                                 {images=="" || images==null ? "": images.map(data=>{
-                                                   return(  <img width={100} height={100} src={data}/>  )
-                                                         })  }
-                                           </div>
+                                                 <div>
+                                                    {
+                                                      imagloading ? (
+                                                         <p> Proceesing... </p>
+                                                      ):(
+                                                         images=="" || images==null ? "": images.map(data=>{
+                                                            return(  <img width={100} height={100} src={data}/>  )
+                                                                  })  
+                                                      )
+                                                    }
+                                                </div>
+                                           </div> 
                                            <div className="order-button-payment mt-20">
                                      <button  onClick={handler} className="tp-btn">Post Ad</button>
                                   </div>
