@@ -136,7 +136,6 @@ function TimePassed({ createdAt }) {
                                                                         alt="meta-icon"
                                                                       />
                                                                       <span ><TimePassed createdAt={item.createdAt} /></span>
-                                                                      <span ><TimePassed createdAt={item.createdAt} /></span>
                                                                     </li>
                                                                    
                                                                   </ul>
