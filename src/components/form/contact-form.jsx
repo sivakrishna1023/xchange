@@ -36,7 +36,7 @@ const ContactForm = () => {
     <>
       <ToastContainer />
       <section
-        className="contact-area pb-60 wow fadeInUp"
+        className="contact-area pt-60 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >

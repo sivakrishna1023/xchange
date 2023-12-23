@@ -9,8 +9,8 @@ const Contact = () => {
   return (
     <>
       <Breadcrumb  title="Contact Us" subtitle="contact" />
-      <LocationArea />
       <ContactForm />
+      <LocationArea />
       {/* <MapArea /> */}
       <CounterArea />
     </>

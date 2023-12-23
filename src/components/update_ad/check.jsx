@@ -219,7 +219,6 @@ const Check = () => {
                                                     <input  required onChange={(e)=>{setFeatures(e.target.value)}}  type="text" placeholder="" />
                                                  </div>
                                            </div>
-                         
                                            <div className="col-md-12">
                                                  <div className="country-select">
                                                     <label>Condition <span className="required">*</span></label>
