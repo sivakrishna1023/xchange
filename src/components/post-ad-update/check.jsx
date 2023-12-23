@@ -215,14 +215,22 @@ const Check = () => {
           if (originalImage.size < 100 * 1024) {
             // If image size is already smaller than 100 KB, use the original image
             console.log('Image is already smaller than 100 KB. Using original image.');
-            const imageUrl = URL.createObjectURL(originalImage);
-            setImages((old) => [...old, imageUrl]); // Add original image to the state
+            var reader=new FileReader();
+                reader.readAsDataURL(originalImage);
+                  reader.onload=()=>{
+                     setImages((old)=>[...old,reader.result]);
+                 }
+                 reader.onerror=(error)=>{
+                      console.log('Error in uploading the Images...!!',error);
+                 }
+            // const imageUrl = URL.createObjectURL(originalImage);
+            // setImages((old) => [...old, imageUrl]); // Add original image to the state
             continue; // Move to the next file
           }
     
           if (originalImage.size > 5 * 1024 * 1024) {
             // If image size is greater than 5 MB, compress to 100 KB
-            // console.log('Image is larger than 5 MB. Compressing to 100 KB.');
+            console.log('Image is larger than 5 MB. Compressing to 100 KB.');
             const options = {
               maxSizeMB: 0.1, // Set the maximum size to 0.1 MB (100 KB)
               useWebWorker: true,
@@ -230,9 +238,17 @@ const Check = () => {
     
             const compressedFile = await imageCompression(originalImage, options);
             // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
-    
-            const compressedImageUrl = URL.createObjectURL(compressedFile);
-            setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
+            
+            // const compressedImageUrl = URL.createObjectURL(compressedFile);
+            var reader=new FileReader();
+            reader.readAsDataURL(compressedFile);
+              reader.onload=()=>{
+                 setImages((old)=>[...old,reader.result]);
+             }
+             reader.onerror=(error)=>{
+                  console.log('Error in uploading the Images...!!',error);
+             }
+            // setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
           } else if (originalImage.size >= 100 * 1024 && originalImage.size <= 5 * 1024 * 1024) {
             // If image size is between 100 KB and 5 MB, compress to 100 KB
             console.log('Image is between 100 KB and 5 MB. Compressing to 100 KB.');
@@ -242,16 +258,24 @@ const Check = () => {
             };
     
             const compressedFile = await imageCompression(originalImage, options);
-            console.log('compressedFile size', compressedFile.size / 1024, 'KB');
-    
-            const compressedImageUrl = URL.createObjectURL(compressedFile);
-            setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
+            // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
+            var reader=new FileReader();
+            reader.readAsDataURL(compressedFile);
+              reader.onload=()=>{
+                 setImages((old)=>[...old,reader.result]);
+             }
+             reader.onerror=(error)=>{
+                  console.log('Error in uploading the Images...!!',error);
+             }
+            // const compressedImageUrl = URL.createObjectURL(compressedFile);
+            // setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
           }
-        } catch (error) {
+        } catch (error) { 
           console.error('Compression error:', error);
         }
       }
     };
+   
 // const creatingAdimages = (e) => {
 //    const files = Array.from(e.target.files);
  
