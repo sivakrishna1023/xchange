@@ -33,6 +33,7 @@ const Check = () => {
 
    const { user } = useContext(Context);
    const [Category, setCategory] = useState('');
+   const [vehicleType, setVehicleType] = useState('');
    const [Adname, setAdname] = useState('');
    const [Brand, setBrand] = useState('');
    const [Model, setModel] = useState('');
