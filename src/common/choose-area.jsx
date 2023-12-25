@@ -67,7 +67,7 @@ const ChooseArea = ({style_about, style_2}) => {
             </div>
             <div className="col-xl-7 col-lg-6 col-md-12">
               <div className="tp-choose-img tp-choose-img-2 p-relative mb-30 mr-50 text-end">
-                <img src="/assets/img/bg/choose-2-img.jpg" alt="choose-img" />
+                <img src="/assets/img/about.png" alt="choose-img" />
                 <div className="tpchoose-img-text tp-chose-shape d-none d-md-block">
                   <ul>
                     <li>

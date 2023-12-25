@@ -6,6 +6,7 @@ import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
 import NavMenu2 from "./nav-menu2";
+
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -88,28 +89,20 @@ const Header = () => {
                     </div> */}
                     <div className="header-meta">
                       <ul>
-                        <li>
-                          {/* <Button
-                            // className="submenu"
-                             className="bg-[#dfdfdf24] border-none rounded mr-3 text-[#fff]"
-                            size="md"
-                          >
-                            <Link href={'sign-in'} >Sign in</Link>
-                          </Button> */}
-                          {/* <Link href="/sign-in" className="d-none d-md-block">
-                            <i className="fi fi-rr-user"></i>
-                          </Link> */}
-                        </li>
                         {/* <li>
                           <Link href="/cart" className="d-none d-md-block">
                             <i className="fi fi-rr-shopping-bag"></i>
                           </Link>
                         </li> */}
+                        <div style={{display:"flex"}}>
+                        {user._id?   <Link href="/post-ad" style={{padding:"15px", fontFamily:"sans-serif", backgroundColor:"rgba(255, 255, 255, 0.1)", display:"flex", justifyContent:"center", alignItems:"center", border:"1px solid white"}} className="tp-btn">SELL</Link>:""}
                         <li>
                           <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
                             <i className="icon_ul"></i>
                           </a>
                         </li>
+                        </div>
+
                       </ul>
                     </div>
                   </div>
