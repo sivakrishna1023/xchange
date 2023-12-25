@@ -496,7 +496,7 @@ const AdListArea = () => {
                     <div className="col-xl-4 course-thumb-width">
                       <div className="tpcourse__thumb p-relative w-img fix">
                         <Link href={`/ad-details?id=${item._id}`}>
-                          <div style={{ width: "100%", height: "200px", overflow: "hidden" }}>
+                          <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
                             {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
                           </div>
                         </Link>
@@ -533,14 +533,16 @@ const AdListArea = () => {
                         </div>
                         <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                           <ul className="d-flex align-items-center">
-                            <li>
+                            {/* <li>
                               <img
                                 src="/assets/img/icon/c-meta-01.png"
                                 alt="meta-icon"
                               />
                               <TimePassed createdAt={item.createdAt} />
-                            </li>
-                            <li>
+                            </li> */}
+                            <li >
+                              <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
+                              Kothapet, Hyderabad
                             </li>
                           </ul>
                         </div>

@@ -211,14 +211,14 @@ const SellerArea = ({ style_2 }) => {
             <Slider {...setting} ref={sliderRef}>
               {user && user.map((item) => (
                 <div key={item.id} className="tp-instruc-item">
-                  <div className="tp-instructor text-center p-relative mb-30">
-                    <div className="tp-instructor__thumb mb-25" style={{ width: "100%", height: "300px", overflow: "hidden" }}>
+                  <div className="tp-instructor text-center p-relative mb-30" style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
+                    <div className="tp-instructor__thumb mb-25" style={{ width: "300px", height: "300px", overflow: "hidden", borderRadius:"100%" }}>
                       {item.avatar ? <img
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         src={item.avatar}
                         alt="instructor-thumb"
                       /> : <img
-                        style={{ width: "100%", height: "100%", objectFit: "contain" }}
+                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         src={imagelink}
                         alt="instructor"
                       />}
@@ -227,7 +227,9 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span>
+                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span> <br />
+                      <span style={{ textTransform: "capitalize" }}>Place: <span style={{ marginLeft: "5px", color:"grey", textTransform:"capitalize" }}>Hyderabad</span></span>
+                      <Link href="/instructor-profile"><div style={{padding:"10px", backgroundColor:"#19ae50", borderRadius:"10px", color:"white", fontWeight:"bolder", marginTop:"1rem", cursor:"pointer"}}>VIEW PROFILE</div></Link>
                       <div className="tp-instructor__social">
                         <ul>
                           {

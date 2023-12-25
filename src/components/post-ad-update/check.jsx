@@ -535,7 +535,9 @@ const Check = () => {
                                                     <br />
                                     
                                                  {ad.images=="" || ad.images==null ? "": ad.images.map(data=>{
-                                                   return(  <img width={100} height={100} src={data}/>  )
+                                                   return(  
+                                                   <img width={200} height={200} src={data}/>  
+                                                   )
                                                          })  }
 
                                                    <div className="country-select">
@@ -550,7 +552,13 @@ const Check = () => {
                                                          <p> Proceesing... </p>
                                                       ):(
                                                          images=="" || images==null ? "": images.map(data=>{
-                                                            return(  <img width={100} height={100} src={data}/>  )
+                                                            return(  
+                                                               <div style={{position:"relative", display:"inline-block"}}>
+                                                            <img width={100} height={100} src={data}/>  
+                                                            <div style={{position:"absolute", top:"-10px",right:"-10px", cursor:"pointer", padding:"1px 10px",color:"red", backgroundColor:"white", borderRadius:"100%", fontSize:"20px", fontWeight:"bolder"}}>x</div>
+                                                   </div>
+                                                            )
+                                                            
                                                                   })  
                                                       )
                                                     }

@@ -6,14 +6,14 @@ import { Context } from "../../Clients/clientcomponents";
 
 const CourseArea = () => {
   const currtime = Date.now();
-  const [loading,setloading]=useState(false);
+  const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
     const createdDate = new Date(createdAt);
 
     if (isNaN(createdDate)) {
-      return <span style={{fontSize:"13px"}}>Error: Invalid Date</span>;
+      return <span style={{ fontSize: "13px" }}>Error: Invalid Date</span>;
     }
 
     const timeDifference = currentTime.getTime() - createdDate.getTime();
@@ -22,11 +22,11 @@ const CourseArea = () => {
     const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
     if (minutesPassed < 60) {
-      return <span style={{fontSize:"13px"}}>{minutesPassed} minutes ago</span>;
+      return <span style={{ fontSize: "13px" }}>{minutesPassed} minutes ago</span>;
     } else if (hoursPassed < 24) {
-      return <span style={{fontSize:"13px"}}>{hoursPassed} hours ago</span>;
+      return <span style={{ fontSize: "13px" }}>{hoursPassed} hours ago</span>;
     } else {
-      return <span style={{fontSize:"13px"}}>{daysPassed} days ago</span>;
+      return <span style={{ fontSize: "13px" }}>{daysPassed} days ago</span>;
     }
   }
   const gettasks = async () => {
@@ -51,7 +51,7 @@ const CourseArea = () => {
   useEffect(() => {
     gettasks();
   }, [])
-  
+
   return (
     <>
       <section
@@ -75,20 +75,20 @@ const CourseArea = () => {
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
                     <div className="tpcourse__thumb p-relative w-img fix">
-                     {
-                      user._id ?  <Link href={`/ad-details?id=${item._id}`}>
-                      <div style={{ width: "100%", height: "200px", overflow: "hidden" }}>
-                        {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
-                      </div>
-                    </Link> : <Link href={`/sign-in`}>
-                      <div style={{ width: "100%", height: "200px", overflow: "hidden" }}>
-                        {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
-                      </div>
-                    </Link>
-                     }
+                      {
+                        user._id ? <Link href={`/ad-details?id=${item._id}`}>
+                          <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
+                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                          </div>
+                        </Link> : <Link href={`/sign-in`}>
+                          <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
+                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                          </div>
+                        </Link>
+                      }
                       <div className="tpcourse__tag">
                         <Link href="#">
-                          <i className="fi fi-rr-heart" style={{display:"flex", justifyContent:"center", alignItems:"center", width:"40px", height:"40px"}}></i>
+                          <i className="fi fi-rr-heart" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "40px", height: "40px" }}></i>
                         </Link>
                       </div>
 
@@ -98,7 +98,7 @@ const CourseArea = () => {
                         <ul className="tpcourse__price-list d-flex align-items-center">
                           <li>
                             <Link
-                            style={{padding:"6px 9px", fontSize:"13px"}}
+                              style={{ padding: "6px 9px", fontSize: "13px" }}
                               className={item.ct_color}
                               href={`/ad-details?id=${item._id}`}
                             >
@@ -107,7 +107,7 @@ const CourseArea = () => {
                           </li>
                           <li>
                             <Link
-                            style={{padding:"6px 9px", fontSize:"13px"}}
+                              style={{ padding: "6px 9px", fontSize: "13px" }}
                               className={item.cn_color}
                               href={`/ad-details?id=${item._id}`}
                             >
@@ -117,18 +117,22 @@ const CourseArea = () => {
                         </ul>
                       </div>
                       <div className="tpcourse__ava-title mb-15">
-                        <h4 className="tpcourse__title" style={{margin:"0"}}>
+                        <h4 className="tpcourse__title" style={{ margin: "0" }}>
                           <Link href={`/ad-details?id=${item._id}`}>{item.Adname}</Link>
                         </h4>
                       </div>
                       <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                         <ul className="d-flex align-items-center">
-                          <li >
+                          {/* <li >
                             <img
                               src="/assets/img/icon/c-meta-01.png"
                               alt="meta-icon"
                             />
                             <TimePassed createdAt={item.createdAt} />
+                          </li> */}
+                          <li >
+                            <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
+                            Kothapet, Hyderabad
                           </li>
 
                         </ul>
@@ -145,7 +149,7 @@ const CourseArea = () => {
                     </div>
                   </div>
                 </div>
-              )) : <div> <center> <h3>Loading ...</h3>  </center></div>  }
+              )) : <div> <center> <h3>Loading ...</h3>  </center></div>}
             </div>
           </div>
           <div className="row text-center">
