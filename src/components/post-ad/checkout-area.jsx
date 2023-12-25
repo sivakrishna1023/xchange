@@ -49,6 +49,7 @@ const CheckoutArea = () => {
       'Poco',
       'Infinix',
       'Iqoo',
+      'Nothing',
    ];
    const bikeBrands = [
       'Royal Enfield',
