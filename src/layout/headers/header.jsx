@@ -2,6 +2,7 @@
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
@@ -9,6 +10,12 @@ import NavMenu2 from "./nav-menu2";
 
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [searchText, setSearchText] = useState("");
+  const router = useRouter();
+  const handleSearch = () => {
+    router.push('/ad-list');
+  }
+
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -71,8 +78,9 @@ const Header = () => {
                     </div>
                   ) : (
                     <div style={{marginRight:"1rem", position:"relative"}}>
-                      <i className="fa fa-search" style={{position:"absolute", left:"13px", top:"8px", color:"#5A5A5A", fontSize:"20px"}}></i>
-                      <input onClick={(e) => {handle_search(e.target.value)}} style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
+                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={handleSearch}></i>
+                      <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 20px", marginRight: "0.5rem" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
+                      {console.log(searchText)}
                     </div>
                   )}
                   <div className="main-menu d-flex justify-content-end">
