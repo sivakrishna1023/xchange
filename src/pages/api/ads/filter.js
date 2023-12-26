@@ -17,12 +17,25 @@ const handler = asyncError(async (req, res) => {
             res.status(200).json({
                 success: true, 
                 message: `New Tasks`,
-                ads:[],
+                ads,
               });
+             
         }else{
-            const ads= await Ads.find({Category:req.body.fill,draft: false});
+            const regexQuery = new RegExp(req.body.fill, 'i');
+            const ads = await Ads.find({
+                $and: [
+                  {
+                    $or: [
+                      { Adname: regexQuery },
+                      { Brand: regexQuery },
+                      { Model: regexQuery },
+                      { Category:regexQuery},
+                    ],
+                  },
+                  { draft: false }, 
+                ],
+              });
             await disconnect();
-            // console.log(ads.length());
             res.status(200).json({
                 success: true,
                 message: `New tasks`,

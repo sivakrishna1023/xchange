@@ -30,6 +30,10 @@ const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { user } = useContext(Context);
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const handle_search=(e)=>{
+         const val=e;
+         console.log(val);
+  }
   return (
     <>
       <header className="header__transparent ">
