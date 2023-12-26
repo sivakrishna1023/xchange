@@ -49,7 +49,7 @@ const AdListArea = () => {
   useEffect(() => {
     gettasks();
   }, [])
-  const handle_newtaks = async () => {
+  const handle_newtasks = async () => {
     try {
       console.log("clicked", req);
       const res = await fetch("/api/ads/filter", {
@@ -118,7 +118,7 @@ const AdListArea = () => {
                       <div className="course-sidebar">
                         <div className="country-select">
                           <select onClick={(e) => { setreq(e.target.value) }}   >
-                            <option value="select">Select</option>
+                            <option value=''>Select</option>
                             <option value="Mobiles">Mobiles</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Vehicles">Vehicles</option>
@@ -294,7 +294,7 @@ const AdListArea = () => {
                           </div>
                         </div>
 
-                        <button onClick={handle_newtaks} className="tp-btn">Submit</button>
+                        <button onClick={handle_newtasks} className="tp-btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -309,7 +309,7 @@ const AdListArea = () => {
                     <div className="country-select">
                       <h4 className="course-sidebar__title mb-35">Category </h4>
                       <select onClick={(e) => { setreq(e.target.value) }}   >
-                        <option value="select">Select</option>
+                        <option value=''>Select</option>
                         <option value="Mobiles">Mobiles</option>
                         <option value="Electronics">Electronics</option>
                         <option value="Vehicles">Vehicles</option>
@@ -484,7 +484,7 @@ const AdListArea = () => {
                         </div>
                       </div>
                     </div>
-                    <button onClick={handle_newtaks} className="tp-btn">Submit</button>
+                    <button onClick={handle_newtasks} className="tp-btn">Submit</button>
                   </div>
                 </div>
               )

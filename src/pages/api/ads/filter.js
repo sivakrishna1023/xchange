@@ -14,15 +14,16 @@ const handler = asyncError(async (req, res) => {
         if(req.body.fill===''){
             const ads= await  Ads.find({draft: false});
             await disconnect();
+            console.log("Not Entered any thing", ads);
             res.status(200).json({
                 success: true, 
                 message: `New Tasks`,
-                ads:[],
+                ads,
               });
+             
         }else{
             const ads= await Ads.find({Category:req.body.fill,draft: false});
             await disconnect();
-            // console.log(ads.length());
             res.status(200).json({
                 success: true,
                 message: `New tasks`,
