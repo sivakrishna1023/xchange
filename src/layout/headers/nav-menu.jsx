@@ -29,39 +29,33 @@ const NavMenu = () => {
             </ul>
           </li>
         ))}
-        {user._id ?
-          <>
-            
-            <Dropdown>
-              <DropdownTrigger>
-            <li className="dropdown">
             {user && user.avatar && user.avatar ? <img style={{ borderRadius: "50%", width: "40px", height: "40px", marginRight: "1rem" }} src={user.avatar} alt="instructor-thumb" /> : <img
               src={imagelink}
               style={{ borderRadius: "50%", width: "40px", height: "40px", marginRight: "1rem" }}
               alt="instructor-thumb"
             />}
-            <a style={{color:"white"}}  >
-              {user.firstname}
-            </a> </li>
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Static Actions" style={{backgroundColor:"white"}}>
-                <DropdownItem key="new">
-                <div onClick={()=>{router.push('/seller-profile');}} style={{cursor:"pointer", padding:"5px 10px"}}>Profile</div>
-                </DropdownItem> 
-                <DropdownItem key="copy">
-                <div onClick={()=>{router.push('/seller-profile');}} style={{cursor:"pointer", padding:"5px 10px"}}>My Ads / Draft / Wishlist</div>
-                </DropdownItem>
-                <DropdownItem key="edit">
-                <div onClick={()=>{router.push('/contact');}} style={{cursor:"pointer", padding:"5px 10px"}}>Help & Support</div>
-                </DropdownItem>
-                <DropdownItem key="edit">
-                <div onClick={()=>{router.push('/seller-profile-update');}} style={{cursor:"pointer", padding:"5px 10px"}}>Settings</div>
-                </DropdownItem>
-                <DropdownItem key="delete" className="text-danger" color="danger">
-                 <div style={{cursor:"pointer", padding:"5px 10px"}} onClick={handlelogout}>Log Out</div>
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+        {user._id ?
+          <>
+            <li className="has-dropdown">
+            <Link href={'/seller-profile'}>{user.firstname}</Link>
+            <ul className="submenu">
+                <li>
+                  <Link href={'/seller-profile'}>Profile</Link>
+                </li>
+                <li>
+                  <Link href={'/seller-profile'}>My Ads / Draft / Wishlist</Link>
+                </li>
+                <li>
+                  <Link href={'/contact'}>Help & Support</Link>
+                </li>
+                <li>
+                  <Link href={'/seller-profile-update'}>Settings</Link>
+                </li>
+                <li>
+                  <Link href={'/'} onClick={handlelogout}>Log Out</Link>
+                </li>
+            </ul>
+          </li>
           </>
           :
           <li className="dropdown"  > <Link href={'sign-in'}  >Sign In</Link> </li>

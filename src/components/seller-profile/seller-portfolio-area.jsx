@@ -145,9 +145,18 @@ const SellerPortfolioArea = () => {
                     <p style={{ margin: "0" }}>
                       Place : Hyderabad
                     </p>
-                    <p>
-                      Trust Index : 4
-                    </p>
+                    <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
+                      <Popover placement="right">
+                        <PopoverTrigger>
+                          <div style={{ padding: "8px 50px", backgroundColor: "#a46ad1e0", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="px-1 py-2">
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}>
                       <Link href="/instructor-profile"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><FaShareAlt size={15} /> &nbsp; Share Profile</div></Link>
                       <Link href="/instructor-profile"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><MdReportGmailerrorred size={20} /> &nbsp; Report User</div></Link>
@@ -155,11 +164,11 @@ const SellerPortfolioArea = () => {
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
                       <Popover placement="right">
                         <PopoverTrigger>
-                          <div style={{ padding: "8px 50px", backgroundColor: "#e34c4ced", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>RAISE A DISPUTE</div>
+                          <div style={{ padding: "8px 50px", backgroundColor: "#e34c4ced", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>Raise A Dispute</div>
                         </PopoverTrigger>
                         <PopoverContent>
                           <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px" }}>This Feature is Coming Soon</div>
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>This Feature is Coming Soon</div>
                           </div>
                         </PopoverContent>
                       </Popover>
