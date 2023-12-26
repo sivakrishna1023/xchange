@@ -18,8 +18,8 @@ const AdDetailsArea = () => {
    const [ad, setad] = useState();
    const [aduser, setaduser] = useState();
    const router = useRouter();
-   const [loading,setloading]=useState(false);
-   var imagelink =  `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
+   const [loading, setloading] = useState(false);
+   var imagelink = `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
    function TimePassed({ createdAt }) {
       const currentTime = new Date();
       const createdDate = new Date(createdAt);
@@ -42,10 +42,10 @@ const AdDetailsArea = () => {
       }
    }
    setTimeout(() => {
-      if(localStorage.getItem('token')==='null'){
-         window.location.href='/sign-in';
+      if (localStorage.getItem('token') === 'null') {
+         window.location.href = '/sign-in';
       }
-    }, 1000);
+   }, 1000);
    const getdetails = async () => {
       // const token = localStorage.getItem('token');
       // if (token === ) {
@@ -94,7 +94,7 @@ const AdDetailsArea = () => {
    }, [])
 
    const CustomPrevArrow = (props) => (
-      <div {...props} className="slick-arrow custom-prev-arrow" style={{ position: "absolute", top: "50%", left: "0", fontSize: "2rem", padding: "0 1rem", zIndex: "1", color: "black",}}>
+      <div {...props} className="slick-arrow custom-prev-arrow" style={{ position: "absolute", top: "50%", left: "0", fontSize: "2rem", padding: "0 1rem", zIndex: "1", color: "black", }}>
          <IoIosArrowBack />
       </div>
    );
@@ -109,15 +109,15 @@ const AdDetailsArea = () => {
       slidesToShow: 1,
       slidesToScroll: 1,
       arrows: true,
-      prevArrow: <CustomPrevArrow/>,
-      nextArrow: <CustomNextArrow/>,
+      prevArrow: <CustomPrevArrow />,
+      nextArrow: <CustomNextArrow />,
    };
-   if(loading===true){
-      return(
-         <> 
-         <center> <h3>Please wait...</h3>   </center>
+   if (loading === true) {
+      return (
+         <>
+            <center> <h3>Please wait...</h3>   </center>
          </>
-       )
+      )
    }
    return (
       <>
@@ -241,25 +241,25 @@ const AdDetailsArea = () => {
                                  </div>
                                  <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.Address}</div>
                                  <div className="cd-pricing-btn text-center mb-30">
-                                 <Popover placement="right">
-                        <PopoverTrigger>
-                                    <div className="tp-vp-btn-green">Chat With Seller</div>
-                                    </PopoverTrigger>
-                        <PopoverContent>
-                          <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
-                          </div>
-                        </PopoverContent>
-                      </Popover>
+                                    <Popover placement="right">
+                                       <PopoverTrigger>
+                                          <div className="tp-vp-btn-green">Chat With Seller</div>
+                                       </PopoverTrigger>
+                                       <PopoverContent>
+                                          <div className="px-1 py-2">
+                                             <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
+                                          </div>
+                                       </PopoverContent>
+                                    </Popover>
                                  </div>
-                                 <div style={{display:"flex", justifyContent:"space-around"}}>
-                                 <div className="cd-pricing-btn text-center" style={{width:"40%"}}>
-                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href={`https://wa.me/+91${ad.phone}`}>Chat Through Whatsapp  <FaWhatsapp size={30} /></Link>
-                                 </div>
-                                 <div className="cd-pricing-btn text-center" style={{width:"40%"}}>
-                                    <Link className="tp-vp-btn-green" style={{padding:"7px", fontSize:"15px"}} href={`tel:+91${ad.phone}`}>Call the Seller <IoIosCall size={30}/></Link>
-                                 </div>
-                                                                     
+                                 <div style={{ display: "flex", justifyContent: "space-around" }}>
+                                    <div className="cd-pricing-btn text-center" style={{ width: "40%" }}>
+                                       <Link className="tp-vp-btn-green" style={{ padding: "7px", fontSize: "15px" }} href={`https://wa.me/+91${ad.phone}`}>Chat Through Whatsapp  <FaWhatsapp size={30} /></Link>
+                                    </div>
+                                    <div className="cd-pricing-btn text-center" style={{ width: "40%" }}>
+                                       <Link className="tp-vp-btn-green" style={{ padding: "7px", fontSize: "15px" }} href={`tel:+91${ad.phone}`}>Call the Seller <IoIosCall size={30} /></Link>
+                                    </div>
+
                                  </div>
                               </div>
                            </div>
