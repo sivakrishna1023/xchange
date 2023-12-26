@@ -93,7 +93,7 @@ function TimePassed({ createdAt }) {
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                               <Link href={`/ad-details?id=${item._id}`}>
-                                                                { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                                                                { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />  }
                                                                 </Link>
                                                                 <div className="tpcourse__tag">
                                                                   <Link href="#">

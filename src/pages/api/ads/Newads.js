@@ -7,7 +7,7 @@ const handler = asyncError(async (req, res) => {
     if (req.method !== "POST")
     return errorHandler(res, 400, "Only POST Method is allowed");
     await connectDB();
-  const { 
+   const { 
     Category,
     Adname,
     Brand ,
@@ -28,7 +28,26 @@ const handler = asyncError(async (req, res) => {
     phone,
     images,
    } = req.body;
-   console.log(draft);
+   if(Category==='' || 
+    Adname==='' || 
+    Brand==='' ||
+    Model==='' ||
+    Description==='' || 
+    Adprice==='' || 
+    Features==='' || 
+    Condition==='' ||
+    Negotable==='' ||
+    draft==='' ||
+    country==='' ||
+    Name==='' ||
+    Address==='' ||
+    City==='' ||
+    state==='' ||
+    postcode==='' ||
+    email==='' ||
+    phone===''){
+    return errorHandler(res,401,"Make Sure You Enter ALL Field's");
+   }
   const user = await checkAuth(req);
   if (!user) return errorHandler(res, 401, "Login First");
   const verified=user.isverified;
