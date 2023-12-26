@@ -6,7 +6,6 @@ import { Spinner } from "@nextui-org/react";
 import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
-// import Compressor from 'compressorjs'; 
 import imageCompression from 'browser-image-compression';
 const CheckoutArea = () => {
    const { user } = useContext(Context);
@@ -251,11 +250,7 @@ const CheckoutArea = () => {
          }
          try {
             const originalImage = file;
-            //  console.log('originalFile size', originalImage.size / 1024, 'KB');
-
             if (originalImage.size < 100 * 1024) {
-               // If image size is already smaller than 100 KB, use the original image
-               // console.log('Image is already smaller than 100 KB. Using original image.');
                var reader = new FileReader();
                reader.readAsDataURL(originalImage);
                reader.onload = () => {
@@ -264,23 +259,15 @@ const CheckoutArea = () => {
                reader.onerror = (error) => {
                   console.log('Error in uploading the Images...!!', error);
                }
-               // const imageUrl = URL.createObjectURL(originalImage);
-               // setImages((old) => [...old, imageUrl]); // Add original image to the state
-               continue; // Move to the next file
+               continue; 
             }
 
             if (originalImage.size > 5 * 1024 * 1024) {
-               // If image size is greater than 5 MB, compress to 100 KB
-               // console.log('Image is larger than 5 MB. Compressing to 100 KB.');
                const options = {
-                  maxSizeMB: 0.01, // Set the maximum size to 0.1 MB (100 KB)
+                  maxSizeMB: 0.01, 
                   useWebWorker: true,
                };
-
                const compressedFile = await imageCompression(originalImage, options);
-               // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
-
-               // const compressedImageUrl = URL.createObjectURL(compressedFile);
                var reader = new FileReader();
                reader.readAsDataURL(compressedFile);
                reader.onload = () => {
@@ -289,17 +276,12 @@ const CheckoutArea = () => {
                reader.onerror = (error) => {
                   console.log('Error in uploading the Images...!!', error);
                }
-               // setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
             } else if (originalImage.size >= 100 * 1024 && originalImage.size <= 5 * 1024 * 1024) {
-               // If image size is between 100 KB and 5 MB, compress to 100 KB
-               // console.log('Image is between 100 KB and 5 MB. Compressing to 100 KB.');
                const options = {
-                  maxSizeMB: 0.01, // Set the maximum size to 0.1 MB (100 KB)
+                  maxSizeMB: 0.01, 
                   useWebWorker: true,
                };
-
                const compressedFile = await imageCompression(originalImage, options);
-               // console.log('compressedFile size', compressedFile.size / 1024, 'KB');
                var reader = new FileReader();
                reader.readAsDataURL(compressedFile);
                reader.onload = () => {
@@ -308,139 +290,13 @@ const CheckoutArea = () => {
                reader.onerror = (error) => {
                   console.log('Error in uploading the Images...!!', error);
                }
-               // const compressedImageUrl = URL.createObjectURL(compressedFile);
-               // setImages((old) => [...old, compressedImageUrl]); // Add compressed image to the state
             }
          } catch (error) {
             console.error('Compression error:', error);
          }
       }
       setimagloading(false);
-
    };
-
-
-   const creatingAdimages2 = (e) => {
-      const files = Array.from(e.target.files);
-
-      files.forEach((file) => {
-         const reader = new FileReader();
-         reader.onload = (event) => {
-            const image = new Image();
-            image.src = event.target.result;
-
-            image.onload = () => {
-               const canvas = document.createElement('canvas');
-               let width = image.width;
-               let height = image.height;
-               canvas.width = width;
-               canvas.height = height;
-
-               const ctx = canvas.getContext('2d');
-               ctx.drawImage(image, 0, 0, width, height);
-
-               const compressedImages = {
-                  jpeg: [
-                     canvas.toDataURL('image/jpeg', 0.1),
-                     canvas.toDataURL('image/jpeg', 0.5),
-                     // ... (other quality levels for JPEG)
-                  ],
-                  png: [
-                     canvas.toDataURL('image/png', 0.1),
-                     canvas.toDataURL('image/png', 0.7),
-                     // ... (other quality levels for PNG)
-                  ],
-               };
-
-               let selectedImage = event.target.result;
-               console.log(selectedImage.length);
-
-               // JPEG Compression
-               for (let i = 0; i < compressedImages.jpeg.length; i++) {
-                  if (compressedImages.jpeg[i].length <= 100 * 1024) {
-                     selectedImage = compressedImages.jpeg[i];
-                  } else {
-                     break;
-                  }
-               }
-
-               // If JPEG compression didn't meet size requirement, try PNG compression
-               if (selectedImage.length > 100 * 1024) {
-                  for (let i = 0; i < compressedImages.png.length; i++) {
-                     if (compressedImages.png[i].length <= 100 * 1024) {
-                        selectedImage = compressedImages.png[i];
-                        break;
-                     }
-                  }
-               }
-               console.log(selectedImage.length);
-               setImages((old) => [...old, selectedImage]);
-               // Perform the necessary action with selectedImage (e.g., setImages)
-            };
-         };
-         reader.readAsDataURL(file);
-      });
-   };
-
-   const creatingAdimages1 = (e) => {
-      const files = Array.from(e.target.files);
-
-      files.forEach((file) => {
-         const reader = new FileReader();
-         reader.onload = (event) => {
-            const image = new Image();
-            image.src = event.target.result;
-
-            image.onload = () => {
-               const canvas = document.createElement('canvas');
-               let width = image.width;
-               let height = image.height;
-               canvas.width = width;
-               canvas.height = height;
-
-               const ctx = canvas.getContext('2d');
-               ctx.drawImage(image, 0, 0, width, height);
-
-               const compressedImages = [
-                  canvas.toDataURL('image/jpeg', 0.1),
-                  canvas.toDataURL('image/jpeg', 0.2),
-                  canvas.toDataURL('image/jpeg', 0.3),
-                  canvas.toDataURL('image/jpeg', 0.4),
-                  canvas.toDataURL('image/jpeg', 0.5),
-                  canvas.toDataURL('image/jpeg', 0.6),
-                  canvas.toDataURL('image/jpeg', 0.7),
-                  canvas.toDataURL('image/jpeg', 0.8),
-                  canvas.toDataURL('image/jpeg', 0.9),
-               ];
-               let selectedImage = event.target.result;
-               console.log(selectedImage.length);
-               for (let i = 0; i < compressedImages.length; i++) {
-                  if (compressedImages[i].length <= 100 * 1024) {
-                     selectedImage = compressedImages[i];
-                  } else {
-                     break;
-                  }
-               }
-               console.log(selectedImage.length);
-               setImages((old) => [...old, selectedImage]);
-            };
-         };
-         reader.readAsDataURL(file);
-      });
-   };
-   // const creatingAdimages=(e)=>{
-   //    const files=Array.from(e.target.files);
-   //    files.forEach((file)=>{
-   //       var reader=new FileReader();
-   //       reader.readAsDataURL(file);
-   //       reader.onload=()=>{
-   //          setImages((old)=>[...old,reader.result]);
-   //       }
-   //       reader.onerror=(error)=>{
-   //          console.log('Error in uploading the Images...!!',error);
-   //       }
-   //    })
-   // }
    if (loading === true) {
       return (
          <>
@@ -507,13 +363,13 @@ const CheckoutArea = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Town / City <span className="required">*</span></label>
+                                    <label>Place / City <span className="required">*</span></label>
                                     <input required onChange={(e) => { setCity(e.target.value) }} type="text" placeholder="Town / City" />
                                  </div>
                               </div>
                               <div className="col-md-6">
                                  <div className="checkout-form-list">
-                                    <label>State / County <span className="required">*</span></label>
+                                    <label> City / State <span className="required">*</span></label>
                                     <input required onChange={(e) => { setstate(e.target.value) }} type="text" placeholder="State" />
                                  </div>
                               </div>

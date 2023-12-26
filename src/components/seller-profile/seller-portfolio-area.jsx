@@ -180,7 +180,7 @@ const SellerPortfolioArea = () => {
                   <div className="cd-information instruc-profile-info mb-35">
                     <ul>
                       {user.phonenumber && <div> <li> <i className="fi fi-rr-phone-call"></i>{" "}
-                        <label>Phone</label> <span>user.phonenumber</span> </li> </div>}
+                        <label>Phone</label> <span>{user.phonenumber}</span> </li> </div>}
 
                       <li>
                         <i className="fi fi-rr-envelope"></i>{" "}
@@ -251,7 +251,7 @@ const SellerPortfolioArea = () => {
                             <div className="tpcourse mb-40">
                               <div className="tpcourse__thumb p-relative w-img fix" style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
                                 <Link href={`/ad-details?id=${item._id}`}>
-                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                                 </Link>
                                 <div className="tpcourse__tag">
                                   <Link href="#">
@@ -351,7 +351,7 @@ const SellerPortfolioArea = () => {
                             <div className="tpcourse mb-40">
                               <div className="tpcourse__thumb p-relative w-img fix" style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
                                 <Link href={`/ad-details?id=${item._id}`}>
-                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                                 </Link>
                                 <div className="tpcourse__tag">
                                   <Link href="#">

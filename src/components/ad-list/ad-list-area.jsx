@@ -1,9 +1,13 @@
 'use client'
 import ads_list_data from "@/src/data/ads-list-data";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
 
 const AdListArea = () => {
+  const [loading,setloading]=useState(false);
+  const [tasks, settasks] = useState('');
+  const [req, setreq] = useState('');
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
     const createdDate = new Date(createdAt);
@@ -25,31 +29,54 @@ const AdListArea = () => {
       return <span>{daysPassed} days ago</span>;
     }
   }
-  const [req, setreq] = useState('');
   const gettasks = async () => {
-    try {
-      const res = await fetch("/api/ads/Allads", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+    const queryParams = new URLSearchParams(window.location.search);
+    const select = queryParams.get('select');
+    select.toString();
+    setloading(true);
+    if(select){
+      try {
+        const res = await fetch("/api/ads/filter", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fill: select
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          settasks(data.ads);
         }
-      })
-      const data = await res.json();
-      console.log(data);
-      if (data.success) {
-        console.log(data);
-        settasks(data.ads);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    }else{
+        try {
+          console.log(req);
+          const res = await fetch("/api/ads/Allads", {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          const data = await res.json();
+          console.log(data);
+          if (data.success) {
+            settasks(data.ads);
+          }
+        } catch (error) {
+          console.log(error);
+        }
     }
+    setloading(false);
   }
-
-  const [tasks, settasks] = useState('');
   useEffect(() => {
     gettasks();
   }, [])
-  const handle_newtaks = async () => {
+  const handle_newtasks = async () => {
+    setloading(true);
     try {
       console.log("clicked", req);
       const res = await fetch("/api/ads/filter", {
@@ -64,12 +91,12 @@ const AdListArea = () => {
       const data = await res.json();
       console.log(data);
       if (data.success) {
-        console.log(data);
         settasks(data.ads);
       }
     } catch (error) {
       console.log(error);
     }
+    setloading(false);
   };
 
   const [isMobile, setIsMobile] = useState(false);
@@ -85,7 +112,13 @@ const AdListArea = () => {
   }, []);
 
   const [isActive, setIsActive] = useState(false);
-
+  if(loading===true){
+    return(
+      <>
+      <center>  <h3>  Loading... </h3>   </center> 
+      </>
+    )
+  }
   return (
     <>
       <section
@@ -118,7 +151,7 @@ const AdListArea = () => {
                       <div className="course-sidebar">
                         <div className="country-select">
                           <select onClick={(e) => { setreq(e.target.value) }}   >
-                            <option value="select">Select</option>
+                            <option value=''>Select</option>
                             <option value="Mobiles">Mobiles</option>
                             <option value="Electronics">Electronics</option>
                             <option value="Vehicles">Vehicles</option>
@@ -294,7 +327,7 @@ const AdListArea = () => {
                           </div>
                         </div>
 
-                        <button onClick={handle_newtaks} className="tp-btn">Submit</button>
+                        <button onClick={handle_newtasks} className="tp-btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -309,7 +342,7 @@ const AdListArea = () => {
                     <div className="country-select">
                       <h4 className="course-sidebar__title mb-35">Category </h4>
                       <select onClick={(e) => { setreq(e.target.value) }}   >
-                        <option value="select">Select</option>
+                        <option value=''>Select</option>
                         <option value="Mobiles">Mobiles</option>
                         <option value="Electronics">Electronics</option>
                         <option value="Vehicles">Vehicles</option>
@@ -484,20 +517,20 @@ const AdListArea = () => {
                         </div>
                       </div>
                     </div>
-                    <button onClick={handle_newtaks} className="tp-btn">Submit</button>
+                    <button onClick={handle_newtasks} className="tp-btn">Submit</button>
                   </div>
                 </div>
               )
             }
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
-              {tasks && tasks.map((item, i) => (
+              {tasks && tasks.length>0 ? ( tasks.map((item, i) => (
                 <div key={i} className="tpcourse tp-list-course mb-40">
                   <div className="row g-0">
                     <div className="col-xl-4 course-thumb-width">
                       <div className="tpcourse__thumb p-relative w-img fix">
                         <Link href={`/ad-details?id=${item._id}`}>
                           <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
-                            {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                            {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                           </div>
                         </Link>
                       </div>
@@ -533,16 +566,10 @@ const AdListArea = () => {
                         </div>
                         <div className="tpcourse__meta tpcourse__meta-gap pb-15 mb-15">
                           <ul className="d-flex align-items-center">
-                            {/* <li>
-                              <img
-                                src="/assets/img/icon/c-meta-01.png"
-                                alt="meta-icon"
-                              />
-                              <TimePassed createdAt={item.createdAt} />
-                            </li> */}
+                            
                             <li >
                               <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
-                              Kothapet, Hyderabad
+                              {item.City}, {item.state}
                             </li>
                           </ul>
                         </div>
@@ -557,7 +584,7 @@ const AdListArea = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              ))):( <div> <center>  <h4> No Ads Found</h4>  </center>  </div>)}
             </div>
           </div>
         </div>
