@@ -78,11 +78,11 @@ const CourseArea = () => {
                       {
                         user._id ? <Link href={`/ad-details?id=${item._id}`}>
                           <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
-                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                           </div>
                         </Link> : <Link href={`/sign-in`}>
                           <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
-                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                            {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                           </div>
                         </Link>
                       }
@@ -132,7 +132,7 @@ const CourseArea = () => {
                           </li> */}
                           <li >
                             <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
-                            Kothapet, Hyderabad
+                            {item.City} , {item.state}
                           </li>
 
                         </ul>

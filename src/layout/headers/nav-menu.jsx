@@ -47,7 +47,7 @@ const NavMenu = () => {
               <DropdownMenu aria-label="Static Actions" style={{backgroundColor:"white"}}>
                 <DropdownItem key="new">
                 <div onClick={()=>{router.push('/seller-profile');}} style={{cursor:"pointer", padding:"5px 10px"}}>Profile</div>
-                </DropdownItem>
+                </DropdownItem> 
                 <DropdownItem key="copy">
                 <div onClick={()=>{router.push('/seller-profile');}} style={{cursor:"pointer", padding:"5px 10px"}}>My Ads / Draft / Wishlist</div>
                 </DropdownItem>

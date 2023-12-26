@@ -18,7 +18,7 @@ const AdDetailsArea = () => {
    const [aduser, setaduser] = useState();
    const router = useRouter();
    const [loading,setloading]=useState(false);
-   var imagelink =  `https://res.cloudinary.com/dsoonimzu/image/upload/v1698428270/Ads/mi1eqaaimoekc6z2tuqn.jpg`;
+   var imagelink =  `https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg`;
    function TimePassed({ createdAt }) {
       const currentTime = new Date();
       const createdDate = new Date(createdAt);
@@ -26,7 +26,6 @@ const AdDetailsArea = () => {
       if (isNaN(createdDate)) {
          return <span>Error: Invalid Date</span>;
       }
-
       const timeDifference = currentTime.getTime() - createdDate.getTime();
       const minutesPassed = Math.floor(timeDifference / (1000 * 60));
       const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60));
@@ -46,10 +45,6 @@ const AdDetailsArea = () => {
       }
     }, 1000);
    const getdetails = async () => {
-      // const token = localStorage.getItem('token');
-      // if (token === ) {
-      //    router.replace('/sign-in');
-      // }
       setloading(true);
       try {
          const id = new URLSearchParams(asPath.split('?')[1]).get('id');
@@ -137,11 +132,9 @@ const AdDetailsArea = () => {
                                        ))}
                                     </Slider>
                                  ) : (
-                                    <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />
+                                    <img src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />
                                  )}
                                  <div className="c-details-ava d-md-flex align-items-center">
-                                    {/* <img src="/assets/img/course/c-details-ava-01.png" alt="avata" /> */}
-                                    {/* <span>By <a href="#">{aduser.firstname}</a></span> */}
                                  </div>
                               </div>
                               <div className="course-details-content mb-45">
@@ -156,19 +149,9 @@ const AdDetailsArea = () => {
                                  </div>
                                  <div className="tpcourse__meta course-details-list">
                                     <ul className="d-flex align-items-center">
-                                       {/* <li>
-                                    <div className="rating-gold d-flex align-items-center">
-                                       <p>4.7</p>
-                                       <i className="fi fi-ss-star"></i>
-                                       <i className="fi fi-ss-star"></i>
-                                       <i className="fi fi-ss-star"></i>
-                                       <i className="fi fi-ss-star"></i>
-                                       <i className="fi fi-rs-star"></i>
-                                       <span>(125)</span>
-                                    </div>
-                                 </li> */}
+                                      
                                        <li><img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" /> <span><TimePassed createdAt={ad.createdAt} /></span></li>
-                                       {/* <li><img src="/assets/img/icon/c-meta-02.png" alt="meta-icon" /> <span>20 Requests</span></li> */}
+                                       
                                     </ul>
                                  </div>
                               </div>
@@ -187,7 +170,7 @@ const AdDetailsArea = () => {
 
                               <div className="c-details-review pb-15">
                                  <div className="c-review-title-wrapper">
-                                    {/* <h5 className="c-review-title mb-40">Review</h5> */}
+                                    
                                  </div>
                                  <div className="course-reviewer-item-wrapper">
 
@@ -211,11 +194,7 @@ const AdDetailsArea = () => {
                                        <div className="course-avatar-details">
                                           <h5 className="c-avata-title">{aduser.firstname}   {aduser.lastname}</h5>
                                           <p>{aduser.email}</p>
-                                          {/* <div className="c-details-stu">
-                                          <ul>
-                                             <li className="d-flex align-items-center"><img src="/assets/img/icon/c-details-02.png" alt="meta-icon" /> <span>2,35,687 Followers</span></li>
-                                          </ul>
-                                       </div> */}
+                                          
                                        </div>
                                     </div>
                                  </div>
@@ -238,7 +217,7 @@ const AdDetailsArea = () => {
                                     <a href="#"><i className="fa-brands fa-instagram"></i></a>
                                     <a href="#"><i className="fa-brands fa-youtube"></i></a>
                                  </div>
-                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.Address}</div>
+                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.City}, {ad.state}</div>
                                  <div className="cd-pricing-btn text-center mb-30">
                                     <Link className="tp-vp-btn-green" href="/course-details">Chat With Seller</Link>
                                  </div>
