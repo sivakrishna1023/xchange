@@ -237,6 +237,10 @@ const CheckoutArea = () => {
          setloading(false);
       }
    }
+   const handleRemoveImage = (indexToRemove) => {
+      const updatedImages = images.filter((_, index) => index !== indexToRemove);
+      setImages(updatedImages);
+    };  
    const creatingAdimages = async (e) => {
       const files = Array.from(e.target.files);
       setimagloading(true);
@@ -548,12 +552,21 @@ const CheckoutArea = () => {
                                        imagloading ? (
                                           <p> Proceesing... </p>
                                        ) : (
-                                          images == "" || images == null ? "" : images.map(data => {
+                                          images == "" || images == null ? "" : images.map((data,index)=> {
                                              return (
                                                 <div  style={{position:"relative", display:"inline-block"}}>
                                                 <img width={100} height={100} src={data}/>  
-                                                <div style={{position:"absolute", top:"-10px",right:"-10px", cursor:"pointer", padding:"1px 10px",color:"red", backgroundColor:"white", borderRadius:"100%", fontSize:"20px", fontWeight:"bolder"}}>x</div>
-                                       </div>
+                                                <div onClick={() => handleRemoveImage(index)} style={{
+                                                   position:"absolute",
+                                                   top:"-10px",right:"-10px", 
+                                                   cursor:"pointer", 
+                                                   padding:"1px 10px",
+                                                   color:"red", 
+                                                   backgroundColor:"white", 
+                                                   borderRadius:"100%", 
+                                                   fontSize:"20px", 
+                                                   fontWeight:"bolder"}}>x</div>
+                                                </div>
                                              )
                                           })
                                        )
