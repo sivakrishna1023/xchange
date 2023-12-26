@@ -4,14 +4,9 @@ import Link from "next/link";
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
 
-const AdListArea = () => {
+const AdListArea = () => { 
   const [loading,setloading]=useState(false);
   const [searchText, setSearchText] = useState("");
-  const handleSearch = () => {
-    if(searchText!==''){
-      window.location.href = `/ad-list?select=${searchText}`;
-    }
-  }
   const [tasks, settasks] = useState('');
   const [req, setreq] = useState('');
   function TimePassed({ createdAt }) {
@@ -37,7 +32,10 @@ const AdListArea = () => {
   }
   const gettasks = async () => {
     const queryParams = new URLSearchParams(window.location.search);
-    const select = queryParams.get('select');
+    var select = queryParams.get('select');
+    if(searchText!==''){
+      select=searchText;
+    }
     setloading(true);
     if(select){
       select.toString();
@@ -146,9 +144,8 @@ const AdListArea = () => {
               
               <div className="accordion">
                 <div style={{ position:"relative", border:"2px solid grey", marginBottom:"1rem", borderRadius:"10px"}}>
-                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={handleSearch}></i>
+                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={gettasks}></i>
                       <input style={{ width:"100%", borderRadius: "15px", border: "none", padding: "7px 20px" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
-                      {console.log(searchText)}
                     </div>
                 <div className="accordion-item">
                   
@@ -356,7 +353,7 @@ const AdListArea = () => {
                   <div className="course-sidebar">
                     <div className="country-select">
                     <div style={{ position:"relative", border:"2px solid grey", marginBottom:"1rem", borderRadius:"10px"}}>
-                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={handleSearch}></i>
+                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={gettasks}></i>
                       <input style={{ width:"100%", borderRadius: "15px", border: "none", padding: "7px 20px" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
                       {console.log(searchText)}
                     </div>

@@ -4,12 +4,17 @@ import Wrapper from '../layout/wrapper';
 import SEO from '../common/seo';
 import Breadcrumb from '../components/bredcrumb/breadcrumb';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const verfication = () => {
   const [loading,setloading]=useState(false);
   const [verified,setverified]=useState(false);
-  const get_me_verified= async()=>{
-    const queryParams = new URLSearchParams(window.location.search);
+  const router = useRouter();
+  setTimeout(() => {
+    console.log("This will be executed after 3 seconds.");
+  }, 100);
+  const get_me_verified=async()=>{
+    const queryParams = new URLSearchParams(router.asPath.split('?')[1]);
     const token = queryParams.get('token');
     const email = queryParams.get('email');
     setloading(true);
