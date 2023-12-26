@@ -12,7 +12,7 @@ const Contact = () => {
       <ContactForm />
       <LocationArea />
       {/* <MapArea /> */}
-      <CounterArea />
+      {/* <CounterArea /> */}
     </>
   );
 };
