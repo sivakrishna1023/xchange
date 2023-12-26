@@ -503,7 +503,7 @@ const CheckoutArea = () => {
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
                                     <label>Ad Price <span className="required">*</span></label>
-                                    <input style={{padding:"10px 20px"}} required onChange={(e) => { setAdprice(e.target.value) }} type="number" placeholder="Ad Price" />
+                                    <input style={{padding:"10px 20px"}} required onChange={(e) => { setAdprice(e.target.value) }} type="text" placeholder="Ad Price" />
                                  </div>
                               </div>
                               <div className="col-md-6">
