@@ -559,7 +559,7 @@ const AdListArea = () => {
                             <li>
                               <Link
                                 className={item.ct_color}
-                                href="/course-details"
+                                href={`/ad-details?id=${item._id}`}
                               >
                                 {item.Category}
                               </Link>
@@ -567,7 +567,7 @@ const AdListArea = () => {
                             <li>
                               <Link
                                 className={item.cn_color}
-                                href="/course-details"
+                                href={`/ad-details?id=${item._id}`}
                               >
                                 {item.Brand}
                               </Link>
@@ -576,7 +576,7 @@ const AdListArea = () => {
                         </div>
                         <div className="tpcourse__ava-title mb-15">
                           <h4 className="tpcourse__title tp-cours-title-color">
-                            <Link href="/course-details">
+                            <Link href={`/ad-details?id=${item._id}`}>
                               {item.Adname}
                             </Link>
                           </h4>

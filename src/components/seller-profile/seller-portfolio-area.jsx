@@ -98,7 +98,6 @@ const SellerPortfolioArea = () => {
         settasks2(data.ads);
       }
     } catch (error) {
-      console.log(error);
     }
   }
   const [tasks, settasks] = useState('');
@@ -142,10 +141,6 @@ const SellerPortfolioArea = () => {
                     <p style={{ margin: "0" }}>
                       Member Since {year}
                     </p>
-                    {/* <p style={{ margin: "0" }}>
-                      Place : Hyderabad
-                    </p> */}
-                    
                   </div>
                 </div>
                 <div className="instructor-sidebar-widget">
@@ -279,8 +274,9 @@ const SellerPortfolioArea = () => {
                                         alt="meta-icon"
                                       />
                                       <span> <TimePassed createdAt={item.createdAt} /> </span>
+                                     
                                     </li>
-
+                                    
                                   </ul>
                                 </div>
                                 <div className="tpcourse__rating d-flex align-items-center justify-content-between">

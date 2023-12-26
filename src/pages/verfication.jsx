@@ -14,9 +14,9 @@ const verfication = () => {
     console.log("This will be executed after 3 seconds.");
   }, 100);
   const get_me_verified=async()=>{
-    const queryParams = new URLSearchParams(router.asPath.split('?')[1]);
-    const token = queryParams.get('token');
-    const email = queryParams.get('email');
+    const queryParams = router.query;
+    const token = queryParams.token;
+    const email = queryParams.email;
     setloading(true);
        try{
         const res=await fetch(`/api/users/verify/id=${token}`,{
