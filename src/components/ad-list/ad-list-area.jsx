@@ -1,9 +1,13 @@
 'use client'
 import ads_list_data from "@/src/data/ads-list-data";
 import Link from "next/link";
+import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
 
 const AdListArea = () => {
+  const [loading,setloading]=useState(false);
+  const [tasks, settasks] = useState('');
+  const [req, setreq] = useState('');
   function TimePassed({ createdAt }) {
     const currentTime = new Date();
     const createdDate = new Date(createdAt);
@@ -25,31 +29,54 @@ const AdListArea = () => {
       return <span>{daysPassed} days ago</span>;
     }
   }
-  const [req, setreq] = useState('');
   const gettasks = async () => {
-    try {
-      const res = await fetch("/api/ads/Allads", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
+    const queryParams = new URLSearchParams(window.location.search);
+    const select = queryParams.get('select');
+    select.toString();
+    setloading(true);
+    if(select){
+      try {
+        const res = await fetch("/api/ads/filter", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fill: select
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          settasks(data.ads);
         }
-      })
-      const data = await res.json();
-      console.log(data);
-      if (data.success) {
-        console.log(data);
-        settasks(data.ads);
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    }else{
+        try {
+          console.log(req);
+          const res = await fetch("/api/ads/Allads", {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+          const data = await res.json();
+          console.log(data);
+          if (data.success) {
+            settasks(data.ads);
+          }
+        } catch (error) {
+          console.log(error);
+        }
     }
+    setloading(false);
   }
-
-  const [tasks, settasks] = useState('');
   useEffect(() => {
     gettasks();
   }, [])
   const handle_newtasks = async () => {
+    setloading(true);
     try {
       console.log("clicked", req);
       const res = await fetch("/api/ads/filter", {
@@ -64,12 +91,12 @@ const AdListArea = () => {
       const data = await res.json();
       console.log(data);
       if (data.success) {
-        console.log(data);
         settasks(data.ads);
       }
     } catch (error) {
       console.log(error);
     }
+    setloading(false);
   };
 
   const [isMobile, setIsMobile] = useState(false);
@@ -85,7 +112,13 @@ const AdListArea = () => {
   }, []);
 
   const [isActive, setIsActive] = useState(false);
-
+  if(loading===true){
+    return(
+      <>
+      <center>  <h3>  Loading... </h3>   </center> 
+      </>
+    )
+  }
   return (
     <>
       <section
@@ -490,7 +523,7 @@ const AdListArea = () => {
               )
             }
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
-              {tasks && tasks.map((item, i) => (
+              {tasks && tasks.length>0 ? ( tasks.map((item, i) => (
                 <div key={i} className="tpcourse tp-list-course mb-40">
                   <div className="row g-0">
                     <div className="col-xl-4 course-thumb-width">
@@ -551,7 +584,7 @@ const AdListArea = () => {
                     </div>
                   </div>
                 </div>
-              ))}
+              ))):( <div> <center>  <h4> No Ads Found</h4>  </center>  </div>)}
             </div>
           </div>
         </div>

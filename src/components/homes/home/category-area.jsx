@@ -1,59 +1,56 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// category_data
 const category_data = [
   {
     id: 1,
     img: "/assets/img/category/category-01.svg",
     title: "Mobiles",
-    link: "/course-grid",
+    link: `ad-list?select=Mobiles`,
   },
   {
     id: 2,
     img: "/assets/img/category/category-02.svg",
     title: "Electronics",
-    link: "/course-grid",
+    link: "ad-list?select=Electronics",
   },
   {
     id: 3,
     img: "/assets/img/category/category-03.svg",
     title: "Vehicles",
-    link: "/course-grid",
+    link: "ad-list?select=Vehicles",
   },
   {
     id: 4,
     img: "/assets/img/category/category-04.svg",
     title: "Home & Living",
-    link: "/course-grid",
+    link: "ad-list?select=Home & Living",
   },
   {
     id: 5,
     img: "/assets/img/category/category-05.svg",
     title: "Essentials",
-    link: "/course-grid",
+    link: "ad-list?select=Essentials",
   },
   {
     id: 6,
     img: "/assets/img/category/category-06.svg",
     title: "Furniture",
-    link: "/course-grid",
+    link: "ad-list?select=Furniture",
   },
   {
     id: 7,
     img: "/assets/img/category/category-07.svg",
     title: "Properties",
-    link: "/course-grid",
+    link: "ad-list?select=Properties",
   },
   {
     id: 8,
     img: "/assets/img/category/category-08.svg",
     title: "Home Appliance",
-    link: "/course-grid",
+    link: "ad-list?select=Home Appliance",
   },
 ];
-
-
 const CategoryArea = () => {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
@@ -106,7 +103,7 @@ const CategoryArea = () => {
                   <img src={item.img} alt="category-img" />
                 </div>
                 <h7 className="">
-                  <Link href={'/ad-list'}>{item.title}</Link>
+                  <Link href={item.link}>{item.title}</Link>
                 </h7>
               </div>
             </div>
@@ -121,7 +118,7 @@ const CategoryArea = () => {
                   <img src={item.img} alt="category-img" />
                 </div>
                 <h4 className="tp-category-title">
-                  <Link href={'/ad-list'}>{item.title}</Link>
+                <Link href={item.link}>{item.title}</Link>
                 </h4>
               </div>
             </div>
