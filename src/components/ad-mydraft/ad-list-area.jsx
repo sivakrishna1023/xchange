@@ -12,7 +12,7 @@ const AdArea = () => {
     try{
      const token = localStorage.getItem('token');
      const res = await fetch("/api/ads/delete_ad", {
-       method: 'DELETE',
+       method: 'DELETE', 
        headers: {
          'Content-Type': 'application/json',
          'Authorization': `Bearer ${token}`
@@ -22,7 +22,6 @@ const AdArea = () => {
        })
      })
      const data = await res.json();
-     
      if (data.success) {
        window.location.reload();
      }
@@ -93,14 +92,9 @@ function TimePassed({ createdAt }) {
                                                             <div className="tpcourse mb-40">
                                                               <div className="tpcourse__thumb p-relative w-img fix">
                                                               <Link href={`/ad-details?id=${item._id}`}>
-                                                                { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />  }
+                                                                { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />  }
                                                                 </Link>
-                                                                <div className="tpcourse__tag">
-                                                                  <Link href="#">
-                                                                    <i className="fi fi-rr-heart"></i>
-                                                                  </Link>
-                                                                </div>
-                                                               
+                                                                
                                                               </div>
                                                               <div className="tpcourse__content-2">
                                                                 <div className="tpcourse__category mb-10">

@@ -54,6 +54,7 @@ const AdListArea = () => {
         const data = await res.json();
         if (data.success) {
           settasks(data.ads);
+          setSearchText('');
         }
       } catch (error) {
         console.log(error);
@@ -195,7 +196,7 @@ const AdListArea = () => {
                     <div className="col-lg-4 col-md-12 courser-list-width mb-60">
                       <div className="course-sidebar">
                         <div className="country-select">
-                          <select onClick={(e) => { setreq(e.target.value) }}   >
+                          <select onClick={(e) => { setreq(e.target.value),setSearchText(e.target.value) }}   >
                             <option value=''>Select</option>
                             <option value="Mobiles">Mobiles</option>
                             <option value="Electronics">Electronics</option>
@@ -372,7 +373,7 @@ const AdListArea = () => {
                           </div>
                         </div>
 
-                        <button onClick={handle_newtasks} className="tp-btn">Submit</button>
+                        <button onClick={gettasks} className="tp-btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -388,10 +389,9 @@ const AdListArea = () => {
                     <div style={{ position:"relative", border:"2px solid grey", marginBottom:"1rem", borderRadius:"10px"}}>
                       <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={gettasks}></i>
                       <input style={{ width:"100%", borderRadius: "15px", border: "none", padding: "7px 20px" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
-                      {console.log(searchText)}
                     </div>
                       <h4 className="course-sidebar__title mb-35">Category </h4>
-                      <select onClick={(e) => { setreq(e.target.value) }}   >
+                      <select onClick={(e) => { setreq(e.target.value),setSearchText(e.target.value) }}   >
                         <option value=''>Select</option>
                         <option value="Mobiles">Mobiles</option>
                         <option value="Electronics">Electronics</option>
@@ -567,7 +567,7 @@ const AdListArea = () => {
                         </div>
                       </div>
                     </div>
-                    <button onClick={handle_newtasks} className="tp-btn">Submit</button>
+                    <button onClick={gettasks} className="tp-btn">Submit</button>
                   </div>
                 </div>
               )
