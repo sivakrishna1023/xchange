@@ -38,10 +38,6 @@ const OtherPortfolioArea = () => {
       return <span>{daysPassed} days ago</span>;
     }
   }
-  const handlelogout = async () => {
-    localStorage.setItem('token', null);
-    router.replace('/');
-  }
   const gettasks = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -59,52 +55,8 @@ const OtherPortfolioArea = () => {
     } catch (error) {
     }
   }
-  const handle_delete = async (id) => {
-    try {
-      const token = localStorage.getItem('token');
-      const res = await fetch("/api/ads/delete_ad", {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          id,
-        })
-      })
-      const data = await res.json();
 
-      if (data.success) {
-        window.location.reload();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  const gettasks2 = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      const res = await fetch("/api/ads/mydraftads", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      })
-      const data = await res.json();
-
-      if (data.success) {
-        settasks2(data.ads);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
   const [tasks, settasks] = useState('');
-  const [tasks2, settasks2] = useState('');
-  const [tasks3, settasks3] = useState('');
-
   const [selectedSection, setSelectedSection] = useState("myAds");
 
   const handleSectionClick = (section) => {
@@ -113,7 +65,6 @@ const OtherPortfolioArea = () => {
 
   useEffect(() => {
     gettasks();
-    gettasks2();
   }, [])
 
   return (
@@ -308,19 +259,7 @@ const OtherPortfolioArea = () => {
                                   </div>
 
                                 </div>
-                                {/* <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
-                                  <Link href={`/ad-update?id=${item._id}`}><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><MdEdit size={20} /> &nbsp; Update</div></Link>
-                                  <Popover placement="right">
-                                    <PopoverTrigger>
-                                      <div style={{ padding: "10px", backgroundColor: "#e34c4ced", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><MdDelete size={20} /> &nbsp; Delete</div>
-                                    </PopoverTrigger>
-                                    <PopoverContent>
-                                      <div className="px-1 py-2">
-                                        <div className="text-small font-bold" style={{ padding: "10px" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_delete(item._id) }}>Yes</button></div>
-                                      </div>
-                                    </PopoverContent>
-                                  </Popover>
-                                </div> */}
+                               
                               </div>
                             </div>
                           </div>
@@ -407,14 +346,7 @@ const OtherPortfolioArea = () => {
                                     <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
                                   </div>
                                 </div>
-                                {/* <div className="flex justify-between">
-                                  <div>
-                                    <Link href={`/ad-update?id=${item._id}`}>Update</Link>
-                                  </div>
-                                  <div>
-                                    <button onClick={() => { handle_delete(item._id) }}>Delete</button>
-                                  </div>
-                                </div> */}
+                                
                               </div>
                             </div>
                           </div>

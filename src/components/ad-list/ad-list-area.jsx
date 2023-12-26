@@ -32,9 +32,9 @@ const AdListArea = () => {
   const gettasks = async () => {
     const queryParams = new URLSearchParams(window.location.search);
     const select = queryParams.get('select');
-    select.toString();
     setloading(true);
     if(select){
+      select.toString();
       try {
         const res = await fetch("/api/ads/filter", {
           method: 'POST',
