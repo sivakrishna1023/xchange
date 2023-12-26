@@ -23,6 +23,10 @@ const Header = () => {
   const [isActive, setIsActive] = useState(false);
   const { user } = useContext(Context);
   const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+  const handle_search=(e)=>{
+         const val=e;
+         console.log(val);
+  }
   return (
     <>
       <header className="header__transparent ">
@@ -68,7 +72,7 @@ const Header = () => {
                   ) : (
                     <div style={{marginRight:"1rem", position:"relative"}}>
                       <i className="fa fa-search" style={{position:"absolute", left:"13px", top:"8px", color:"#5A5A5A", fontSize:"20px"}}></i>
-                      <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
+                      <input onClick={(e) => {handle_search(e.target.value)}} style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
                     </div>
                   )}
                   <div className="main-menu d-flex justify-content-end">
