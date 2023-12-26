@@ -162,6 +162,18 @@ const SellerPortfolioArea = () => {
 
                     </ul>
                   </div>
+                  <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
+                      <Popover placement="right">
+                        <PopoverTrigger>
+                          <div style={{ padding: "8px 50px", backgroundColor: "rgb(21 157 228 / 80%)", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="px-1 py-2">
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
                   <div className="c-details-social">
                     {
                       user.Facebook && <Link href={`${user.Facebook}`}>
@@ -289,7 +301,7 @@ const SellerPortfolioArea = () => {
                                     </PopoverTrigger>
                                     <PopoverContent>
                                       <div className="px-1 py-2">
-                                        <div className="text-small font-bold" style={{ padding: "10px" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_delete(item._id) }}>Yes</button></div>
+                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor:"white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_delete(item._id) }}>Yes</button></div>
                                       </div>
                                     </PopoverContent>
                                   </Popover>

@@ -6,6 +6,12 @@ import React, { useState, useEffect } from "react";
 
 const AdListArea = () => {
   const [loading,setloading]=useState(false);
+  const [searchText, setSearchText] = useState("");
+  const handleSearch = () => {
+    if(searchText!==''){
+      window.location.href = `/ad-list?select=${searchText}`;
+    }
+  }
   const [tasks, settasks] = useState('');
   const [req, setreq] = useState('');
   function TimePassed({ createdAt }) {
@@ -137,15 +143,24 @@ const AdListArea = () => {
           </div>
           <div className="row mb-20">
             {isMobile ? (
+              
               <div className="accordion">
+                <div style={{ position:"relative", border:"2px solid grey", marginBottom:"1rem", borderRadius:"10px"}}>
+                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={handleSearch}></i>
+                      <input style={{ width:"100%", borderRadius: "15px", border: "none", padding: "7px 20px" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
+                      {console.log(searchText)}
+                    </div>
                 <div className="accordion-item">
+                  
                   <div
                     className="accordion-title"
                     style={{ display: "flex", justifyContent: "center", alignItems: "center", padding: "1rem", cursor: "pointer" }}
                     onClick={() => setIsActive(!isActive)}>
+                      
                     <div style={{ marginRight: "1rem" }}>Show Categories</div>
                     <div style={{ fontSize: "30px" }}>{isActive ? '-' : '+'}</div>
                   </div>
+
                   {isActive && <div className="accordion-content">
                     <div className="col-lg-4 col-md-12 courser-list-width mb-60">
                       <div className="course-sidebar">
@@ -340,6 +355,11 @@ const AdListArea = () => {
                 <div className="col-lg-4 col-md-12 courser-list-width mb-60">
                   <div className="course-sidebar">
                     <div className="country-select">
+                    <div style={{ position:"relative", border:"2px solid grey", marginBottom:"1rem", borderRadius:"10px"}}>
+                      <i className="fa fa-search" style={{position:"absolute", right:"20px", top:"8px", color:"#5A5A5A", fontSize:"20px", cursor:"pointer"}} onClick={handleSearch}></i>
+                      <input style={{ width:"100%", borderRadius: "15px", border: "none", padding: "7px 20px" }} type="text" placeholder="Search..." onChange={(e)=>{setSearchText(e.target.value)}} />
+                      {console.log(searchText)}
+                    </div>
                       <h4 className="course-sidebar__title mb-35">Category </h4>
                       <select onClick={(e) => { setreq(e.target.value) }}   >
                         <option value=''>Select</option>

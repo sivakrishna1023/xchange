@@ -12,6 +12,9 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
+
+  const isAdListRoute = router.pathname === '/ad-list';
+
   const handleSearch = () => {
     if(searchText!==''){
       window.location.href = `/ad-list?select=${searchText}`;
@@ -70,7 +73,7 @@ const Header = () => {
                   </div>
                 </div>
                 <div className="col-xxl-9 col-xl-9 col-lg-7 col-md-6 col-6 d-flex align-items-center justify-content-end">
-                  {isMobile ? (
+                  {(isMobile || isAdListRoute) ? (
                     <div >
                       
                     </div>
