@@ -71,32 +71,17 @@ const Header = () => {
                       <input style={{ width:"300px", borderRadius: "15px", border: "none", padding: "7px 40px", marginRight: "0.5rem" }} type="text" placeholder="Search..." />
                     </div>
                   )}
-                  <div className="main-menu d-flex justify-content-end mr-15">
+                  <div className="main-menu d-flex justify-content-end">
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
+                    <Link href={user._id?"/post-ad":"/sign-in"} style={{padding:"15px", margin:"10px 0", fontFamily:"sans-serif", backgroundColor:"rgba(255, 255, 255, 0.1)", display:"flex", justifyContent:"center", alignItems:"center", border:"1px solid white"}} className="tp-btn">SELL</Link>
                   </div>
                   <div className="header-right d-md-flex align-items-center">
-                    {/* <div className="header__search d-none d-lg-block">
-                      <form onSubmit={e => e.preventDefault()}>
-                        <div className="header__search-input">
-                          <button className="header__search-btn">
-                            <i className="fa-regular fa-magnifying-glass"></i>
-                          </button>
-                          <input type="text" placeholder="Search Ads" />
-                        </div>
-                      </form>
-                    </div> */}
                     <div className="header-meta">
                       <ul>
-                        {/* <li>
-                          <Link href="/cart" className="d-none d-md-block">
-                            <i className="fi fi-rr-shopping-bag"></i>
-                          </Link>
-                        </li> */}
                         <div style={{display:"flex"}}>
-                        {user._id?   <Link href="/post-ad" style={{padding:"15px", fontFamily:"sans-serif", backgroundColor:"rgba(255, 255, 255, 0.1)", display:"flex", justifyContent:"center", alignItems:"center", border:"1px solid white"}} className="tp-btn">SELL</Link>:""}
-                        <li>
+                        <li style={{margin:"0"}}>
                           <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
                             <i className="icon_ul"></i>
                           </a>
@@ -112,7 +97,7 @@ const Header = () => {
             <div className="container-fluid">
               <div className="row align-items-center">
                 <div className="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-12 d-flex align-items-center justify-content-md-end justify-content-lg-center">
-                  <div className="main-menu d-flex justify-content-end mr-15">
+                  <div className="main-menu d-flex justify-content-end">
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu2 />
                     </nav>
