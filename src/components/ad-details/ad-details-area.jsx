@@ -9,6 +9,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { IoIosCall } from "react-icons/io";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
+import { Popover, PopoverContent, PopoverTrigger } from '@nextui-org/react';
 
 const AdDetailsArea = () => {
    const [isVideoOpen, setIsVideoOpen] = useState(false);
@@ -240,7 +241,16 @@ const AdDetailsArea = () => {
                                  </div>
                                  <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.Address}</div>
                                  <div className="cd-pricing-btn text-center mb-30">
-                                    <Link className="tp-vp-btn-green" href="/course-details">Chat With Seller</Link>
+                                 <Popover placement="right">
+                        <PopoverTrigger>
+                                    <div className="tp-vp-btn-green">Chat With Seller</div>
+                                    </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="px-1 py-2">
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                                  </div>
                                  <div style={{display:"flex", justifyContent:"space-around"}}>
                                  <div className="cd-pricing-btn text-center" style={{width:"40%"}}>

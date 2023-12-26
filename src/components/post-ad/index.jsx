@@ -7,7 +7,7 @@ import CouponArea from "./coupon-area";
 const PostAd = () => {
   return (
     <>
-    <Breadcrumb title="Checkout" subtitle="CheckOut" />
+    <Breadcrumb title="Post Ad" subtitle="Post Ad" />
       {/* <CouponArea /> */}
       <CheckoutArea />
     </>
