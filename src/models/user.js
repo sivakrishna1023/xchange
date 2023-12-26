@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 
 const Schema = new mongoose.Schema({
-
-    //Basic Details to Register
+  //Basic Details to Register
     firstname:{ type:String, require:true },
     lastname:{  type:String, require:true },
     email:{ type:String, require: true },
@@ -35,6 +34,14 @@ const Schema = new mongoose.Schema({
   Pinterest: { type:String },
   Twitter: { type:String },
   Reddit: { type:String },
+
+  //whishlist
+  wishlist:[
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "Ads",
+    }
+  ]
 })
 
 mongoose.models = {};

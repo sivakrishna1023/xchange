@@ -3,6 +3,8 @@ import ads_data from "@/src/data/ads-data";
 import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../Clients/clientcomponents";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CourseArea = () => {
   const currtime = Date.now();
@@ -29,6 +31,37 @@ const CourseArea = () => {
       return <span style={{ fontSize: "13px" }}>{daysPassed} days ago</span>;
     }
   }
+  const add_to_list=async (e)=>{
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`api/users/whishlist`, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+         },
+         body: JSON.stringify({
+             id:e,
+         })
+      })
+      const data = await res.json();
+      if (data.success) {
+        const message = data.message ? data.message : "Added to Favorites";
+         toast.success(message, {
+            position: toast.POSITION.TOP_CENTER
+         });
+      } else {
+         const message = data.message ? data.message : "Failed to Add in Favorites";
+         toast.error(message, {
+            position: toast.POSITION.TOP_CENTER
+         });
+      }
+   } catch (error) {
+      toast.error("Connection failed try again later !", {
+         position: toast.POSITION.TOP_CENTER
+      });
+   }
+  }
   const gettasks = async () => {
     setloading(true);
     try {
@@ -44,8 +77,9 @@ const CourseArea = () => {
       }
       setloading(false);
     } catch (error) {
-      setloading(false);
+       console.log(error);
     }
+    setloading(false);
   }
   const [tasks, settasks] = useState('');
   useEffect(() => {
@@ -54,6 +88,7 @@ const CourseArea = () => {
 
   return (
     <>
+     <ToastContainer />
       <section
         className="course-area pt-115 pb-110 wow fadeInUp"
         data-wow-duration=".8s"
@@ -87,9 +122,9 @@ const CourseArea = () => {
                         </Link>
                       }
                       <div className="tpcourse__tag">
-                        <Link href="#">
+                          <button onClick={()=>add_to_list(item._id)}  >
                           <i className="fi fi-rr-heart" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "40px", height: "40px" }}></i>
-                        </Link>
+                          </button>
                       </div>
 
                     </div>

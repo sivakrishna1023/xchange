@@ -3,6 +3,8 @@ import ads_list_data from "@/src/data/ads-list-data";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AdListArea = () => { 
   const [loading,setloading]=useState(false);
@@ -102,7 +104,37 @@ const AdListArea = () => {
     }
     setloading(false);
   };
-
+  const add_to_list=async (e)=>{
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`api/users/whishlist`, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+         },
+         body: JSON.stringify({
+             id:e,
+         })
+      })
+      const data = await res.json();
+      if (data.success) {
+        const message = data.message ? data.message : "Added to Favorites";
+         toast.success(message, {
+            position: toast.POSITION.TOP_CENTER
+         });
+      } else {
+         const message = data.message ? data.message : "Failed to Add in Favorites";
+         toast.error(message, {
+            position: toast.POSITION.TOP_CENTER
+         });
+      }
+   } catch (error) {
+      toast.error("Connection failed try again later !", {
+         position: toast.POSITION.TOP_CENTER
+      });
+   }
+  }
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -125,6 +157,7 @@ const AdListArea = () => {
   }
   return (
     <>
+    <ToastContainer />
       <section
         className="course-list-area pb-120 wow fadeInUp"
         data-wow-duration=".8s"
@@ -550,6 +583,11 @@ const AdListArea = () => {
                             {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                           </div>
                         </Link>
+                        <div className="tpcourse__tag">
+                          <button onClick={()=>add_to_list(item._id)}  >
+                          <i className="fi fi-rr-heart" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "40px", height: "40px" }}></i>
+                          </button>
+                      </div>
                       </div>
                     </div>
                     <div className="col-xl-8  course-text-width">

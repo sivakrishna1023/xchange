@@ -10,6 +10,8 @@ import { FaShareAlt } from "react-icons/fa";
 import { Popover, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 import Script from "next/script";
 import { useRouter } from "next/navigation";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SellerPortfolioArea = () => {
   const { user } = useContext(Context);
@@ -100,10 +102,61 @@ const SellerPortfolioArea = () => {
     } catch (error) {
     }
   }
+  const gettasks3 = async () => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch("/api/users/getmywishlist", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      const data = await res.json();
+      console.log(data.ads);
+      if (data.success) {
+        settasks3(data.ads);
+      }
+    } catch (error) {
+    }
+  }
   const [tasks, settasks] = useState('');
   const [tasks2, settasks2] = useState('');
   const [tasks3, settasks3] = useState('');
-
+  const handle_wishlist=async(e)=>{
+      try {
+        const token = localStorage.getItem('token');
+        const res = await fetch(`api/users/wishremove`, {
+           method: 'POST',
+           headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+           },
+           body: JSON.stringify({
+               id:e,
+           })
+        })
+        const data = await res.json();
+        if (data.success) {
+          const message = data.message ? data.message : "Removed From List";
+           toast.success(message, {
+              position: toast.POSITION.TOP_CENTER
+           });
+           setTimeout(() => {
+            window.location.reload();
+           }, 1000);
+        } else {
+           const message = data.message ? data.message : "Failed to Remove";
+           toast.error(message, {
+              position: toast.POSITION.TOP_CENTER
+           });
+        }
+     } catch (error) {
+        toast.error("Connection failed try again later !", {
+           position: toast.POSITION.TOP_CENTER
+        });
+    }
+  }
   const [selectedSection, setSelectedSection] = useState("myAds");
 
   const handleSectionClick = (section) => {
@@ -113,10 +166,12 @@ const SellerPortfolioArea = () => {
   useEffect(() => {
     gettasks();
     gettasks2();
+    gettasks3();
   }, [])
 
   return (
     <>
+     <ToastContainer />
       <section
         className="instructor-portfolio pt-120 pb-80 wow fadeInUp"
         data-wow-duration=".8s"
@@ -233,12 +288,6 @@ const SellerPortfolioArea = () => {
                                 <Link href={`/ad-details?id=${item._id}`}>
                                   {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                                 </Link>
-                                <div className="tpcourse__tag">
-                                  <Link href="#">
-                                    <i className="fi fi-rr-heart"></i>
-                                  </Link>
-                                </div>
-
                               </div>
                               <div className="tpcourse__content-2">
                                 <div className="tpcourse__category mb-10">
@@ -334,12 +383,6 @@ const SellerPortfolioArea = () => {
                                 <Link href={`/ad-details?id=${item._id}`}>
                                   {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                                 </Link>
-                                <div className="tpcourse__tag">
-                                  <Link href="#">
-                                    <i className="fi fi-rr-heart"></i>
-                                  </Link>
-                                </div>
-
                               </div>
                               <div className="tpcourse__content-2">
                                 <div className="tpcourse__category mb-10">
@@ -422,12 +465,12 @@ const SellerPortfolioArea = () => {
                         </div>
                       </div>
                       <div className="row">
-                        {tasks3 && tasks3.slice(0, 4).map((item, i) => (
+                        {tasks3 && tasks3.map((item, i) => (
                           <div key={i} className="col-xl-6 col-lg-12 col-md-6">
                             <div className="tpcourse mb-40">
                               <div className="tpcourse__thumb p-relative w-img fix">
                                 <Link href={`/ad-details?id=${item._id}`} style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
-                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'/assets/img/icon/c-meta-01.png'} alt="course-thumb" />}
+                                  {item && item.images && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
                                 </Link>
                                 <div className="tpcourse__tag">
                                   <Link href="#">
@@ -442,7 +485,7 @@ const SellerPortfolioArea = () => {
                                     <li>
                                       <Link
                                         className={item.ct_color}
-                                        href="/course-details"
+                                        href={`/ad-details?id=${item._id}`} 
                                       >
                                         {item.Category}
                                       </Link>
@@ -450,7 +493,7 @@ const SellerPortfolioArea = () => {
                                     <li>
                                       <Link
                                         className={item.cn_color}
-                                        href="/course-details"
+                                        href={`/ad-details?id=${item._id}`} 
                                       >
                                         {item.Brand}
                                       </Link>
@@ -479,17 +522,27 @@ const SellerPortfolioArea = () => {
                                     {tasks.Model}
 
                                   </div>
+                                  
                                   <div className="tpcourse__pricing">
                                     <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
                                   </div>
+                                </div>
+                                <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
+                                  <Popover placement="right">
+                                    <PopoverTrigger>
+                                      <div style={{ padding: "10px", backgroundColor: "#e34c4ced", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><MdDelete size={20} /> &nbsp;Remove</div>
+                                    </PopoverTrigger>
+                                    <PopoverContent>
+                                      <div className="px-1 py-2">
+                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor:"white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_wishlist(item._id) }}>Yes</button></div>
+                                      </div>
+                                    </PopoverContent>
+                                  </Popover>
                                 </div>
                               </div>
                             </div>
                           </div>
                         ))}
-                      </div>
-                      <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                        <button style={{ fontWeight: "600", fontSize: "17px", backgroundColor: "#19ae51", padding: "0.5rem 1rem", borderRadius: "5px", color: "white", cursor: "pointer" }}> <Link href={'/ad-grid'}  >Get Ads</Link>   </button>
                       </div>
                     </div>
                   )}

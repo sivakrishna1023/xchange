@@ -95,12 +95,7 @@ function TimePassed({ createdAt }) {
                                                               <Link href={`/ad-details?id=${item._id}`}>
                                                                 { item && item.images && item.images[0] ?   <img src={item.images[0]} alt="course-thumb" /> : <img src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />  }
                                                                 </Link>
-                                                                <div className="tpcourse__tag">
-                                                                  <Link href="#">
-                                                                    <i className="fi fi-rr-heart"></i>
-                                                                  </Link>
-                                                                </div>
-                                                               
+                                                          
                                                               </div>
                                                               <div className="tpcourse__content-2">
                                                                 <div className="tpcourse__category mb-10">
