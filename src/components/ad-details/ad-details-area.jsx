@@ -187,13 +187,17 @@ const AdDetailsArea = () => {
                                  <div className="cor-details-instructor" style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} >
                                     <h6 className="tp-c-details-title mb-40">Seller</h6>
                                     <div className="course-instructor-details d-flex f-wrap align-items-center" style={{ display: "flex", flexDirection: "row" }}>
+                                       <Link  href={`/other-profile?id=${aduser._id}`}  >
                                        <div className="course-avata mr-30 mb-20">
                                           {aduser.avatar ? <img style={{ borderRadius: "100%", width: "110px", height: "100px" }} src={aduser.avatar} alt="instructor-thumb" /> : <img
                                              src={imagelink}
                                              alt="instructor-thumb"
                                           />}                      </div>
+                                       </Link>
                                        <div className="course-avatar-details">
+                                       <Link  href={`/other-profile?id=${aduser._id}`}  >
                                           <h5 className="c-avata-title">{aduser.firstname}   {aduser.lastname}</h5>
+                                       </Link>
                                           <p>{aduser.email}</p>
                                           
                                        </div>
@@ -218,7 +222,7 @@ const AdDetailsArea = () => {
                                     <a href="#"><i className="fa-brands fa-instagram"></i></a>
                                     <a href="#"><i className="fa-brands fa-youtube"></i></a>
                                  </div>
-                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At : {ad.City}, {ad.state}</div>
+                                 <div style={{ border: "2px solid #777C90", padding: "10px 20px", margin: "20px 0", borderRadius: "5px", color: "#777C90" }}>Posted At :  {ad.Address}, {ad.City}</div>
                                  <div className="cd-pricing-btn text-center mb-30">
                                     <Popover placement="right">
                                        <PopoverTrigger>

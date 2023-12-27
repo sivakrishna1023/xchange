@@ -167,7 +167,7 @@ const CourseArea = () => {
                           </li> */}
                           <li >
                             <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
-                            {item.City} , {item.state}
+                             {item.Address}, {item.City}
                           </li>
 
                         </ul>

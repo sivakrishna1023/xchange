@@ -360,20 +360,20 @@ const CheckoutArea = () => {
                               </div>
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Address <span className="required">*</span></label>
+                                    <label>Place <span className="required">*</span></label>
                                     <input required onChange={(e) => { setAddress(e.target.value) }} type="text" placeholder="Street address" />
                                  </div>
                               </div>
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Place / City <span className="required">*</span></label>
+                                    <label>City <span className="required">*</span></label>
                                     <input required onChange={(e) => { setCity(e.target.value) }} type="text" placeholder="Town / City" />
                                  </div>
                               </div>
                               <div className="col-md-6">
                                  <div className="checkout-form-list">
-                                    <label> City / State <span className="required">*</span></label>
+                                    <label>State <span className="required">*</span></label>
                                     <input required onChange={(e) => { setstate(e.target.value) }} type="text" placeholder="State" />
                                  </div>
                               </div>
