@@ -106,7 +106,7 @@ export const checkAuth = async (req) => {
 };
 
 // send mail
- 
+  
 export const sendEmail = async ({email,emailtype,subject,message}) => {
   // const transporter = nodeMailer.createTransport({
   //   host: process.env.SMPT_HOST,
@@ -116,21 +116,22 @@ export const sendEmail = async ({email,emailtype,subject,message}) => {
   //     pass: process.env.SMPT_PASSWORD,
   //   },
   // });
+  
   var transport = nodemailer.createTransport({
-    host: "live.smtp.mailtrap.io",
+    host: "smtp.zeptomail.in",
     port: 587,
     auth: {
-      user: "api",
-      pass: "23f5021921f2b1beea52ac12a29d6e89"
+      user: "emailapikey",
+      pass: "PHtE6r0IRbq42WJ9+xUA7fe4EcX2N4Io+O1lfwMV4txDXv9QF00Ao9ovlzayqEsvA6JEEPfOzNpqtu+Vt+rWcGjkNztKWmqyqK3sx/VYSPOZsbq6x00ZsF0SckTYUIbucdNp0CHUstjZNA=="
     }
   });
   const mailOptions = {
-    from: ' "Xchange"  <mailtrap@savelivess.com >   ',
+    from: ' "Xchange"  <noreply@savelivess.com> ',
     to: `${email}`,
     subject: subject,
     html: message,
   };
 
-  const res=await transport.sendMail(mailOptions);
+  const res= await transport.sendMail(mailOptions);
 
 }; 

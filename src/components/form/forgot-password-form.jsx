@@ -19,6 +19,7 @@ const forgotpassword = () => {
         }),
       });
       const data = await res.json();
+      console.log(data);
       if (data.success) {
         toast.success("Reset Link send to your mail", {
             position: toast.POSITION.TOP_LEFT,
