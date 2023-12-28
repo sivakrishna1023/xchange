@@ -227,7 +227,8 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <span style={{ textTransform: "capitalize" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></span> <br />
+                      <div style={{ textTransform: "capitalize", marginBottom:"10px", color:"green" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></div>
+                      <span style={{ textTransform: "capitalize", padding:"8px 50px", borderRadius:"10px", backgroundColor:"#6b4ff7", color:"white" }}>Trust Index<span style={{ marginLeft: "5px", color:"white" }}></span></span> <br />
                       <Link href={`/other-profile?id=${item._id}`}><div style={{padding:"10px", backgroundColor:"#19ae50", borderRadius:"10px", color:"white", fontWeight:"bolder", marginTop:"1rem", cursor:"pointer"}}>View Seller Profile</div></Link>
                       <div className="tp-instructor__social">
                         <ul>
