@@ -62,7 +62,7 @@ const social_links = [
 // setting
 const setting = {
   infinite: true,
-  slidesToShow: 5,
+  slidesToShow: 4,
   slidesToScroll: 1,
   // autoplay: true,
   arrows: false,
