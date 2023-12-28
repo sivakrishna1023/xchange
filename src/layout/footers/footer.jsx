@@ -32,12 +32,14 @@ const footer_data = [
   },
   {
     id: 3,
-    title: "Support",
+    title: "Help & Support",
     footer_col: "footer-col-3",
     cls: "col-xl-3",
     links: [
       { name: "Contact us", link: "/contact" },
       { name: "About us", link: "/about" },
+      { name: "Terms & Conditions", link: "/terms-and-conditions" },
+      { name: "Privacy Policy", link: "/privacy-policies" },
       // { name: "Online Chat", link: "/online-chat" },
       // { name: "Whatsapp", link: "/whatsapp" },
       // { name: "Telegram", link: "/telegram" },
