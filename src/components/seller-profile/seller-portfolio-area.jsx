@@ -215,7 +215,7 @@ const SellerPortfolioArea = () => {
                   <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
                       <Popover placement="right">
                         <PopoverTrigger>
-                          <div style={{ padding: "8px 50px", backgroundColor: "rgb(21 157 228 / 80%)", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
+                          <div style={{ padding: "8px 50px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
                         </PopoverTrigger>
                         <PopoverContent>
                           <div className="px-1 py-2">
