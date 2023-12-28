@@ -107,31 +107,36 @@ export const checkAuth = async (req) => {
 
 // send mail
   
-export const sendEmail = async ({email,emailtype,subject,message}) => {
-  // const transporter = nodeMailer.createTransport({
-  //   host: process.env.SMPT_HOST,
-  //   port: process.env.SMPT_PORT,
-  //   auth: {
-  //     user: process.env.SMPT_MAIL,
-  //     pass: process.env.SMPT_PASSWORD,
-  //   },
-  // });
-  
+// export const sendEmail = async ({email,emailtype,subject,message}) => {  
+//   var transport = nodemailer.createTransport({
+//     host: "smtp.zeptomail.in",
+//     port: 587,
+//     auth: {
+//       user: "emailapikey",
+//       pass: "PHtE6r0IRbq42WJ9+xUA7fe4EcX2N4Io+O1lfwMV4txDXv9QF00Ao9ovlzayqEsvA6JEEPfOzNpqtu+Vt+rWcGjkNztKWmqyqK3sx/VYSPOZsbq6x00ZsF0SckTYUIbucdNp0CHUstjZNA=="
+//     }
+//   });
+//   const mailOptions = {
+//     from: ' "Xchange"  <noreply@savelivess.com> ',
+//     to: `${email}`,
+//     subject: subject,
+//     html: message,
+//   };
+//   const res= await transport.sendMail(mailOptions);
+// }; 
+export const sendEmail = async ({email,emailtype,subject,message}) => {  
   var transport = nodemailer.createTransport({
-    host: "smtp.zeptomail.in",
-    port: 587,
+    service:"gmail",
     auth: {
-      user: "emailapikey",
-      pass: "PHtE6r0IRbq42WJ9+xUA7fe4EcX2N4Io+O1lfwMV4txDXv9QF00Ao9ovlzayqEsvA6JEEPfOzNpqtu+Vt+rWcGjkNztKWmqyqK3sx/VYSPOZsbq6x00ZsF0SckTYUIbucdNp0CHUstjZNA=="
+      user: "xchange.hyderabad@gmail.com",
+      pass: "usveadhtmcsmrwmh"
     }
   });
   const mailOptions = {
-    from: ' "Xchange"  <noreply@savelivess.com> ',
+    from: ' "xchange" <xchange.hyderabad@gmail.com>',
     to: `${email}`,
     subject: subject,
     html: message,
   };
-
   const res= await transport.sendMail(mailOptions);
-
 }; 
