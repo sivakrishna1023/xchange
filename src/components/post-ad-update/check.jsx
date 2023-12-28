@@ -477,8 +477,8 @@ const Check = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Town / City <span className="required">*</span></label>
-                                    <input required onChange={(e) => { setCity(e.target.value) }} value={City !== '' ? City : ""} type="text" placeholder="Town / City" />
+                                    <label>Street <span className="required">*</span></label>
+                                    <input required onChange={(e) => { setCity(e.target.value) }} value={City !== '' ? City : ""} type="text" placeholder="Street name" />
                                  </div>
                               </div>
                               <div className="col-md-6">

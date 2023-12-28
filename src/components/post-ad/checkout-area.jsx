@@ -361,8 +361,8 @@ const CheckoutArea = () => {
                               </div>
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Place <span className="required">*</span></label>
-                                    <input required onChange={(e) => { setAddress(e.target.value) }} type="text" placeholder="Street address" />
+                                    <label>Street Name:<span className="required">*</span></label>
+                                    <input required onChange={(e) => { setAddress(e.target.value) }} type="text" placeholder="Street/Village" />
                                  </div>
                               </div>
 

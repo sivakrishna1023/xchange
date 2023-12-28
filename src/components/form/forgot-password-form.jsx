@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'; 
 import { useState } from "react";
 
 const forgotpassword = () => {
@@ -41,6 +41,7 @@ const forgotpassword = () => {
   if(loading===true){
     return(
        <> 
+        <ToastContainer />
        <center> <h3>Please wait...</h3>   </center>
        </>
      )

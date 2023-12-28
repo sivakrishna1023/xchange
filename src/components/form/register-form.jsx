@@ -65,6 +65,7 @@ const RegisterhtmlForm = () => {
   if(loading===true){
     return(
        <> 
+       <ToastContainer />
        <center> <h3>Please wait...</h3>   </center>
        </>
      )
