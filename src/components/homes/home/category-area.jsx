@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const category_data = [
   {
-    id: 1,
+    id: 1, 
     img: "/assets/img/category/category-01.svg",
     title: "Mobiles",
     link: `ad-list?select=Mobiles`,

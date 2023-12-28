@@ -104,7 +104,11 @@ const OtherPortfolioArea = () => {
                       Member Since {year}
                     </p>
                     <p style={{ margin: "0" }}>
-                      Place : Hyderabad
+                     {
+                      seller.Location && <>
+                        <p> Place: {seller.Location}</p> 
+                      </>
+                     }
                     </p>
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
                       <Popover placement="right">

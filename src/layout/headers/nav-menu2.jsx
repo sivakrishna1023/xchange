@@ -1,11 +1,16 @@
 import Link from "next/link";
 import React from "react";
-import menu_data2 from "./menu-data2";
+import menu_data2 from "./menu-data2"; 
+import { useRouter } from 'next/router';
 const NavMenu2 = () => {
+  const router = useRouter();
+  const isAdListRoute = router.pathname === '/ad-list';
   return (
     <>
-      <ul>
-      <li className="dropdown"> <Link href={'/'}>Categories</Link> </li> 
+      
+      {
+        !isAdListRoute ? <div> <ul>
+          <li className="dropdown"> <Link href={'/'}>Categories</Link> </li> 
         {menu_data2.map((item) => (
           <li key={item.id} className=""> 
             <Link href={item.link}>{item.title}</Link>
@@ -17,8 +22,10 @@ const NavMenu2 = () => {
               ))}
             </ul>
           </li>
-        ))}
-      </ul>
+        ))} </ul>
+        </div> :<div></div>
+      }
+     
     </>
   );
 };
