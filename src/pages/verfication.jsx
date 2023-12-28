@@ -39,24 +39,25 @@ const verfication = () => {
   useEffect(() => {
      get_me_verified();
   }, []);
-  // if(loading===true){
-  //   return (
-  //   <Wrapper>
-  //   <SEO pageTitle={"verfication"} />
-  //   <div style={{display:"flex",paddingTop:"20vh", flexDirection:"column", justifyContent:"center", alignItems:"center", height:"40vh"}}> <br /> <br /> <br />
-  //   <h4>Please Wait...!!</h4>
-  //   </div>
-  //   </Wrapper>
-  //   )
-  // }
+  if(loading===true){
+    return (
+    <Wrapper>
+    <SEO pageTitle={"verfication"} />
+    <Breadcrumb title="Verification" subtitle="Verification" isDbbl="Pages" />
+    <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", height:"30vh"}}> <br /> <br /> <br />
+    <h4>Please Wait...!!</h4>
+    </div>
+    </Wrapper>
+    )
+  }
   return (
     <Wrapper>
     <SEO pageTitle={"verfication"} />
     <Breadcrumb title="Verification" subtitle="Verification" isDbbl="Pages" />
-    <div style={{display:"flex",paddingTop:"20vh", flexDirection:"column", justifyContent:"center", alignItems:"center", height:"40vh"}}>
+    <div style={{display:"flex", flexDirection:"column", justifyContent:"center", alignItems:"center", height:"30vh"}}>
       {
-      !verified ? ( <div><h2>Failed to Verify</h2>
-      <h1>  <button onClick={get_me_verified()}> Click here </button> to try again</h1> </div> ) 
+      !verified ? ( <div><h4>Failed to Verify</h4>
+      <h4>  <button style={{color:"blue"}}  onClick={()=>get_me_verified()}> Click here </button> to try again</h4> </div> ) 
       :(
         <Link href="/post-ad"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>Continue posting ads</div></Link>
       )
