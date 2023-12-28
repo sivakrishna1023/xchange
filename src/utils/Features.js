@@ -124,19 +124,44 @@ export const checkAuth = async (req) => {
 //   };
 //   const res= await transport.sendMail(mailOptions);
 // }; 
-export const sendEmail = async ({email,emailtype,subject,message}) => {  
-  var transport = nodemailer.createTransport({
-    service:"gmail",
-    auth: {
-      user: "xchange.hyderabad@gmail.com",
-      pass: "usveadhtmcsmrwmh"
-    }
-  });
-  const mailOptions = {
-    from: ' "xchange" <xchange.hyderabad@gmail.com>',
-    to: `${email}`,
-    subject: subject,
-    html: message,
-  };
-  const res= await transport.sendMail(mailOptions);
-}; 
+// export const sendEmail = async ({email,emailtype,subject,message}) => {  
+//   var transport = nodemailer.createTransport({
+//     service:"gmail",
+//     auth: {
+//       user: "xchange.hyderabad@gmail.com",
+//       pass: "usveadhtmcsmrwmh"
+//     }
+//   });
+//   const mailOptions = {
+//     from: ' "xchange" <xchange.hyderabad@gmail.com>',
+//     to: `${email}`,
+//     subject: subject,
+//     html: message,
+//   };
+//   const value = await transport.sendMail(mailOptions);
+// }; 
+export const sendEmail = async ({email,emailtype,subject,message}) => {
+  try {
+    const transport = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "xchange.hyderabad@gmail.com",
+        pass: "usveadhtmcsmrwmh"
+      }
+    });
+
+    const mailOptions = {
+      from: '"xchange" <xchange.hyderabad@gmail.com>',
+      to: email,
+      subject: subject,
+      html: message,
+    };
+
+    const value = await transport.sendMail(mailOptions);
+    console.log('Email sent:', value);
+    return true; 
+  } catch (error) {
+    console.error('Error sending email:', error);
+    return false;
+  }
+};

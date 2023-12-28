@@ -18,7 +18,8 @@ const handler = asyncError(async (req, res)  => {
     if (!user) return errorHandler(res, 400, "Invalid User");
     const verifytoken1= await verifytoken(email,user.password);
     const user1=await User.findByIdAndUpdate(user._id,{verifytoken:verifytoken1});
-    sendEmail({email:user.email,emailtype:`verify`,subject:`Please verify your mail`,message:`Thank you choosing us <a href="${process.env.DOMAIN}/verfication?token=${verifytoken1}&&email=${user.email}" target="_blank"> Click Here </a> to verify your mail...!!`});
+    const is_sent=sendEmail({email:user.email,emailtype:`verify`,subject:`Please verify your mail`,message:`Thank you choosing us <a href="${process.env.DOMAIN}/verfication?token=${verifytoken1}&&email=${user.email}" target="_blank"> Click Here </a> to verify your mail...!!`});
+    if(!is_sent) return errorHandler(res,401,"Failed To send the verify Token try again Later");
     await disconnect();
     res.status(201).json({
     success: true,

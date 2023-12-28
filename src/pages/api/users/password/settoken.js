@@ -12,7 +12,8 @@ const handler = asyncError(async (req, res) => {
     user.resetPasswordToken=token1;
     user.resetPasswordExpire=Date.now()+60*60*1000;
     await user.save();
-    sendEmail({email:user.email,emailtype:`verify`,subject:`Reset Password`,message:`Welcome Back User <a href="${process.env.DOMAIN}/newpassword?token=${token1}&&email=${req.body.email}" target="_blank"> Click Here </a> to Reset Your Password...!!`});
+    const is_sent=sendEmail({email:user.email,emailtype:`verify`,subject:`Reset Password`,message:`Welcome Back User <a href="${process.env.DOMAIN}/newpassword?token=${token1}&&email=${req.body.email}" target="_blank"> Click Here </a> to Reset Your Password...!!`});
+    if(!is_sent) return errorHandler(res,401,"Failed To send the verify Token try again Later");
        res.status(200).json({
         success: true,
         message:"Reset Link send to your mail",
