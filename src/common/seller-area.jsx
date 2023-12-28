@@ -62,7 +62,7 @@ const social_links = [
 // setting
 const setting = {
   infinite: true,
-  slidesToShow: 3,
+  slidesToShow: 4,
   slidesToScroll: 1,
   // autoplay: true,
   arrows: false,
@@ -212,7 +212,7 @@ const SellerArea = ({ style_2 }) => {
               {user && user.map((item) => (
                 <div key={item.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30" style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-                    <div className="tp-instructor__thumb mb-25" style={{ width: "300px", height: "300px", overflow: "hidden", borderRadius:"100%" }}>
+                    <div className="tp-instructor__thumb mb-25" style={{ width: "200px", height: "200px", overflow: "hidden", borderRadius:"100%" }}>
                       {item.avatar ? <img
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         src={item.avatar}

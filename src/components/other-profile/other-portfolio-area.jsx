@@ -122,9 +122,28 @@ const OtherPortfolioArea = () => {
                         </PopoverContent>
                       </Popover>
                     </div>
-                    <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly" }}>
-                      <Link href="#"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><FaShareAlt size={15} /> &nbsp; Share Profile</div></Link>
-                      <Link href="#"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}><MdReportGmailerrorred size={20} /> &nbsp; Report User</div></Link>
+                    <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", flexWrap:"wrap" }}>
+                      <Link href="#"><div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center", width:"170px" }}><FaShareAlt size={15} /> &nbsp; Share Profile</div></Link>
+                      <Popover placement="down">
+                        <PopoverTrigger>
+                        <div style={{ padding: "10px", margin: "1px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center", width:"170px" }}><MdReportGmailerrorred size={20} /> &nbsp; Report User</div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="px-1 py-2">
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20False%20-%20Information"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>False Information </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Fake%20-%20Product%20-%20or%20-%20Fraud"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Fake Product or Fraud </div> </a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Promoting%20-%20Nudity"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Promoting nudity </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Spamming%20-%20or%20-%20Posting%20-%20Irrelevant"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Spamming or posting irrelevant </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Abusive%20-%20posts"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Abusive posts </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Fake%20-%20trust%20-%20index"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Fake trust index </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Identify%20-%20theft"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Identify theft </div> </a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Violation%20-%20of%20-%20government%20-%20guidelines"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Violation of government guidelines  </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Illegal%20-%20activity"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Illegal activity </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20I%20-%20don't%20-%20like%20-%20it"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>I don't like it </div></a>
+                            <a href="mailto:xchange.hyderabad@gmail.com?subject=Report%20-%20Something%20-%20else"><div className="text-small font-bold" style={{ border: "1px solid gray",marginBottom:"2px", cursor:"pointer", borderRadius: "5px", padding: "10px", backgroundColor:"white"  }}>Something else </div></a>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                     <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
                       <Popover placement="right">
@@ -289,3 +308,4 @@ const OtherPortfolioArea = () => {
 };
 
 export default OtherPortfolioArea;
+
