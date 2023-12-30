@@ -7,7 +7,6 @@ const NavMenu2 = () => {
   const isAdListRoute = router.pathname === '/ad-list';
   return (
     <>
-      
       {
         !isAdListRoute ? <div> <ul>
           <li className="dropdown"> <Link href={'/'}>Categories</Link> </li> 

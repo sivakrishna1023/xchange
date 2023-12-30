@@ -141,8 +141,8 @@ const AdDetailsArea = () => {
                               <div className="course-details-content mb-45">
                                  <div className="tpcourse__category mb-15">
                                     <ul className="tpcourse__price-list d-flex align-items-center">
-                                       <li><a className="c-color-green" href="#">Brand : {ad.Brand}</a></li>
-                                       <li><a className="c-color-yellow" href="#">Model : {ad.Model}</a></li>
+                                       <li><span style={{padding:"10px", borderRadius:"10px", cursor:"pointer"}} className="c-color-green">Brand : {ad.Brand}</span></li>
+                                       <li><span style={{padding:"10px", borderRadius:"10px", cursor:"pointer"}} className="c-color-yellow">Model : {ad.Model}</span></li>
                                     </ul>
                                  </div>
                                  <div className="tpcourse__ava-title mb-25">
