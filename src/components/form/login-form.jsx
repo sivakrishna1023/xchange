@@ -26,8 +26,6 @@ const LoginForm = () => {
     setloading(true);
     e.preventDefault();
     try {
-      console.log("Trying to Login...!!");
-      console.log(email, password);
       const res = await fetch("/api/users/Login", {
         method: "POST",
         headers: {

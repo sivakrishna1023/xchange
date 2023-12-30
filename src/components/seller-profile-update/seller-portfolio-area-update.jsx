@@ -6,10 +6,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../Clients/clientcomponents";
 import { Popover, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 import { MdDelete } from "react-icons/md";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SellerPortfolioAreaUpdate = () => {
   const { user } = useContext(Context);
   const [loading, setloading] = useState(false);
+  const [verifymail,setverifymail]=useState('');
   if (!user) {
     return <>
       <center> Loading please wait...!!</center>
@@ -129,21 +132,62 @@ const SellerPortfolioAreaUpdate = () => {
       reader.readAsDataURL(file);
     });
   };
-
-  //   const creatingavatarimages=(e)=>{
-  //     const files=Array.from(e.target.files);
-  //     setImages('');
-  //     files.forEach((file)=>{
-  //        var reader=new FileReader();
-  //        reader.readAsDataURL(file);
-  //        reader.onload=()=>{
-  //           setImages(reader.result);
-  //        }
-  //        reader.onerror=(error)=>{
-  //           console.log('Error in uploading the Images...!!',error);
-  //        }
-  //     })
-  //  }
+  const handle_delete= async ()=>{
+    setloading(true);
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`api/users/delete`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+      })
+      const data = await res.json();
+      if (data.success) {
+        setloading(false);
+        localStorage.setItem('token', null);
+        router.replace('/');
+      }
+    } catch (error) {
+      setloading(false);
+      router.replace('/seller-profile');
+    }
+  }
+  const handle_verify_link = async () => {
+    setloading(true);
+    try {
+       const token = localStorage.getItem('token');
+       const res = await fetch(`/api/users/verifytoken`, {
+          method: 'POST',
+          headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+             email: verifymail,
+          })
+       })
+       const data = await res.json();
+       if (data.success) {
+          toast.success("Verification Link has been sent to your mail", {
+             position: toast.POSITION.TOP_CENTER
+          });
+          setloading(false);
+       } else {
+          console.log(data);
+          toast.error("Unable to send Mail", {
+             position: toast.POSITION.TOP_CENTER
+          });
+          setloading(false);
+       }
+    } catch (error) {
+       toast.error("Connection failed try again later !", {
+          position: toast.POSITION.TOP_CENTER
+       });
+       setloading(false);
+    }
+ }
   const handlesubmit = async () => {
     setloading(true);
     try {
@@ -192,12 +236,14 @@ const SellerPortfolioAreaUpdate = () => {
   if (loading === true) {
     return (
       <>
+        <ToastContainer />
         <center> <h3>Please wait...</h3>   </center>
       </>
     )
   }
   return (
     <>
+    <ToastContainer />
       {user && <section
         className="instructor-portfolio pt-120 pb-80 wow fadeInUp"
         data-wow-duration=".8s"
@@ -315,13 +361,13 @@ const SellerPortfolioAreaUpdate = () => {
                         </PopoverTrigger>
                         <PopoverContent>
                           <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} >Yes</button></div>
+                            <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? <br/> Your Ads also deleted by this action..!! &nbsp; <button onClick={handle_delete} style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} >Yes</button></div>
                           </div>
                         </PopoverContent>
                       </Popover> </center>
                   </div>
                   <center> <br /> <br />
-                    {user && true ? <div>
+                    {user && !user.isverified ? <div>
                       <div className="col-md-3" style={{ width: "100%" }}>
                         <div className="checkout-form-list">
                           <label> Please get verified to continue  <span className="required">*</span></label>
@@ -331,7 +377,7 @@ const SellerPortfolioAreaUpdate = () => {
                       </div>
                       <div className="col-md-2">
                         <div className="order-button-payment mt-20">
-                          <button className="tp-btn">Get Link</button>
+                          <button onClick={handle_verify_link} className="tp-btn">Get Link</button>
                         </div>
                       </div>
                     </div> : <div> </div>}
