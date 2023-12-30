@@ -143,11 +143,11 @@ const answer_question_data = [
         We prioritize the security of your information. Your personal details are kept confidential, and we have security measures in place to protect your data. Be cautious about sharing sensitive information in public conversations and report any privacy concerns to our support team.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingTen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseTen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseTen",
     show: "",
   },
   {
@@ -158,11 +158,11 @@ const answer_question_data = [
         After a successful transaction, both buyers and sellers can leave feedback and ratings for each other. This helps build a trustworthy community. You can view a user's overall rating and feedback on their profile.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingEleven",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseEleven",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseEleven",
     show: "",
   },
   {
@@ -173,11 +173,11 @@ const answer_question_data = [
         Contact the other party involved in the transaction to address the issue. If a resolution cannot be reached, use our customer support system to report the problem, providing relevant details for our team to assist you.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingEleven",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseEleven",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseEleven",
     show: "",
   },
   {
@@ -188,11 +188,11 @@ const answer_question_data = [
         While we have a broad range of categories, certain items may be restricted or prohibited. Review our terms of service and guidelines to ensure your listings comply with our policies. Items like illegal substances, weapons, and counterfeit goods are typically not allowed.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingTwelve",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseTwelve",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseTwelve",
     show: "",
   },
   {
@@ -203,11 +203,11 @@ const answer_question_data = [
         Our platform is primarily designed for individual users to buy and sell personal items. Business promotion may be subject to specific advertising options or policies. Contact our support team for more information on business-related activities.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingThirteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseThirteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseThirteen",
     show: "",
   },
   {
@@ -218,11 +218,11 @@ const answer_question_data = [
         Communicate clearly with the other party, agree on the terms beforehand, and verify the condition of the item. For high-value transactions, consider meeting in a safe location and bringing a friend. Always trust your instincts and report any suspicious behavior.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingFourteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseFourteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseFourteen",
     show: "",
   },
   {
@@ -233,11 +233,11 @@ const answer_question_data = [
         Log in to your account and navigate to the settings or account management section. There, you'll find options to change your password, update your email address, or modify other account details.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingFifteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseFifteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseFifteen",
     show: "",
   },
   {
@@ -248,11 +248,11 @@ const answer_question_data = [
         While basic listings are typically free, there may be fees for certain premium features or services, such as highlighted listings or extended visibility. Check our pricing or premium features section for more details.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingSixteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseSixteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseSixteen",
     show: "",
   },
   {
@@ -263,11 +263,11 @@ const answer_question_data = [
         Yes, you can bookmark or save items you're interested in. Look for the "Save" or "Bookmark" option on the listing page. This allows you to easily revisit and track items you're considering.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingSeventeen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseSeventeen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseSeventeen",
     show: "",
   },
   {
@@ -278,11 +278,11 @@ const answer_question_data = [
         If your item doesn't sell within a certain period, you can choose to renew the listing or create a new one. Consider adjusting the price, description, or images to increase its appeal.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingEighteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseEighteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseEighteen",
     show: "",
   },
   {
@@ -293,11 +293,11 @@ const answer_question_data = [
         If you no longer wish to use the platform, you can usually find an account deactivation or closure option in the account settings. Follow the provided steps to deactivate or close your account.
       </>
     ),
-    accordion_id: "headingNine",
+    accordion_id: "headingNineteen",
     collapsed: "collapsed",
-    data_bs_target: "#collapseNine",
+    data_bs_target: "#collapseNineteen",
     aria_expanded: false,
-    aria_controls: "collapseNine",
+    aria_controls: "collapseNineteen",
     show: "",
   },
 ];

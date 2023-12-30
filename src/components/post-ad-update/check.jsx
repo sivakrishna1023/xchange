@@ -663,7 +663,22 @@ const Check = () => {
 
                                  {ad.images == "" || ad.images == null ? "" : ad.images.map(data => {
                                     return (
-                                       <img width={200} height={200} src={data} />
+                                       <div  style={{position:"relative", display:"inline-block"}}>
+                                       <img width={200} height={200} src={data}/>  
+                                       <div 
+                                       // onClick={() => handleRemoveImage(index)}
+                                       style={{
+                                          position:"absolute",
+                                          top:"-10px",right:"-10px", 
+                                          cursor:"pointer", 
+                                          padding:"1px 10px",
+                                          color:"red", 
+                                          backgroundColor:"white", 
+                                          borderRadius:"100%", 
+                                          fontSize:"20px", 
+                                          fontWeight:"bolder"}}
+                                          >x</div>
+                                       </div>
                                     )
                                  })}
 
@@ -681,7 +696,7 @@ const Check = () => {
                                           images == "" || images == null ? "" : images.map(data => {
                                              return (
                                                 <div style={{ position: "relative", display: "inline-block" }}>
-                                                   <img width={100} height={100} src={data} />
+                                                   <img width={200} height={200} src={data} />
                                                    <div style={{ position: "absolute", top: "-10px", right: "-10px", cursor: "pointer", padding: "1px 10px", color: "red", backgroundColor: "white", borderRadius: "100%", fontSize: "20px", fontWeight: "bolder" }}>x</div>
                                                 </div>
                                              )

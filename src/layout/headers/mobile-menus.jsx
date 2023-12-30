@@ -4,6 +4,7 @@ import React, { useContext, useState,useEffect } from "react";
 import { Context } from "@/src/components/Clients/clientcomponents";
 // internal
 import menu_data from "./menu-data";
+import { CiCircleChevDown } from "react-icons/ci";
 
 const MobileMenus = () => {
   const [navTitle, setNavTitle] = useState("");
@@ -50,9 +51,9 @@ const MobileMenus = () => {
                     }`}
                    
                     onClick={() => openMobileMenu(menu.title)}
-                    style={{ fontSize: "18px", cursor: "pointer" }}
+                    style={{ fontSize: "18px", cursor: "pointer", display:"flex", justifyContent:"center", alignItems:"center", border:"none" }}
                   >
-                    <i className="fal fa-plus"></i>
+                    <CiCircleChevDown size={30} />
                   </a>
                 </li>
               )}
