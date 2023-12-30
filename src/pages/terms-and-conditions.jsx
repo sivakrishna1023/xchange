@@ -58,7 +58,7 @@ const termsAndConditions = () => {
           <p> XChange reserves the right to modify or replace these Terms and Conditions at any time. Users are responsible for regularly reviewing these terms for any changes.</p>
           <h3> Contact Information </h3>
          <p> If you have any questions about these Terms and Conditions, please contact us at </p>
-          <p><b> Email:</b> <a href="mailto:xchange.hyderabad@gmail.com">xchange.hyderabad@gmail.com</a></p>
+          <p><b> Email:</b> <a href="mailto:xchange.hyderabad@gmail.com" style={{color:"green", fontWeight:"bolder"}}>xchange.hyderabad@gmail.com</a></p>
          <p><b>Place:</b>  Hyderabad, Telangana.</p>
         </div>
       </Wrapper>

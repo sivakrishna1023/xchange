@@ -2,6 +2,7 @@
 import Link from "next/link";
 import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-slick";
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 
 // instructor_info
 const seller_info = [
@@ -228,7 +229,17 @@ const SellerArea = ({ style_2 }) => {
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
                       <div style={{ textTransform: "capitalize", marginBottom:"10px", color:"green" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></div>
-                      <span style={{ textTransform: "capitalize", padding:"8px 50px", borderRadius:"10px", backgroundColor:"#6b4ff7", color:"white" }}>Trust Index<span style={{ marginLeft: "5px", color:"white" }}></span></span> <br />
+                      <Popover placement="right">
+                      <PopoverTrigger>
+                      <span style={{ textTransform: "capitalize", padding:"8px 50px", borderRadius:"10px", backgroundColor:"#6b4ff7", color:"white" }}>Trust Index<span style={{ marginLeft: "5px", color:"white" }}></span></span> 
+                      </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="px-1 py-2">
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                      <br />
                       <Link href={`/other-profile?id=${item._id}`}><div style={{padding:"10px", backgroundColor:"#19ae50", borderRadius:"10px", color:"white", fontWeight:"bolder", marginTop:"1rem", cursor:"pointer"}}>View Seller Profile</div></Link>
                       <div className="tp-instructor__social">
                         <ul>
