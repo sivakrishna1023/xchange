@@ -158,11 +158,11 @@ const answer_question_data = [
         After a successful transaction, both buyers and sellers can leave feedback and ratings for each other. This helps build a trustworthy community. You can view a user's overall rating and feedback on their profile.
       </>
     ),
-    accordion_id: "headingEleven",
+    accordion_id: "headingTenOne",
     collapsed: "collapsed",
-    data_bs_target: "#collapseEleven",
+    data_bs_target: "#collapseTenOne",
     aria_expanded: false,
-    aria_controls: "collapseEleven",
+    aria_controls: "collapseTenOne",
     show: "",
   },
   {
