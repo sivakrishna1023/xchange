@@ -211,7 +211,17 @@ const AdDetailsArea = () => {
                                     <div className="cd-pricing-btn text-center mb-30">
 
                                        <input style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} type="text" placeholder='Write Review Here' />
+                                       <Popover placement="bottom">
+                                       <PopoverTrigger>
                                        <Link className="tp-vp-btn-green" href="/course-details">Review</Link>
+                                       </PopoverTrigger>
+                                       <PopoverContent>
+                                          <div className="px-1 py-2">
+                                             <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
+                                          </div>
+                                       </PopoverContent>
+                                    </Popover>
+                                     
                                     </div>
                                  </div>
 
