@@ -213,7 +213,7 @@ const AdDetailsArea = () => {
                                        <input style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} type="text" placeholder='Write Review Here' />
                                        <Popover placement="bottom">
                                        <PopoverTrigger>
-                                       <Link className="tp-vp-btn-green" href="/course-details">Review</Link>
+                                       <Link className="tp-vp-btn-green">Review</Link>
                                        </PopoverTrigger>
                                        <PopoverContent>
                                           <div className="px-1 py-2">
