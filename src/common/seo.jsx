@@ -15,6 +15,16 @@ const SEO = ({ pageTitle }) => (
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <link rel="icon" href="/favicon.png" />
+      {/* Google tag (gtag.js) */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y6ZP8048W"></script>
+      <script>
+      {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9Y6ZP8048W');
+          `}
+      </script>
     </Head>
   </>
 );
