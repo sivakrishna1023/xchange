@@ -16,6 +16,7 @@ const SEO = ({ pageTitle }) => (
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
       <link rel="icon" href="/favicon.png" />
+      <link rel="canonical" href={'https://xchangehyd.com/'} />
       {/* Google tag (gtag.js) */}
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y6ZP8048W"></script>
       <Script
