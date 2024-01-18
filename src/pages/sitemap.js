@@ -20,3 +20,14 @@
 //       },
 //     ]
 // }
+import React from 'react'
+
+const sitemap = () => {
+  return (
+    <div>
+      
+    </div>
+  )
+}
+
+export default sitemap
