@@ -23,7 +23,7 @@ const HeroBanner = () => {
                         </div>
                      </div>
                   </div>
-                  <div className="col-xl-6 col-lg-6">
+                  {/* <div className="col-xl-6 col-lg-6">
                      <div className="banner-info d-none">
                         <ul>
                            <li><span>235K</span>Worldwide Students</li>
@@ -31,7 +31,7 @@ const HeroBanner = () => {
                            <li><span>4.7<i className="fi fi-rr-star "></i></span>Worldwide Review</li>
                         </ul>
                      </div>
-                  </div>
+                  </div> */}
                   <div className="banner-shape d-none d-lg-block">
                      <img src="/assets/img/banner/banner-shape-01.png" style={{height:"600px", bottom:"20%", right:"10%"}} alt="banner-shape" className="b-shape" />
                   </div>

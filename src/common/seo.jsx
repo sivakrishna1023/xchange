@@ -6,7 +6,7 @@ const SEO = ({ pageTitle }) => (
     <Head>
       <title>
         {pageTitle ?
-          `${pageTitle} - Your Trusted Online Market Place` : `Xchangehyd`}
+          `${pageTitle}` : `Xchangehyd`}
       </title>
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
       <meta name="description" content="Your Trusted Online Market Place" />
