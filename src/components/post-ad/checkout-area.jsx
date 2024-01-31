@@ -313,7 +313,7 @@ const CheckoutArea = () => {
       <>
          <ToastContainer />
 
-         <center> <br /> <br />
+         {/* <center> <br /> <br />
             {user && !user.isverified ? <div>
                <div className="col-md-3">
                   <div className="checkout-form-list">
@@ -328,7 +328,7 @@ const CheckoutArea = () => {
                   </div>
                </div>
             </div> : <div> </div>}
-         </center>  <br />
+         </center>  <br /> */}
 
          {
             user._id ? <section className="checkout-area pt-50 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
