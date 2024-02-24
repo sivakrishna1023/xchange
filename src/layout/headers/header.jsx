@@ -10,7 +10,7 @@ import NavMenu2 from "./nav-menu2";
 import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
 import { IoIosCloseCircle } from "react-icons/io";
-
+  
 const Header = () => {
   const cities = [
     { id: 1, name: 'Delhi' },
@@ -36,6 +36,9 @@ const Header = () => {
     if (searchText !== '') {
       window.location.href = `/ad-list?select=${searchText}`;
     }
+  }
+  const handlesubmit = ()=>{
+    console.log(selectedCity);
   }
   useEffect(() => {
     const handleResize = () => {
@@ -66,27 +69,6 @@ const Header = () => {
                         <img src="/assets/img/logo/logo.png" alt="logo" />
                       </Link>
                     </div>
-                    {/* <div className="header-cat-menu ml-40 d-none d-md-block">
-                      <nav>
-                        <ul>
-                          <li>
-                            <a href="#">
-                              Categorie {" "}
-                              <span>
-                                <i className="arrow_carrot-down"></i>
-                              </span>
-                            </a>
-                            <ul className="sub-menu">
-                              {category_data.map((item, i) => 
-                               <li key={i}>
-                               <Link href="/course-grid">{item.title}</Link>
-                             </li>
-                              )}
-                            </ul>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div> */}
                   </div>
                 </div>
                 <div className="col-xxl-9 col-xl-9 col-lg-7 col-md-6 col-6 d-flex align-items-center justify-content-end">
@@ -105,14 +87,14 @@ const Header = () => {
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
-                    <Link style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
-                    <Popup trigger={<Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">Location</Link>} modal>
+                    <Link href={user._id ? "/post-ad" : "/sign-in"}  style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
+                    <Popup trigger={<button style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">Location</button>} modal>
         {close => (<div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', borderRadius: '20px' }}>
           <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}><IoIosCloseCircle size={30} /></button>
-          <button style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
+          <button onClick={handlesubmit}  style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
           <label style={{ fontSize: '20px' }}>
             Choose your location
-            <select value={selectedCity} onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
+            <select  onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
               <option value="">Select a city</option>
               {cities.map((city) => (
                 <option key={city.id} value={city.name}>
