@@ -1,9 +1,9 @@
 "use client";
-// import "@/src/components/form/login.css"
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Link from "next/link";
-import React from "react";
+import React,{ useEffect } from "react";
+import CityLocator from "./geolocation"
 import { useState, useContext } from "react";
 import { redirect } from "next/navigation";
 import { Context } from "../Clients/clientcomponents";
@@ -11,6 +11,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";
 import Script from "next/script";
+
+
 const LoginForm = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -19,7 +21,8 @@ const LoginForm = () => {
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
-
+      
+      
   const { user, setUser } = useContext(Context);
   const router = useRouter();
   const handler = async (e) => {
@@ -79,6 +82,7 @@ const LoginForm = () => {
  }   
   return (
     <>
+      {/* <CityLocator/> */}
       <ToastContainer />
       <section
         className="login-area pt-100 pb-100 wow fadeInUp"

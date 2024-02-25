@@ -11,7 +11,6 @@ import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
-
 const Header = () => {
   const cities = [
     { id: 1, name: 'Delhi' },
@@ -38,6 +37,9 @@ const Header = () => {
     if (searchText !== '') {
       window.location.href = `/ad-list?select=${searchText}`;
     }
+  }
+  const handlesubmit = ()=>{
+    console.log(selectedCity);
   }
   useEffect(() => {
     const handleResize = () => {
@@ -68,27 +70,6 @@ const Header = () => {
                         <img src="/assets/img/logo/logo.png" alt="logo" />
                       </Link>
                     </div>
-                    {/* <div className="header-cat-menu ml-40 d-none d-md-block">
-                      <nav>
-                        <ul>
-                          <li>
-                            <a href="#">
-                              Categorie {" "}
-                              <span>
-                                <i className="arrow_carrot-down"></i>
-                              </span>
-                            </a>
-                            <ul className="sub-menu">
-                              {category_data.map((item, i) => 
-                               <li key={i}>
-                               <Link href="/course-grid">{item.title}</Link>
-                             </li>
-                              )}
-                            </ul>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div> */}
                   </div>
                 </div>
                 <div className="col-xxl-9 col-xl-9 col-lg-7 col-md-6 col-6 d-flex align-items-center justify-content-end">
