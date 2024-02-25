@@ -5,8 +5,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../../Clients/clientcomponents";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocationContext } from "@/src/utils/locationContext";
 
 const CourseArea = () => {
+
+  const {selectedLocation} = useLocationContext();
+  useEffect(()=>console.log(selectedLocation),[]);
+
   const currtime = Date.now();
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
