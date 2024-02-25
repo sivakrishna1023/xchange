@@ -6,6 +6,7 @@ import Footer from "./footers/footer";
 import Header from "./headers/header";
 import { Context, ContextProvider } from "../components/Clients/clientcomponents";
 import FeedbackBox from "../lib/FeedbackBox";
+import { LocationContextProvider } from "../utils/locationContext";
 const Wrapper = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
@@ -14,6 +15,7 @@ const Wrapper = ({ children }) => {
   },[])
   return (
     <>
+    <LocationContextProvider>
       <ContextProvider>
       <Header />
       {children}
@@ -21,6 +23,7 @@ const Wrapper = ({ children }) => {
       <BackToTop/>
       <FeedbackBox/>
       </ContextProvider>
+      </LocationContextProvider>
     </>
   );
 };

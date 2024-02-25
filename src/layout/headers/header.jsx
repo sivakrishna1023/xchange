@@ -10,7 +10,7 @@ import NavMenu2 from "./nav-menu2";
 import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
 import { IoIosCloseCircle } from "react-icons/io";
-  
+import { useLocationContext } from "@/src/utils/locationContext";
 const Header = () => {
   const cities = [
     { id: 1, name: 'Delhi' },
@@ -21,6 +21,7 @@ const Header = () => {
 
   // State to store the selected city
   const [selectedCity, setSelectedCity] = useState('');
+  const {setSelectedLocation} = useLocationContext();
 
   // Event handler for changing the selected city
   const handleCityChange = (event) => {
@@ -87,25 +88,25 @@ const Header = () => {
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
-                    <Link href={user._id ? "/post-ad" : "/sign-in"}  style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
-                    <Popup trigger={<button style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">Location</button>} modal>
-        {close => (<div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', borderRadius: '20px' }}>
-          <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}><IoIosCloseCircle size={30} /></button>
-          <button onClick={handlesubmit}  style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
-          <label style={{ fontSize: '20px' }}>
-            Choose your location
-            <select  onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
-              <option value="">Select a city</option>
-              {cities.map((city) => (
-                <option key={city.id} value={city.name}>
-                  {city.name}
-                </option>
-              ))}
-            </select>
-          </label>
-        </div>
-        )}
-      </Popup>
+                    <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
+                    <Popup trigger={<Link href={'/'} style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">Location</Link>} modal>
+                      {close => (<div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', borderRadius: '20px' }}>
+                        <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}><IoIosCloseCircle size={30} /></button>
+                        <button onClick={()=>{setSelectedLocation(selectedCity);  close();}} style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
+                        <label style={{ fontSize: '20px' }}>
+                          Choose your location
+                          <select value={selectedCity} onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
+                            <option value="">Select a city</option>
+                            {cities.map((city) => (
+                              <option key={city.id} value={city.name}>
+                                {city.name}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                      </div>
+                      )}
+                    </Popup>
                   </div>
                   <div className="header-right d-md-flex align-items-center">
                     <div className="header-meta">
