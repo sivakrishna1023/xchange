@@ -1,7 +1,7 @@
 import {connectDB,disconnect} from '../../../utils/Features'
 import {errorHandler,asyncError} from '../../../middlewares/Error'
 import {Ads} from '../../../models/ads'
-
+ 
 const handler = asyncError(async (req, res) => {
         if (req.method !== "POST")
         return errorHandler(res, 400, "Only POST Method is allowed");  

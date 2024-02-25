@@ -10,32 +10,39 @@ import { useLocationContext } from "@/src/utils/locationContext";
 const CourseArea = () => {
 
   const {selectedLocation} = useLocationContext();
-  useEffect(()=>console.log(selectedLocation),[]);
-
   const currtime = Date.now();
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
-  function TimePassed({ createdAt }) {
-    const currentTime = new Date();
-    const createdDate = new Date(createdAt);
-
-    if (isNaN(createdDate)) {
-      return <span style={{ fontSize: "13px" }}>Error: Invalid Date</span>;
-    }
-
-    const timeDifference = currentTime.getTime() - createdDate.getTime();
-    const minutesPassed = Math.floor(timeDifference / (1000 * 60));
-    const hoursPassed = Math.floor(timeDifference / (1000 * 60 * 60));
-    const daysPassed = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-
-    if (minutesPassed < 60) {
-      return <span style={{ fontSize: "13px" }}>{minutesPassed} minutes ago</span>;
-    } else if (hoursPassed < 24) {
-      return <span style={{ fontSize: "13px" }}>{hoursPassed} hours ago</span>;
-    } else {
-      return <span style={{ fontSize: "13px" }}>{daysPassed} days ago</span>;
-    }
-  }
+  const [tasks, settasks] = useState('');
+  useEffect(()=>{
+    const req=selectedLocation;
+    const handle_newtasks = async () => {
+      setloading(true);
+      try {
+        console.log("clicked", req);
+        const res = await fetch("/api/ads/cityfilter", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            fill: req
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          if(data.ads.length>0){
+            settasks(data.ads);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+      setloading(false);
+    };
+    handle_newtasks();
+  },
+  [selectedLocation]);
   const add_to_list=async (e)=>{
     try {
       const token = localStorage.getItem('token');
@@ -86,7 +93,6 @@ const CourseArea = () => {
     }
     setloading(false);
   }
-  const [tasks, settasks] = useState('');
   useEffect(() => {
     gettasks();
   }, [])

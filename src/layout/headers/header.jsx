@@ -1,4 +1,4 @@
-'use Client'
+'use Client' 
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
@@ -13,10 +13,9 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
 const Header = () => {
   const cities = [
-    { id: 1, name: 'Delhi' },
+    { id: 1, name: 'L B Nagar' },
     { id: 2, name: 'Mumbai' },
     { id: 3, name: 'Kolkata' },
-    // Add more cities as needed
   ];
 
   // State to store the selected city
@@ -37,9 +36,6 @@ const Header = () => {
     if (searchText !== '') {
       window.location.href = `/ad-list?select=${searchText}`;
     }
-  }
-  const handlesubmit = ()=>{
-    console.log(selectedCity);
   }
   useEffect(() => {
     const handleResize = () => {
