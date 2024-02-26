@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
 import imageCompression from 'browser-image-compression';
+import { useLocationContext } from '@/src/utils/locationContext';
 const CheckoutArea = () => {
    const { user } = useContext(Context);
    const [Category, setCategory] = useState('');
@@ -32,6 +33,28 @@ const CheckoutArea = () => {
    const [verifymail, setverifymail] = useState('');
    const [loading, setloading] = useState(false);
    const [imagloading, setimagloading] = useState(false);
+   const cities = [
+      { id: 1, name: 'Miyapur' },
+      { id: 2, name: 'JNTU College' },
+      { id: 3, name: 'KPHB Colony' },
+      { id: 4, name: 'Kukatpally' },
+      { id: 5, name: 'Dr. B. R. Ambedkar Balanagar' },
+      { id: 6, name: 'Moosapet' },
+      { id: 7, name: 'Bharat Nagar' },
+      { id: 8, name: 'Erragadda' },
+      { id: 9, name: 'ESI Hospital' },
+      { id: 9, name: 'S.R. Nagar' },
+      { id: 10, name: 'Raidurg' },
+      { id: 11, name: 'HITEC City' },
+      { id: 12, name: 'Durgam Cheruvu' },
+      { id: 13, name: 'Madhapur' },
+      { id: 14, name: 'Peddamma Gudi' },
+      { id: 15, name: 'Jubilee Hills Checks Post' },
+      { id: 16, name: 'Road No. 5 Jubilee Hills' },
+      { id: 17, name: 'Yusufguda' },
+      { id: 18, name: 'Madhura Nagar' },
+      { id: 19, name: 'Ameerpet' }
+   ];
    const mobileBrands = [
       'Apple',
       'MI',
@@ -240,7 +263,7 @@ const CheckoutArea = () => {
    const handleRemoveImage = (indexToRemove) => {
       const updatedImages = images.filter((_, index) => index !== indexToRemove);
       setImages(updatedImages);
-    };  
+   };
    const creatingAdimages = async (e) => {
       const files = Array.from(e.target.files);
       setimagloading(true);
@@ -263,12 +286,12 @@ const CheckoutArea = () => {
                reader.onerror = (error) => {
                   console.log('Error in uploading the Images...!!', error);
                }
-               continue; 
+               continue;
             }
 
             if (originalImage.size > 5 * 1024 * 1024) {
                const options = {
-                  maxSizeMB: 0.01, 
+                  maxSizeMB: 0.01,
                   useWebWorker: true,
                };
                const compressedFile = await imageCompression(originalImage, options);
@@ -282,7 +305,7 @@ const CheckoutArea = () => {
                }
             } else if (originalImage.size >= 100 * 1024 && originalImage.size <= 5 * 1024 * 1024) {
                const options = {
-                  maxSizeMB: 0.01, 
+                  maxSizeMB: 0.01,
                   useWebWorker: true,
                };
                const compressedFile = await imageCompression(originalImage, options);
@@ -304,11 +327,12 @@ const CheckoutArea = () => {
    if (loading === true) {
       return (
          <>
-          <ToastContainer />
+            <ToastContainer />
             <center> <h3>Please wait...</h3>   </center>
          </>
       )
    }
+   const { selectedLocation, setSelectedLocation } = useLocationContext();
    return (
       <>
          <ToastContainer />
@@ -368,8 +392,17 @@ const CheckoutArea = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>City <span className="required">*</span></label>
-                                    <input required onChange={(e) => { setCity(e.target.value) }} type="text" placeholder="Town / City" />
+                                    <label >
+                                       Town / City <span className="required">*</span>
+                                       <select required value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
+                                          <option value="">Select a city</option>
+                                          {cities.map((city) => (
+                                             <option key={city.id} value={city.name}>
+                                                {city.name}
+                                             </option>
+                                          ))}
+                                       </select>
+                                    </label>
                                  </div>
                               </div>
                               <div className="col-md-6">
@@ -422,7 +455,7 @@ const CheckoutArea = () => {
                               </div>
                               <div className="col-md-12">
                                  <div className="country-select">
-                                 {Category === 'Vehicles' && (
+                                    {Category === 'Vehicles' && (
                                        <>
                                           <label>Vehicle Type</label>
                                           <select
@@ -436,7 +469,7 @@ const CheckoutArea = () => {
                                           </select>
                                        </>
                                     )}
-                              </div>
+                                 </div>
                               </div>
 
                               <div className="col-md-6">
@@ -508,7 +541,7 @@ const CheckoutArea = () => {
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
                                     <label>Ad Price <span className="required">*</span></label>
-                                    <input style={{padding:"10px 20px"}} required onChange={(e) => { setAdprice(e.target.value) }} type="text" placeholder="Ad Price" />
+                                    <input style={{ padding: "10px 20px" }} required onChange={(e) => { setAdprice(e.target.value) }} type="text" placeholder="Ad Price" />
                                  </div>
                               </div>
                               <div className="col-md-6">
@@ -553,20 +586,21 @@ const CheckoutArea = () => {
                                        imagloading ? (
                                           <p> Proceesing... </p>
                                        ) : (
-                                          images == "" || images == null ? "" : images.map((data,index)=> {
+                                          images == "" || images == null ? "" : images.map((data, index) => {
                                              return (
-                                                <div  style={{position:"relative", display:"inline-block"}}>
-                                                <img width={100} height={100} src={data}/>  
-                                                <div onClick={() => handleRemoveImage(index)} style={{
-                                                   position:"absolute",
-                                                   top:"-10px",right:"-10px", 
-                                                   cursor:"pointer", 
-                                                   padding:"1px 10px",
-                                                   color:"red", 
-                                                   backgroundColor:"white", 
-                                                   borderRadius:"100%", 
-                                                   fontSize:"20px", 
-                                                   fontWeight:"bolder"}}>x</div>
+                                                <div style={{ position: "relative", display: "inline-block" }}>
+                                                   <img width={100} height={100} src={data} />
+                                                   <div onClick={() => handleRemoveImage(index)} style={{
+                                                      position: "absolute",
+                                                      top: "-10px", right: "-10px",
+                                                      cursor: "pointer",
+                                                      padding: "1px 10px",
+                                                      color: "red",
+                                                      backgroundColor: "white",
+                                                      borderRadius: "100%",
+                                                      fontSize: "20px",
+                                                      fontWeight: "bolder"
+                                                   }}>x</div>
                                                 </div>
                                              )
                                           })

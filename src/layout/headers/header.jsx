@@ -1,4 +1,4 @@
-'use Client' 
+'use Client'
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
 import React, { useContext, useEffect, useState } from "react";
@@ -13,14 +13,31 @@ import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
 const Header = () => {
   const cities = [
-    { id: 1, name: 'L B Nagar' },
-    { id: 2, name: 'Mumbai' },
-    { id: 3, name: 'Kolkata' },
+    { id: 1, name: 'Miyapur' },
+    { id: 2, name: 'JNTU College' },
+    { id: 3, name: 'KPHB Colony' },
+    { id: 4, name: 'Kukatpally' },
+    { id: 5, name: 'Dr. B. R. Ambedkar Balanagar' },
+    { id: 6, name: 'Moosapet' },
+    { id: 7, name: 'Bharat Nagar' },
+    { id: 8, name: 'Erragadda' },
+    { id: 9, name: 'ESI Hospital' },
+    { id: 9, name: 'S.R. Nagar' },
+    { id: 10, name: 'Raidurg' },
+    { id: 11, name: 'HITEC City' },
+    { id: 12, name: 'Durgam Cheruvu' },
+    { id: 13, name: 'Madhapur' },
+    { id: 14, name: 'Peddamma Gudi' },
+    { id: 15, name: 'Jubilee Hills Checks Post' },
+    { id: 16, name: 'Road No. 5 Jubilee Hills' },
+    { id: 17, name: 'Yusufguda' },
+    { id: 18, name: 'Madhura Nagar' },
+    { id: 19, name: 'Ameerpet' }
   ];
 
   // State to store the selected city
   const [selectedCity, setSelectedCity] = useState('');
-  const {setSelectedLocation} = useLocationContext();
+  const { selectedLocation, setSelectedLocation } = useLocationContext();
 
   // Event handler for changing the selected city
   const handleCityChange = (event) => {
@@ -85,10 +102,10 @@ const Header = () => {
                       <NavMenu />
                     </nav>
                     <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
-                    <Popup trigger={<Link href={'/'} style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">Location</Link>} modal>
+                    <Popup trigger={<Link href={'/'} style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">{selectedLocation?selectedLocation:'Location'}</Link>} modal>
                       {close => (<div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', borderRadius: '20px' }}>
                         <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}><IoIosCloseCircle size={30} /></button>
-                        <button onClick={()=>{setSelectedLocation(selectedCity);  close();}} style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
+                        <button onClick={() => { setSelectedLocation(selectedCity); close(); }} style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
                         <label style={{ fontSize: '20px' }}>
                           Choose your location
                           <select value={selectedCity} onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
