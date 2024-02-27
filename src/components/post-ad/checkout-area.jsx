@@ -8,6 +8,25 @@ import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
 import imageCompression from 'browser-image-compression';
 import { useLocationContext } from '@/src/utils/locationContext';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+
+
+const formatResult = (item) => {
+   return (
+     <>
+       {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+       <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
+     </>
+   )
+ }
+
+ const handleOnSearch = (string, results) => {
+   // onSearch will have as the first callback parameter
+   // the string searched and for the second the results.
+   console.log(string, results)
+ }
+
+
 const CheckoutArea = () => {
    const { user } = useContext(Context);
    const [Category, setCategory] = useState('');
@@ -55,6 +74,11 @@ const CheckoutArea = () => {
       { id: 18, name: 'Madhura Nagar' },
       { id: 19, name: 'Ameerpet' }
    ];
+   const handleOnSelect = (item) => {
+      setSelectedCity(item.name);
+      setSelectedLocation(item.name);
+      console.log(item.name);
+    }
    const mobileBrands = [
       'Apple',
       'MI',
@@ -394,14 +418,16 @@ const CheckoutArea = () => {
                                  <div className="checkout-form-list">
                                     <label >
                                        Town / City <span className="required">*</span>
-                                       <select required value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
-                                          <option value="">Select a city</option>
-                                          {cities.map((city) => (
-                                             <option key={city.id} value={city.name}>
-                                                {city.name}
-                                             </option>
-                                          ))}
-                                       </select>
+                                       <div style={{ width: '100%', marginTop: 30 }}>
+                                          <ReactSearchAutocomplete
+                                             items={cities}
+                                             onSearch={handleOnSearch}
+                                             onSelect={handleOnSelect}
+                                             autoFocus
+                                             formatResult={formatResult}
+                                             placeholder="Enter Your City Here"
+                                          />
+                                       </div>
                                     </label>
                                  </div>
                               </div>
