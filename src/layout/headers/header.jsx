@@ -1,7 +1,7 @@
 'use Client'
 import useSticky from "@/hooks/use-sticky";
 import Link from "next/link";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { useRouter } from 'next/router';
 import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
@@ -11,7 +11,26 @@ import Popup from "reactjs-popup";
 import 'reactjs-popup/dist/index.css';
 import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
+import { ReactSearchAutocomplete } from 'react-search-autocomplete'
+
+const formatResult = (item) => {
+  return (
+    <>
+      {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+      <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
+    </>
+  )
+}
+
+const handleOnSearch = (string, results) => {
+  // onSearch will have as the first callback parameter
+  // the string searched and for the second the results.
+  console.log(string, results)
+}
+
 const Header = () => {
+  const [selectedCity, setSelectedCity] = useState('');
+  const { selectedLocation, setSelectedLocation } = useLocationContext();
   const cities = [
     { id: 1, name: 'Miyapur' },
     { id: 2, name: 'JNTU College' },
@@ -35,9 +54,20 @@ const Header = () => {
     { id: 19, name: 'Ameerpet' }
   ];
 
-  // State to store the selected city
-  const [selectedCity, setSelectedCity] = useState('');
-  const { selectedLocation, setSelectedLocation } = useLocationContext();
+  const handleOnSelect = (item) => {
+    setSelectedCity(item.name);
+    setSelectedLocation(item.name);
+    console.log(item.name);
+  }
+
+  const popupRef = useRef(null); // Create a ref for the Popup component
+
+  useEffect(() => {
+    // You can trigger the popup in useEffect
+    if (popupRef.current) {
+      popupRef.current.open();
+    }
+  }, []);
 
   // Event handler for changing the selected city
   const handleCityChange = (event) => {
@@ -102,22 +132,45 @@ const Header = () => {
                       <NavMenu />
                     </nav>
                     <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
-                    <Popup trigger={<Link href={'/'} style={{ padding: "15px", margin: "10px 0 10px 10px", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">{selectedLocation?selectedLocation:'Location'}</Link>} modal>
-                      {close => (<div style={{ height: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', borderRadius: '20px' }}>
-                        <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}><IoIosCloseCircle size={30} /></button>
-                        <button onClick={() => { setSelectedLocation(selectedCity); close(); }} style={{ position: 'absolute', bottom: '0', right: '0', padding: '10px 15px', margin: '1rem', borderRadius: '10px', backgroundColor: '#19ae51', color: 'white', fontWeight: '600' }}>Confirm</button>
-                        <label style={{ fontSize: '20px' }}>
-                          Choose your location
-                          <select value={selectedCity} onChange={handleCityChange} style={{ backgroundColor: 'white', padding: '10px 15px', margin: '1rem', borderRadius: '10px' }}>
-                            <option value="">Select a city</option>
-                            {cities.map((city) => (
-                              <option key={city.id} value={city.name}>
-                                {city.name}
-                              </option>
-                            ))}
-                          </select>
-                        </label>
-                      </div>
+                    <Popup
+                      trigger={
+                        <Link
+                          href={'/'}
+                          style={{
+                            padding: "15px",
+                            margin: "10px 0 10px 10px",
+                            fontFamily: "sans-serif",
+                            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            border: "1px solid white"
+                          }}
+                          className="tp-btn"
+                        >
+                          {selectedLocation ? selectedLocation : 'Location'}
+                        </Link>
+                      }
+                      modal
+                      contentStyle={{ width: '80%', height: '150px', borderRadius: '20px' }}
+                      ref={popupRef}
+                    >
+                      {(close) => (
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 5 }}>
+                          <button onClick={close} style={{ position: 'absolute', top: '3', right: '3' }}>
+                            <IoIosCloseCircle size={30} />
+                          </button>
+                          <div style={{ width: '100%', marginTop: 30 }}>
+                            <ReactSearchAutocomplete
+                              items={cities}
+                              onSearch={handleOnSearch}
+                              onSelect={handleOnSelect}
+                              autoFocus
+                              formatResult={formatResult}
+                              placeholder="Enter Your City Here"
+                            />
+                          </div>
+                        </div>
                       )}
                     </Popup>
                   </div>
