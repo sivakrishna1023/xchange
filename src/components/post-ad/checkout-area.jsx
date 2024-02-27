@@ -43,7 +43,7 @@ const CheckoutArea = () => {
       { id: 7, name: 'Bharat Nagar' },
       { id: 8, name: 'Erragadda' },
       { id: 9, name: 'ESI Hospital' },
-      { id: 9, name: 'S.R. Nagar' },
+      { id: 41, name: 'S.R. Nagar' },
       { id: 10, name: 'Raidurg' },
       { id: 11, name: 'HITEC City' },
       { id: 12, name: 'Durgam Cheruvu' },
@@ -389,7 +389,7 @@ const CheckoutArea = () => {
                               </div>
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Street Name:<span className="required">*</span></label>
+                                    <label>Address<span className="required">*</span></label>
                                     <input required onChange={(e) => { setAddress(e.target.value) }} type="text" placeholder="Street/Village" />
                                  </div>
                               </div>
@@ -397,9 +397,9 @@ const CheckoutArea = () => {
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
                                     <label >
-                                       Town / City <span className="required">*</span>
-                                       <select required value={selectedLocation} onChange={(e) => setSelectedLocation(e.target.value)} style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
-                                          <option value="">Select a city</option>
+                                       Street Name <span className="required">*</span>
+                                       <select required onClick={(e) => {setCity(e.target.value),console.log(City)}}  style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
+                                          <option value="">    Select </option>
                                           {cities.map((city) => (
                                              <option key={city.id} value={city.name}>
                                                 {city.name}

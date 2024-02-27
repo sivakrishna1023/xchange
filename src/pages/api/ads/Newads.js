@@ -28,6 +28,7 @@ const handler = asyncError(async (req, res) => {
     phone,
     images,
    } = req.body;
+   console.log(req.body);
    if(Category==='' || 
     Adname==='' || 
     Brand==='' ||

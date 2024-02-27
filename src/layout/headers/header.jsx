@@ -22,7 +22,7 @@ const Header = () => {
     { id: 7, name: 'Bharat Nagar' },
     { id: 8, name: 'Erragadda' },
     { id: 9, name: 'ESI Hospital' },
-    { id: 9, name: 'S.R. Nagar' },
+    { id: 41, name: 'S.R. Nagar' },
     { id: 10, name: 'Raidurg' },
     { id: 11, name: 'HITEC City' },
     { id: 12, name: 'Durgam Cheruvu' },
