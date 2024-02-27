@@ -56,6 +56,39 @@ const Header = () => {
     { id: 21, name: 'Prashanthi Hills Nizampet' },
     { id: 22, name: 'L B Nagar' },
     { id: 23, name: 'Nizampet' },
+    { id: 24, name: 'Adilabad' },
+    { id: 25, name: 'Kumurambheem Asifabad' },
+    { id: 26, name: 'Nirmal' },
+    { id: 27, name: 'Mancherial' },
+    { id: 28, name: 'Nizamabad' },
+    { id: 29, name: 'Jagtial' },
+    { id: 30, name: 'Peddapalli' },
+    { id: 31, name: 'Kamareddy' },
+    { id: 32, name: 'Rajanna Sircilla' },
+    { id: 33, name: 'Karimnagar' },
+    { id: 34, name: 'Jayashankar Bhupatpally' },
+    { id: 35, name: 'Sangarreddy' },
+    { id: 36, name: 'Medak' },
+    { id: 37, name: 'Siddipet' },
+    { id: 38, name: 'Hanumakonda' },
+    { id: 39, name: 'Warangal Rural' },
+    { id: 40, name: 'Mulugu' },
+    { id: 411, name: 'Vikarabad' },
+    { id: 42, name: 'Hyderabad' },
+    { id: 43, name: 'Medchal Maikajgiri' },
+    { id: 44, name: 'Jangaon' },
+    { id: 45, name: 'Mahabubabad' },
+    { id: 46, name: 'Bhadradri Knthagudem' },
+    { id: 47, name: 'Narayanpet' },
+    { id: 48, name: 'Mahabubnagar' },
+    { id: 49, name: 'Rangareddy' },
+    { id: 50, name: 'Yadadri Bhuvanagiri' },
+    { id: 51, name: 'Suryapet' },
+    { id: 52, name: 'Khanmmam' },
+    { id: 53, name: 'Jogulamba Gadwal' },
+    { id: 54, name: 'Wanaparthy' },
+    { id: 55, name: 'Nagarkurnool' },
+    { id: 56, name: 'Nalgonda' }
   ];
 
   const handleOnSelect = (item) => {
@@ -139,7 +172,7 @@ const Header = () => {
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
-                    {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
+                    <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
                     <Popup
                       trigger={
                         <Link
