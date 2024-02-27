@@ -161,7 +161,7 @@ const Header = () => {
                     >
                       {(close) => (
                         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 5 }}>
-                          <button onClick={close} style={{ position: 'absolute', top: '3', right: '3' }}>
+                          <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}>
                             <IoIosCloseCircle size={30} />
                           </button>
                           <div style={{ width: '100%', marginTop: 30 }}>
