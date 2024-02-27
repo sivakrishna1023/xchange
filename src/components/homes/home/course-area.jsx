@@ -14,6 +14,7 @@ const CourseArea = () => {
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
   const [tasks, settasks] = useState('');
+  const [comp_tasks,setcomp_tasks]=useState('');
   useEffect(()=>{
     const req=selectedLocation;
     const handle_newtasks = async () => {
@@ -33,6 +34,8 @@ const CourseArea = () => {
         if (data.success) {
           if(data.ads.length>0){
             settasks(data.ads);
+          }else{
+            settasks(comp_tasks);
           }
         }
       } catch (error) {
@@ -86,6 +89,7 @@ const CourseArea = () => {
       const data = await res.json();
       if (data.success) {
         settasks(data.ads);
+        setcomp_tasks(data.ads);
       }
       setloading(false);
     } catch (error) {

@@ -29,10 +29,14 @@ const Header = () => {
     { id: 13, name: 'Madhapur' },
     { id: 14, name: 'Peddamma Gudi' },
     { id: 15, name: 'Jubilee Hills Checks Post' },
-    { id: 16, name: 'Road No. 5 Jubilee Hills' },
+    { id: 16, name: 'Jubilee Hills' },
     { id: 17, name: 'Yusufguda' },
     { id: 18, name: 'Madhura Nagar' },
-    { id: 19, name: 'Ameerpet' }
+    { id: 19, name: 'Ameerpet' },
+    { id: 20, name: 'Kothapet' },
+    { id: 21, name: 'Prashanthi Hills Nizampet' },
+    { id: 22, name: 'L B Nagar' },
+    { id: 23, name: 'Nizampet' },
   ];
 
   // State to store the selected city
