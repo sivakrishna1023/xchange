@@ -348,7 +348,32 @@ const Check = () => {
       setimagloading(false);
    };
 
-
+   const cities = [
+      { id: 1, name: 'Miyapur' },
+      { id: 2, name: 'JNTU College' },
+      { id: 3, name: 'KPHB Colony' },
+      { id: 4, name: 'Kukatpally' },
+      { id: 5, name: 'Dr. B. R. Ambedkar Balanagar' },
+      { id: 6, name: 'Moosapet' },
+      { id: 7, name: 'Bharat Nagar' },
+      { id: 8, name: 'Erragadda' },
+      { id: 9, name: 'ESI Hospital' },
+      { id: 9, name: 'S.R. Nagar' },
+      { id: 10, name: 'Raidurg' },
+      { id: 11, name: 'HITEC City' },
+      { id: 12, name: 'Durgam Cheruvu' },
+      { id: 13, name: 'Madhapur' },
+      { id: 14, name: 'Peddamma Gudi' },
+      { id: 15, name: 'Jubilee Hills Checks Post' },
+      { id: 16, name: 'Jubilee Hills' },
+      { id: 17, name: 'Yusufguda' },
+      { id: 18, name: 'Madhura Nagar' },
+      { id: 19, name: 'Ameerpet' },
+      { id: 20, name: 'Kothapet' },
+      { id: 21, name: 'Prashanthi Hills Nizampet' },
+      { id: 22, name: 'L B Nagar' },
+      { id: 23, name: 'Nizampet' },
+    ];  
 
    // const creatingAdimages = (e) => {
    //    const files = Array.from(e.target.files);
@@ -477,10 +502,20 @@ const Check = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Street <span className="required">*</span></label>
-                                    <input required onChange={(e) => { setCity(e.target.value) }} value={City !== '' ? City : ""} type="text" placeholder="Street name" />
+                                    <label >
+                                       Town / City <span className="required">*</span>
+                                       <select required value={City !== '' ? City : ""} onChange={(e) => { setCity(e.target.value) }} style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
+                                          <option value="">Select a city</option>
+                                          {cities.map((city) => (
+                                             <option key={city.id} value={city.name}>
+                                                {city.name}
+                                             </option>
+                                          ))}
+                                       </select>
+                                    </label>
                                  </div>
                               </div>
+
                               <div className="col-md-6">
                                  <div className="checkout-form-list">
                                     <label>State / County <span className="required">*</span></label>

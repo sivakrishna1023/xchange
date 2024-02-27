@@ -62,18 +62,23 @@ const CheckoutArea = () => {
       { id: 7, name: 'Bharat Nagar' },
       { id: 8, name: 'Erragadda' },
       { id: 9, name: 'ESI Hospital' },
-      { id: 9, name: 'S.R. Nagar' },
+      { id: 41, name: 'S.R. Nagar' },
       { id: 10, name: 'Raidurg' },
       { id: 11, name: 'HITEC City' },
       { id: 12, name: 'Durgam Cheruvu' },
       { id: 13, name: 'Madhapur' },
       { id: 14, name: 'Peddamma Gudi' },
       { id: 15, name: 'Jubilee Hills Checks Post' },
-      { id: 16, name: 'Road No. 5 Jubilee Hills' },
+      { id: 16, name: 'Jubilee Hills' },
       { id: 17, name: 'Yusufguda' },
       { id: 18, name: 'Madhura Nagar' },
-      { id: 19, name: 'Ameerpet' }
-   ];
+      { id: 19, name: 'Ameerpet' },
+      { id: 20, name: 'Kothapet' },
+      { id: 21, name: 'Prashanthi Hills Nizampet' },
+      { id: 22, name: 'L B Nagar' },
+      { id: 23, name: 'Nizampet' },
+    ];  
+
    const handleOnSelect = (item) => {
       setSelectedCity(item.name);
       setSelectedLocation(item.name);
@@ -409,7 +414,7 @@ const CheckoutArea = () => {
                               </div>
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label>Street Name:<span className="required">*</span></label>
+                                    <label>Address<span className="required">*</span></label>
                                     <input required onChange={(e) => { setAddress(e.target.value) }} type="text" placeholder="Street/Village" />
                                  </div>
                               </div>
