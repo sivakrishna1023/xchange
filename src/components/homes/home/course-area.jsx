@@ -15,6 +15,8 @@ const CourseArea = () => {
   const { user } = useContext(Context);
   const [tasks, settasks] = useState('');
   const [comp_tasks,setcomp_tasks]=useState('');
+  const text="NO Ads Found Under Selected Location";
+  const [isvalid,setisvalid]=useState(true);
   useEffect(()=>{
     const req=selectedLocation;
     const handle_newtasks = async () => {
@@ -33,8 +35,10 @@ const CourseArea = () => {
         const data = await res.json();
         if (data.success) {
           if(data.ads.length>0){
+            setisvalid(true);
             settasks(data.ads);
           }else{
+            setisvalid(false);
             settasks(comp_tasks);
           }
         }
@@ -121,6 +125,7 @@ const CourseArea = () => {
           </div>
           <div className="row justify-content-center">
             <div className="row">
+             {!isvalid && <h4>{text} <br /> </h4>}
               {tasks && !loading ? tasks.slice(0, 8).map((item, i) => (
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
