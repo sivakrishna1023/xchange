@@ -64,12 +64,16 @@ const Header = () => {
     console.log(item.name);
   }
 
-  const popupRef = useRef(null); // Create a ref for the Popup component
+  const popupRef = useRef();
 
   useEffect(() => {
-    // You can trigger the popup in useEffect
-    if (popupRef.current) {
+    // Check if the popup has already been shown
+    const popupShownBefore = localStorage.getItem('popupShownBefore');
+
+    // If the popup has not been shown before, open it and set the flag in localStorage
+    if (!popupShownBefore && popupRef.current) {
       popupRef.current.open();
+      localStorage.setItem('popupShownBefore', 'true');
     }
   }, []);
 
@@ -135,7 +139,7 @@ const Header = () => {
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
-                    <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
+                    {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
                     <Popup
                       trigger={
                         <Link
