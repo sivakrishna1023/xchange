@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { Context } from '../Clients/clientcomponents';
 import Link from 'next/link';
 import imageCompression from 'browser-image-compression';
+import { useLocationContext } from '@/src/utils/locationContext';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 const Check = () => {
    const [loading, setloading] = useState(false);
@@ -493,6 +495,25 @@ const Check = () => {
          </>
       )
    }
+   const handleOnSearch = (string, results) => {
+      // onSearch will have as the first callback parameter
+      // the string searched and for the second the results.
+      // console.log(string, results)
+    }
+   const handleOnSelect = (item) => {
+      setCity(item.name);
+      // console.log(City);
+      // setSelectedCity(item.name);
+      // setSelectedLocation(item.name);
+    }
+    const formatResult = (item) => {
+      return (
+        <>
+          {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+          <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
+        </>
+      )
+    }
    return (
       <>
          <ToastContainer />
@@ -535,7 +556,20 @@ const Check = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                    <label >
+                                 <label >
+                                       Town / City <span className="required">*</span>
+                                       <div style={{ width: '100%', marginTop: 30 }}>
+                                          <ReactSearchAutocomplete
+                                             items={cities}
+                                             onSearch={handleOnSearch}
+                                             onSelect={handleOnSelect}
+                                             autoFocus
+                                             formatResult={formatResult}
+                                             placeholder={City}
+                                          />
+                                       </div>
+                                    </label>
+                                    {/* <label >
                                        Town / City <span className="required">*</span>
                                        <select required value={City !== '' ? City : ""} onChange={(e) => { setCity(e.target.value) }} style={{ padding: 6, border: 'none', backgroundColor: 'white', color: 'gray' }}>
                                           <option value="">Select a city</option>
@@ -545,7 +579,7 @@ const Check = () => {
                                              </option>
                                           ))}
                                        </select>
-                                    </label>
+                                    </label> */}
                                  </div>
                               </div>
 

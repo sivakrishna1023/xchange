@@ -23,7 +23,7 @@ const formatResult = (item) => {
  const handleOnSearch = (string, results) => {
    // onSearch will have as the first callback parameter
    // the string searched and for the second the results.
-   console.log(string, results)
+   // console.log(string, results)
  }
 
 
@@ -113,9 +113,10 @@ const CheckoutArea = () => {
     ];
 
    const handleOnSelect = (item) => {
-      setSelectedCity(item.name);
-      setSelectedLocation(item.name);
-      console.log(item.name);
+      setCity(item.name);
+      // console.log(City);
+      // setSelectedCity(item.name);
+      // setSelectedLocation(item.name);
     }
    const mobileBrands = [
       'Apple',
