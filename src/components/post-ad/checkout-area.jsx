@@ -109,7 +109,8 @@ const CheckoutArea = () => {
       { id: 53, name: 'Jogulamba Gadwal' },
       { id: 54, name: 'Wanaparthy' },
       { id: 55, name: 'Nagarkurnool' },
-      { id: 56, name: 'Nalgonda' }
+      { id: 56, name: 'Malakpet' },
+      { id: 57, name: 'Nalgonda' }
     ];
 
    const handleOnSelect = (item) => {
