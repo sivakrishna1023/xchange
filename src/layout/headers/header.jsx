@@ -118,12 +118,20 @@ const Header = () => {
   const handleOnSelect = (item) => {
     setSelectedCity(item.name);
     setSelectedLocation(item.name);
-    console.log(item.name);
+    localStorage.setItem('my_city',`${item.name}`);
   }
 
   const popupRef = useRef();
-
+  const [mycity,setmycity]=useState('');
+  useEffect(()=>{
+    var value= localStorage.getItem('my_city');
+    setmycity(value);
+  },[selectedLocation])
   useEffect(() => {
+    var value= localStorage.getItem('my_city');
+    setmycity(value);
+    setSelectedCity(value);
+    setSelectedLocation(value);
     // Check if the popup has already been shown
     const popupShownBefore = localStorage.getItem('popupShownBefore');
 
@@ -213,7 +221,7 @@ const Header = () => {
                           }}
                           className="tp-btn"
                         >
-                          {selectedLocation ? selectedLocation : 'Location'}
+                          { mycity ? mycity : 'Location'}
                         </div>
                       }
                       modal

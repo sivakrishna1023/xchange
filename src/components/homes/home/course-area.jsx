@@ -14,42 +14,53 @@ const CourseArea = () => {
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
   const [tasks, settasks] = useState('');
-  const [comp_tasks,setcomp_tasks]=useState('');
   const text="NO Ads Found Under Selected Location";
   const [isvalid,setisvalid]=useState(true);
-  useEffect(()=>{
-    const req=selectedLocation;
-    const handle_newtasks = async () => {
+  const handle_newtasks = async () => {
+    var item = localStorage.getItem('my_city');
+    var req;
+    if(item){
+      req= item!=='' ? item :selectedLocation;
+    }else{
+       req=selectedLocation;
+    }
       setloading(true);
-      try {
-        console.log("clicked", req);
-        const res = await fetch("/api/ads/cityfilter", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            fill: req
-          })
-        });
-        const data = await res.json();
-        if (data.success) {
-          if(data.ads.length>0){
-            setisvalid(true);
-            settasks(data.ads);
-          }else{
-            setisvalid(false);
-            settasks(comp_tasks);
+    try {
+      const res = await fetch("/api/ads/cityfilter", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fill: req
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+          if(item){
+            if(data.found){
+              setisvalid(true);
+            }else{
+              setisvalid(false);
+            }
           }
-        }
-      } catch (error) {
-        console.log(error);
+          settasks(data.ads);
       }
-      setloading(false);
-    };
+    } catch (error) {
+      console.log(error);
+    }
+    setloading(false);
+  };
+  useEffect(()=>{
     handle_newtasks();
   },
   [selectedLocation]);
+  useEffect(()=>{
+    var item = localStorage.getItem('my_city');
+    if(item){
+      handle_newtasks();
+    }
+  },[])
   const add_to_list=async (e)=>{
     try {
       const token = localStorage.getItem('token');
@@ -81,29 +92,29 @@ const CourseArea = () => {
       });
    }
   }
-  const gettasks = async () => {
-    setloading(true);
-    try {
-      const res = await fetch("/api/ads/Allads", {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })
-      const data = await res.json();
-      if (data.success) {
-        settasks(data.ads);
-        setcomp_tasks(data.ads);
-      }
-      setloading(false);
-    } catch (error) {
-       console.log(error);
-    }
-    setloading(false);
-  }
-  useEffect(() => {
-    gettasks();
-  }, [])
+  // const gettasks = async () => {
+  //   setloading(true);
+  //   try {
+  //     const res = await fetch("/api/ads/Allads", {
+  //       method: 'GET',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //     })
+  //     const data = await res.json();
+  //     if (data.success) {
+  //       settasks(data.ads);
+  //       setcomp_tasks(data.ads);
+  //     }
+  //     setloading(false);
+  //   } catch (error) {
+  //      console.log(error);
+  //   }
+  //   setloading(false);
+  // }
+  // useEffect(() => {
+  //   gettasks();
+  // }, [])
 
   return (
     <>
