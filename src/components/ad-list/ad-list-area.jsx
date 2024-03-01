@@ -5,12 +5,60 @@ import { useRouter } from 'next/router';
 import React, { useState, useEffect } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocationContext } from '@/src/utils/locationContext';
+import { ReactSearchAutocomplete } from 'react-search-autocomplete';
+
 
 const AdListArea = () => { 
   const [loading,setloading]=useState(false);
   const [searchText, setSearchText] = useState("");
   const [tasks, settasks] = useState('');
   const [req, setreq] = useState('');
+  const {selectedLocation} = useLocationContext();
+  const [isvalid,setisvalid]=useState(true);
+  const text="NO Ads Found Under Selected Location";
+  const handle_newtasks1 = async () => {
+    var item = localStorage.getItem('my_city');
+    var req;
+    if(item){
+      req= item!=='' ? item :selectedLocation;
+    }else{
+       req=selectedLocation;
+    }
+    console.log(' from the course are ',item);
+      setloading(true);
+    try {
+      console.log("clicked", req);
+      const res = await fetch("/api/ads/cityfilter", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fill: req
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+          if(item){
+            if(data.found){
+              setisvalid(true);
+            }else{
+              setisvalid(false);
+            }
+          }
+          settasks(data.ads);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setloading(false);
+  };
+  useEffect(()=>{
+    handle_newtasks1();
+  },
+  [selectedLocation]);
+
   const gettasks = async () => {
     const queryParams = new URLSearchParams(window.location.search);
     var select = queryParams.get('select');
@@ -551,6 +599,7 @@ const AdListArea = () => {
               )
             }
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
+              { !isvalid &&  <h4>{text}</h4>  }
               {tasks && tasks.length>0 ? ( tasks.map((item, i) => (
                 <div key={i} className="tpcourse tp-list-course mb-40">
                   <div className="row g-0">

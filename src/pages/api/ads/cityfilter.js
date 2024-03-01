@@ -10,15 +10,17 @@ const handler = asyncError(async (req, res) => {
         if(req.body.fill===''){
             const ads= await  Ads.find({draft: false});
             await disconnect();
+            const found=true;
             res.status(200).json({
                 success: true, 
                 message: `New Tasks`,
                 ads,
+                found,
               });
              
         }else{
             const regexQuery = new RegExp(req.body.fill, 'i');
-            const ads = await Ads.find({
+            var ads = await Ads.find({
                 $and: [
                   {
                     $or: [
@@ -30,11 +32,17 @@ const handler = asyncError(async (req, res) => {
                   { draft: false }, 
                 ],
               });
+            var found=true;
+            if(ads.length==0){
+              ads= await  Ads.find({draft: false});
+              found=false;
+            }
             await disconnect();
             res.status(200).json({
                 success: true,
                 message: `New tasks`,
-                ads
+                ads,
+                found
             });
         }   
 });
