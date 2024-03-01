@@ -64,14 +64,14 @@ const social_links = [
     name: "Youtube",
   },
   {
-    link: "https://instagram.com/xchange.in.co?igshid=OGQ5ZDc2ODk2ZA==",
+    link: "https://www.instagram.com/xchange.hyd?igsh=MmNhbW02ajlnbWty",
     target: "_blank",
     icon: "fab fa-instagram",
     name: "Instagram",
   },
 
   {
-    link: "http://whatsapp.com",
+    link: "https://wa.link/xhv2rs",
     target: "_blank",
     icon: "fa-brands fa-whatsapp",
     name: "Twitter",
