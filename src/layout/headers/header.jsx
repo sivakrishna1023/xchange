@@ -196,32 +196,32 @@ const Header = () => {
                     <nav id="mobile-menu" className="d-none d-xl-block">
                       <NavMenu />
                     </nav>
-                    <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link>
+                    {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
                     <Popup
                       trigger={
-                        <Link
-                          href={'/'}
+                        <div
                           style={{
-                            padding: "15px",
+                            padding: "10px",
                             margin: "10px 0 10px 10px",
                             fontFamily: "sans-serif",
                             backgroundColor: "rgba(255, 255, 255, 0.1)",
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            border: "1px solid white"
+                            border: "1px solid white",
+                            cursor: 'pointer'
                           }}
                           className="tp-btn"
                         >
                           {selectedLocation ? selectedLocation : 'Location'}
-                        </Link>
+                        </div>
                       }
                       modal
-                      contentStyle={{ width: '80%', height: '150px', borderRadius: '20px' }}
+                      contentStyle={{ width: '80%', height: '150px', borderRadius: '20px', top: '150px', left: '10%', position: 'absolute' }}
                       ref={popupRef}
                     >
                       {(close) => (
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 5 }}>
+                        <div style={{ padding: 5 }}>
                           <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}>
                             <IoIosCloseCircle size={30} />
                           </button>
