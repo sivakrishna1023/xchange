@@ -18,7 +18,7 @@ const index = () => {
 
   return (
     <Wrapper>
-      <SEO pageTitle={'Xchangehyd'} />
+      <SEO pageTitle={'Xchange'} />
       <Home />
     </Wrapper>
   );
