@@ -88,7 +88,31 @@ const Header = () => {
     { id: 53, name: 'Jogulamba Gadwal' },
     { id: 54, name: 'Wanaparthy' },
     { id: 55, name: 'Nagarkurnool' },
-    { id: 56, name: 'Nalgonda' }
+    { id: 56, name: 'Malakpet' },
+    { id: 57, name: 'Nalgonda' },
+      { id: 58, name: 'Panjagutta' },
+      { id: 59, name: 'Irrum Manzil' },
+      { id: 60, name: 'Khairatabad' },
+      { id: 61, name: 'Lakdi-ka-pul' },
+      { id: 62, name: 'Assembly' },
+      { id: 63, name: 'Nampally' },
+      { id: 64, name: 'Gandhi Bhavan' },
+      { id: 65, name: 'Osmania Medical College' },
+      { id: 66, name: 'MG Bus Station' },
+      { id: 67, name: 'New Market' },
+      { id: 68, name: 'Musarambagh' },
+      { id: 69, name: 'Dilsukhnagar' },
+      { id: 70, name: 'Chaitanyapuri' },
+      { id: 71, name: 'Nagole' },
+      { id: 72, name: 'Uppal' },
+      { id: 73, name: 'Stadium' },
+      { id: 74, name: 'NGRI' },
+      { id: 75, name: 'Habsiguda' },
+      { id: 76, name: 'Tarnaka' },
+      { id: 77, name: 'Mettuguda' },
+      { id: 78, name: 'Secunderabad' },
+      { id: 79, name: 'Parade Ground' }
+    
   ];
 
   const handleOnSelect = (item) => {
