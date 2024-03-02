@@ -111,8 +111,14 @@ const Header = () => {
       { id: 76, name: 'Tarnaka' },
       { id: 77, name: 'Mettuguda' },
       { id: 78, name: 'Secunderabad' },
-      { id: 79, name: 'Parade Ground' }
-    
+      { id: 79, name: 'Parade Ground' },
+      {id: 80, name: 'Raipur' },
+    {id: 81, name: 'Bhilai'},
+    {id: 82, name: 'Durg' },
+    {id: 83, name: 'Bilaspur' },
+    {id: 84, name: 'Korba' },
+    {id: 85, name: 'Naya Raipur' }
+       
   ];
 
   const handleOnSelect = (item) => {
