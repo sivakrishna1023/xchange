@@ -25,10 +25,8 @@ const AdListArea = () => {
     }else{
        req=selectedLocation;
     }
-    console.log(' from the course are ',item);
       setloading(true);
     try {
-      console.log("clicked", req);
       const res = await fetch("/api/ads/cityfilter", {
         method: 'POST',
         headers: {
