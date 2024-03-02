@@ -17,7 +17,11 @@ const CourseArea = () => {
   const text="NO Ads Found Under Selected Location";
   const [isvalid,setisvalid]=useState(true);
   function shuffleArray(array) {
-    return array.sort(() => Math.random() - 0.5);
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
