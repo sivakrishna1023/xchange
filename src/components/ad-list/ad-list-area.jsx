@@ -87,22 +87,7 @@ const AdListArea = () => {
         console.log(error);
       }
     }else{
-        try {
-          console.log(req);
-          const res = await fetch("/api/ads/Allads", {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-          const data = await res.json();
-          console.log(data);
-          if (data.success) {
-            settasks(data.ads);
-          }
-        } catch (error) {
-          console.log(error);
-        }
+        handle_newtasks1();
     }
     setloading(false);
   }
