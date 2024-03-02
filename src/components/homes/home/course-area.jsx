@@ -16,6 +16,9 @@ const CourseArea = () => {
   const [tasks, settasks] = useState('');
   const text="NO Ads Found Under Selected Location";
   const [isvalid,setisvalid]=useState(true);
+  function shuffleArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+  }
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
@@ -44,7 +47,8 @@ const CourseArea = () => {
               setisvalid(false);
             }
           }
-          settasks(data.ads);
+          const ads_data=shuffleArray(data.ads);
+          settasks(ads_data);
       }
     } catch (error) {
       console.log(error);
@@ -92,29 +96,6 @@ const CourseArea = () => {
       });
    }
   }
-  // const gettasks = async () => {
-  //   setloading(true);
-  //   try {
-  //     const res = await fetch("/api/ads/Allads", {
-  //       method: 'GET',
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //     })
-  //     const data = await res.json();
-  //     if (data.success) {
-  //       settasks(data.ads);
-  //       setcomp_tasks(data.ads);
-  //     }
-  //     setloading(false);
-  //   } catch (error) {
-  //      console.log(error);
-  //   }
-  //   setloading(false);
-  // }
-  // useEffect(() => {
-  //   gettasks();
-  // }, [])
 
   return (
     <>
