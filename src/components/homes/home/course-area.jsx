@@ -22,7 +22,7 @@ const CourseArea = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-  }
+  } 
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
