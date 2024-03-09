@@ -117,7 +117,9 @@ const Header = () => {
     {id: 82, name: 'Durg' },
     {id: 83, name: 'Bilaspur' },
     {id: 84, name: 'Korba' },
-    {id: 85, name: 'Naya Raipur' }
+    {id: 85, name: 'Naya Raipur' },
+     {id: 86, name: 'Vishakapatnam' }
+    
        
   ];
 
