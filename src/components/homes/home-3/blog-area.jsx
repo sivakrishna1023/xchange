@@ -6,7 +6,7 @@ const BlogArea = () => {
   return (
     <>
       <section
-        className="blog-area pt-115 pb-110 wow fadeInUp"
+        className="blog-area pt-10 pb-110 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".3s"
       >

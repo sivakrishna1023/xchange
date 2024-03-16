@@ -5,11 +5,11 @@ import React from "react";
 const BlogMasonryArea = () => {
   return (
     <>
-      <section className="blog-area pt-110 pb-115">
+      <section className="blog-area pt-10   pb-115">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title mb-65 text-center">
+              <div className="section-title mb-10 lg:mb-65  text-center">
                 <h2 className="tp-section-title mb-20">Latest Blogs & News</h2>
               </div>
             </div>

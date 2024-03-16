@@ -7,8 +7,7 @@ import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
 import NavMenu2 from "./nav-menu2";
-import Popup from "reactjs-popup";
-import 'reactjs-popup/dist/index.css';
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
@@ -29,134 +28,133 @@ const handleOnSearch = (string, results) => {
 }
 
 const Header = () => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
   const { selectedLocation, setSelectedLocation } = useLocationContext();
   const cities = [
-    { id: 1, name: 'Miyapur' },
-    { id: 2, name: 'JNTU College' },
-    { id: 3, name: 'KPHB Colony' },
-    { id: 4, name: 'Kukatpally' },
-    { id: 5, name: 'Dr. B. R. Ambedkar Balanagar' },
-    { id: 6, name: 'Moosapet' },
-    { id: 7, name: 'Bharat Nagar' },
-    { id: 8, name: 'Erragadda' },
-    { id: 9, name: 'ESI Hospital' },
-    { id: 41, name: 'S.R. Nagar' },
-    { id: 10, name: 'Raidurg' },
-    { id: 11, name: 'HITEC City' },
-    { id: 12, name: 'Durgam Cheruvu' },
-    { id: 13, name: 'Madhapur' },
-    { id: 14, name: 'Peddamma Gudi' },
-    { id: 15, name: 'Jubilee Hills Checks Post' },
-    { id: 16, name: 'Jubilee Hills' },
-    { id: 17, name: 'Yusufguda' },
-    { id: 18, name: 'Madhura Nagar' },
-    { id: 19, name: 'Ameerpet' },
-    { id: 20, name: 'Kothapet' },
-    { id: 21, name: 'Prashanthi Hills Nizampet' },
-    { id: 22, name: 'L B Nagar' },
-    { id: 23, name: 'Nizampet' },
-    { id: 24, name: 'Adilabad' },
-    { id: 25, name: 'Kumurambheem Asifabad' },
-    { id: 26, name: 'Nirmal' },
-    { id: 27, name: 'Mancherial' },
-    { id: 28, name: 'Nizamabad' },
-    { id: 29, name: 'Jagtial' },
-    { id: 30, name: 'Peddapalli' },
-    { id: 31, name: 'Kamareddy' },
-    { id: 32, name: 'Rajanna Sircilla' },
-    { id: 33, name: 'Karimnagar' },
-    { id: 34, name: 'Jayashankar Bhupatpally' },
-    { id: 35, name: 'Sangarreddy' },
-    { id: 36, name: 'Medak' },
-    { id: 37, name: 'Siddipet' },
-    { id: 38, name: 'Hanumakonda' },
-    { id: 39, name: 'Warangal Rural' },
-    { id: 40, name: 'Mulugu' },
-    { id: 411, name: 'Vikarabad' },
-    { id: 42, name: 'Hyderabad' },
-    { id: 43, name: 'Medchal Maikajgiri' },
-    { id: 44, name: 'Jangaon' },
-    { id: 45, name: 'Mahabubabad' },
-    { id: 46, name: 'Bhadradri Knthagudem' },
-    { id: 47, name: 'Narayanpet' },
-    { id: 48, name: 'Mahabubnagar' },
-    { id: 49, name: 'Rangareddy' },
-    { id: 50, name: 'Yadadri Bhuvanagiri' },
-    { id: 51, name: 'Suryapet' },
-    { id: 52, name: 'Khanmmam' },
-    { id: 53, name: 'Jogulamba Gadwal' },
-    { id: 54, name: 'Wanaparthy' },
-    { id: 55, name: 'Nagarkurnool' },
-    { id: 56, name: 'Malakpet' },
-    { id: 57, name: 'Nalgonda' },
-      { id: 58, name: 'Panjagutta' },
-      { id: 59, name: 'Irrum Manzil' },
-      { id: 60, name: 'Khairatabad' },
-      { id: 61, name: 'Lakdi-ka-pul' },
-      { id: 62, name: 'Assembly' },
-      { id: 63, name: 'Nampally' },
-      { id: 64, name: 'Gandhi Bhavan' },
-      { id: 65, name: 'Osmania Medical College' },
-      { id: 66, name: 'MG Bus Station' },
-      { id: 67, name: 'New Market' },
-      { id: 68, name: 'Musarambagh' },
-      { id: 69, name: 'Dilsukhnagar' },
-      { id: 70, name: 'Chaitanyapuri' },
-      { id: 71, name: 'Nagole' },
-      { id: 72, name: 'Uppal' },
-      { id: 73, name: 'Stadium' },
-      { id: 74, name: 'NGRI' },
-      { id: 75, name: 'Habsiguda' },
-      { id: 76, name: 'Tarnaka' },
-      { id: 77, name: 'Mettuguda' },
-      { id: 78, name: 'Secunderabad' },
-      { id: 79, name: 'Parade Ground' },
-      {id: 80, name: 'Raipur' },
-    {id: 81, name: 'Bhilai'},
-    {id: 82, name: 'Durg' },
-    {id: 83, name: 'Bilaspur' },
-    {id: 84, name: 'Korba' },
-    {id: 85, name: 'Naya Raipur' },
-     {id: 86, name: 'Vishakapatnam' },
-    { id: 87, name: 'Srikakulam' },
-      { id: 88, name: 'Ichapuram' },
-      { id: 60, name: 'Sompeta' },
-      { id: 61, name: 'Palasa' },
-      { id: 62, name: 'Tekkali' },
-      { id: 63, name: 'Kotabommali' },
-      { id: 64, name: 'Budithi' },
-      { id: 65, name: 'Narasannapeta' },
-      { id: 66, name: 'Kotturu' },
-      { id: 67, name: 'Paralakhemundi' },
-      { id: 68, name: 'Seethampeta' },
-      { id: 69, name: 'Palakonda' },
-      { id: 70, name: 'Razam' },
-      { id: 71, name: 'Ranasthalam' },
-      { id: 72, name: 'Cheepuripalli' },
-      { id: 73, name: 'Gajapatinagaram' },
-      { id: 74, name: 'Vizianagaram' },
-      { id: 75, name: 'Nellimarla' },
-      { id: 76, name: 'Thagarapuvalasa' },
-      { id: 77, name: 'Bheemunipatnam' },
-      { id: 78, name: '' }
-       
-  ];
+  { "id": 1, "name": "Miyapur" },
+  { "id": 2, "name": "JNTU College" },
+  { "id": 3, "name": "KPHB Colony" },
+  { "id": 4, "name": "Kukatpally" },
+  { "id": 5, "name": "Dr. B. R. Ambedkar Balanagar" },
+  { "id": 6, "name": "Moosapet" },
+  { "id": 7, "name": "Bharat Nagar" },
+  { "id": 8, "name": "Erragadda" },
+  { "id": 9, "name": "ESI Hospital" },
+  { "id": 10, "name": "Raidurg" },
+  { "id": 11, "name": "HITEC City" },
+  { "id": 12, "name": "Durgam Cheruvu" },
+  { "id": 13, "name": "Madhapur" },
+  { "id": 14, "name": "Peddamma Gudi" },
+  { "id": 15, "name": "Jubilee Hills Checks Post" },
+  { "id": 16, "name": "Jubilee Hills" },
+  { "id": 17, "name": "Yusufguda" },
+  { "id": 18, "name": "Madhura Nagar" },
+  { "id": 19, "name": "Ameerpet" },
+  { "id": 20, "name": "Kothapet" },
+  { "id": 21, "name": "Prashanthi Hills Nizampet" },
+  { "id": 22, "name": "L B Nagar" },
+  { "id": 23, "name": "Nizampet" },
+  { "id": 24, "name": "Adilabad" },
+  { "id": 25, "name": "Kumurambheem Asifabad" },
+  { "id": 26, "name": "Nirmal" },
+  { "id": 27, "name": "Mancherial" },
+  { "id": 28, "name": "Nizamabad" },
+  { "id": 29, "name": "Jagtial" },
+  { "id": 30, "name": "Peddapalli" },
+  { "id": 31, "name": "Kamareddy" },
+  { "id": 32, "name": "Rajanna Sircilla" },
+  { "id": 33, "name": "Karimnagar" },
+  { "id": 34, "name": "Jayashankar Bhupatpally" },
+  { "id": 35, "name": "Sangarreddy" },
+  { "id": 36, "name": "Medak" },
+  { "id": 37, "name": "Siddipet" },
+  { "id": 38, "name": "Hanumakonda" },
+  { "id": 39, "name": "Warangal Rural" },
+  { "id": 40, "name": "Mulugu" },
+  { "id": 41, "name": "S.R. Nagar" },
+  { "id": 42, "name": "Hyderabad" },
+  { "id": 43, "name": "Medchal Maikajgiri" },
+  { "id": 44, "name": "Jangaon" },
+  { "id": 45, "name": "Mahabubabad" },
+  { "id": 46, "name": "Bhadradri Knthagudem" },
+  { "id": 47, "name": "Narayanpet" },
+  { "id": 48, "name": "Mahabubnagar" },
+  { "id": 49, "name": "Rangareddy" },
+  { "id": 50, "name": "Yadadri Bhuvanagiri" },
+  { "id": 51, "name": "Suryapet" },
+  { "id": 52, "name": "Khanmmam" },
+  { "id": 53, "name": "Jogulamba Gadwal" },
+  { "id": 54, "name": "Wanaparthy" },
+  { "id": 55, "name": "Nagarkurnool" },
+  { "id": 56, "name": "Malakpet" },
+  { "id": 57, "name": "Nalgonda" },
+  { "id": 58, "name": "Panjagutta" },
+  { "id": 59, "name": "Irrum Manzil" },
+  { "id": 60, "name": "Khairatabad" },
+  { "id": 61, "name": "Lakdi-ka-pul" },
+  { "id": 62, "name": "Assembly" },
+  { "id": 63, "name": "Nampally" },
+  { "id": 64, "name": "Gandhi Bhavan" },
+  { "id": 65, "name": "Osmania Medical College" },
+  { "id": 66, "name": "MG Bus Station" },
+  { "id": 67, "name": "New Market" },
+  { "id": 68, "name": "Musarambagh" },
+  { "id": 69, "name": "Dilsukhnagar" },
+  { "id": 70, "name": "Chaitanyapuri" },
+  { "id": 71, "name": "Nagole" },
+  { "id": 72, "name": "Uppal" },
+  { "id": 73, "name": "Stadium" },
+  { "id": 74, "name": "NGRI" },
+  { "id": 75, "name": "Habsiguda" },
+  { "id": 76, "name": "Tarnaka" },
+  { "id": 77, "name": "Mettuguda" },
+  { "id": 78, "name": "Secunderabad" },
+  { "id": 79, "name": "Parade Ground" },
+  { "id": 80, "name": "Raipur" },
+  { "id": 81, "name": "Bhilai" },
+  { "id": 82, "name": "Durg" },
+  { "id": 83, "name": "Bilaspur" },
+  { "id": 84, "name": "Korba" },
+  { "id": 85, "name": "Naya Raipur" },
+  { "id": 86, "name": "Vishakapatnam" },
+  { "id": 87, "name": "Srikakulam" },
+  { "id": 88, "name": "Ichapuram" },
+  { "id": 89, "name": "Sompeta" },
+  { "id": 90, "name": "Palasa" },
+  { "id": 91, "name": "Tekkali" },
+  { "id": 92, "name": "Kotabommali" },
+  { "id": 93, "name": "Budithi" },
+  { "id": 94, "name": "Narasannapeta" },
+  { "id": 95, "name": "Kotturu" },
+  { "id": 96, "name": "Paralakhemundi" },
+  { "id": 97, "name": "Seethampeta" },
+  { "id": 98, "name": "Palakonda" },
+  { "id": 99, "name": "Razam" },
+  { "id": 100, "name": "Ranasthalam" },
+  { "id": 101, "name": "Cheepuripalli" },
+  { "id": 102, "name": "Gajapatinagaram" },
+  { "id": 103, "name": "Vizianagaram" },
+  { "id": 104, "name": "Nellimarla" },
+  { "id": 105, "name": "Thagarapuvalasa" },
+  { "id": 106, "name": "Bheemunipatnam" }
+];
 
   const handleOnSelect = (item) => {
     setSelectedCity(item.name);
     setSelectedLocation(item.name);
-    localStorage.setItem('my_city',`${item.name}`);
+    localStorage.setItem('my_city', `${item.name}`);
+    setIsPopoverOpen(false);
   }
 
   const popupRef = useRef();
-  const [mycity,setmycity]=useState('');
-  useEffect(()=>{
-    var value= localStorage.getItem('my_city');
-    setmycity(value);
-  },[selectedLocation])
+  const [mycity, setmycity] = useState('');
   useEffect(() => {
-    var value= localStorage.getItem('my_city');
+    var value = localStorage.getItem('my_city');
+    setmycity(value);
+  }, [selectedLocation])
+  useEffect(() => {
+    var value = localStorage.getItem('my_city');
     setmycity(value);
     setSelectedCity(value);
     setSelectedLocation(value);
@@ -228,40 +226,48 @@ const Header = () => {
                       {console.log(searchText)}
                     </div>
                   )}
-                  <div className="main-menu d-flex justify-content-end">
-                    <nav id="mobile-menu" className="d-none d-xl-block">
-                      <NavMenu />
-                    </nav>
-                    {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
-                    <Popup
-                      trigger={
-                        <div
-                          style={{
-                            padding: "10px",
-                            margin: "10px 0 10px 10px",
-                            fontFamily: "sans-serif",
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            border: "1px solid white",
-                            cursor: 'pointer'
-                          }}
-                          className="tp-btn"
-                        >
-                          { mycity ? mycity : 'Location'}
-                        </div>
-                      }
-                      modal
-                      contentStyle={{ width: '80%', height: '150px', borderRadius: '20px', top: '150px', left: '10%', position: 'absolute' }}
-                      ref={popupRef}
-                    >
-                      {(close) => (
-                        <div style={{ padding: 5 }}>
-                          <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}>
-                            <IoIosCloseCircle size={30} />
-                          </button>
-                          <div style={{ width: '100%', marginTop: 30 }}>
+                  <div style={{ display: "flex", flexDirection: 'column', justifyContent:'center', alignItems:'center' }}>
+                              <div className="header-right d-md-flex align-items-center">
+                                <div className="header-meta">
+                                  <ul>
+                                    <div style={{ display: "flex" }}>
+                                      <li style={{ margin: "0" }}>
+                                        <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
+                                          <i className="icon_ul"></i>
+                                        </a>
+                                      </li>
+                                    </div>
+          
+                                  </ul>
+                                </div>
+                              </div>
+                    <div className="main-menu d-flex justify-content-end">
+                      <nav id="mobile-menu" className="d-none d-xl-block">
+                        <NavMenu />
+                      </nav>
+                      {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
+                      <Popover placement="bottom" isOpen={isPopoverOpen} onClose={() => setIsPopoverOpen(false)}>
+                        <PopoverTrigger>
+                          <div
+                            style={{
+                              padding: "10px",
+                              margin: "10px 0 10px 10px",
+                              fontFamily: "sans-serif",
+                              backgroundColor: "rgba(255, 255, 255, 0.1)",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              border: "1px solid white",
+                              cursor: 'pointer'
+                            }}
+                            className="tp-btn"
+                            onClick={() => setIsPopoverOpen(true)}
+                          >
+                            {mycity ? mycity : 'Location'}
+                          </div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="bg-white" style={{ padding: 5, width: '400px' }}>
                             <ReactSearchAutocomplete
                               items={cities}
                               onSearch={handleOnSearch}
@@ -271,22 +277,8 @@ const Header = () => {
                               placeholder="Enter Your City Here"
                             />
                           </div>
-                        </div>
-                      )}
-                    </Popup>
-                  </div>
-                  <div className="header-right d-md-flex align-items-center">
-                    <div className="header-meta">
-                      <ul>
-                        <div style={{ display: "flex" }}>
-                          <li style={{ margin: "0" }}>
-                            <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
-                              <i className="icon_ul"></i>
-                            </a>
-                          </li>
-                        </div>
-
-                      </ul>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                   </div>
                 </div>

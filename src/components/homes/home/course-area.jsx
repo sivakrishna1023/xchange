@@ -9,29 +9,29 @@ import { useLocationContext } from "@/src/utils/locationContext";
 
 const CourseArea = () => {
 
-  const {selectedLocation} = useLocationContext();
+  const { selectedLocation } = useLocationContext();
   const currtime = Date.now();
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
   const [tasks, settasks] = useState('');
-  const text="NO Ads Found Under Selected Location";
-  const [isvalid,setisvalid]=useState(true);
+  const text = "NO Ads Found Under Selected Location";
+  const [isvalid, setisvalid] = useState(true);
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
-  } 
+  }
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
-    if(item){
-      req= item!=='' ? item :selectedLocation;
-    }else{
-       req=selectedLocation;
+    if (item) {
+      req = item !== '' ? item : selectedLocation;
+    } else {
+      req = selectedLocation;
     }
-      setloading(true);
+    setloading(true);
     try {
       const res = await fetch("/api/ads/cityfilter", {
         method: 'POST',
@@ -44,75 +44,75 @@ const CourseArea = () => {
       });
       const data = await res.json();
       if (data.success) {
-          if(item){
-            if(data.found){
-              setisvalid(true);
-            }else{
-              setisvalid(false);
-            }
+        if (item) {
+          if (data.found) {
+            setisvalid(true);
+          } else {
+            setisvalid(false);
           }
-          const ads_data=shuffleArray(data.ads);
-          settasks(ads_data);
+        }
+        const ads_data = shuffleArray(data.ads);
+        settasks(ads_data);
       }
     } catch (error) {
       console.log(error);
     }
     setloading(false);
   };
-  useEffect(()=>{
+  useEffect(() => {
     handle_newtasks();
   },
-  [selectedLocation]);
-  useEffect(()=>{
+    [selectedLocation]);
+  useEffect(() => {
     var item = localStorage.getItem('my_city');
-    if(item){
+    if (item) {
       handle_newtasks();
     }
-  },[])
-  const add_to_list=async (e)=>{
+  }, [])
+  const add_to_list = async (e) => {
     try {
       const token = localStorage.getItem('token');
       const res = await fetch(`api/users/whishlist`, {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-         },
-         body: JSON.stringify({
-             id:e,
-         })
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          id: e,
+        })
       })
       const data = await res.json();
       if (data.success) {
         const message = data.message ? data.message : "Added to Favorites";
-         toast.success(message, {
-            position: toast.POSITION.TOP_CENTER
-         });
+        toast.success(message, {
+          position: toast.POSITION.TOP_CENTER
+        });
       } else {
-         const message = data.message ? data.message : "Failed to Add in Favorites";
-         toast.error(message, {
-            position: toast.POSITION.TOP_CENTER
-         });
+        const message = data.message ? data.message : "Failed to Add in Favorites";
+        toast.error(message, {
+          position: toast.POSITION.TOP_CENTER
+        });
       }
-   } catch (error) {
+    } catch (error) {
       toast.error("Connection failed try again later !", {
-         position: toast.POSITION.TOP_CENTER
+        position: toast.POSITION.TOP_CENTER
       });
-   }
+    }
   }
 
   return (
     <>
-     <ToastContainer />
+      <ToastContainer />
       <section
-        className="course-area pt-115 pb-110 wow fadeInUp"
+        className="course-area pt-10 pb-110 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".4s"
       >
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <h2 className="tp-section-title mb-20 mt-20">
                   Explore Popular Ads
                 </h2>
@@ -121,7 +121,7 @@ const CourseArea = () => {
           </div>
           <div className="row justify-content-center">
             <div className="row">
-             {!isvalid && <h4>{text} <br /> </h4>}
+              {!isvalid && <h4>{text} <br /> </h4>}
               {tasks && !loading ? tasks.slice(0, 8).map((item, i) => (
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
@@ -138,9 +138,9 @@ const CourseArea = () => {
                         </Link>
                       }
                       <div className="tpcourse__tag">
-                          <button onClick={()=>add_to_list(item._id)}  >
+                        <button onClick={() => add_to_list(item._id)}  >
                           <i className="fi fi-rr-heart" style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "40px", height: "40px" }}></i>
-                          </button>
+                        </button>
                       </div>
 
                     </div>
@@ -183,7 +183,7 @@ const CourseArea = () => {
                           </li> */}
                           <li >
                             <i style={{ fontSize: "20px", color: "rgba(255, 102, 82, 0.9)" }} className="fa-solid fa-location-dot"></i> &nbsp;
-                             {item.Address}, {item.City}
+                            {item.Address}, {item.City}
                           </li>
 
                         </ul>

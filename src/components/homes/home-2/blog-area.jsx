@@ -6,14 +6,14 @@ const BlogArea = () => {
   return (
     <>
       <section
-        className="blog-area pt-115 pb-110 wow fadeInUp"
+        className="blog-area pt-10 pb-110 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".4s"
       >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title mb-65 text-center">
+              <div className="section-title mb-10 lg:mb-65  text-center">
                 <span className="tp-sub-title-box mb-15">Latest Blogs</span>
                 <h2 className="tp-section-title mb-20">Latest Blogs & News</h2>
               </div>

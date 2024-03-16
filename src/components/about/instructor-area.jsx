@@ -33,14 +33,14 @@ const InstructorArea = () => {
   return (
     <>
       <section
-        className="instructor-area pt-120 pb-80 wow fadeInUp"
+        className="instructor-area pt-10 mb-10 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".3s"
       >
         <div className="container">
           <div className="row">
             <div className="col-xl-6 col-lg-8 col-md-7 col-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <span className="tp-sub-title-box mb-15">Instructor</span>
                 <h2 className="tp-section-title mb-20">
                   Our Expert Instructor

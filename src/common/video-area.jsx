@@ -11,7 +11,7 @@ const VideoArea = ({ style_2 }) => {
         <div className="container">
           <div className="row text-center">
             <div className="col-lg-12 col-md-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <span className="tp-sub-title-box mb-15">Live Classes</span>
                 <h2 className="tp-section-title mb-20">
                   HD Quality Video, Audio <br /> & Live Classes
@@ -35,33 +35,33 @@ const VideoArea = ({ style_2 }) => {
                 <div className={`${style_2 ? "video-shape-area" : "video-shape"}`}>
 
                   {
-                    style_2 ? 
-                    
-                    <>
-                    <img
-                    className="video-shape"
-                    src="/assets/img/about/shape-2-img-2.png"
-                    alt="video-shape"
-                  />
-                  <img
-                    className="video-shape-2 d-none d-md-block"
-                    src="/assets/img/about/video-2-shape-2.png"
-                    alt="video-shape"
-                  />
-                  <img
-                    className="video-shape-3 d-none d-md-block"
-                    src="/assets/img/about/video-2-shape-1.jpg"
-                    alt="video-shape"
-                  />
-                  
-                  </>
-                  : 
-                  <img
-                    src="/assets/img/about/shape-2-img-2.png"
-                    alt="video-shape"
-                  />
+                    style_2 ?
+
+                      <>
+                        <img
+                          className="video-shape"
+                          src="/assets/img/about/shape-2-img-2.png"
+                          alt="video-shape"
+                        />
+                        <img
+                          className="video-shape-2 d-none d-md-block"
+                          src="/assets/img/about/video-2-shape-2.png"
+                          alt="video-shape"
+                        />
+                        <img
+                          className="video-shape-3 d-none d-md-block"
+                          src="/assets/img/about/video-2-shape-1.jpg"
+                          alt="video-shape"
+                        />
+
+                      </>
+                      :
+                      <img
+                        src="/assets/img/about/shape-2-img-2.png"
+                        alt="video-shape"
+                      />
                   }
-                  
+
                 </div>
               </div>
             </div>

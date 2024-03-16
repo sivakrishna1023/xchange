@@ -21,7 +21,7 @@ const Postbox = () => {
   return (
     <>
       <div
-        className="postbox__area pt-120 pb-120 wow fadeInUp"
+        className="postbox__area pt-10 pb-120 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >

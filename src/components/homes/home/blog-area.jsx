@@ -6,14 +6,14 @@ const BlogArea = () => {
   return (
     <>
       <section
-        className="blog-area pt-110 pb-110 wow fadeInUp"
+        className="blog-area pt-10   pb-110 wow fadeInUp"
         data-wow-duration="1s"
         data-wow-delay=".4s"
       >
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title mb-65 text-center">
+              <div className="section-title mb-10 lg:mb-65  text-center">
                 <h2 className="tp-section-title mb-20">Featured Ads</h2>
               </div>
             </div>
@@ -42,10 +42,10 @@ const BlogArea = () => {
                     <h3 className="tp-blog__title mb-15">
                       <Link href="/blog-details">{item.title}</Link>
                     </h3>
-                    <div style={{display:"flex", justifyContent:"space-between"}}>
-                    <p style={{display:"flex", justifyContent:"center", alignItems:"center"}}><img style={{marginRight:"4px"}} src="/assets/img/icon/user.svg" width={20} alt="blog-img" />{item.user}</p>
-                    <p style={{display:"flex", justifyContent:"center", alignItems:"center"}}><img style={{marginRight:"4px"}} src="/assets/img/icon/location.svg" width={20} alt="blog-img" />{item.country}</p>
-                    <p style={{display:"flex", justifyContent:"center", alignItems:"center"}}><img style={{marginRight:"4px"}} src="/assets/img/icon/time.svg" width={20} alt="blog-img" />{item.time}</p>
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><img style={{ marginRight: "4px" }} src="/assets/img/icon/user.svg" width={20} alt="blog-img" />{item.user}</p>
+                      <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><img style={{ marginRight: "4px" }} src="/assets/img/icon/location.svg" width={20} alt="blog-img" />{item.country}</p>
+                      <p style={{ display: "flex", justifyContent: "center", alignItems: "center" }}><img style={{ marginRight: "4px" }} src="/assets/img/icon/time.svg" width={20} alt="blog-img" />{item.time}</p>
                     </div>
                   </div>
                 </div>

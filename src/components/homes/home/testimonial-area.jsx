@@ -104,7 +104,7 @@ const TestimonialArea = () => {
   return (
     <>
       <section
-        className="testimonial-area bg-bottom pt-110 pb-90 wow fadeInUp"
+        className="testimonial-area bg-bottom pt-10   pb-90 wow fadeInUp"
         data-wow-duration="1s"
         data-wow-delay=".4s"
         style={{ backgroundImage: `url(/assets/img/bg/shape-bg-1.png)` }}
@@ -112,7 +112,7 @@ const TestimonialArea = () => {
         <div className="container">
           <div className="row justify-content-between">
             <div className="col-xl-6 col-lg-8 col-md-8 col-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <h2 className="tp-section-title mb-20">
                   Our Reviews
                 </h2>
