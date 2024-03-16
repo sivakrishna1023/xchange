@@ -108,7 +108,7 @@ const setting = {
 };
 
 const SellerArea = ({ style_2 }) => {
-  const [loading,setloading]=useState(false);
+  const [loading, setloading] = useState(false);
   const DisplayMonthAndYear = ({ createdAt }) => {
     const displayMonthAndYear = (createdAt) => {
       const date = new Date(createdAt);
@@ -116,23 +116,23 @@ const SellerArea = ({ style_2 }) => {
         'Jan', 'Feb', 'March', 'April', 'May', 'Jun', 'July',
         'Aug', 'Sepr', 'Oct', 'Nov', 'Dec'
       ];
-  
+
       const month = months[date.getMonth()];
       const year = date.getFullYear();
-  
+
       return `${month} ${year}`;
     };
-  
+
     const formattedDate = displayMonthAndYear(createdAt);
-  
+
     return (
-      <span style={{color:"grey"}}>{formattedDate}</span>
+      <span style={{ color: "grey" }}>{formattedDate}</span>
     );
   };
   const [user, setUser] = useState('');
   var imagelink = 'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg';
   const sliderRef = useRef(null);
-  const getuser = async () =>{
+  const getuser = async () => {
     setloading(true);
     try {
       const res = await fetch("/api/users/Allusers", {
@@ -148,25 +148,26 @@ const SellerArea = ({ style_2 }) => {
       }
       setloading(false);
     } catch (error) {
-     setloading(false);
+      setloading(false);
     }
   }
   useEffect(() => {
     getuser();
   }, [])
-  if(loading===true){
-    return(
-       <> 
-       <center> <h3>Loading...</h3>   </center>
-       </>
-     )
- }
+  if (loading === true) {
+    return (
+      <>
+        <center> <h3>Loading...</h3>   </center>
+      </>
+    )
+  }
   return (
     <>
       <section
-        className="instructor-area pt-110 pb-110 wow fadeInUp"
+        className="instructor-area pt-10   pb-110 wow fadeInUp"
         data-wow-duration="1s"
         data-wow-delay=".4s"
+        style={{ paddingTop: "40px" }}
       >
         <div className="container">
           <div className="row">
@@ -180,7 +181,7 @@ const SellerArea = ({ style_2 }) => {
             ) : (
               <>
                 <div className="col-xl-6 col-lg-8 col-md-7 col-12">
-                  <div className="section-title mb-65">
+                  <div className="section-title mb-10 lg:mb-65 ">
                     <h2 className="tp-section-title mb-20">
                       Our Trusted Sellers
                     </h2>
@@ -212,8 +213,8 @@ const SellerArea = ({ style_2 }) => {
             <Slider {...setting} ref={sliderRef}>
               {user && user.map((item) => (
                 <div key={item.id} className="tp-instruc-item">
-                  <div className="tp-instructor text-center p-relative mb-30" style={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-                    <div className="tp-instructor__thumb mb-25" style={{ width: "200px", height: "200px", overflow: "hidden", borderRadius:"100%" }}>
+                  <div className="tp-instructor text-center p-relative mb-30" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
+                    <div className="tp-instructor__thumb mb-25" style={{ width: "200px", height: "200px", overflow: "hidden", borderRadius: "100%" }}>
                       {item.avatar ? <img
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                         src={item.avatar}
@@ -228,19 +229,19 @@ const SellerArea = ({ style_2 }) => {
                       <h4 className="tp-instructor__title mb-20">
                         <Link href="/instructor-profile">{item.firstname}</Link>
                       </h4>
-                      <div style={{ textTransform: "capitalize", marginBottom:"10px", color:"green" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt}/></span></div>
+                      <div style={{ textTransform: "capitalize", marginBottom: "10px", color: "green" }}>Seller Since: <span style={{ marginLeft: "5px" }}><DisplayMonthAndYear createdAt={item.createdAt} /></span></div>
                       <Popover placement="right">
-                      <PopoverTrigger>
-                      <span style={{ textTransform: "capitalize", padding:"8px 50px", borderRadius:"10px", backgroundColor:"#6b4ff7", color:"white" }}>Trust Index<span style={{ marginLeft: "5px", color:"white" }}></span></span> 
-                      </PopoverTrigger>
+                        <PopoverTrigger>
+                          <span style={{ textTransform: "capitalize", padding: "8px 50px", borderRadius: "10px", backgroundColor: "#6b4ff7", color: "white" }}>Trust Index<span style={{ marginLeft: "5px", color: "white" }}></span></span>
+                        </PopoverTrigger>
                         <PopoverContent>
                           <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
+                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
                           </div>
                         </PopoverContent>
                       </Popover>
                       <br />
-                      <Link href={`/other-profile?id=${item._id}`}><div style={{padding:"10px", backgroundColor:"#19ae50", borderRadius:"10px", color:"white", fontWeight:"bolder", marginTop:"1rem", cursor:"pointer"}}>View Seller Profile</div></Link>
+                      <Link href={`/other-profile?id=${item._id}`}><div style={{ padding: "10px", backgroundColor: "#19ae50", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer" }}>View Seller Profile</div></Link>
                       <div className="tp-instructor__social">
                         <ul>
                           {

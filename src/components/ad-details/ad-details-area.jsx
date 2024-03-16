@@ -18,8 +18,8 @@ const AdDetailsArea = () => {
    const [ad, setad] = useState();
    const [aduser, setaduser] = useState();
    const router = useRouter();
-   const [loading,setloading]=useState(false);
-   var imagelink =  `https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg`;
+   const [loading, setloading] = useState(false);
+   var imagelink = `https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg`;
    function TimePassed({ createdAt }) {
       const currentTime = new Date();
       const createdDate = new Date(createdAt);
@@ -86,6 +86,7 @@ const AdDetailsArea = () => {
    }
    useEffect(() => {
       getdetails();
+      console.log(ad);
    }, [])
 
    const CustomPrevArrow = (props) => (
@@ -118,7 +119,7 @@ const AdDetailsArea = () => {
       <>
          <>
             {
-               ad && aduser && <div> <section className="c-details-area pt-120 pb-50 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+               ad && aduser && <div> <section className="c-details-area pt-10 pb-50 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                   <div className="container">
                      <div className="row">
                         <div className="col-lg-8 col-md-12">
@@ -141,8 +142,8 @@ const AdDetailsArea = () => {
                               <div className="course-details-content mb-45">
                                  <div className="tpcourse__category mb-15">
                                     <ul className="tpcourse__price-list d-flex align-items-center">
-                                       <li><span style={{padding:"10px", borderRadius:"10px", cursor:"pointer"}} className="c-color-green">Brand : {ad.Brand}</span></li>
-                                       <li><span style={{padding:"10px", borderRadius:"10px", cursor:"pointer"}} className="c-color-yellow">Model : {ad.Model}</span></li>
+                                       <li><span style={{ padding: "10px", borderRadius: "10px", cursor: "pointer" }} className="c-color-green">Brand : {ad.Brand}</span></li>
+                                       <li><span style={{ padding: "10px", borderRadius: "10px", cursor: "pointer" }} className="c-color-yellow">Model : {ad.Model}</span></li>
                                     </ul>
                                  </div>
                                  <div className="tpcourse__ava-title mb-25">
@@ -150,9 +151,9 @@ const AdDetailsArea = () => {
                                  </div>
                                  <div className="tpcourse__meta course-details-list">
                                     <ul className="d-flex align-items-center">
-                                      
+
                                        <li><img src="/assets/img/icon/c-meta-01.png" alt="meta-icon" /> <span><TimePassed createdAt={ad.createdAt} /></span></li>
-                                       
+
                                     </ul>
                                  </div>
                               </div>
@@ -168,10 +169,22 @@ const AdDetailsArea = () => {
                                     {ad.Features}
                                  </p>
                               </div>
+                              <div className="c-details-about mb-40">
+                                 <h5 className="tp-c-details-title mb-20">Negotiable</h5>
+                                 <p>
+                                    {ad.Negotable}
+                                 </p>
+                              </div>
+                              <div className="c-details-about mb-40">
+                                 <h5 className="tp-c-details-title mb-20">Condition</h5>
+                                 <p>
+                                    {ad.Condition}
+                                 </p>
+                              </div>
 
                               <div className="c-details-review pb-15">
                                  <div className="c-review-title-wrapper">
-                                    
+
                                  </div>
                                  <div className="course-reviewer-item-wrapper">
 
@@ -187,19 +200,19 @@ const AdDetailsArea = () => {
                                  <div className="cor-details-instructor" style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} >
                                     <h6 className="tp-c-details-title mb-40">Seller</h6>
                                     <div className="course-instructor-details d-flex f-wrap align-items-center" style={{ display: "flex", flexDirection: "row" }}>
-                                       <Link  href={`/other-profile?id=${aduser._id}`}  >
-                                       <div className="course-avata mr-30 mb-20">
-                                          {aduser.avatar ? <img style={{ borderRadius: "100%", width: "110px", height: "100px" }} src={aduser.avatar} alt="instructor-thumb" /> : <img
-                                             src={imagelink}
-                                             alt="instructor-thumb"
-                                          />}                      </div>
+                                       <Link href={`/other-profile?id=${aduser._id}`}  >
+                                          <div className="course-avata mr-30 mb-20">
+                                             {aduser.avatar ? <img style={{ borderRadius: "100%", width: "110px", height: "100px" }} src={aduser.avatar} alt="instructor-thumb" /> : <img
+                                                src={imagelink}
+                                                alt="instructor-thumb"
+                                             />}                      </div>
                                        </Link>
                                        <div className="course-avatar-details">
-                                       <Link  href={`/other-profile?id=${aduser._id}`}  >
-                                          <h5 className="c-avata-title">{aduser.firstname}   {aduser.lastname}</h5>
-                                       </Link>
+                                          <Link href={`/other-profile?id=${aduser._id}`}  >
+                                             <h5 className="c-avata-title">{aduser.firstname}   {aduser.lastname}</h5>
+                                          </Link>
                                           <p>{aduser.email}</p>
-                                          
+
                                        </div>
                                     </div>
                                  </div>
@@ -207,21 +220,21 @@ const AdDetailsArea = () => {
                               </div>
                               <div className="course-details-widget">
                                  <div className="cd-video-price">
-                                    <h3 className="pricing-video text-center mb-15"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }} ></i>{ad.Adprice}</h3>
+                                    <h3 className="pricing-video text-center mb-15"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }} ></i>{ad.Adprice.toLocaleString('en-IN')}</h3>
                                     <div className="cd-pricing-btn text-center mb-30">
 
                                        <input style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} type="text" placeholder='Write Review Here' />
                                        <Popover placement="bottom">
-                                       <PopoverTrigger>
-                                       <div className="tp-vp-btn-green">Review</div>
-                                       </PopoverTrigger>
-                                       <PopoverContent>
-                                          <div className="px-1 py-2">
-                                             <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
-                                          </div>
-                                       </PopoverContent>
-                                    </Popover>
-                                     
+                                          <PopoverTrigger>
+                                             <div className="tp-vp-btn-green">Review</div>
+                                          </PopoverTrigger>
+                                          <PopoverContent>
+                                             <div className="px-1 py-2">
+                                                <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
+                                             </div>
+                                          </PopoverContent>
+                                       </Popover>
+
                                     </div>
                                  </div>
 

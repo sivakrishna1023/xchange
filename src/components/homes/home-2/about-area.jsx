@@ -3,17 +3,17 @@ import React from "react";
 
 
 // about  data
-const about_two_bg ={
-    img_1: "/assets/img/about/about-2-img.png",
-    img_2: "/assets/img/about/about-2-shape.png",
-    img_3: "/assets/img/about/shape-2-img.png",
-    title: "Explore Thousands of Creative Classes.",
-    des: <> Dramatically supply transparent deliverables beforese
+const about_two_bg = {
+  img_1: "/assets/img/about/about-2-img.png",
+  img_2: "/assets/img/about/about-2-shape.png",
+  img_3: "/assets/img/about/shape-2-img.png",
+  title: "Explore Thousands of Creative Classes.",
+  des: <> Dramatically supply transparent deliverables beforese
     backward comp internal or "organic" sources. Comp
     transparent leverage other.</>
 }
 
-const {img_1, img_2, img_3, title, des} = about_two_bg
+const { img_1, img_2, img_3, title, des } = about_two_bg
 
 // about circle data
 const about_circle = [
@@ -43,7 +43,7 @@ const AboutArea = () => {
   return (
     <>
       <section
-        className="about--area pt-120 pb-60 wow fadeInUp"
+        className="about--area pt-10 pb-60 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".4s"
       >
@@ -74,7 +74,7 @@ const AboutArea = () => {
                     {title}
                   </h2>
                   <p>
-                     {des}
+                    {des}
                   </p>
                 </div>
                 <div className="about-circle-list mb-40">

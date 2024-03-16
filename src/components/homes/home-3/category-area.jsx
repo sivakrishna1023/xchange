@@ -6,10 +6,10 @@ const CategoryArea = () => {
   return (
     <>
       <section
-        className="tp-category-area bg-bottom grey-bg pt-110 pb-80 wow fadeInUp"
+        className="tp-category-area bg-bottom grey-bg pt-10   mb-10 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".3s"
-        style={{ backgroundImage: `url(/assets/img/bg/shape-bg-1.png)` }}
+        style={{ backgroundImage: `url(/assets/img/bg/shape-bg-1.png)`, paddingTop: "40px" }}
       >
         <div className="container">
           <div className="row">

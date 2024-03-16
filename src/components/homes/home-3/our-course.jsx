@@ -6,7 +6,7 @@ const OurCourse = () => {
   return (
     <>
       <section
-        className="course-area pt-115 pb-100 wow fadeInUp"
+        className="course-area pt-10 pb-100 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".3s"
       >

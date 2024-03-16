@@ -6,7 +6,7 @@ const ErrorPage = () => {
   return (
     <>
       <Breadcrumb title="" subtitle="404 Error" isDbbl="Pages" />
-      <section className="error-area pt-120 pb-115">
+      <section className="error-area pt-10 pb-115">
         <div className="container">
           <div className="row">
             <div className="col-12">

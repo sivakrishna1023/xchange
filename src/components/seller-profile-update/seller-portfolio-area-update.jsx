@@ -12,7 +12,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const SellerPortfolioAreaUpdate = () => {
   const { user } = useContext(Context);
   const [loading, setloading] = useState(false);
-  const [verifymail,setverifymail]=useState('');
+  const [verifymail, setverifymail] = useState('');
   if (!user) {
     return <>
       <center> Loading please wait...!!</center>
@@ -132,7 +132,7 @@ const SellerPortfolioAreaUpdate = () => {
       reader.readAsDataURL(file);
     });
   };
-  const handle_delete= async ()=>{
+  const handle_delete = async () => {
     setloading(true);
     try {
       const token = localStorage.getItem('token');
@@ -157,37 +157,37 @@ const SellerPortfolioAreaUpdate = () => {
   const handle_verify_link = async () => {
     setloading(true);
     try {
-       const token = localStorage.getItem('token');
-       const res = await fetch(`/api/users/verifytoken`, {
-          method: 'POST',
-          headers: {
-             'Content-Type': 'application/json',
-             'Authorization': `Bearer ${token}`
-          },
-          body: JSON.stringify({
-             email: verifymail,
-          })
-       })
-       const data = await res.json();
-       if (data.success) {
-          toast.success("Verification Link has been sent to your mail", {
-             position: toast.POSITION.TOP_CENTER
-          });
-          setloading(false);
-       } else {
-          console.log(data);
-          toast.error("Unable to send Mail", {
-             position: toast.POSITION.TOP_CENTER
-          });
-          setloading(false);
-       }
-    } catch (error) {
-       toast.error("Connection failed try again later !", {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`/api/users/verifytoken`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          email: verifymail,
+        })
+      })
+      const data = await res.json();
+      if (data.success) {
+        toast.success("Verification Link has been sent to your mail", {
           position: toast.POSITION.TOP_CENTER
-       });
-       setloading(false);
+        });
+        setloading(false);
+      } else {
+        console.log(data);
+        toast.error("Unable to send Mail", {
+          position: toast.POSITION.TOP_CENTER
+        });
+        setloading(false);
+      }
+    } catch (error) {
+      toast.error("Connection failed try again later !", {
+        position: toast.POSITION.TOP_CENTER
+      });
+      setloading(false);
     }
- }
+  }
   const handlesubmit = async () => {
     setloading(true);
     try {
@@ -243,9 +243,9 @@ const SellerPortfolioAreaUpdate = () => {
   }
   return (
     <>
-    <ToastContainer />
+      <ToastContainer />
       {user && <section
-        className="instructor-portfolio pt-120 pb-80 wow fadeInUp"
+        className="instructor-portfolio pt-10 mb-10 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >
@@ -339,17 +339,17 @@ const SellerPortfolioAreaUpdate = () => {
                     <div className="cd-information instruc-profile-info mb-35">
                       <ul>
                         <li className="checkout-form-list" style={{ display: "flex", flexDirection: "column" }}>
-                        <div style={{ display: "flex", justifyContent: 'start', alignItems: "center" }}>
-                          <i className="fa fa-user"></i>{" "}
-                          <label>Biography: </label> </div>
-                        <textarea onChange={(e) => { setBiography(e.target.value) }} style={{ width: "100%", padding: "10px", borderRadius: "15px", marginTop: "10px" }} name="" id="" cols="30" rows="10" value={Biography !== '' ? Biography : ""} placeholder="Write About Yourself"></textarea>
-                      </li>
+                          <div style={{ display: "flex", justifyContent: 'start', alignItems: "center" }}>
+                            <i className="fa fa-user"></i>{" "}
+                            <label>Biography: </label> </div>
+                          <textarea onChange={(e) => { setBiography(e.target.value) }} style={{ width: "100%", padding: "10px", borderRadius: "15px", marginTop: "10px" }} name="" id="" cols="30" rows="10" value={Biography !== '' ? Biography : ""} placeholder="Write About Yourself"></textarea>
+                        </li>
                         <li className="checkout-form-list" style={{ display: "flex", flexDirection: "column" }}>
-                        <div style={{ display: "flex", justifyContent: 'start', alignItems: "center" }}>
-                          <i className="fa fa-address-card"></i>{" "}
-                          <label>Adress: </label> </div>
-                          <textarea onChange={(e) => { setLocation(e.target.value) }} style={{ width: "100%", padding: "10px", borderRadius: "15px", marginTop:"10px" }} name="" id="" cols="30" rows="4" value={Location !== '' ? Location : ""} placeholder="Your Location"></textarea>
-                      </li>
+                          <div style={{ display: "flex", justifyContent: 'start', alignItems: "center" }}>
+                            <i className="fa fa-address-card"></i>{" "}
+                            <label>Adress: </label> </div>
+                          <textarea onChange={(e) => { setLocation(e.target.value) }} style={{ width: "100%", padding: "10px", borderRadius: "15px", marginTop: "10px" }} name="" id="" cols="30" rows="4" value={Location !== '' ? Location : ""} placeholder="Your Location"></textarea>
+                        </li>
                       </ul>
                     </div>
                     <center   >
@@ -361,7 +361,7 @@ const SellerPortfolioAreaUpdate = () => {
                         </PopoverTrigger>
                         <PopoverContent>
                           <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? <br/> Your Ads also deleted by this action..!! &nbsp; <button onClick={handle_delete} style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} >Yes</button></div>
+                            <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? <br /> Your Ads also deleted by this action..!! &nbsp; <button onClick={handle_delete} style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} >Yes</button></div>
                           </div>
                         </PopoverContent>
                       </Popover> </center>

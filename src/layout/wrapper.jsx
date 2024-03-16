@@ -7,6 +7,10 @@ import Header from "./headers/header";
 import { Context, ContextProvider } from "../components/Clients/clientcomponents";
 import FeedbackBox from "../lib/FeedbackBox";
 import { LocationContextProvider } from "../utils/locationContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import {NextUIProvider} from "@nextui-org/react";
+import SellBox from "../lib/SellBox";
 const Wrapper = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
@@ -16,13 +20,17 @@ const Wrapper = ({ children }) => {
   return (
     <>
     <LocationContextProvider>
+    <NextUIProvider>
       <ContextProvider>
       <Header />
+      <ToastContainer/>
       {children}
       <Footer />
       <BackToTop/>
       <FeedbackBox/>
+      <SellBox/>
       </ContextProvider>
+      </NextUIProvider>
       </LocationContextProvider>
     </>
   );

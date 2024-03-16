@@ -3,14 +3,14 @@ import React from "react";
 
 // choose data 
 const choose_data = {
-title: "Why Trust Us",
-sub_title: "Why Should You Trust Our Product",
-des: <>Trust our product for reliability, quality, and satisfaction.</>,
+  title: "Why Trust Us",
+  sub_title: "Why Should You Trust Our Product",
+  des: <>Trust our product for reliability, quality, and satisfaction.</>,
   trustable_sellers: "23",
 
 
 }
-const {title,sub_title, des, trustable_sellers} = choose_data
+const { title, sub_title, des, trustable_sellers } = choose_data
 
 // choose list data
 const choose_list_data = [
@@ -24,14 +24,14 @@ const choose_list_data = [
     list: "Clear and fair policies for all",
   },
 ];
-const ChooseArea = ({style_about, style_2}) => {
+const ChooseArea = ({ style_about, style_2 }) => {
   return (
     <>
       <section
-        className={`choose-area bg-bottom ${style_about ? "pb-120" : "grey-bg"} ${style_2 ? "pt-120 pb-90" : ""} wow fadeInUp`}
+        className={`choose-area bg-bottom ${style_about ? "pb-120" : "grey-bg"} ${style_2 ? "pt-10 pb-90" : ""} wow fadeInUp`}
         data-wow-duration=".8s"
         data-wow-delay=".4s"
-        style={{ backgroundImage: style_about ? null : `url(/assets/img/bg/shape-bg-1.png)`  }}
+        style={{ backgroundImage: style_about ? null : `url(/assets/img/bg/shape-bg-1.png)` }}
       >
         <div className="container">
           <div className="row align-items-center">
@@ -40,7 +40,7 @@ const ChooseArea = ({style_about, style_2}) => {
                 <div className="section-title mb-25">
                   <span className="tp-sub-title-box mb-15">{title}</span>
                   <h2 className="tp-section-title mb-20">
-                   {sub_title}
+                    {sub_title}
                   </h2>
                   <p>
                     {des}

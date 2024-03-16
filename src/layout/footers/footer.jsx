@@ -94,7 +94,7 @@ const Footer = () => {
           className="footer-bg theme-bg bg-bottom"
           style={{ backgroundImage: `url(/assets/img/bg/shape-bg-02.png)` }}
         >
-          <div className="f-border pt-115 pb-70">
+          <div className="f-border pt-10 pb-70">
             <div className="container">
               <div className="row">
                 {footer_data.map((item) => (
@@ -125,7 +125,7 @@ const Footer = () => {
                       events. Unsubscribe whenever you like.
                     </p>
                     <div className="footer-widget__f-newsletter mb-40">
-                      <form  onSubmit={(e) => e.preventDefault()}>
+                      <form onSubmit={(e) => e.preventDefault()}>
                         <span>
                           <i className="icon_mail_alt"></i>
                         </span>

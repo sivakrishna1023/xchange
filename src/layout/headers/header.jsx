@@ -7,8 +7,7 @@ import NavMenu from "./nav-menu";
 import Sidebar from "./sidebar";
 import { Context } from "@/src/components/Clients/clientcomponents";
 import NavMenu2 from "./nav-menu2";
-import Popup from "reactjs-popup";
-import 'reactjs-popup/dist/index.css';
+import { Popover, PopoverTrigger, PopoverContent, Button } from "@nextui-org/react";
 import { IoIosCloseCircle } from "react-icons/io";
 import { useLocationContext } from "@/src/utils/locationContext";
 import { ReactSearchAutocomplete } from 'react-search-autocomplete'
@@ -29,6 +28,7 @@ const handleOnSearch = (string, results) => {
 }
 
 const Header = () => {
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
   const [selectedCity, setSelectedCity] = useState('');
   const { selectedLocation, setSelectedLocation } = useLocationContext();
   const cities = [
@@ -90,51 +90,52 @@ const Header = () => {
     { id: 55, name: 'Nagarkurnool' },
     { id: 56, name: 'Malakpet' },
     { id: 57, name: 'Nalgonda' },
-      { id: 58, name: 'Panjagutta' },
-      { id: 59, name: 'Irrum Manzil' },
-      { id: 60, name: 'Khairatabad' },
-      { id: 61, name: 'Lakdi-ka-pul' },
-      { id: 62, name: 'Assembly' },
-      { id: 63, name: 'Nampally' },
-      { id: 64, name: 'Gandhi Bhavan' },
-      { id: 65, name: 'Osmania Medical College' },
-      { id: 66, name: 'MG Bus Station' },
-      { id: 67, name: 'New Market' },
-      { id: 68, name: 'Musarambagh' },
-      { id: 69, name: 'Dilsukhnagar' },
-      { id: 70, name: 'Chaitanyapuri' },
-      { id: 71, name: 'Nagole' },
-      { id: 72, name: 'Uppal' },
-      { id: 73, name: 'Stadium' },
-      { id: 74, name: 'NGRI' },
-      { id: 75, name: 'Habsiguda' },
-      { id: 76, name: 'Tarnaka' },
-      { id: 77, name: 'Mettuguda' },
-      { id: 78, name: 'Secunderabad' },
-      { id: 79, name: 'Parade Ground' },
-      {id: 80, name: 'Raipur' },
-    {id: 81, name: 'Bhilai'},
-    {id: 82, name: 'Durg' },
-    {id: 83, name: 'Bilaspur' },
-    {id: 84, name: 'Korba' },
-    {id: 85, name: 'Naya Raipur' }
-       
+    { id: 58, name: 'Panjagutta' },
+    { id: 59, name: 'Irrum Manzil' },
+    { id: 60, name: 'Khairatabad' },
+    { id: 61, name: 'Lakdi-ka-pul' },
+    { id: 62, name: 'Assembly' },
+    { id: 63, name: 'Nampally' },
+    { id: 64, name: 'Gandhi Bhavan' },
+    { id: 65, name: 'Osmania Medical College' },
+    { id: 66, name: 'MG Bus Station' },
+    { id: 67, name: 'New Market' },
+    { id: 68, name: 'Musarambagh' },
+    { id: 69, name: 'Dilsukhnagar' },
+    { id: 70, name: 'Chaitanyapuri' },
+    { id: 71, name: 'Nagole' },
+    { id: 72, name: 'Uppal' },
+    { id: 73, name: 'Stadium' },
+    { id: 74, name: 'NGRI' },
+    { id: 75, name: 'Habsiguda' },
+    { id: 76, name: 'Tarnaka' },
+    { id: 77, name: 'Mettuguda' },
+    { id: 78, name: 'Secunderabad' },
+    { id: 79, name: 'Parade Ground' },
+    { id: 80, name: 'Raipur' },
+    { id: 81, name: 'Bhilai' },
+    { id: 82, name: 'Durg' },
+    { id: 83, name: 'Bilaspur' },
+    { id: 84, name: 'Korba' },
+    { id: 85, name: 'Naya Raipur' }
+
   ];
 
   const handleOnSelect = (item) => {
     setSelectedCity(item.name);
     setSelectedLocation(item.name);
-    localStorage.setItem('my_city',`${item.name}`);
+    localStorage.setItem('my_city', `${item.name}`);
+    setIsPopoverOpen(false);
   }
 
   const popupRef = useRef();
-  const [mycity,setmycity]=useState('');
-  useEffect(()=>{
-    var value= localStorage.getItem('my_city');
-    setmycity(value);
-  },[selectedLocation])
+  const [mycity, setmycity] = useState('');
   useEffect(() => {
-    var value= localStorage.getItem('my_city');
+    var value = localStorage.getItem('my_city');
+    setmycity(value);
+  }, [selectedLocation])
+  useEffect(() => {
+    var value = localStorage.getItem('my_city');
     setmycity(value);
     setSelectedCity(value);
     setSelectedLocation(value);
@@ -206,40 +207,48 @@ const Header = () => {
                       {console.log(searchText)}
                     </div>
                   )}
-                  <div className="main-menu d-flex justify-content-end">
-                    <nav id="mobile-menu" className="d-none d-xl-block">
-                      <NavMenu />
-                    </nav>
-                    {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
-                    <Popup
-                      trigger={
-                        <div
-                          style={{
-                            padding: "10px",
-                            margin: "10px 0 10px 10px",
-                            fontFamily: "sans-serif",
-                            backgroundColor: "rgba(255, 255, 255, 0.1)",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            border: "1px solid white",
-                            cursor: 'pointer'
-                          }}
-                          className="tp-btn"
-                        >
-                          { mycity ? mycity : 'Location'}
-                        </div>
-                      }
-                      modal
-                      contentStyle={{ width: '80%', height: '150px', borderRadius: '20px', top: '150px', left: '10%', position: 'absolute' }}
-                      ref={popupRef}
-                    >
-                      {(close) => (
-                        <div style={{ padding: 5 }}>
-                          <button onClick={close} style={{ position: 'absolute', top: '0', right: '0' }}>
-                            <IoIosCloseCircle size={30} />
-                          </button>
-                          <div style={{ width: '100%', marginTop: 30 }}>
+                  <div style={{ display: "flex", flexDirection: 'column', justifyContent:'center', alignItems:'center' }}>
+                              <div className="header-right d-md-flex align-items-center">
+                                <div className="header-meta">
+                                  <ul>
+                                    <div style={{ display: "flex" }}>
+                                      <li style={{ margin: "0" }}>
+                                        <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
+                                          <i className="icon_ul"></i>
+                                        </a>
+                                      </li>
+                                    </div>
+          
+                                  </ul>
+                                </div>
+                              </div>
+                    <div className="main-menu d-flex justify-content-end">
+                      <nav id="mobile-menu" className="d-none d-xl-block">
+                        <NavMenu />
+                      </nav>
+                      {/* <Link href={user._id ? "/post-ad" : "/sign-in"} style={{ padding: "15px", margin: "10px 0", fontFamily: "sans-serif", backgroundColor: "rgba(255, 255, 255, 0.1)", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white" }} className="tp-btn">SELL</Link> */}
+                      <Popover placement="bottom" isOpen={isPopoverOpen} onClose={() => setIsPopoverOpen(false)}>
+                        <PopoverTrigger>
+                          <div
+                            style={{
+                              padding: "10px",
+                              margin: "10px 0 10px 10px",
+                              fontFamily: "sans-serif",
+                              backgroundColor: "rgba(255, 255, 255, 0.1)",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              border: "1px solid white",
+                              cursor: 'pointer'
+                            }}
+                            className="tp-btn"
+                            onClick={() => setIsPopoverOpen(true)}
+                          >
+                            {mycity ? mycity : 'Location'}
+                          </div>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="bg-white" style={{ padding: 5, width: '400px' }}>
                             <ReactSearchAutocomplete
                               items={cities}
                               onSearch={handleOnSearch}
@@ -249,22 +258,8 @@ const Header = () => {
                               placeholder="Enter Your City Here"
                             />
                           </div>
-                        </div>
-                      )}
-                    </Popup>
-                  </div>
-                  <div className="header-right d-md-flex align-items-center">
-                    <div className="header-meta">
-                      <ul>
-                        <div style={{ display: "flex" }}>
-                          <li style={{ margin: "0" }}>
-                            <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
-                              <i className="icon_ul"></i>
-                            </a>
-                          </li>
-                        </div>
-
-                      </ul>
+                        </PopoverContent>
+                      </Popover>
                     </div>
                   </div>
                 </div>

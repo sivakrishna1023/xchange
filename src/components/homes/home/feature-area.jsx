@@ -29,7 +29,7 @@ const FeatureArea = () => {
   return (
     <>
       <section
-        className="tp-feature-area grey-bg pt-115 pb-90 pl-205 pr-205 bg-bottom"
+        className="tp-feature-area grey-bg pt-10 pb-90 pl-205 pr-205 bg-bottom"
         style={{ backgroundImage: `url(/assets/img/bg/shape-bg-1.png)` }}
       >
         <div className="container-fluid">

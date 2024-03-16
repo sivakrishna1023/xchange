@@ -25,13 +25,12 @@ const suitable_data = [
   },
 ];
 
-const SuitableArea = ({ style_2}) => {
+const SuitableArea = ({ style_2 }) => {
   return (
     <>
       <section
-        className={`suitable-area  ${
-          style_2 ? "bg-bottom grey-bg pt-115" : ""
-        } pb-90 wow fadeInUp`}
+        className={`suitable-area  ${style_2 ? "bg-bottom grey-bg pt-115" : ""
+          } pb-90 wow fadeInUp`}
         data-wow-duration="1s"
         data-wow-delay=".4s"
         style={{
@@ -55,14 +54,13 @@ const SuitableArea = ({ style_2}) => {
             {suitable_data.map((item) => (
               <div key={item.id} className="col-xl-6">
                 <div
-                  className={`tp-suit mb-30 p-relative ${
-                    style_2 ? "white-bg" : ""
-                  }`}
+                  className={`tp-suit mb-30 p-relative ${style_2 ? "white-bg" : ""
+                    }`}
                 >
                   <div className="tp-suit__content">
                     <h4 className="tp-suit__title">{item.title}</h4>
                     <p>{item.des}</p>
-                    <div className="tp-suit__btn pt-5">
+                    <div className="tp-suit__btn pt-10 ">
                       <Link href="/contact" className="tp-border-btn">
                         Join Now
                       </Link>

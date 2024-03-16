@@ -2,13 +2,12 @@
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Link from "next/link";
-import React,{ useEffect } from "react";
+import React, { useEffect } from "react";
 import CityLocator from "./geolocation"
 import { useState, useContext } from "react";
 import { redirect } from "next/navigation";
 import { Context } from "../Clients/clientcomponents";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import {  toast } from "react-toastify";
 import { useRouter } from "next/router";
 import Script from "next/script";
 
@@ -17,12 +16,12 @@ const LoginForm = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading,setloading]=useState(false);
+  const [loading, setloading] = useState(false);
   const handlePasswordToggle = () => {
     setShowPassword(!showPassword);
   };
-      
-      
+
+
   const { user, setUser } = useContext(Context);
   const router = useRouter();
   const handler = async (e) => {
@@ -48,7 +47,7 @@ const LoginForm = () => {
         localStorage.setItem('token', data.token);
         setloading(false);
         setTimeout(() => {
-             window.location.href='/';
+          window.location.href = '/';
         }, 1000);
       } else {
         const message = data.message;
@@ -73,23 +72,22 @@ const LoginForm = () => {
   if (user._id) {
     <Script id="redirect">{`document.location.href="/";`}</Script>;
   }
-  if(loading===true){
-    return(
-       <> 
-       <center> <h3>Please wait...</h3>   </center>
-       </>
-     )
- }   
+  if (loading === true) {
+    return (
+      <>
+        <center> <h3>Please wait...</h3>   </center>
+      </>
+    )
+  }
   return (
     <>
       {/* <CityLocator/> */}
-      <ToastContainer />
       <section
-        className="login-area pt-100 pb-100 wow fadeInUp"
+        className="login-area pt-5pb-100 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".5s"
       >
-     
+
         <div className="container">
           <div className="row">
             <div className="col-lg-8 offset-lg-2">

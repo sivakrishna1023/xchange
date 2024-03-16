@@ -11,7 +11,7 @@ const PostboxBlogDetails = () => {
   return (
     <>
       <div
-        className="postbox__area pt-120 pb-120 wow fadeInUp"
+        className="postbox__area pt-10 pb-120 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >
@@ -125,33 +125,33 @@ const PostboxBlogDetails = () => {
                   <h3 className="postbox__comment-title">3 Comments</h3>
                   <ul>
 
-                    {comments_data.map((item, i) =>                       
+                    {comments_data.map((item, i) =>
                       <li key={i} className={item?.children}>
-                      <div className="postbox__comment-box grey-bg">
-                        <div className="postbox__comment-info d-flex">
-                          <div className="postbox__comment-avater mr-20">
-                            <img
-                              src={item.img}
-                              alt=""
-                            />
+                        <div className="postbox__comment-box grey-bg">
+                          <div className="postbox__comment-info d-flex">
+                            <div className="postbox__comment-avater mr-20">
+                              <img
+                                src={item.img}
+                                alt=""
+                              />
+                            </div>
+                            <div className="postbox__comment-name">
+                              <h5>{item.name}</h5>
+                              <span className="post-meta">{item.date}</span>
+                            </div>
                           </div>
-                          <div className="postbox__comment-name">
-                            <h5>{item.name}</h5>
-                            <span className="post-meta">{item.date}</span>
+                          <div className="postbox__comment-text ml-65">
+                            <p>
+                              {item.comment}
+                            </p>
+                            <div className="postbox__comment-reply">
+                              <a href="#">Reply</a>
+                            </div>
                           </div>
                         </div>
-                        <div className="postbox__comment-text ml-65">
-                          <p>
-                            {item.comment}
-                          </p>
-                          <div className="postbox__comment-reply">
-                            <a href="#">Reply</a>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                      ) 
-                    }                    
+                      </li>
+                    )
+                    }
                   </ul>
                 </div>
 
