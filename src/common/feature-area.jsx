@@ -23,7 +23,7 @@ const FeatureArea = ({ style_about }) => {
   return (
     <>
       <section
-        className="feature-area pt-115 pb-90 wow fadeInUp"
+        className="feature-area pt-10 pb-90 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".3s"
       >

@@ -32,15 +32,15 @@ const counter_data = [
     title: "5 Start Reviews",
   },
 ];
-const CounterArea = ({style_counter}) => {
+const CounterArea = ({ style_counter }) => {
   return (
     <>
       <section
-        className={`tp-counter-area bg-bottom  ${style_counter ? "pb-60" : "grey-bg pt-120 pb-60"}  wow fadeInUp`}
+        className={`tp-counter-area bg-bottom  ${style_counter ? "pb-60" : "grey-bg pt-10 pb-60"}  wow fadeInUp`}
         data-wow-duration="1s"
         data-wow-delay=".4s"
-        
-        style={{ backgroundImage: style_counter ? null : `url(/assets/img/bg/shape-bg-1.png)`}}
+
+        style={{ backgroundImage: style_counter ? null : `url(/assets/img/bg/shape-bg-1.png)` }}
       >
         <div className="container">
           <div className="row">

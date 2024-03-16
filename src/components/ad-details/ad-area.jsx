@@ -9,7 +9,7 @@ const AdArea = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <h2 className="tp-section-title mb-20">Related Ads</h2>
               </div>
             </div>

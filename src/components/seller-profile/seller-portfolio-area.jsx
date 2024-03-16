@@ -123,38 +123,38 @@ const SellerPortfolioArea = () => {
   const [tasks, settasks] = useState('');
   const [tasks2, settasks2] = useState('');
   const [tasks3, settasks3] = useState('');
-  const handle_wishlist=async(e)=>{
-      try {
-        const token = localStorage.getItem('token');
-        const res = await fetch(`api/users/wishremove`, {
-           method: 'POST',
-           headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-           },
-           body: JSON.stringify({
-               id:e,
-           })
+  const handle_wishlist = async (e) => {
+    try {
+      const token = localStorage.getItem('token');
+      const res = await fetch(`api/users/wishremove`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          id: e,
         })
-        const data = await res.json();
-        if (data.success) {
-          const message = data.message ? data.message : "Removed From List";
-           toast.success(message, {
-              position: toast.POSITION.TOP_CENTER
-           });
-           setTimeout(() => {
-            window.location.reload();
-           }, 1000);
-        } else {
-           const message = data.message ? data.message : "Failed to Remove";
-           toast.error(message, {
-              position: toast.POSITION.TOP_CENTER
-           });
-        }
-     } catch (error) {
-        toast.error("Connection failed try again later !", {
-           position: toast.POSITION.TOP_CENTER
+      })
+      const data = await res.json();
+      if (data.success) {
+        const message = data.message ? data.message : "Removed From List";
+        toast.success(message, {
+          position: toast.POSITION.TOP_CENTER
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      } else {
+        const message = data.message ? data.message : "Failed to Remove";
+        toast.error(message, {
+          position: toast.POSITION.TOP_CENTER
+        });
+      }
+    } catch (error) {
+      toast.error("Connection failed try again later !", {
+        position: toast.POSITION.TOP_CENTER
+      });
     }
   }
   const [selectedSection, setSelectedSection] = useState("myAds");
@@ -171,9 +171,9 @@ const SellerPortfolioArea = () => {
 
   return (
     <>
-     <ToastContainer />
+      <ToastContainer />
       <section
-        className="instructor-portfolio pt-120 pb-80 wow fadeInUp"
+        className="instructor-portfolio pt-10 mb-10 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >
@@ -213,17 +213,17 @@ const SellerPortfolioArea = () => {
                     </ul>
                   </div>
                   <div style={{ display: "flex", width: "100%", justifyContent: "space-evenly", marginBottom: "1rem" }}>
-                      <Popover placement="right">
-                        <PopoverTrigger>
-                          <div style={{ padding: "8px 50px", backgroundColor: "rgb(107, 79, 247)", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <div className="px-1 py-2">
-                            <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor:"white" }}>This Feature is Coming Soon</div>
-                          </div>
-                        </PopoverContent>
-                      </Popover>
-                    </div>
+                    <Popover placement="right">
+                      <PopoverTrigger>
+                        <div style={{ padding: "8px 50px", backgroundColor: "rgb(107, 79, 247)", borderRadius: "10px", color: "white", fontWeight: "bolder", marginTop: "1rem", cursor: "pointer", display: "flex", justifyContent: "center", alignItems: "center" }}>TRUST INDEX</div>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <div className="px-1 py-2">
+                          <div className="text-small font-bold" style={{ border: "2px solid black", borderRadius: "5px", padding: "10px", backgroundColor: "white" }}>This Feature is Coming Soon</div>
+                        </div>
+                      </PopoverContent>
+                    </Popover>
+                  </div>
                   <div className="c-details-social">
                     {
                       user.Facebook && <Link href={`${user.Facebook}`}>
@@ -323,9 +323,9 @@ const SellerPortfolioArea = () => {
                                         alt="meta-icon"
                                       />
                                       <span> <TimePassed createdAt={item.createdAt} /> </span>
-                                     
+
                                     </li>
-                                    
+
                                   </ul>
                                 </div>
                                 <div className="tpcourse__rating d-flex align-items-center justify-content-between">
@@ -346,7 +346,7 @@ const SellerPortfolioArea = () => {
                                     </PopoverTrigger>
                                     <PopoverContent>
                                       <div className="px-1 py-2">
-                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor:"white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_delete(item._id) }}>Yes</button></div>
+                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_delete(item._id) }}>Yes</button></div>
                                       </div>
                                     </PopoverContent>
                                   </Popover>
@@ -485,7 +485,7 @@ const SellerPortfolioArea = () => {
                                     <li>
                                       <Link
                                         className={item.ct_color}
-                                        href={`/ad-details?id=${item._id}`} 
+                                        href={`/ad-details?id=${item._id}`}
                                       >
                                         {item.Category}
                                       </Link>
@@ -493,7 +493,7 @@ const SellerPortfolioArea = () => {
                                     <li>
                                       <Link
                                         className={item.cn_color}
-                                        href={`/ad-details?id=${item._id}`} 
+                                        href={`/ad-details?id=${item._id}`}
                                       >
                                         {item.Brand}
                                       </Link>
@@ -522,7 +522,7 @@ const SellerPortfolioArea = () => {
                                     {tasks.Model}
 
                                   </div>
-                                  
+
                                   <div className="tpcourse__pricing">
                                     <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
                                   </div>
@@ -534,7 +534,7 @@ const SellerPortfolioArea = () => {
                                     </PopoverTrigger>
                                     <PopoverContent>
                                       <div className="px-1 py-2">
-                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor:"white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_wishlist(item._id) }}>Yes</button></div>
+                                        <div className="text-small font-bold" style={{ padding: "10px", backgroundColor: "white" }}>Are You Sure ? &nbsp; <button style={{ backgroundColor: "#e34c4ced", padding: "10px", color: "white", borderRadius: "10px" }} onClick={() => { handle_wishlist(item._id) }}>Yes</button></div>
                                       </div>
                                     </PopoverContent>
                                   </Popover>

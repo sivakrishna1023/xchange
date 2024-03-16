@@ -45737,7 +45737,7 @@ img {
   padding-top: 15px;
 }
 
-.pt-20 {
+.pt-10 {
   padding-top: 20px;
 }
 
@@ -45745,7 +45745,7 @@ img {
   padding-top: 25px;
 }
 
-.pt-30 {
+.pt-10 {
   padding-top: 30px;
 }
 
@@ -45761,7 +45761,7 @@ img {
   padding-top: 45px;
 }
 
-.pt-50 {
+.pt-10 {
   padding-top: 50px;
 }
 
@@ -45785,7 +45785,7 @@ img {
   padding-top: 75px;
 }
 
-.pt-80 {
+.pt-10 {
   padding-top: 80px;
 }
 
@@ -45801,7 +45801,7 @@ img {
   padding-top: 95px;
 }
 
-.pt-100 {
+.pt-10 {
   padding-top: 100px;
 }
 
@@ -45817,7 +45817,7 @@ img {
   padding-top: 115px;
 }
 
-.pt-120 {
+.pt-10 {
   padding-top: 120px;
 }
 
@@ -45881,7 +45881,7 @@ img {
   padding-top: 195px;
 }
 
-.pt-200 {
+.pt-100 {
   padding-top: 200px;
 }
 
@@ -47736,9 +47736,9 @@ ul.bili_circle li::before {
     height: 768px;
   }
 }
-@media (max-width: 767px) {
+@media (width< 767px) {
   .banner-bg {
-    height: 670px;
+    height: 300px;
   }
 }
 

@@ -14,23 +14,23 @@ const cart_list = [
 ];
 
 const CartArea = () => {
-  
 
-    
-    const [product, setProduct] = useState(1)
-    const plus = () => {
-        setProduct(prev => prev + 1)
+
+
+  const [product, setProduct] = useState(1)
+  const plus = () => {
+    setProduct(prev => prev + 1)
+  }
+  const minus = () => {
+    if (product >= 1) {
+      setProduct((prev) => prev - 1);
     }
-    const minus = () => {
-        if (product >= 1) {
-          setProduct((prev) => prev - 1);
-      }
-    };
+  };
 
   return (
     <>
       <section
-        className="cart-area pt-100 pb-100 wow fadeInUp"
+        className="cart-area pt-10 pb-100 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".2s"
       >
@@ -71,8 +71,8 @@ const CartArea = () => {
                             <input
                               className="cart-input"
                               type="text"
-                            //   value="1"
-                            placeholder={product}
+                              //   value="1"
+                              placeholder={product}
 
                             />
                             <span onClick={plus} className="cart-plus">+</span>
@@ -87,7 +87,7 @@ const CartArea = () => {
                           </td>
                         </tr>
                       ))}
-                      
+
                     </tbody>
                   </table>
                 </div>
@@ -99,7 +99,7 @@ const CartArea = () => {
                           id="coupon_code"
                           className="input-text"
                           name="coupon_code"
-                        //   value=""
+                          //   value=""
                           placeholder="Coupon code"
                           type="text"
                         />

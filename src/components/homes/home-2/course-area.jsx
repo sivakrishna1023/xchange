@@ -6,7 +6,7 @@ const CourseArea = () => {
   return (
     <>
       <section
-        className="course-wrap-area bg-bottom grey-bg pt-115 pb-60 wow fadeInUp"
+        className="course-wrap-area bg-bottom grey-bg pt-10 pb-60 wow fadeInUp"
         data-wow-duration=".8s"
         data-wow-delay=".4s"
         style={{ backgroundImage: `url(/assets/img/bg/shape-bg-1.png)` }}
@@ -14,7 +14,7 @@ const CourseArea = () => {
         <div className="container">
           <div className="row justify-content-center align-items-center">
             <div className="col-xl-6 col-lg-8 col-md-8">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <span className="tp-sub-title-box mb-15">Our Courses</span>
                 <h2 className="tp-section-title mb-20">
                   Explore Popular Courses

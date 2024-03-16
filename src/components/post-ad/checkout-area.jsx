@@ -13,18 +13,18 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 
 const formatResult = (item) => {
    return (
-     <>
-       {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
-       <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
-     </>
+      <>
+         {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+         <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
+      </>
    )
- }
+}
 
- const handleOnSearch = (string, results) => {
+const handleOnSearch = (string, results) => {
    // onSearch will have as the first callback parameter
    // the string searched and for the second the results.
    // console.log(string, results)
- }
+}
 
 
 const CheckoutArea = () => {
@@ -133,20 +133,20 @@ const CheckoutArea = () => {
       { id: 77, name: 'Mettuguda' },
       { id: 78, name: 'Secunderabad' },
       { id: 79, name: 'Parade Ground' },
-      {id: 80, name: 'Raipur' },
-      {id: 81, name: 'Bhilai'},
-      {id: 82, name: 'Durg' },
-      {id: 83, name: 'Bilaspur' },
-      {id: 84, name: 'Korba' },
-      {id: 85, name: 'Naya Raipur' }
-    ];
+      { id: 80, name: 'Raipur' },
+      { id: 81, name: 'Bhilai' },
+      { id: 82, name: 'Durg' },
+      { id: 83, name: 'Bilaspur' },
+      { id: 84, name: 'Korba' },
+      { id: 85, name: 'Naya Raipur' }
+   ];
 
    const handleOnSelect = (item) => {
       setCity(item.name);
       // console.log(City);
       // setSelectedCity(item.name);
       // setSelectedLocation(item.name);
-    }
+   }
    const mobileBrands = [
       'Apple',
       'MI',
@@ -447,7 +447,7 @@ const CheckoutArea = () => {
          </center>  <br /> */}
 
          {
-            user._id ? <section className="checkout-area pt-50 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+            user._id ? <section className="checkout-area pt-10 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                <div className="container">
                   <div className="row">
                      <div className="col-lg-6 col-md-12">

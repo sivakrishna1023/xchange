@@ -13,7 +13,7 @@ const CategoryArea = () => {
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
-              <div className="section-title mb-65">
+              <div className="section-title mb-10 lg:mb-65 ">
                 <span className="tp-sub-title-box mb-15">Top Categories</span>
                 <h2 className="tp-section-title">Explore 100+ Categories</h2>
               </div>

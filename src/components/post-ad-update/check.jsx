@@ -408,7 +408,7 @@ const Check = () => {
       { id: 54, name: 'Wanaparthy' },
       { id: 55, name: 'Nagarkurnool' },
       { id: 56, name: 'Nalgonda' }
-    ];
+   ];
 
    // const creatingAdimages = (e) => {
    //    const files = Array.from(e.target.files);
@@ -499,26 +499,26 @@ const Check = () => {
       // onSearch will have as the first callback parameter
       // the string searched and for the second the results.
       // console.log(string, results)
-    }
+   }
    const handleOnSelect = (item) => {
       setCity(item.name);
       // console.log(City);
       // setSelectedCity(item.name);
       // setSelectedLocation(item.name);
-    }
-    const formatResult = (item) => {
+   }
+   const formatResult = (item) => {
       return (
-        <>
-          {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
-          <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
-        </>
+         <>
+            {/* <span style={{ display: 'block', textAlign: 'left' }}>id: {item.id}</span> */}
+            <span style={{ display: 'block', textAlign: 'left' }}>{item.name}</span>
+         </>
       )
-    }
+   }
    return (
       <>
          <ToastContainer />
          {
-            (ad && user._id) ? <section className="checkout-area pt-100 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
+            (ad && user._id) ? <section className="checkout-area pt-10 pb-70 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                <div className="container">
 
                   <div className="row">
@@ -556,7 +556,7 @@ const Check = () => {
 
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
-                                 <label >
+                                    <label >
                                        Town / City <span className="required">*</span>
                                        <div style={{ width: '100%', marginTop: 30 }}>
                                           <ReactSearchAutocomplete
@@ -724,7 +724,7 @@ const Check = () => {
                               <div className="col-md-12">
                                  <div className="checkout-form-list">
                                     <label>Ad Price <span className="required">*</span></label>
-                                    <input style={{padding:"10px 20px"}} required onChange={(e) => { setAdprice(e.target.value) }} value={Adprice !== '' ? Adprice : ""} type="number" placeholder="Ad Price" />
+                                    <input style={{ padding: "10px 20px" }} required onChange={(e) => { setAdprice(e.target.value) }} value={Adprice !== '' ? Adprice : ""} type="number" placeholder="Ad Price" />
                                  </div>
                               </div>
                               <div className="col-md-6">
@@ -765,20 +765,21 @@ const Check = () => {
 
                                  {ad.images == "" || ad.images == null ? "" : ad.images.map(data => {
                                     return (
-                                       <div  style={{position:"relative", display:"inline-block"}}>
-                                       <img width={200} height={200} src={data}/>  
-                                       <div 
-                                       // onClick={() => handleRemoveImage(index)}
-                                       style={{
-                                          position:"absolute",
-                                          top:"-10px",right:"-10px", 
-                                          cursor:"pointer", 
-                                          padding:"1px 10px",
-                                          color:"red", 
-                                          backgroundColor:"white", 
-                                          borderRadius:"100%", 
-                                          fontSize:"20px", 
-                                          fontWeight:"bolder"}}
+                                       <div style={{ position: "relative", display: "inline-block" }}>
+                                          <img width={200} height={200} src={data} />
+                                          <div
+                                             // onClick={() => handleRemoveImage(index)}
+                                             style={{
+                                                position: "absolute",
+                                                top: "-10px", right: "-10px",
+                                                cursor: "pointer",
+                                                padding: "1px 10px",
+                                                color: "red",
+                                                backgroundColor: "white",
+                                                borderRadius: "100%",
+                                                fontSize: "20px",
+                                                fontWeight: "bolder"
+                                             }}
                                           >x</div>
                                        </div>
                                     )
