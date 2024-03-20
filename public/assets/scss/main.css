@@ -44988,10 +44988,10 @@ img {
     Progress Wrap
 -----------------------------------------*/
 @media (max-width: 767px) {
-  .progress-wrap {
+  /* .progress-wrap {
     right: 15px;
     bottom: 15px;
-  }
+  } */
 }
 
 .basic-pagination ul li {
