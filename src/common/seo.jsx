@@ -15,6 +15,7 @@ const SEO = ({ pageTitle }) => (
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
+      <meta name="google-adsense-account" content="ca-pub-6404549989973165"/>
       <link rel="icon" href="/favicon.png" />
       <link rel="canonical" href={'https://xchangehyd.com/'} />
       {/* Google tag (gtag.js) */}
