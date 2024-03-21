@@ -26,10 +26,14 @@ const CourseArea = () => {
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
-    if (item) {
-      req = item !== '' ? item : selectedLocation;
-    } else {
-      req = selectedLocation;
+    if(item==null){
+      req='';
+    }else{
+      if (item) {
+        req = item !== '' ? item : selectedLocation;
+      } else {
+        req = selectedLocation;
+      }
     }
     setloading(true);
     try {
@@ -55,6 +59,7 @@ const CourseArea = () => {
         settasks(ads_data);
       }
     } catch (error) {
+      setloading(false);
       console.log(error);
     }
     setloading(false);
@@ -62,7 +67,7 @@ const CourseArea = () => {
   useEffect(() => {
     handle_newtasks();
   },
-    [selectedLocation]);
+  [selectedLocation]);
   useEffect(() => {
     var item = localStorage.getItem('my_city');
     if (item) {

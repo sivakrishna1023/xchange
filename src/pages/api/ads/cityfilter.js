@@ -19,6 +19,7 @@ const handler = asyncError(async (req, res) => {
               });
              
         }else{
+          
             const regexQuery = new RegExp(req.body.fill, 'i');
             var ads = await Ads.find({
                 $and: [

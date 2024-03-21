@@ -20,10 +20,14 @@ const AdListArea = () => {
   const handle_newtasks1 = async () => {
     var item = localStorage.getItem('my_city');
     var req;
-    if(item){
-      req= item!=='' ? item :selectedLocation;
+    if(item==null){
+      req='';
     }else{
-       req=selectedLocation;
+      if (item) {
+        req = item !== '' ? item : selectedLocation;
+      } else {
+        req = selectedLocation;
+      }
     }
       setloading(true);
     try {
