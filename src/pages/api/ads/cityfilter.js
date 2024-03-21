@@ -3,11 +3,12 @@ import {errorHandler,asyncError} from '../../../middlewares/Error'
 import {Ads} from '../../../models/ads'
  
 const handler = asyncError(async (req, res) => {
-        if (req.method !== "POST")
+        if (req.method !== 'POST')
         return errorHandler(res, 400, "Only POST Method is allowed");  
         await connectDB();
-        
-        if(req.body.fill===''){
+      
+        try{
+          if(req.body.fill==null || req.body.fill===''){
             const ads= await  Ads.find({draft: false});
             await disconnect();
             const found=true;
@@ -17,9 +18,7 @@ const handler = asyncError(async (req, res) => {
                 ads,
                 found,
               });
-             
         }else{
-          
             const regexQuery = new RegExp(req.body.fill, 'i');
             var ads = await Ads.find({
                 $and: [
@@ -46,6 +45,12 @@ const handler = asyncError(async (req, res) => {
                 found
             });
         }   
+        }catch{
+          res.status(400).json({
+            success: false,
+            found:false,
+        });
+        }
 });
 
 export default handler;

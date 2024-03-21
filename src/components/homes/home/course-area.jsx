@@ -43,7 +43,7 @@ const CourseArea = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          fill: req
+          fill: req,
         })
       });
       const data = await res.json();
