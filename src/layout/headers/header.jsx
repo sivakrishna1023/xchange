@@ -208,20 +208,6 @@ const Header = () => {
                     </div>
                   )}
                   <div style={{ display: 'flex' }}>
-                    <div className="header-right d-md-flex align-items-center">
-                      <div className="header-meta">
-                        <ul>
-                          <div style={{ display: "flex" }}>
-                            <li style={{ margin: "0" }}>
-                              <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
-                                <i className="icon_ul"></i>
-                              </a>
-                            </li>
-                          </div>
-
-                        </ul>
-                      </div>
-                    </div>
                     <div className="main-menu d-flex justify-content-end">
                       <nav id="mobile-menu" className="d-none d-xl-block">
                         <NavMenu />
@@ -260,6 +246,20 @@ const Header = () => {
                           </div>
                         </PopoverContent>
                       </Popover>
+                    </div>
+                    <div className="header-right d-md-flex align-items-center">
+                      <div className="header-meta">
+                        <ul>
+                          <div style={{ display: "flex" }}>
+                            <li style={{ margin: "0" }}>
+                              <a onClick={() => setIsActive(true)} href="#" className="tp-menu-toggle d-xl-none">
+                                <i className="icon_ul"></i>
+                              </a>
+                            </li>
+                          </div>
+
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
