@@ -3,13 +3,16 @@ import {errorHandler,asyncError} from '../../../middlewares/Error'
 import {Ads} from '../../../models/ads'
  
 const handler = asyncError(async (req, res) => {
-        if (req.method !== 'POST')
+        if (req.method !== 'GET')
         return errorHandler(res, 400, "Only POST Method is allowed");  
         await connectDB();
-      
+        const contentType = req.headers['filter'];
+        const pagenumber=1;
+        const adsperpage=8;
+        const skipads=(pagenumber-1)*adsperpage;
         try{
-          if(req.body.fill==null || req.body.fill===''){
-            const ads= await  Ads.find({draft: false});
+          if(contentType==null || contentType===''){
+            const ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);
             await disconnect();
             const found=true;
             res.status(200).json({
@@ -19,7 +22,7 @@ const handler = asyncError(async (req, res) => {
                 found,
               });
         }else{
-            const regexQuery = new RegExp(req.body.fill, 'i');
+            const regexQuery = new RegExp(contentType, 'i');
             var ads = await Ads.find({
                 $and: [
                   {
@@ -31,10 +34,10 @@ const handler = asyncError(async (req, res) => {
                   },
                   { draft: false }, 
                 ],
-              });
+              }).skip(skipads).limit(adsperpage);
             var found=true;
             if(ads.length==0){
-              ads= await  Ads.find({draft: false});
+              ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);
               found=false;
             }
             await disconnect();

@@ -37,15 +37,16 @@ const CourseArea = () => {
     }
     setloading(true);
     try {
-      const res = await fetch("/api/ads/cityfilter", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          fill: req,
-        })
-      });
+        const res = await fetch("/api/ads/cityfilter", {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'filter':`${req}`,
+          },
+          // body: JSON.stringify({
+          //   fill: req,
+          // })
+        });
       const data = await res.json();
       if (data.success) {
         if (item) {
