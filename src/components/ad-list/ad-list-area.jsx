@@ -16,6 +16,7 @@ const AdListArea = () => {
   const [req, setreq] = useState('');
   const {selectedLocation} = useLocationContext();
   const [isvalid,setisvalid]=useState(true);
+  const [pagenumber,setpagenumber]=useState(1);
   const text="NO Ads Found Under Selected Location";
   const handle_newtasks1 = async () => {
     var item = localStorage.getItem('my_city');
@@ -36,10 +37,8 @@ const AdListArea = () => {
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
+            'pagenumber':`${pagenumber}`,
           },
-          // body: JSON.stringify({
-          //   fill: req,
-          // })
       });
       const data = await res.json();
       if (data.success) {
