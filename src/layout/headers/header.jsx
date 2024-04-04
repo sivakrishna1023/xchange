@@ -159,7 +159,24 @@ const Header = () => {
   { "id": 125, "name": "Tadepalligudem" },
   { "id": 126, "name": "Nidadavole" },
   { "id": 127, "name": "Dwaraka Tirumala" },
-  { "id": 128, "name": "Bhimavaram" }  
+  { "id": 128, "name": "Bhimavaram" },
+  { "id": 129, "name": "Eluru" },
+  { "id": 130, "name": "Gudivada" },
+  { "id": 131, "name": "Vijayawada" },
+  { "id": 132, "name": "Machilipatnam" },
+  { "id": 133, "name": "Guntur" },
+  { "id": 134, "name": "Narasaraopet" },
+  { "id": 135, "name": "Ongole" },
+  { "id": 136, "name": "Nellore" },
+  { "id": 137, "name": "Chirala" },
+  { "id": 138, "name": "Kadapa" },
+  { "id": 139, "name": "Tirupathi"},
+  { "id": 140, "name": "Nandyal" },
+  { "id": 141, "name": "Kurnool" },
+  { "id": 142, "name": "Anantapur"},
+  { "id": 143, "name": "Tadipatri" },
+  { "id": 144, "name": "Madanapalli" },
+  { "id": 145, "name": "NIT Raipur" } 
       
 ];
 
