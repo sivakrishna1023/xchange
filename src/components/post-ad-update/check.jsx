@@ -495,8 +495,7 @@ const Check = () => {
   { "id": 141, "name": "Kurnool" },
   { "id": 142, "name": "Anantapur"},
   { "id": 143, "name": "Tadipatri" },
-  { "id": 144, "name": "Madanapalli" },
-  { "id": 145, "name": "NIT Raipur" }
+  { "id": 144, "name": "Madanapalli" }
    ];
 
    // const creatingAdimages = (e) => {
