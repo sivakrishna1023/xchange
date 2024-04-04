@@ -137,7 +137,30 @@ const Header = () => {
   { "id": 103, "name": "Vizianagaram" },
   { "id": 104, "name": "Nellimarla" },
   { "id": 105, "name": "Thagarapuvalasa" },
-  { "id": 106, "name": "Bheemunipatnam" }
+  { "id": 106, "name": "Bheemunipatnam" },
+  { "id": 107, "name": "Madhurawada" },
+  { "id": 108, "name": "kothavalasa" },
+  { "id": 109, "name": "Chodavaram" },
+  { "id": 110,"name": "Anakapalle" },
+  { "id": 111, "name": "Yelamanchili"},
+  { "id": 112, "name": "Narsipatnam" },
+  { "id": 113, "name": "Kothakota" },
+  { "id": 114, "name": "Nakkapalle" },
+  { "id": 115, "name": "Tuni" },
+  { "id": 116, "name": "Annavaram" },
+  { "id": 117, "name": "Pithapuram" },
+  { "id": 118, "name": "Samalkot" },
+  { "id": 119, "name": "Kakinada" },
+  { "id": 120, "name": "Rajanagaram" },
+  { "id": 121, "name": "Korukonda" },
+  { "id": 122, "name": "Rajamundry" },
+  { "id": 123, "name": "Amalapuram" },
+  { "id": 124, "name": "Tanuku" },
+  { "id": 125, "name": "Tadepalligudem" },
+  { "id": 126, "name": "Nidadavole" },
+  { "id": 127, "name": "Dwaraka Tirumala" },
+  { "id": 128, "name": "Bhimavaram" }  
+      
 ];
 
   const handleOnSelect = (item) => {
