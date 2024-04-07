@@ -229,11 +229,10 @@ const CourseArea = () => {
                     </div>
                   </div>
                 </div>
-              )) : <div> <center> <h3>Please wait</h3>  </center></div>}
-              {
-                loading ? <div> <center> <h3>Please Wait</h3>  </center></div> :
-                <div> <center> <h3></h3>  </center></div>
-              }
+              )) : (
+                loading ? <div> <center> <h3>Please Wait</h3>  </center></div>:
+                <div> <center> <h3>Please Wait</h3>  </center></div>
+              )}
             </div>
           </div>
           <div className="row text-center">
@@ -244,7 +243,7 @@ const CourseArea = () => {
                     (
                       !loading ? <button className="tp-btn" onClick={handle_newtasks}>
                       Load More
-                      </button> : <></>
+                      </button> : <div> <center> <h3>Please Wait</h3>  </center></div>
                     )
                   ) : (
                     <Link className="tp-btn" href={'/ad-list'}>
