@@ -16,7 +16,7 @@ const AdListArea = () => {
   const [req, setreq] = useState('');
   const {selectedLocation} = useLocationContext();
   const [isvalid,setisvalid]=useState(true);
-  const [pagenumber,setpagenumber]=useState(1);
+  const [pagenumber,setpagenumber]=useState(0);
   const text="NO Ads Found Under Selected Location";
   const [isnext,setisnext]=useState(true);
   function shuffleArray(array) {

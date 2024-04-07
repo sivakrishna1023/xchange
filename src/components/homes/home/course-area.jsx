@@ -16,7 +16,7 @@ const CourseArea = () => {
   const [tasks, settasks] = useState('');
   const text = "NO Ads Found Under Selected Location";
   const [isvalid, setisvalid] = useState(true);
-  const [pagenumber,setpagenumber]=useState(-1);
+  const [pagenumber,setpagenumber]=useState(0);
   const [isnext,setisnext]=useState(true);
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
