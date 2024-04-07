@@ -229,7 +229,7 @@ const CourseArea = () => {
                     </div>
                   </div>
                 </div>
-              )) : <div> <center> <h3>Error Please Try again Later</h3>  </center></div>}
+              )) : <div> <center> <h3>Please wait</h3>  </center></div>}
               {
                 loading ? <div> <center> <h3>Please Wait</h3>  </center></div> :
                 <div> <center> <h3></h3>  </center></div>
