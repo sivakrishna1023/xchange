@@ -211,7 +211,7 @@ const SellerArea = ({ style_2 }) => {
           </div>
           <div className="intruc-active mb-15 tp-slide-space">
             <Slider {...setting} ref={sliderRef}>
-              {user && user.map((item) => (
+              {user  && user.slice(0, 5).map((item) => (
                 <div key={item.id} className="tp-instruc-item">
                   <div className="tp-instructor text-center p-relative mb-30" style={{ display: "flex", justifyContent: "center", flexDirection: "column", alignItems: "center" }}>
                     <div className="tp-instructor__thumb mb-25" style={{ width: "200px", height: "200px", overflow: "hidden", borderRadius: "100%" }}>
