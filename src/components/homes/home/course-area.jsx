@@ -42,10 +42,8 @@ const CourseArea = () => {
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
+            'pagenumber':1,
           },
-          // body: JSON.stringify({
-          //   fill: req,
-          // })
         });
       const data = await res.json();
       if (data.success) {

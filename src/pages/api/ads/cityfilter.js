@@ -7,7 +7,7 @@ const handler = asyncError(async (req, res) => {
         return errorHandler(res, 400, "Only POST Method is allowed");  
         await connectDB();
         const contentType = req.headers['filter'];
-        const pagenumber=1;
+        const pagenumber=req.headers['pagenumber'];
         const adsperpage=8;
         const skipads=(pagenumber-1)*adsperpage;
         try{
