@@ -29,7 +29,6 @@ const AdListArea = () => {
   const handle_newtasks1 = async () => {
     var item = localStorage.getItem('my_city');
     var req;
-    setpagenumber(prevPageNumber => prevPageNumber + 1);
     // console.log(pagenumber);
     if(item==null){
       req='';
