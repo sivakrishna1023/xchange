@@ -8,18 +8,25 @@ const handler = asyncError(async (req, res) => {
         await connectDB();
         const contentType = req.headers['filter'];
         const pagenumber=req.headers['pagenumber'];
-        const adsperpage=8;
-        const skipads=(pagenumber-1)*adsperpage;
+        const adsperpage=9;
+        const skipads=(pagenumber-1)*8;
         try{
           if(contentType==null || contentType===''){
             const ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);
             await disconnect();
             const found=true;
+            var isnext=true;
+            if(ads.length<9){
+              isnext=false;
+            }else{
+               if(ads.length>1) ads.pop();
+            }
             res.status(200).json({
                 success: true, 
                 message: `New Tasks`,
                 ads,
                 found,
+                isnext,
               });
         }else{
             const regexQuery = new RegExp(contentType, 'i');
@@ -40,14 +47,21 @@ const handler = asyncError(async (req, res) => {
               ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);
               found=false;
             }
+            var isnext=true;
+            if(ads.length<9){
+              isnext=false;
+            }else{
+              if(ads.length>1) ads.pop();
+            }
             await disconnect();
             res.status(200).json({
                 success: true,
                 message: `New tasks`,
                 ads,
-                found
+                found,
+                isnext,
             });
-        }   
+         }   
         }catch{
           res.status(400).json({
             success: false,

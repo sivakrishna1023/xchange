@@ -18,9 +18,19 @@ const AdListArea = () => {
   const [isvalid,setisvalid]=useState(true);
   const [pagenumber,setpagenumber]=useState(1);
   const text="NO Ads Found Under Selected Location";
+  const [isnext,setisnext]=useState(true);
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
   const handle_newtasks1 = async () => {
     var item = localStorage.getItem('my_city');
     var req;
+    setpagenumber(prevPageNumber => prevPageNumber + 1);
+    // console.log(pagenumber);
     if(item==null){
       req='';
     }else{
@@ -30,28 +40,32 @@ const AdListArea = () => {
         req = selectedLocation;
       }
     }
-      setloading(true);
+    setloading(true);
     try {
-      const res = await fetch("/api/ads/cityfilter", {
-        method: 'GET',
+        const res = await fetch("/api/ads/cityfilter", {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
-            'pagenumber':`${pagenumber}`,
+            'pagenumber':pagenumber,
           },
-      });
+        });
       const data = await res.json();
       if (data.success) {
-          if(item){
-            if(data.found){
-              setisvalid(true);
-            }else{
-              setisvalid(false);
-            }
+          // console.log(isnext);
+          setisnext(data.isnext);
+        if (item) {
+          if (data.found) {
+            setisvalid(true);
+          } else {
+            setisvalid(false);
           }
-          settasks(data.ads);
+        }
+        const ads_data = shuffleArray(data.ads);
+        settasks(prevTasks => [...prevTasks, ...ads_data]);
       }
     } catch (error) {
+      setloading(false);
       console.log(error);
     }
     setloading(false);
@@ -587,7 +601,7 @@ const AdListArea = () => {
             }
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
               { !isvalid &&  <h4>{text}</h4>  }
-              {tasks && tasks.length>0 ? ( tasks.map((item, i) => (
+              {tasks  ? ( tasks.map((item, i) => (
                 <div key={i} className="tpcourse tp-list-course mb-40">
                   <div className="row g-0">
                     <div className="col-xl-4 course-thumb-width">
@@ -654,7 +668,17 @@ const AdListArea = () => {
                   </div>
                 </div>
               ))):( <div> <center>  <h4> No Ads Found</h4>  </center>  </div>)}
+              {
+              isnext ? (
+                (
+                  !loading ? <button className="tp-btn" onClick={handle_newtasks}>
+                  Load More
+                  </button> : <></>
+                )
+              ) : <></>
+            }
             </div>
+            
           </div>
         </div>
       </section>

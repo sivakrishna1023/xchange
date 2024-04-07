@@ -16,6 +16,8 @@ const CourseArea = () => {
   const [tasks, settasks] = useState('');
   const text = "NO Ads Found Under Selected Location";
   const [isvalid, setisvalid] = useState(true);
+  const [pagenumber,setpagenumber]=useState(-1);
+  const [isnext,setisnext]=useState(true);
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -26,6 +28,7 @@ const CourseArea = () => {
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
+    setpagenumber(prevPageNumber => prevPageNumber + 1);
     if(item==null){
       req='';
     }else{
@@ -42,11 +45,13 @@ const CourseArea = () => {
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
-            'pagenumber':1,
+            'pagenumber':pagenumber,
           },
         });
       const data = await res.json();
       if (data.success) {
+          console.log(isnext);
+          setisnext(data.isnext);
         if (item) {
           if (data.found) {
             setisvalid(true);
@@ -54,6 +59,28 @@ const CourseArea = () => {
             setisvalid(false);
           }
         }
+        const ads_data = shuffleArray(data.ads);
+        settasks(prevTasks => [...prevTasks, ...ads_data]);
+      }
+    } catch (error) {
+      setloading(false);
+      console.log(error);
+    }
+    setloading(false);
+  };
+  const handle_newtasks1 = async () => {
+    setloading(true);
+    try {
+        const res = await fetch("/api/ads/cityfilter", {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'filter':'',
+            'pagenumber':1,
+          },
+        });
+      const data = await res.json();
+      if (data.success) {
         const ads_data = shuffleArray(data.ads);
         settasks(ads_data);
       }
@@ -63,16 +90,14 @@ const CourseArea = () => {
     }
     setloading(false);
   };
+  // useEffect(() => {
+  //   handle_newtasks1();
+  // }, [])
   useEffect(() => {
     handle_newtasks();
   },
   [selectedLocation]);
-  useEffect(() => {
-    var item = localStorage.getItem('my_city');
-    if (item) {
-      handle_newtasks();
-    }
-  }, [])
+  
   const add_to_list = async (e) => {
     try {
       const token = localStorage.getItem('token');
@@ -126,11 +151,11 @@ const CourseArea = () => {
           <div className="row justify-content-center">
             <div className="row">
               {!isvalid && <h4>{text} <br /> </h4>}
-              {tasks && !loading ? tasks.slice(0, 8).map((item, i) => (
+              {tasks ? tasks.map((item, i) => (
                 <div key={i} className="col-xl-3 col-lg-12 col-md-3">
                   <div className="tpcourse mb-40">
                     <div className="tpcourse__thumb p-relative w-img fix">
-                      {
+                      {       
                         user._id ? <Link href={`/ad-details?id=${item._id}`}>
                           <div style={{ width: "100%", height: "200px", overflow: "hidden", border: "1px solid grey" }}>
                             {item.images && item.images[0] && item.images[0] ? <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={item.images[0]} alt="course-thumb" /> : <img style={{ width: "100%", objectFit: "contain", height: "100%" }} src={'https://demofree.sirv.com/nope-not-here.jpg'} alt="course-thumb" />}
@@ -204,17 +229,33 @@ const CourseArea = () => {
                     </div>
                   </div>
                 </div>
-              )) : <div> <center> <h3>Loading ...</h3>  </center></div>}
+              )) : <div> <center> <h3>Error Please Try again Later</h3>  </center></div>}
+              {
+                loading ? <div> <center> <h3>Please Wait</h3>  </center></div> :
+                <div> <center> <h3></h3>  </center></div>
+              }
             </div>
           </div>
           <div className="row text-center">
             <div className="col-lg-12">
               <div className="course-btn mt-20">
-                {user._id ? <Link className="tp-btn" href={'/ad-list'}>
-                  Browse All Ads
-                </Link> : <Link className="tp-btn" href={'/sign-in'}>
-                  Browse All Ads
-                </Link>}
+              {user._id ? (
+                  isnext ? (
+                    (
+                      !loading ? <button className="tp-btn" onClick={handle_newtasks}>
+                      Load More
+                      </button> : <></>
+                    )
+                  ) : (
+                    <Link className="tp-btn" href={'/ad-list'}>
+                      Browse All Ads
+                    </Link>
+                  )
+                ) : (
+                  <Link className="tp-btn" href={'/sign-in'}>
+                    Browse All Ads
+                  </Link>
+                )}
               </div>
             </div>
           </div>
