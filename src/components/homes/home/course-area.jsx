@@ -230,7 +230,6 @@ const CourseArea = () => {
                   </div>
                 </div>
               )) : (
-                loading ? <div> <center> <h3>Please Wait</h3>  </center></div>:
                 <div> <center> <h3>Please Wait</h3>  </center></div>
               )}
             </div>
