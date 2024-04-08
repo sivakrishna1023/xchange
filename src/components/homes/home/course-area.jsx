@@ -50,8 +50,6 @@ const CourseArea = () => {
         });
       const data = await res.json();
       if (data.success) {
-          console.log(isnext);
-          setisnext(data.isnext);
         if (item) {
           if (data.found) {
             setisvalid(true);
@@ -61,6 +59,8 @@ const CourseArea = () => {
         }
         const ads_data = shuffleArray(data.ads);
         settasks(prevTasks => [...prevTasks, ...ads_data]);
+        console.log(isnext);
+        setisnext(data.isnext);
       }
     } catch (error) {
       setloading(false);

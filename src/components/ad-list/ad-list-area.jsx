@@ -12,12 +12,74 @@ import { ReactSearchAutocomplete } from 'react-search-autocomplete';
 const AdListArea = () => { 
   const [loading,setloading]=useState(false);
   const [searchText, setSearchText] = useState("");
-  const [tasks, settasks] = useState('');
+  const [tasks, settasks] = useState([]);
   const [req, setreq] = useState('');
   const {selectedLocation} = useLocationContext();
   const [isvalid,setisvalid]=useState(true);
   const [pagenumber,setpagenumber]=useState(1);
+  const [loading2,setloading2]=useState(false);
+  const [isnext,setisnext]=useState(true);
   const text="NO Ads Found Under Selected Location";
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+  function arraysAreIdentical(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+  const handle_newtasks_next=async ()=>{
+    var item = localStorage.getItem('my_city');
+    var value=(tasks.length/8)+1;
+    setpagenumber(value);
+    var req;
+    if(item==null){
+      req='';
+    }else{
+      if (item) {
+        req = item !== '' ? item : selectedLocation;
+      } else {
+        req = selectedLocation;
+      }
+    }
+      setloading2(true);
+    try {
+      const res = await fetch("/api/ads/cityfilter", {
+        method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'filter':`${req}`,
+            'pagenumber':value,
+          },
+      });
+      const data = await res.json();
+      if (data.success) {
+          if(item){
+            if(data.found){
+              setisvalid(true);
+            }else{
+              setisvalid(false);
+            }
+          }
+          const ads_data = shuffleArray(data.ads);
+          settasks(prevTasks => [...prevTasks, ...ads_data]);
+          setisnext(data.isnext);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setloading2(false);
+  }
   const handle_newtasks1 = async () => {
     var item = localStorage.getItem('my_city');
     var req;
@@ -30,14 +92,15 @@ const AdListArea = () => {
         req = selectedLocation;
       }
     }
-      setloading(true);
+    setloading(true);
+      
     try {
       const res = await fetch("/api/ads/cityfilter", {
         method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
-            'pagenumber':`${pagenumber}`,
+            'pagenumber':pagenumber,
           },
       });
       const data = await res.json();
@@ -49,12 +112,22 @@ const AdListArea = () => {
               setisvalid(false);
             }
           }
-          settasks(data.ads);
+          const ads_data = shuffleArray(data.ads);
+          let updatedTasks = tasks.slice(); // Copying the old tasks array
+         
+          for (let task of ads_data) {
+              if (!tasks.some(existingTask => arraysAreIdentical(existingTask, task))) {
+                  updatedTasks.push(task);
+              }
+          }
+          settasks(updatedTasks);
+          setisnext(data.isnext);
       }
     } catch (error) {
       console.log(error);
     }
     setloading(false);
+    
   };
   useEffect(()=>{
     handle_newtasks1();
@@ -96,6 +169,7 @@ const AdListArea = () => {
   useEffect(() => {
     gettasks();
   }, [])
+
   const handle_newtasks = async () => {
     setloading(true);
     try {
@@ -159,7 +233,7 @@ const AdListArea = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+   }, []);
 
   const [isActive, setIsActive] = useState(false);
   if(loading===true){
@@ -587,7 +661,7 @@ const AdListArea = () => {
             }
             <div className="col-lg-8 col-md-12 course-item-width ml-30">
               { !isvalid &&  <h4>{text}</h4>  }
-              {tasks && tasks.length>0 ? ( tasks.map((item, i) => (
+              {tasks ? ( tasks.map((item, i) => (
                 <div key={i} className="tpcourse tp-list-course mb-40">
                   <div className="row g-0">
                     <div className="col-xl-4 course-thumb-width">
@@ -654,6 +728,17 @@ const AdListArea = () => {
                   </div>
                 </div>
               ))):( <div> <center>  <h4> No Ads Found</h4>  </center>  </div>)}
+              {
+                isnext ? (
+                  (
+                    !loading2 ? <button className="tp-btn" onClick={handle_newtasks_next}>
+                    Load More
+                    </button> : <div> <center> <h3>Please Wait</h3>  </center></div>
+                  )
+                ) : (
+                  <></>
+                )
+              }
             </div>
           </div>
         </div>

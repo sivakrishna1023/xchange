@@ -27,6 +27,7 @@ const handler = asyncError(async (req, res) => {
                 ads,
                 found,
                 isnext,
+                pagenumber:pagenumber+1,
               });
         }else{
             const regexQuery = new RegExp(contentType, 'i');
@@ -60,6 +61,7 @@ const handler = asyncError(async (req, res) => {
                 ads,
                 found,
                 isnext,
+                pagenumber:pagenumber+1,
             });
          }   
         }catch{
