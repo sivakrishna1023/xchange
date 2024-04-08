@@ -128,8 +128,8 @@ const AdDetailsArea = () => {
                                  {ad && ad.images && ad.images[0] ? (
                                     <Slider {...settings}>
                                        {ad.images.map((image, index) => (
-                                          <div key={index} >
-                                             <img style={{ width: "100%", height: "100%", objectFit: "contain" }} src={image} alt={`course-thumb-${index}`} />
+                                          <div key={index} style={{width:"100px", height:"100px"}} >
+                                             <img style={{ width: "100%", height: "100%" }} src={image} alt={`course-thumb-${index}`} />
                                           </div>
                                        ))}
                                     </Slider>
@@ -201,9 +201,9 @@ const AdDetailsArea = () => {
                                     <h6 className="tp-c-details-title mb-40">Seller</h6>
                                     <div className="course-instructor-details d-flex f-wrap align-items-center" style={{ display: "flex", flexDirection: "row" }}>
                                        <Link href={`/other-profile?id=${aduser._id}`}  >
-                                          <div className="course-avata mr-30 mb-20">
+                                          <div className="course-avata mb-20 mr-30">
                                              {aduser.avatar ? <img style={{ borderRadius: "100%", width: "110px", height: "100px" }} src={aduser.avatar} alt="instructor-thumb" /> : <img
-                                                src={imagelink}
+                                                src={imagelink} style={{ borderRadius: "100%", width: "110px", height: "100px" }}
                                                 alt="instructor-thumb"
                                              />}                      </div>
                                        </Link>
@@ -220,7 +220,7 @@ const AdDetailsArea = () => {
                               </div>
                               <div className="course-details-widget">
                                  <div className="cd-video-price">
-                                    <h3 className="pricing-video text-center mb-15"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }} ></i>{ad.Adprice.toLocaleString('en-IN')}</h3>
+                                    <h3 className="pricing-video text-center mb-15"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }} ></i>{Number(ad.Adprice).toLocaleString('en-IN')}</h3>
                                     <div className="cd-pricing-btn text-center mb-30">
 
                                        <input style={{ width: "100%", marginBottom: "1rem", padding: "1rem" }} type="text" placeholder='Write Review Here' />

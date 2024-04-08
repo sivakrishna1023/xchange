@@ -646,7 +646,7 @@ const AdListArea = () => {
 
                           {tasks.Model}
                           <div className="tpcourse__pricing">
-                            <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
+                            <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{Number(item.Adprice).toLocaleString('en-IN')}</h5>
                           </div>
                         </div>
                       </div>

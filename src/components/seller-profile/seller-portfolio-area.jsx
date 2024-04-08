@@ -334,7 +334,7 @@ const SellerPortfolioArea = () => {
 
                                   </div>
                                   <div className="tpcourse__pricing">
-                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
+                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{Number(item.Adprice).toLocaleString('en-IN')}</h5>
                                   </div>
 
                                 </div>
@@ -428,7 +428,7 @@ const SellerPortfolioArea = () => {
 
                                   </div>
                                   <div className="tpcourse__pricing">
-                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
+                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{Number(item.Adprice).toLocaleString('en-IN')}</h5>
                                   </div>
                                 </div>
                                 <div className="flex justify-between">
@@ -524,7 +524,7 @@ const SellerPortfolioArea = () => {
                                   </div>
 
                                   <div className="tpcourse__pricing">
-                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{item.Adprice}</h5>
+                                    <h5 className="price-title"><i class="fas fa-inr" style={{ marginRight: "0.4rem" }}     ></i>{Number(item.Adprice).toLocaleString('en-IN')}</h5>
                                   </div>
                                 </div>
                                 <div style={{ display: "flex", width: "100%", justifyContent: "space-between" }}>
