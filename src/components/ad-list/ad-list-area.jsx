@@ -113,7 +113,7 @@ const AdListArea = () => {
             }
           }
           const ads_data = shuffleArray(data.ads);
-          let updatedTasks = tasks.slice(); // Copying the old tasks array
+          let updatedTasks = tasks.slice(); 
          
           for (let task of ads_data) {
               if (!tasks.some(existingTask => arraysAreIdentical(existingTask, task))) {
@@ -731,9 +731,11 @@ const AdListArea = () => {
               {
                 isnext ? (
                   (
-                    !loading2 ? <button className="tp-btn" onClick={handle_newtasks_next}>
-                    Load More
-                    </button> : <div> <center> <h3>Please Wait</h3>  </center></div>
+                    !loading2 ? <div> <center>
+                      <button className="tp-btn" onClick={handle_newtasks_next}>
+                       Load More
+                      </button> 
+                      </center> </div> : <div> <center> <h3>Please Wait</h3>  </center></div>
                   )
                 ) : (
                   <></>
