@@ -50,6 +50,18 @@ const category_data = [
     title: "Home Appliance",
     link: "ad-list?select=Home Appliance",
   },
+  {
+    id: 9,
+    img: "/assets/img/category/category-09.svg",
+    title: "Rent",
+    link: "ad-list?select=Rent",
+  },
+  {
+    id: 10,
+    img: "/assets/img/category/category-10.svg",
+    title: "Sports",
+    link: "ad-list?select=Sports",
+  },
 ];
 const CategoryArea = () => {
   const [isMobile, setIsMobile] = useState(false);
