@@ -13,7 +13,7 @@ const CourseArea = () => {
   const currtime = Date.now();
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
-  const [tasks, settasks] = useState('');
+  const [tasks, settasks] = useState([]);
   const text = "NO Ads Found Under Selected Location";
   const [isvalid, setisvalid] = useState(true);
   const [pagenumber,setpagenumber]=useState(0);
@@ -22,13 +22,68 @@ const CourseArea = () => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
-    }
+    } 
     return array;
   }
+  function arraysAreIdentical(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return false;
+    }
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const handle_newtasks_next = async () => {
+  var item = localStorage.getItem('my_city');
+  var req;
+  const value=tasks.length/8+1;
+  if(item==null){
+    req='';
+  }else{
+    if (item) {
+      req = item !== '' ? item : selectedLocation;
+    } else {
+      req = selectedLocation;
+    }
+  }
+  setloading(true);
+  try {
+      const res = await fetch("/api/ads/cityfilter", {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'filter':`${req}`,
+          'pagenumber':value,
+        },
+      });
+    const data = await res.json();
+    if (data.success) {
+      if (item) {
+        if (data.found) {
+          setisvalid(true);
+        } else {
+          setisvalid(false);
+        }
+      }
+        const ads_data = shuffleArray(data.ads);
+        settasks(prevTasks => [...prevTasks, ...ads_data]);
+        setisnext(data.isnext);
+    }
+  } catch (error) {
+    setloading(false);
+    console.log(error);
+  }
+  setloading(false);
+};
+
   const handle_newtasks = async () => {
     var item = localStorage.getItem('my_city');
     var req;
-    setpagenumber(prevPageNumber => prevPageNumber + 1);
+    const value=tasks.length/8+1;
     if(item==null){
       req='';
     }else{
@@ -45,7 +100,7 @@ const CourseArea = () => {
           headers: {
             'Content-Type': 'application/json',
             'filter':`${req}`,
-            'pagenumber':pagenumber,
+            'pagenumber':value,
           },
         });
       const data = await res.json();
@@ -58,31 +113,16 @@ const CourseArea = () => {
           }
         }
         const ads_data = shuffleArray(data.ads);
-        settasks(prevTasks => [...prevTasks, ...ads_data]);
-        console.log(isnext);
-        setisnext(data.isnext);
-      }
-    } catch (error) {
-      setloading(false);
-      console.log(error);
-    }
-    setloading(false);
-  };
-  const handle_newtasks1 = async () => {
-    setloading(true);
-    try {
-        const res = await fetch("/api/ads/cityfilter", {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-            'filter':'',
-            'pagenumber':1,
-          },
-        });
-      const data = await res.json();
-      if (data.success) {
-        const ads_data = shuffleArray(data.ads);
-        settasks(ads_data);
+          let updatedTasks = tasks.slice(); 
+         
+          for (let task of ads_data) {
+              if (!tasks.some(existingTask => arraysAreIdentical(existingTask, task))) {
+                  updatedTasks.push(task);
+              }
+          }
+          settasks(updatedTasks);
+          // settasks(prevTasks => [...prevTasks, ...ads_data]);
+          setisnext(data.isnext);
       }
     } catch (error) {
       setloading(false);
@@ -240,7 +280,7 @@ const CourseArea = () => {
               {user._id ? (
                   isnext ? (
                     (
-                      !loading ? <button className="tp-btn" onClick={handle_newtasks}>
+                      !loading ? <button className="tp-btn" onClick={handle_newtasks_next}>
                       Load More
                       </button> : <div> <center> <h3>Please Wait</h3>  </center></div>
                     )

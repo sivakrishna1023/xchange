@@ -8,7 +8,7 @@ export const useLocationContext = () => {
 };
 
 export const LocationContextProvider = ({ children }) => {
-  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('India');
 
   return (
     <LocationContext.Provider value={{ selectedLocation, setSelectedLocation}}>

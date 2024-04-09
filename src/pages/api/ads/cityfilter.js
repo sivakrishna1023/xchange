@@ -9,7 +9,7 @@ const handler = asyncError(async (req, res) => {
         const contentType = req.headers['filter'];
         const pagenumber=req.headers['pagenumber'];
         const adsperpage=9;
-        const skipads=(pagenumber-1)*8;
+        const skipads=(pagenumber-1)*8; 
         try{
           if(contentType==null || contentType===''){
             const ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);

@@ -592,7 +592,7 @@ const CheckoutArea = () => {
                            <h3>About Ad</h3>
                            <div className="row">
                               <div className="col-md-12">
-                                 <div className="country-select">
+                                 <div className="country-select"> 
                                     <label>Category <span className="required">*</span></label>
                                     <select required onClick={(e) => { setCategory(e.target.value) }}   >
                                        <option value="Mobiles">Select</option>

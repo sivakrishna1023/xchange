@@ -18,6 +18,8 @@ const AdListArea = () => {
   const [isvalid,setisvalid]=useState(true);
   const [pagenumber,setpagenumber]=useState(1);
   const [loading2,setloading2]=useState(false);
+  const [turnoff2,setturnoff2]=useState(false);
+  const [loading3,setloading3]=useState(false);
   const [isnext,setisnext]=useState(true);
   const text="NO Ads Found Under Selected Location";
   function shuffleArray(array) {
@@ -129,34 +131,84 @@ const AdListArea = () => {
     setloading(false);
     
   };
-  useEffect(()=>{
-    handle_newtasks1();
-  },
-  [selectedLocation]);
-
+  // useEffect(()=>{
+  //   handle_newtasks1();
+  // },
+  // [selectedLocation]);
+  const gettasks_next = async () => {
+    const queryParams = new URLSearchParams(window.location.search);
+    var select = queryParams.get('select');
+    if(searchText!==''){
+      select=searchText;
+      setSearchText(select);
+    }
+    var value=(tasks.length/8)+1;
+    setloading3(true);
+    if(select){
+      select.toString();
+      try {
+        const res = await fetch("/api/ads/filter",{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'filter':`${select}`,
+            'pagenumber':value,
+          },
+        });
+        const data = await res.json();
+        if (data.success) {
+          const ads_data = shuffleArray(data.ads);
+          // let updatedTasks = tasks.slice(); 
+         
+          // for (let task of ads_data) {
+          //     if (!tasks.some(existingTask => arraysAreIdentical(existingTask, task))) {
+          //         updatedTasks.push(task);
+          //     }
+          // }
+          settasks(prevTasks => [...prevTasks, ...ads_data]);
+          setisnext(data.isnext);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }else{
+        handle_newtasks1();
+    }
+    setloading3(false);
+  }
   const gettasks = async () => {
     const queryParams = new URLSearchParams(window.location.search);
     var select = queryParams.get('select');
     if(searchText!==''){
       select=searchText;
+      setSearchText(select);
     }
+    var value=(tasks.length/8)+1;
     setloading(true);
     if(select){
+      setturnoff2(true);
       select.toString();
       try {
-        const res = await fetch("/api/ads/filter", {
-          method: 'POST',
+        const res = await fetch("/api/ads/filter",{
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
+            'filter':`${select}`,
+            'pagenumber':value,
           },
-          body: JSON.stringify({
-            fill: select
-          })
         });
         const data = await res.json();
         if (data.success) {
-          settasks(data.ads);
-          setSearchText('');
+          const ads_data = shuffleArray(data.ads);
+          let updatedTasks = tasks.slice(); 
+         
+          for (let task of ads_data) {
+              if (!tasks.some(existingTask => arraysAreIdentical(existingTask, task))) {
+                  updatedTasks.push(task);
+              }
+          }
+          settasks(updatedTasks);
+          setisnext(data.isnext);
         }
       } catch (error) {
         console.log(error);
@@ -729,16 +781,30 @@ const AdListArea = () => {
                 </div>
               ))):( <div> <center>  <h4> No Ads Found</h4>  </center>  </div>)}
               {
-                isnext ? (
-                  (
-                    !loading2 ? <div> <center>
-                      <button className="tp-btn" onClick={handle_newtasks_next}>
-                       Load More
-                      </button> 
-                      </center> </div> : <div> <center> <h3>Please Wait</h3>  </center></div>
+                !turnoff2 ?(
+                  isnext ? (
+                    (
+                      !loading2 ? <div> <center>
+                        <button className="tp-btn" onClick={handle_newtasks_next}>
+                         Load More
+                        </button> 
+                        </center> </div> : <div> <center> <h3>Please Wait</h3>  </center></div>
+                    )
+                  ) : (
+                    <></>
                   )
-                ) : (
-                  <></>
+                ):(
+                  isnext ? (
+                    (
+                      !loading2 ? <div> <center>
+                        <button className="tp-btn" onClick={gettasks_next}>
+                         Get More
+                        </button> 
+                        </center> </div> : <div> <center> <h3>Please Wait</h3>  </center></div>
+                    )
+                  ) : (
+                    <></>
+                  )
                 )
               }
             </div>
