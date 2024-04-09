@@ -184,7 +184,7 @@ const AdListArea = () => {
       setSearchText(select);
     }
     var value=(tasks.length/8)+1;
-    setloading(true);
+    setloading3(true);
     if(select){
       setturnoff2(true);
       select.toString();
@@ -216,7 +216,7 @@ const AdListArea = () => {
     }else{
         handle_newtasks1();
     }
-    setloading(false);
+    setloading3(false);
   }
   useEffect(() => {
     gettasks();
@@ -796,7 +796,7 @@ const AdListArea = () => {
                 ):(
                   isnext ? (
                     (
-                      !loading2 ? <div> <center>
+                      !loading3 ? <div> <center>
                         <button className="tp-btn" onClick={gettasks_next}>
                          Get More
                         </button> 
