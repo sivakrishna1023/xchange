@@ -289,7 +289,7 @@ const Header = () => {
                             className="tp-btn"
                             onClick={() => setIsPopoverOpen(true)}
                           >
-                            {mycity ? mycity : 'Location'}
+                            {mycity ? mycity : 'India'}
                           </div>
                         </PopoverTrigger>
                         <PopoverContent>
