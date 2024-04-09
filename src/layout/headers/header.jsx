@@ -188,7 +188,7 @@ const Header = () => {
   }
 
   const popupRef = useRef();
-  const [mycity, setmycity] = useState('');
+  const [mycity, setmycity] = useState(null);
   useEffect(() => {
     var value = localStorage.getItem('my_city');
     setmycity(value);
@@ -289,7 +289,7 @@ const Header = () => {
                             className="tp-btn"
                             onClick={() => setIsPopoverOpen(true)}
                           >
-                            {mycity ? mycity : 'India'}
+                            {(mycity && mycity!==null) ? mycity : 'India'}
                           </div>
                         </PopoverTrigger>
                         <PopoverContent>

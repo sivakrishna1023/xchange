@@ -42,7 +42,9 @@ const SellerPortfolioArea = () => {
   }
   const handlelogout = async () => {
     localStorage.setItem('token', null);
-    localStorage.setItem('my_city','India');
+    if(localStorage.getItem('my_city')) {
+      localStorage.removeItem('my_city');
+    }
     router.replace('/');
   }
   const gettasks = async () => {
