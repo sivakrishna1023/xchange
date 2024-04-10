@@ -176,14 +176,15 @@ const Header = () => {
   { "id": 142, "name": "Anantapur"},
   { "id": 143, "name": "Tadipatri" },
   { "id": 144, "name": "Madanapalli" },
-  { "id": 145, "name": "NIT Raipur" } 
-      
+  { "id": 145, "name": "NIT Raipur" },
+  { "id": 146, "name": "India" },      
 ];
 
   const handleOnSelect = (item) => {
     setSelectedCity(item.name);
     setSelectedLocation(item.name);
     localStorage.setItem('my_city', `${item.name}`);
+    
     setIsPopoverOpen(false);
   }
 

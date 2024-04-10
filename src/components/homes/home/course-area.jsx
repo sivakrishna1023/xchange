@@ -290,9 +290,14 @@ const handle_newtasks_next = async () => {
                     </Link>
                   )
                 ) : (
+                   !loading ?
+                  (
                   <Link className="tp-btn" href={'/sign-in'}>
                     Browse All Ads
                   </Link>
+                  ):(
+                    <div> <center>  <h3>Please Wait</h3> </center></div>
+                  )
                 )}
               </div>
             </div>

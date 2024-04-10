@@ -6,10 +6,13 @@ const handler = asyncError(async (req, res) => {
         if (req.method !== 'GET')
         return errorHandler(res, 400, "Only POST Method is allowed");  
         await connectDB();
-        const contentType = req.headers['filter'];
+        var contentType = req.headers['filter'];
         const pagenumber=req.headers['pagenumber'];
         const adsperpage=9;
         const skipads=(pagenumber-1)*8; 
+        if(contentType==='India'){
+          contentType='';
+        }
         try{
           if(contentType==null || contentType===''){
             const ads= await  Ads.find({draft: false}).skip(skipads).limit(adsperpage);
