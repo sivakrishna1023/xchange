@@ -14,7 +14,7 @@ const CourseArea = () => {
   const [loading, setloading] = useState(false);
   const { user } = useContext(Context);
   const [tasks, settasks] = useState([]);
-  const text = "NO Ads Found Under Selected Location";
+  const text = "No Ads Found Under Selected Location";
   const [isvalid, setisvalid] = useState(true);
   const [pagenumber,setpagenumber]=useState(0);
   const [isnext,setisnext]=useState(true);
