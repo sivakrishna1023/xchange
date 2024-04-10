@@ -184,8 +184,8 @@ const Header = () => {
     setSelectedCity(item.name);
     setSelectedLocation(item.name);
     localStorage.setItem('my_city', `${item.name}`);
-    
     setIsPopoverOpen(false);
+    window.location.reload();
   }
 
   const popupRef = useRef();
