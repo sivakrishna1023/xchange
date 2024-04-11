@@ -496,7 +496,39 @@ const Check = () => {
   { id: 142, "name": "Anantapur"},
   { id: 143, "name": "Tadipatri" },
   { id: 144, "name": "Madanapalli" },
-  { id: 145, "name": 'NIT Raipur' }  
+  { id: 145, "name": 'NIT Raipur' }.
+  { id: 146, "name": 'Noida' }.      
+  { id: 147, "name": "Mumbai" },
+  { id: 148, "name": "Delhi" },
+  { id: 149, "name": "Kolkata" },
+  { id: 150, "name": "Chennai" },
+  { id: 151, "name": "Bangalore" },
+  { id: 152, "name": "Ahmedabad" },
+  { id: 153, "name": "Pune" },
+  { id: 154, "name": "Surat" },
+  { id: 155, "name": "Jaipur" },
+  { id: 156, "name": "Kanpur" },
+  { id: 157, "name": "Lucknow" },
+  { id: 158, "name": "Nagpur" },
+  { id: 159, "name": "Ghaziabad" },
+  { id: 160, "name": "Indore" }, 
+  { id: 161, "name": "Coimbatore" },
+  { id: 162, "name": "Kochi" },
+  { id: 163, "name": "Patna" },
+  { id: 164, "name": "Kozhikode" },
+  { id: 165, "name": "Bhopal" },
+  { id: 166, "name": "Thrissur" },
+  { id: 167, "name": "Vadodara" },
+  { id: 168, "name": "Agra" },
+  { id: 169, "name": "Thiruvananthapuram" },
+  { id: 170, "name": "Kannur" },
+  { id: 171, "name": "Ludhiana" },
+  { id: 172, "name": "Nashik" },  
+  { id: 173, "name": "Madhurai" },
+  { id: 174, "name": "Varanasi" },  
+  { id: 175, "name": "Meerut" },
+  { id: 176, "name": "Faridabad" },
+  { id: 177, "name": "Rajkot" }      
    ];
 
    // const creatingAdimages = (e) => {
