@@ -496,8 +496,8 @@ const Check = () => {
   { id: 142, "name": "Anantapur"},
   { id: 143, "name": "Tadipatri" },
   { id: 144, "name": "Madanapalli" },
-  { id: 145, "name": 'NIT Raipur' }.
-  { id: 146, "name": 'Noida' }.      
+  { id: 145, "name": 'NIT Raipur' },
+  { id: 146, "name": 'Noida' },      
   { id: 147, "name": "Mumbai" },
   { id: 148, "name": "Delhi" },
   { id: 149, "name": "Kolkata" },
